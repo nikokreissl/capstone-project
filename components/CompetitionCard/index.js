@@ -5,7 +5,10 @@ export default function CompetitionCard({ competition }) {
     <article>
       <h2>{competition.name}</h2>
       <p>Record: X Wins / X Losses</p>
-      <p>Remaining Games: {competition.totalGames}</p>
+      <p>
+        Remaining Games:{" "}
+        {competition.totalGames - competition.gamesPlayed.length}
+      </p>
       <button>View Details</button>
     </article>
   );
