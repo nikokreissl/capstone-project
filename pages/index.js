@@ -1,11 +1,18 @@
 import Heading from "../components/Heading";
 import CompetitionCard from "../components/CompetitionCard";
-import { competition } from "../data/competition";
+import { competitions } from "../data/competition";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Heading>🔱 Nikos Capstone Project🔱</Heading>
-    </main>
+      <main>
+        <ul>
+          {competitions.map((competition) => (
+            <CompetitionCard key={competition.id} competition={competition} />
+          ))}
+        </ul>
+      </main>
+    </>
   );
 }
