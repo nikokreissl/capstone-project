@@ -1,16 +1,9 @@
-import { useRouter } from "next/router";
 import { competitions } from "../../data/competition";
 
-export default function CompetitionDetail({ competitionId }) {
-  const router = useRouter();
-
+export default function CompetitionDetail({ competitionId, onClickBack }) {
   const competition = competitions.find(
     (competition) => competition.id === Number(competitionId)
   );
-
-  function handleClickBack() {
-    router.back();
-  }
 
   const competitionWins = competition.gamesPlayed.filter(
     (game) => game.userScore > game.opponentScore
@@ -25,7 +18,7 @@ export default function CompetitionDetail({ competitionId }) {
 
   return (
     <main>
-      <button onClick={handleClickBack}>🔙 Back</button>
+      <button onClick={onClickBack}>🔙 Back</button>
       <button>⚙️ Edit</button>
       <h2>{competition.name}</h2>
       <h3>Details</h3>
@@ -36,7 +29,7 @@ export default function CompetitionDetail({ competitionId }) {
       <button>Track Game</button>
       <ul>
         {reversedCompetitionGames.map((game) => (
-          <li key={game.id}>
+          <li key={game.gameId}>
             Game{" "}
             {reversedCompetitionGames.length -
               reversedCompetitionGames.indexOf(game)}{" "}

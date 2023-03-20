@@ -5,5 +5,14 @@ export default function CompetitionDetailPage() {
   const router = useRouter();
   const { competitionId } = router.query;
 
-  return <CompetitionDetail competitionId={competitionId} />;
+  function handleClickBack() {
+    router.back();
+  }
+
+  return (
+    <CompetitionDetail
+      competitionId={competitionId}
+      onClickBack={handleClickBack}
+    />
+  );
 }

@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
-export default function CompetitionCard({ competition }) {
-  const router = useRouter();
-
+export default function CompetitionCard({ competition, router }) {
   function handleViewDetailsClick() {
     router.push(`/competition/${competition.id}`);
   }
