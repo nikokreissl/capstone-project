@@ -1,10 +1,10 @@
 import Home from "../pages";
 import { render, screen } from "@testing-library/react";
 
-test("test", () => {
+test("Shows headline with the title FIFA23 Tracker", () => {
   render(<Home />);
   const element = screen.getByRole("heading", {
-    name: /🔱/,
+    name: /FIFA23 Tracker/,
   });
   expect(element).toBeInTheDocument();
 });
