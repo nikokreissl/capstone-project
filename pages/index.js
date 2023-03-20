@@ -5,7 +5,7 @@ import { competitions } from "../data/competition";
 export default function Home() {
   return (
     <>
-      <Heading>🔱 Nikos Capstone Project🔱</Heading>
+      <Heading>FIFA23 Tracker</Heading>
       <main>
         <ul>
           {competitions.map((competition) => (
