@@ -1,12 +1,4 @@
-import styled from "styled-components";
-import { useRouter } from "next/router";
-
-export default function CompetitionCard({ competition }) {
-  const router = useRouter();
-  function handleViewDetailsClick() {
-    router.push(`/competition/${competition.id}`);
-  }
-
+export default function CompetitionCard({ competition, onViewDetails }) {
   const competitionWins = competition?.gamesPlayed.filter(
     (game) => game.userScore > game.opponentScore
   );
@@ -24,9 +16,7 @@ export default function CompetitionCard({ competition }) {
         Remaining Games:{" "}
         {competition?.totalGames - competition?.gamesPlayed.length}
       </p>
-      <button onClick={handleViewDetailsClick}>View Details</button>
+      <button onClick={onViewDetails}>View Details</button>
     </article>
   );
 }
-
-const styledCompetitionCard = styled.article``;
