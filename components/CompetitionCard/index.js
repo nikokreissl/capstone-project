@@ -8,10 +8,24 @@ export default function CompetitionCard({ competition }) {
     router.push(`/competition/${competition.id}`);
   }
 
+  const competitionGames = competition.gamesPlayed;
+
+  const competitionWins = competitionGames.filter(
+    (game) => game.userScore > game.opponentScore
+  );
+
+  const competitionLoses = competitionGames.filter(
+    (game) => game.userScore < game.opponentScore
+  );
+
+  console.log(competitionLoses, competitionWins);
+
   return (
     <article>
       <h2>{competition.name}</h2>
-      <p>Record: X Wins / X Losses</p>
+      <p>
+        Record: Wins {competitionWins.length} / Loses {competitionLoses.length}
+      </p>
       <p>
         Remaining Games:{" "}
         {competition.totalGames - competition.gamesPlayed.length}

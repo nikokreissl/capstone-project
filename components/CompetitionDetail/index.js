@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 
 export default function CompetitionDetail({ competition }) {
   const router = useRouter();
-  console.log(router);
 
   function handleClickBack() {
     router.back();
