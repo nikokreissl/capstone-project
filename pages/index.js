@@ -6,6 +6,8 @@ import { DataContext } from "./_app";
 export default function Home() {
   const competitions = useContext(DataContext);
 
+  console.log(competitions);
+
   if (!competitions) {
     return <div>Loading...</div>;
   }

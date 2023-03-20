@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }) {
   }
 
   return (
-    <DataContext.Provider value={(competitions, handleAddCompetition)}>
+    <DataContext.Provider value={competitions}>
       <GlobalStyle />
       <Head>
         <title>Capstone Project</title>
