@@ -6,6 +6,10 @@ import { DataContext } from "./_app";
 export default function Home() {
   const competitions = useContext(DataContext);
 
+  if (!competitions) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <Heading>FIFA23 Tracker</Heading>
