@@ -1,8 +1,11 @@
 import Heading from "../components/Heading";
 import CompetitionCard from "../components/CompetitionCard";
-import { competitions } from "../data/competition";
+import { useContext } from "react";
+import { DataContext } from "./_app";
 
 export default function Home() {
+  const competitions = useContext(DataContext);
+
   return (
     <>
       <Heading>FIFA23 Tracker</Heading>

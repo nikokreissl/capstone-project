@@ -1,6 +1,8 @@
-import { competitions } from "../../data/competition";
+import { DataContext } from "../../pages/_app";
+import { useContext } from "react";
 
 export default function CompetitionDetail({ competitionId, onClickBack }) {
+  const competitions = useContext(DataContext);
   const competition = competitions.find(
     (competition) => competition.id === Number(competitionId)
   );
