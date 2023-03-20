@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }) {
       isArchived: false,
       gamesPlayed: [],
     };
-    setCompetition([{ newCompetition }, ...competitions]);
+    setCompetition([newCompetition, ...competitions]);
   }
 
   return (

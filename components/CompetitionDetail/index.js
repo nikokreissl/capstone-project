@@ -4,7 +4,7 @@ import { useContext } from "react";
 export default function CompetitionDetail({ competitionId, onClickBack }) {
   const { competitions } = useContext(DataContext);
   const competition = competitions.find(
-    (competition) => competition.id === Number(competitionId)
+    (competition) => competition.id === competitionId
   );
 
   if (!competition) {
