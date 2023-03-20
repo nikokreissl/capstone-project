@@ -5,6 +5,10 @@ export default function CompetitionDetail({ competitionId, onClickBack }) {
     (competition) => competition.id === Number(competitionId)
   );
 
+  if (!competition) {
+    return <p>Loading...</p>;
+  }
+
   const competitionWins = competition.gamesPlayed.filter(
     (game) => game.userScore > game.opponentScore
   );
