@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 export default function CompetitionCard({ competition }) {
   const router = useRouter();
 
-  function handleViewDetails() {
+  function handleViewDetailsClick() {
     router.push(`/competition/${competition.id}`);
   }
 
@@ -16,7 +16,7 @@ export default function CompetitionCard({ competition }) {
         Remaining Games:{" "}
         {competition.totalGames - competition.gamesPlayed.length}
       </p>
-      <button onClick={handleViewDetails}>View Details</button>
+      <button onClick={handleViewDetailsClick}>View Details</button>
     </article>
   );
 }
