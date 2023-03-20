@@ -10,7 +10,7 @@ export default function CreateCompetitionForm() {
   const [competitionNameInput, setCompetitionNameInput] = useState("");
   const [competitionGameInput, setCompetitionGameInput] = useState(1);
 
-  const handleAddCompetition = useContext(DataContext);
+  const { handleAddCompetition } = useContext(DataContext);
 
   function handleNameInput(event) {
     setCompetitionNameInput(event.target.value);
@@ -29,7 +29,7 @@ export default function CreateCompetitionForm() {
 
   return (
     <>
-      <button>Cancel</button>
+      <button onClick={() => router.back()}>Cancel</button>
       <StyledCreateCompetitionForm onSubmit={handleSubmit}>
         <label htmlFor="competition-name">Name</label>
         <input

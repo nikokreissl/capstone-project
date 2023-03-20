@@ -1,6 +1,6 @@
 import GlobalStyle from "../styles";
 import Head from "next/head";
-import { useId, useState } from "react";
+import { useState } from "react";
 import { givenCompetitions } from "../data/competition";
 import { createContext } from "react";
 import { uid } from "uid";
@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }) {
   }
 
   return (
-    <DataContext.Provider value={competitions}>
+    <DataContext.Provider value={{ competitions, handleAddCompetition }}>
       <GlobalStyle />
       <Head>
         <title>Capstone Project</title>
