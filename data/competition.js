@@ -1,4 +1,4 @@
-export const competitions = [
+export const givenCompetitions = [
   {
     id: 1,
     name: "Weekend League",
