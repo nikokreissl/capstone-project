@@ -3,7 +3,7 @@ export default function CompetitionDetail({ competition }) {
     <main>
       <button>🔙 Back</button>
       <button>⚙️ Edit</button>
-      <h2>{competition.name}</h2>
+      <h2>Competition Name</h2>
       <h3>Details</h3>
       <p>Wins: X / Loses: X</p>
       <button>Track Game</button>

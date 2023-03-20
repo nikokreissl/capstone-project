@@ -1,6 +1,13 @@
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 export default function CompetitionCard({ competition }) {
+  const router = useRouter();
+
+  function handleViewDetails() {
+    router.push(`/competition/${competition.id}`);
+  }
+
   return (
     <article>
       <h2>{competition.name}</h2>
@@ -9,7 +16,7 @@ export default function CompetitionCard({ competition }) {
         Remaining Games:{" "}
         {competition.totalGames - competition.gamesPlayed.length}
       </p>
-      <button>View Details</button>
+      <button onClick={handleViewDetails}>View Details</button>
     </article>
   );
 }
