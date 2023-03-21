@@ -3,7 +3,7 @@ import StyledCompetitionFormComponent from "../CompetitionForm";
 export default function EditCompetition({ onToggleEdit }) {
   return (
     <>
-      <button onClick={onToggleEdit}>⚙️ Edit</button>
+      <button onClick={onToggleEdit}>🗑️ Discard changes</button>
       <StyledCompetitionFormComponent>
         <label htmlFor="competition-name">Name</label>
         <input
