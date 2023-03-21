@@ -21,7 +21,8 @@ export default function EditCompetition({
 
   function handleUpdateSubmit(event) {
     event.preventDefault();
-    onUpdateCompetition(id);
+    onUpdateCompetition(id, competitionName, competitionGames);
+    onToggleEdit();
   }
 
   return (
@@ -48,7 +49,7 @@ export default function EditCompetition({
           min={1}
           max={100}
         />
-        <button>Create competition</button>
+        <button>Update competition</button>
       </StyledCompetitionForm>
       <button>❌ Delete competition</button>
       <button>📖 Archive competition</button>

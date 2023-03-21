@@ -22,11 +22,22 @@ export default function App({ Component, pageProps }) {
     setCompetition([newCompetition, ...competitions]);
   }
 
-  function handleUpdateCompetition(competitionId) {
+  function handleUpdateCompetition(
+    competitionId,
+    newCompetitionName,
+    newCompetitionGames
+  ) {
     const updatedCompetition = competitions.find(
       (competition) => competitionId === competition.id
     );
-    console.log(updatedCompetition);
+    if (newCompetitionGames < updatedCompetition.gamesPlayed.length) {
+      alert(
+        "Number of games must be greater than the current number of games added to the competition. Your changed won't be saved."
+      );
+    } else {
+      updatedCompetition.name = newCompetitionName;
+      updatedCompetition.totalGames = newCompetitionGames;
+    }
   }
 
   return (
