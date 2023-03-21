@@ -4,6 +4,7 @@ import { useState } from "react";
 import { givenCompetitions } from "../data/competition";
 import { createContext } from "react";
 import { uid } from "uid";
+import Heading from "../components/Heading";
 
 export const DataContext = createContext();
 
@@ -24,9 +25,11 @@ export default function App({ Component, pageProps }) {
   return (
     <DataContext.Provider value={{ competitions, handleAddCompetition }}>
       <GlobalStyle />
+
       <Head>
         <title>Capstone Project</title>
       </Head>
+      <Heading>FIFA23 Tracker</Heading>
       <Component {...pageProps} />
     </DataContext.Provider>
   );
