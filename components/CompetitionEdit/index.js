@@ -1,10 +1,10 @@
-import StyledCompetitionFormComponent from "../CompetitionForm";
+import styled from "styled-components";
 
 export default function EditCompetition({ onToggleEdit }) {
   return (
     <>
       <button onClick={onToggleEdit}>🗑️ Discard changes</button>
-      <StyledCompetitionFormComponent>
+      <StyledCompetitionForm>
         <label htmlFor="competition-name">Name</label>
         <input
           type="text"
@@ -21,7 +21,14 @@ export default function EditCompetition({ onToggleEdit }) {
           max={100}
         />
         <button>Create competition</button>
-      </StyledCompetitionFormComponent>
+      </StyledCompetitionForm>
     </>
   );
 }
+
+const StyledCompetitionForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  gap: 10px;
+`;
