@@ -6,6 +6,10 @@ import { useState } from "react";
 export default function CompetitionDetailPage() {
   const [isEdit, setIsEdit] = useState(false);
 
+  function toggleEdit() {
+    setIsEdit(!isEdit);
+  }
+
   const router = useRouter();
   const { competitionId } = router.query;
 
@@ -14,15 +18,16 @@ export default function CompetitionDetailPage() {
   }
 
   return (
-    <>
+    <main>
       {isEdit ? (
-        <EditCompetition />
+        <EditCompetition onToggleEdit={toggleEdit} />
       ) : (
         <CompetitionDetail
           competitionId={competitionId}
           onClickBack={handleClickBack}
+          onToggleEdit={toggleEdit}
         />
       )}
-    </>
+    </main>
   );
 }

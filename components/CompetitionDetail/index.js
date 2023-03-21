@@ -1,7 +1,11 @@
 import { DataContext } from "../../pages/_app";
 import { useContext } from "react";
 
-export default function CompetitionDetail({ competitionId, onClickBack }) {
+export default function CompetitionDetail({
+  competitionId,
+  onClickBack,
+  onToggleEdit,
+}) {
   const { competitions } = useContext(DataContext);
   const competition = competitions.find(
     (competition) => competition.id === competitionId
@@ -25,7 +29,7 @@ export default function CompetitionDetail({ competitionId, onClickBack }) {
   return (
     <main>
       <button onClick={onClickBack}>🔙 Back</button>
-      <button>⚙️ Edit</button>
+      <button onClick={onToggleEdit}>⚙️ Edit</button>
       <h2>{competition.name}</h2>
       <h3>Details</h3>
       <p>
