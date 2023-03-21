@@ -50,6 +50,12 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  function handleDeleteCompetition(competitionId) {
+    setCompetition(
+      competitions.filter((competition) => competitionId !== competition.id)
+    );
+  }
+
   return (
     <DataContext.Provider
       value={{
@@ -57,6 +63,7 @@ export default function App({ Component, pageProps }) {
         handleAddCompetition,
         handleUpdateCompetition,
         handleArchiveCompetition,
+        handleDeleteCompetition,
       }}
     >
       <GlobalStyle />

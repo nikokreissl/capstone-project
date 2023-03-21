@@ -1,12 +1,20 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function EditCompetition({
   onToggleEdit,
   competition,
   onUpdateCompetition,
   onArchiveCompetition,
+  onDeleteCompetition,
 }) {
+  const router = useRouter();
+
+  if (!competition) {
+    return <p>Loading...</p>;
+  }
+
   const { name, totalGames, id, isArchived } = competition;
   const [competitionName, setCompetitionName] = useState(name);
   const [competitionGames, setCompetitionGames] = useState(totalGames);
@@ -23,6 +31,11 @@ export default function EditCompetition({
     event.preventDefault();
     onUpdateCompetition(id, competitionName, competitionGames);
     onToggleEdit();
+  }
+
+  function deleteCompetition() {
+    router.push("/");
+    onDeleteCompetition(id);
   }
 
   return (
@@ -51,7 +64,7 @@ export default function EditCompetition({
         />
         <button>Update competition</button>
       </StyledCompetitionForm>
-      <button>❌ Delete competition</button>
+      <button onClick={deleteCompetition}>❌ Delete competition</button>
       <button onClick={() => onArchiveCompetition(id)}>
         {isArchived ? "🔃 Restore from archive" : "📖 Archive competition"}
       </button>
