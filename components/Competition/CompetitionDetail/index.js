@@ -11,6 +11,7 @@ export default function CompetitionDetail({
   onClickBack,
   onToggleEdit,
   competition,
+  onClickgameDetail,
 }) {
   const competitionWins = competition.gamesPlayed.filter(
     (game) => game.userScore > game.opponentScore
@@ -43,7 +44,11 @@ export default function CompetitionDetail({
             {reversedCompetitionGames.length -
               reversedCompetitionGames.indexOf(game)}{" "}
             - {game.userScore}:{game.opponentScore}
-            <button>Edit game</button>
+            <button
+              onClick={() => onClickgameDetail(competition.id, game.gameId)}
+            >
+              Edit game
+            </button>
           </li>
         ))}
       </ul>

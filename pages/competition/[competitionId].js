@@ -28,6 +28,10 @@ export default function CompetitionDetailPage() {
     router.back();
   }
 
+  function handleGameDetailRedirect(competitionId, gameId) {
+    router.push(`/competition/${competitionId}/game-detail/${gameId}`);
+  }
+
   if (!competition) {
     return <p>Loading...</p>;
   }
@@ -48,6 +52,7 @@ export default function CompetitionDetailPage() {
           competition={competition}
           onClickBack={handleClickHome}
           onToggleEdit={toggleEdit}
+          onClickgameDetail={handleGameDetailRedirect}
         />
       )}
     </main>
