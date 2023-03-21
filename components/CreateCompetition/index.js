@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { DataContext } from "../../pages/_app";
 import { useRouter } from "next/router";
 import styled from "styled-components";
