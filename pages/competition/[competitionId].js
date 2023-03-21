@@ -2,16 +2,23 @@ import { useRouter } from "next/router";
 import CompetitionDetail from "../../components/CompetitionDetail";
 import EditCompetition from "../../components/CompetitionEdit";
 import { useState } from "react";
+import { useContext } from "react";
+import { DataContext } from "../_app";
 
 export default function CompetitionDetailPage() {
   const [isEdit, setIsEdit] = useState(false);
 
+  const router = useRouter();
+  const { competitionId } = router.query;
+
+  const { competitions } = useContext(DataContext);
+  const competition = competitions.find(
+    (competition) => competition.id === competitionId
+  );
+
   function toggleEdit() {
     setIsEdit(!isEdit);
   }
-
-  const router = useRouter();
-  const { competitionId } = router.query;
 
   function handleClickBack() {
     router.back();
@@ -23,7 +30,7 @@ export default function CompetitionDetailPage() {
         <EditCompetition onToggleEdit={toggleEdit} />
       ) : (
         <CompetitionDetail
-          competitionId={competitionId}
+          competition={competition}
           onClickBack={handleClickBack}
           onToggleEdit={toggleEdit}
         />
