@@ -21,7 +21,6 @@ export default function CreateCompetitionForm() {
   }
 
   function handleSubmit(event) {
-    console.log(event);
     event.preventDefault();
     handleAddCompetition(competitionNameInput, competitionGameInput);
 
