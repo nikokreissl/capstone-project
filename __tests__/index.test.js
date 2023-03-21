@@ -1,10 +1,21 @@
-import Home from "../pages";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
+import Home from "../pages/index";
+import { DataContext } from "../pages/_app";
 
-test("Shows headline with the title FIFA23 Tracker", () => {
-  render(<Home />);
-  const element = screen.getByRole("heading", {
-    name: /FIFA23 Tracker/,
+test("should render heading and create competition link when competitions are present", async () => {
+  const competitions = [{ id: 1, name: "Test Competition", gamesPlayed: [] }];
+  render(
+    <DataContext.Provider value={{ competitions }}>
+      <Home />
+    </DataContext.Provider>
+  );
+  expect(
+    screen.getByRole("heading", { name: "FIFA23 Tracker" })
+  ).toBeInTheDocument();
+  expect(screen.getByText("Create new competition")).toBeInTheDocument();
+  await waitFor(() => {
+    expect(
+      screen.getByRole("heading", { name: "Test Competition" })
+    ).toBeInTheDocument();
   });
-  expect(element).toBeInTheDocument();
 });

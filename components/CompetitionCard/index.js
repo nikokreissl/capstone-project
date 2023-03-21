@@ -1,6 +1,10 @@
 import Link from "next/link";
 
 export default function CompetitionCard({ competition }) {
+  if (!competition) {
+    return <p>Loading...</p>;
+  }
+
   const competitionWins = competition?.gamesPlayed.filter(
     (game) => game.userScore > game.opponentScore
   );

@@ -1,6 +1,6 @@
-export const competitions = [
+export const givenCompetitions = [
   {
-    id: 1,
+    id: "jskjdskj",
     name: "Weekend League",
     totalGames: 15,
     isArchived: false,
@@ -29,7 +29,7 @@ export const competitions = [
     ],
   },
   {
-    id: 2,
+    id: "kjhsdf",
     name: "Weekend League Qualification",
     totalGames: 10,
     isArchived: false,
