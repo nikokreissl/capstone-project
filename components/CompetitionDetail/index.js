@@ -1,5 +1,6 @@
 import { DataContext } from "../../pages/_app";
 import { useContext } from "react";
+import styled from "styled-components";
 
 export default function CompetitionDetail({
   competitionId,
@@ -27,7 +28,7 @@ export default function CompetitionDetail({
   const reversedCompetitionGames = [...competitionGames].reverse();
 
   return (
-    <>
+    <StyledCompetitionDetailWrapper>
       <button onClick={onClickBack}>🔙 Back</button>
       <button onClick={onToggleEdit}>⚙️ Edit</button>
       <h2>{competition.name}</h2>
@@ -48,6 +49,12 @@ export default function CompetitionDetail({
           </li>
         ))}
       </ul>
-    </>
+    </StyledCompetitionDetailWrapper>
   );
 }
+
+const StyledCompetitionDetailWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`;

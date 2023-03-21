@@ -1,6 +1,10 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 export default function EditCompetition({ onToggleEdit }) {
+  const [competitionName, setCompetitionName] = useState("");
+  const [competitionGames, setCompetitionGames] = useState("");
+
   return (
     <>
       <button onClick={onToggleEdit}>🗑️ Discard changes</button>
@@ -34,4 +38,6 @@ const StyledCompetitionForm = styled.form`
   flex-direction: column;
   width: 70%;
   gap: 10px;
+  align-items: center;
+  margin: 20px;
 `;
