@@ -13,9 +13,7 @@ test("should render heading and create competition link when competitions are pr
     screen.getByRole("heading", { name: "FIFA23 Tracker" })
   ).toBeInTheDocument();
   expect(screen.getByText("Create new competition")).toBeInTheDocument();
-  await waitFor(() => {
-    expect(
-      screen.getByRole("heading", { name: "Test Competition" })
-    ).toBeInTheDocument();
-  });
+  expect(
+    screen.getByRole("heading", { name: "Test Competition" })
+  ).toBeInTheDocument();
 });
