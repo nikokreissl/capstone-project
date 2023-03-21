@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import CompetitionDetail from "../../components/CompetitionDetail";
-import EditCompetition from "../../components/CompetitionEdit";
+import CompetitionDetail from "../../components/Competition/CompetitionDetail";
+import EditCompetition from "../../components/Competition/CompetitionEdit";
 import { useState, useContext } from "react";
 import { DataContext } from "../_app";
 

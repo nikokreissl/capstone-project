@@ -1,4 +1,4 @@
-import CompetitionCard from "../components/CompetitionCard";
+import CompetitionCard from "../components/Competition/CompetitionCard";
 import { useContext } from "react";
 import { DataContext } from "./_app";
 import Link from "next/link";

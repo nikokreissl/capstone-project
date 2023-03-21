@@ -1,5 +1,10 @@
-import styled from "styled-components";
 import { useState } from "react";
+import {
+  StyledCompetitionForm,
+  StyledCompetitionFormButton,
+  StyledCompetitionFormInput,
+  StyledCompetitionFormLabel,
+} from "../CompetitionForm";
 
 export default function EditCompetition({
   onToggleEdit,
@@ -36,8 +41,10 @@ export default function EditCompetition({
     <>
       <button onClick={onToggleEdit}>🗑️ Discard changes</button>
       <StyledCompetitionForm onSubmit={handleUpdateSubmit}>
-        <label htmlFor="competition-name">Name</label>
-        <input
+        <StyledCompetitionFormLabel htmlFor="competition-name">
+          Name
+        </StyledCompetitionFormLabel>
+        <StyledCompetitionFormInput
           type="text"
           name="competition-name"
           id="competition-name"
@@ -46,8 +53,10 @@ export default function EditCompetition({
           pattern="^(?!\s*$).+"
           required
         />
-        <label htmlFor="competition-games">Number of Games</label>
-        <input
+        <StyledCompetitionFormLabel htmlFor="competition-games">
+          Number of Games
+        </StyledCompetitionFormLabel>
+        <StyledCompetitionFormInput
           type="number"
           name="competition-games"
           id="competition-games"
@@ -56,7 +65,9 @@ export default function EditCompetition({
           min={1}
           max={100}
         />
-        <button>Update competition</button>
+        <StyledCompetitionFormButton>
+          Update competition
+        </StyledCompetitionFormButton>
       </StyledCompetitionForm>
       <button onClick={deleteCompetition}>❌ Delete competition</button>
       <button onClick={() => onArchiveCompetition(id)}>
@@ -65,12 +76,3 @@ export default function EditCompetition({
     </>
   );
 }
-
-const StyledCompetitionForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  gap: 10px;
-  align-items: center;
-  margin: 20px;
-`;
