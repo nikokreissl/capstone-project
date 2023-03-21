@@ -5,9 +5,6 @@ export default function CompetitionDetail({
   onToggleEdit,
   competition,
 }) {
-  if (!competition) {
-    return <p>Loading...</p>;
-  }
   const competitionWins = competition.gamesPlayed.filter(
     (game) => game.userScore > game.opponentScore
   );

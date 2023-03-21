@@ -25,6 +25,14 @@ export default function CompetitionDetailPage() {
     setIsEdit(!isEdit);
   }
 
+  function handleClickHome() {
+    router.back();
+  }
+
+  if (!competition) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <main>
       {isEdit ? (
@@ -34,11 +42,12 @@ export default function CompetitionDetailPage() {
           onUpdateCompetition={handleUpdateCompetition}
           onArchiveCompetition={handleArchiveCompetition}
           onDeleteCompetition={handleDeleteCompetition}
+          onClickBack={handleClickHome}
         />
       ) : (
         <CompetitionDetail
           competition={competition}
-          onClickBack={handleClickBack}
+          onClickBack={handleClickHome}
           onToggleEdit={toggleEdit}
         />
       )}

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { useRouter } from "next/router";
 
 export default function EditCompetition({
   onToggleEdit,
@@ -8,13 +7,8 @@ export default function EditCompetition({
   onUpdateCompetition,
   onArchiveCompetition,
   onDeleteCompetition,
+  onClickBack,
 }) {
-  const router = useRouter();
-
-  if (!competition) {
-    return <p>Loading...</p>;
-  }
-
   const { name, totalGames, id, isArchived } = competition;
   const [competitionName, setCompetitionName] = useState(name);
   const [competitionGames, setCompetitionGames] = useState(totalGames);
@@ -34,7 +28,7 @@ export default function EditCompetition({
   }
 
   function deleteCompetition() {
-    router.push("/");
+    onClickBack();
     onDeleteCompetition(id);
   }
 
