@@ -21,5 +21,11 @@ export default function GameDetailPage() {
     (game) => (game.gameId = gameId)
   );
 
-  return <GameDetail game={currentGame} />;
+  function handleBackToCompetition() {
+    router.push(`/competition/${currentCompetition.id}`);
+  }
+
+  return (
+    <GameDetail game={currentGame} onClickBack={handleBackToCompetition} />
+  );
 }

@@ -10,12 +10,12 @@ import {
   StyledGameButton,
 } from "./StyledGameDetail.js";
 
-export default function GameDetail({ game }) {
+export default function GameDetail({ game, onClickBack }) {
   return (
     <main>
       <StyledDetailContainer>
         <StyledButtonWrapper>
-          <StyledButton>🔙 Back</StyledButton>
+          <StyledButton onClick={onClickBack}>🔙 Back</StyledButton>
           <StyledButton>❌ Delete</StyledButton>
         </StyledButtonWrapper>
         <h2>Game {game.gameId}</h2>
