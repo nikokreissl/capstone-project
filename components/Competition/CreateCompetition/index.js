@@ -6,6 +6,7 @@ import {
   StyledCompetitionFormLabel,
   StyledCompetitionFormInput,
   StyledCompetitionFormButton,
+  StyledCompetitionFormLabelInputWrapper,
 } from "../CompetitionForm";
 
 export default function CreateCompetitionForm() {
@@ -47,18 +48,20 @@ export default function CreateCompetitionForm() {
           onChange={handleNameInput}
           required
         />
-        <StyledCompetitionFormLabel htmlFor="competition-games">
-          Number of Games
-        </StyledCompetitionFormLabel>
-        <StyledCompetitionFormInput
-          type="number"
-          name="competition-games"
-          id="competition-games"
-          value={competitionGameInput}
-          onChange={handleGameInput}
-          min={1}
-          max={100}
-        />
+        <StyledCompetitionFormLabelInputWrapper>
+          <StyledCompetitionFormLabel htmlFor="competition-games">
+            Number of Games
+          </StyledCompetitionFormLabel>
+          <StyledCompetitionFormInput
+            type="number"
+            name="competition-games"
+            id="competition-games"
+            value={competitionGameInput}
+            onChange={handleGameInput}
+            min={1}
+            max={100}
+          />
+        </StyledCompetitionFormLabelInputWrapper>
         <StyledCompetitionFormButton>
           Create competition
         </StyledCompetitionFormButton>

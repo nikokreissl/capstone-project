@@ -1,4 +1,11 @@
-import styled from "styled-components";
+import {
+  StyledCompetitionDetailsContainer,
+  StyledCompetitionDetailButton,
+} from "./StyledCompetitionDetails";
+import {
+  StyledButton,
+  StyledButtonWrapper,
+} from "../../GeneralComponents/Buttons/StyledButton";
 
 export default function CompetitionDetail({
   onClickBack,
@@ -17,16 +24,18 @@ export default function CompetitionDetail({
   const reversedCompetitionGames = [...competitionGames].reverse();
 
   return (
-    <StyledCompetitionDetailWrapper>
-      <button onClick={onClickBack}>🔙 Back</button>
-      <button onClick={onToggleEdit}>⚙️ Edit</button>
+    <StyledCompetitionDetailsContainer>
+      <StyledButtonWrapper>
+        <StyledButton onClick={onClickBack}>🔙 Back</StyledButton>
+        <StyledButton onClick={onToggleEdit}>⚙️ Edit</StyledButton>
+      </StyledButtonWrapper>
       <h2>{competition.name}</h2>
       <h3>Details</h3>
       <p>
         Wins: {competitionWins.length} / Loses: {competitionLoses.length}
       </p>
       <p>Remaining games: {competition.totalGames - competitionGames.length}</p>
-      <button>Track Game</button>
+      <StyledCompetitionDetailButton>Track Game</StyledCompetitionDetailButton>
       <ul>
         {reversedCompetitionGames.map((game) => (
           <li key={game.gameId}>
@@ -38,12 +47,6 @@ export default function CompetitionDetail({
           </li>
         ))}
       </ul>
-    </StyledCompetitionDetailWrapper>
+    </StyledCompetitionDetailsContainer>
   );
 }
-
-const StyledCompetitionDetailWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-`;

@@ -4,7 +4,12 @@ import {
   StyledCompetitionFormButton,
   StyledCompetitionFormInput,
   StyledCompetitionFormLabel,
+  StyledCompetitionFormLabelInputWrapper,
 } from "../CompetitionForm";
+import {
+  StyledButton,
+  StyledButtonWrapper,
+} from "../../GeneralComponents/Buttons/StyledButton";
 
 export default function EditCompetition({
   onToggleEdit,
@@ -39,7 +44,7 @@ export default function EditCompetition({
 
   return (
     <>
-      <button onClick={onToggleEdit}>🗑️ Discard changes</button>
+      <StyledButton onClick={onToggleEdit}>🗑️ Discard changes</StyledButton>
       <StyledCompetitionForm onSubmit={handleUpdateSubmit}>
         <StyledCompetitionFormLabel htmlFor="competition-name">
           Name
@@ -53,26 +58,32 @@ export default function EditCompetition({
           pattern="^(?!\s*$).+"
           required
         />
-        <StyledCompetitionFormLabel htmlFor="competition-games">
-          Number of Games
-        </StyledCompetitionFormLabel>
-        <StyledCompetitionFormInput
-          type="number"
-          name="competition-games"
-          id="competition-games"
-          value={competitionGames}
-          onChange={handleCompetitionGamesChange}
-          min={1}
-          max={100}
-        />
+        <StyledCompetitionFormLabelInputWrapper>
+          <StyledCompetitionFormLabel htmlFor="competition-games">
+            Number of Games
+          </StyledCompetitionFormLabel>
+          <StyledCompetitionFormInput
+            type="number"
+            name="competition-games"
+            id="competition-games"
+            value={competitionGames}
+            onChange={handleCompetitionGamesChange}
+            min={1}
+            max={100}
+          />
+        </StyledCompetitionFormLabelInputWrapper>
         <StyledCompetitionFormButton>
           Update competition
         </StyledCompetitionFormButton>
       </StyledCompetitionForm>
-      <button onClick={deleteCompetition}>❌ Delete competition</button>
-      <button onClick={() => onArchiveCompetition(id)}>
-        {isArchived ? "🔃 Restore from archive" : "📖 Archive competition"}
-      </button>
+      <StyledButtonWrapper>
+        <StyledButton onClick={deleteCompetition}>
+          ❌ Delete competition
+        </StyledButton>
+        <StyledButton onClick={() => onArchiveCompetition(id)}>
+          {isArchived ? "🔃 Restore from archive" : "📖 Archive competition"}
+        </StyledButton>
+      </StyledButtonWrapper>
     </>
   );
 }

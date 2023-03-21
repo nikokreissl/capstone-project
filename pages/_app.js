@@ -4,7 +4,7 @@ import { useState } from "react";
 import { givenCompetitions } from "../data/competition";
 import { createContext } from "react";
 import { uid } from "uid";
-import Heading from "../components/Heading";
+import Heading from "../components/GeneralComponents/Heading";
 
 export const DataContext = createContext();
 
