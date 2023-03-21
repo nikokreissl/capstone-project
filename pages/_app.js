@@ -40,9 +40,24 @@ export default function App({ Component, pageProps }) {
     }
   }
 
+  function handleArchiveCompetition(competitionId) {
+    setCompetition(
+      competitions.map((competition) =>
+        competitionId === competition.id
+          ? { ...competition, isArchived: !competition.isArchived }
+          : competition
+      )
+    );
+  }
+
   return (
     <DataContext.Provider
-      value={{ competitions, handleAddCompetition, handleUpdateCompetition }}
+      value={{
+        competitions,
+        handleAddCompetition,
+        handleUpdateCompetition,
+        handleArchiveCompetition,
+      }}
     >
       <GlobalStyle />
 

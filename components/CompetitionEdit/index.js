@@ -5,9 +5,9 @@ export default function EditCompetition({
   onToggleEdit,
   competition,
   onUpdateCompetition,
+  onArchiveCompetition,
 }) {
-  const { name, totalGames, id } = competition;
-
+  const { name, totalGames, id, isArchived } = competition;
   const [competitionName, setCompetitionName] = useState(name);
   const [competitionGames, setCompetitionGames] = useState(totalGames);
 
@@ -52,7 +52,9 @@ export default function EditCompetition({
         <button>Update competition</button>
       </StyledCompetitionForm>
       <button>❌ Delete competition</button>
-      <button>📖 Archive competition</button>
+      <button onClick={() => onArchiveCompetition(id)}>
+        {isArchived ? "🔃 Restore from archive" : "📖 Archive competition"}
+      </button>
     </>
   );
 }

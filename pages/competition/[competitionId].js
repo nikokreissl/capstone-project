@@ -11,7 +11,8 @@ export default function CompetitionDetailPage() {
   const router = useRouter();
   const { competitionId } = router.query;
 
-  const { competitions, handleUpdateCompetition } = useContext(DataContext);
+  const { competitions, handleUpdateCompetition, handleArchiveCompetition } =
+    useContext(DataContext);
   const competition = competitions.find(
     (competition) => competition.id === competitionId
   );
@@ -31,6 +32,7 @@ export default function CompetitionDetailPage() {
           onToggleEdit={toggleEdit}
           competition={competition}
           onUpdateCompetition={handleUpdateCompetition}
+          onArchiveCompetition={handleArchiveCompetition}
         />
       ) : (
         <CompetitionDetail
