@@ -1,16 +1,10 @@
-import { DataContext } from "../../pages/_app";
-import { useContext } from "react";
+import styled from "styled-components";
 
-export default function CompetitionDetail({ competitionId, onClickBack }) {
-  const { competitions } = useContext(DataContext);
-  const competition = competitions.find(
-    (competition) => competition.id === competitionId
-  );
-
-  if (!competition) {
-    return <p>Loading...</p>;
-  }
-
+export default function CompetitionDetail({
+  onClickBack,
+  onToggleEdit,
+  competition,
+}) {
   const competitionWins = competition.gamesPlayed.filter(
     (game) => game.userScore > game.opponentScore
   );
@@ -23,9 +17,9 @@ export default function CompetitionDetail({ competitionId, onClickBack }) {
   const reversedCompetitionGames = [...competitionGames].reverse();
 
   return (
-    <main>
+    <StyledCompetitionDetailWrapper>
       <button onClick={onClickBack}>🔙 Back</button>
-      <button>⚙️ Edit</button>
+      <button onClick={onToggleEdit}>⚙️ Edit</button>
       <h2>{competition.name}</h2>
       <h3>Details</h3>
       <p>
@@ -44,6 +38,12 @@ export default function CompetitionDetail({ competitionId, onClickBack }) {
           </li>
         ))}
       </ul>
-    </main>
+    </StyledCompetitionDetailWrapper>
   );
 }
+
+const StyledCompetitionDetailWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`;

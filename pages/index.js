@@ -1,4 +1,3 @@
-import Heading from "../components/Heading";
 import CompetitionCard from "../components/CompetitionCard";
 import { useContext } from "react";
 import { DataContext } from "./_app";
@@ -13,7 +12,6 @@ export default function Home() {
 
   return (
     <>
-      <Heading>FIFA23 Tracker</Heading>
       <main>
         <Link href={"/competition/create"}>Create new competition</Link>
         <ul>
