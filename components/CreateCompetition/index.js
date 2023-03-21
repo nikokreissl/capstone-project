@@ -1,8 +1,8 @@
-import styled from "styled-components";
 import { useState } from "react";
 import { useContext } from "react";
 import { DataContext } from "../../pages/_app";
 import { useRouter } from "next/router";
+import StyledCompetitionFormComponent from "../CompetitionForm";
 
 export default function CreateCompetitionForm() {
   const router = useRouter();
@@ -30,7 +30,7 @@ export default function CreateCompetitionForm() {
   return (
     <>
       <button onClick={() => router.back()}>Cancel</button>
-      <StyledCreateCompetitionForm onSubmit={handleSubmit}>
+      <StyledCompetitionFormComponent onSubmit={handleSubmit}>
         <label htmlFor="competition-name">Name</label>
         <input
           type="text"
@@ -51,14 +51,7 @@ export default function CreateCompetitionForm() {
           max={100}
         />
         <button>Create competition</button>
-      </StyledCreateCompetitionForm>
+      </StyledCompetitionFormComponent>
     </>
   );
 }
-
-const StyledCreateCompetitionForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  gap: 10px;
-`;
