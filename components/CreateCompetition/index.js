@@ -37,6 +37,7 @@ export default function CreateCompetitionForm() {
           type="text"
           name="competition-name"
           id="competition-name"
+          pattern="^(?!\s*$).+"
           value={competitionNameInput}
           onChange={handleNameInput}
           required

@@ -10,6 +10,7 @@ export default function EditCompetition({ onToggleEdit }) {
           type="text"
           name="competition-name"
           id="competition-name"
+          pattern="^(?!\s*$).+"
           required
         />
         <label htmlFor="competition-games">Number of Games</label>

@@ -27,7 +27,7 @@ export default function CompetitionDetail({
   const reversedCompetitionGames = [...competitionGames].reverse();
 
   return (
-    <main>
+    <>
       <button onClick={onClickBack}>🔙 Back</button>
       <button onClick={onToggleEdit}>⚙️ Edit</button>
       <h2>{competition.name}</h2>
@@ -48,6 +48,6 @@ export default function CompetitionDetail({
           </li>
         ))}
       </ul>
-    </main>
+    </>
   );
 }
