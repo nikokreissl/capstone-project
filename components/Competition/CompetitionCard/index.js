@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { StyledArticle, StyledDetailsLink } from "./StyledCompetitionCard.js";
 
 export default function CompetitionCard({ competition }) {
   if (!competition) {
@@ -13,7 +14,7 @@ export default function CompetitionCard({ competition }) {
     (game) => game.userScore < game.opponentScore
   );
   return (
-    <article>
+    <StyledArticle>
       <h2>{competition.name}</h2>
       <p>
         Record: Wins {competitionWins.length} / Loses {competitionLoses.length}
@@ -22,7 +23,9 @@ export default function CompetitionCard({ competition }) {
         Remaining Games:{" "}
         {competition?.totalGames - competition.gamesPlayed.length}
       </p>
-      <Link href={`/competition/${competition.id}`}>View Details</Link>
-    </article>
+      <StyledDetailsLink href={`/competition/${competition.id}`}>
+        View Details
+      </StyledDetailsLink>
+    </StyledArticle>
   );
 }
