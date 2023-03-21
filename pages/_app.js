@@ -22,8 +22,17 @@ export default function App({ Component, pageProps }) {
     setCompetition([newCompetition, ...competitions]);
   }
 
+  function handleUpdateCompetition(competitionId) {
+    const updatedCompetition = competitions.find(
+      (competition) => competitionId === competition.id
+    );
+    console.log(updatedCompetition);
+  }
+
   return (
-    <DataContext.Provider value={{ competitions, handleAddCompetition }}>
+    <DataContext.Provider
+      value={{ competitions, handleAddCompetition, handleUpdateCompetition }}
+    >
       <GlobalStyle />
 
       <Head>

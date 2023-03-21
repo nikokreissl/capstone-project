@@ -1,19 +1,40 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-export default function EditCompetition({ onToggleEdit }) {
-  const [competitionName, setCompetitionName] = useState("");
-  const [competitionGames, setCompetitionGames] = useState("");
+export default function EditCompetition({
+  onToggleEdit,
+  competition,
+  onUpdateCompetition,
+}) {
+  const { name, totalGames, id } = competition;
+
+  const [competitionName, setCompetitionName] = useState(name);
+  const [competitionGames, setCompetitionGames] = useState(totalGames);
+
+  function handleCompetitionNameChange(event) {
+    setCompetitionName(event.target.value);
+  }
+
+  function handleCompetitionGamesChange(event) {
+    setCompetitionGames(event.target.value);
+  }
+
+  function handleUpdateSubmit(event) {
+    event.preventDefault();
+    onUpdateCompetition(id);
+  }
 
   return (
     <>
       <button onClick={onToggleEdit}>🗑️ Discard changes</button>
-      <StyledCompetitionForm>
+      <StyledCompetitionForm onSubmit={handleUpdateSubmit}>
         <label htmlFor="competition-name">Name</label>
         <input
           type="text"
           name="competition-name"
           id="competition-name"
+          value={competitionName}
+          onChange={handleCompetitionNameChange}
           pattern="^(?!\s*$).+"
           required
         />
@@ -22,6 +43,8 @@ export default function EditCompetition({ onToggleEdit }) {
           type="number"
           name="competition-games"
           id="competition-games"
+          value={competitionGames}
+          onChange={handleCompetitionGamesChange}
           min={1}
           max={100}
         />
