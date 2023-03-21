@@ -23,6 +23,8 @@ export default function EditCompetition({ onToggleEdit }) {
         />
         <button>Create competition</button>
       </StyledCompetitionForm>
+      <button>❌ Delete competition</button>
+      <button>📖 Archive competition</button>
     </>
   );
 }
