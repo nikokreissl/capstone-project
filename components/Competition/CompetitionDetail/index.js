@@ -1,6 +1,7 @@
-import {
+import StyledGameListItemComponent, {
   StyledCompetitionDetailsContainer,
   StyledCompetitionDetailButton,
+  StyledGameList,
 } from "./StyledCompetitionDetails";
 import {
   StyledButton,
@@ -37,9 +38,15 @@ export default function CompetitionDetail({
       </p>
       <p>Remaining games: {competition.totalGames - competitionGames.length}</p>
       <StyledCompetitionDetailButton>Track Game</StyledCompetitionDetailButton>
-      <ul>
+      <StyledGameList>
         {reversedCompetitionGames.map((game) => (
-          <li key={game.gameId}>
+          <StyledGameListItemComponent
+            key={game.gameId}
+            gameNumber={
+              reversedCompetitionGames.length -
+              reversedCompetitionGames.indexOf(game)
+            }
+          >
             Game{" "}
             {reversedCompetitionGames.length -
               reversedCompetitionGames.indexOf(game)}{" "}
@@ -47,11 +54,11 @@ export default function CompetitionDetail({
             <button
               onClick={() => onClickgameDetail(competition.id, game.gameId)}
             >
-              Edit game
+              ✏️ Edit Game
             </button>
-          </li>
+          </StyledGameListItemComponent>
         ))}
-      </ul>
+      </StyledGameList>
     </StyledCompetitionDetailsContainer>
   );
 }
