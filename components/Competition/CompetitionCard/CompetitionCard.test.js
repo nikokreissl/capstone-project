@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import CompetitionCard from ".";
 
-test("Rendes information on Card correcty", () => {
+test("Renders information on Card correcty", () => {
   const competition = {
     id: 1,
     name: "Competition Name",
