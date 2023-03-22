@@ -57,20 +57,27 @@ export default function App({ Component, pageProps }) {
   }
 
   function handleGameUpdate(competitionId, gameId, newGameDetails) {
-    const currentCompetition = competitions
-      .find((competition) => competition.id === competitionId)
-      .gamesPlayed.map((game) =>
-        game.gameId === gameId
-          ? {
-              ...game,
-              userScore: newGameDetails.userScore,
-              opponentScore: newGameDetails.opponentScore,
-              userXgoals: newGameDetails.userXgoals,
-              opponentXgoals: newGameDetails.opponentXgoals,
-            }
-          : game
-      );
-    console.log(newGameDetails);
+    const currentCompetition = competitions.find(
+      (competition) => competition.id === competitionId
+    );
+    const newGameOverview = currentCompetition.gamesPlayed.map((game) =>
+      game.gameId === gameId
+        ? {
+            ...game,
+            userScore: newGameDetails.userScore,
+            opponentScore: newGameDetails.opponentScore,
+            userXgoals: newGameDetails.userXgoals,
+            opponentXgoals: newGameDetails.opponentXgoals,
+          }
+        : game
+    );
+    setCompetition(
+      competitions.map((competition) =>
+        competition.id === competitionId
+          ? { ...competition, gamesPlayed: newGameOverview }
+          : competition
+      )
+    );
   }
 
   return (

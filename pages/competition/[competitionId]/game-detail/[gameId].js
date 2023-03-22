@@ -18,7 +18,7 @@ export default function GameDetailPage() {
   }
 
   const currentGame = currentCompetition.gamesPlayed.find(
-    (game) => (game.gameId = gameId)
+    (game) => game.gameId === gameId
   );
 
   function handleBackToCompetition() {

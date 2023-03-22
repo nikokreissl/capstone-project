@@ -6,21 +6,21 @@ export const givenCompetitions = [
     isArchived: false,
     gamesPlayed: [
       {
-        gameId: 1,
+        gameId: "dsdsf",
         userScore: 1,
         opponentScore: 0,
         userXgoals: 1.1,
         opponentXgoals: 0.9,
       },
       {
-        gameId: 2,
+        gameId: "fssdffdsfds",
         userScore: 0,
         opponentScore: 2,
         userXgoals: 0.9,
         opponentXgoals: 1.7,
       },
       {
-        gameId: 3,
+        gameId: "wsegsgsdg",
         userScore: 4,
         opponentScore: 2,
         userXgoals: 2.9,
@@ -35,21 +35,21 @@ export const givenCompetitions = [
     isArchived: false,
     gamesPlayed: [
       {
-        gameId: 1,
+        gameId: "sgsdggssdg",
         userScore: 5,
         opponentScore: 0,
         userXgoals: 4.3,
         opponentXgoals: 0.9,
       },
       {
-        gameId: 2,
+        gameId: "fqgegsdgs",
         userScore: 0,
         opponentScore: 3,
         userXgoals: 0.3,
         opponentXgoals: 3.7,
       },
       {
-        gameId: 3,
+        gameId: "dsdssgddsgsdf",
         userScore: 2,
         opponentScore: 1,
         userXgoals: 2.9,
