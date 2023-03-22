@@ -14,11 +14,15 @@ export default function GameDetailPage() {
     (competition) => competition.id === competitionId
   );
 
+  if (!currentCompetition) {
+    return <div>Loading...</div>;
+  }
+
   const currentGame = currentCompetition.gamesPlayed.find(
     (game) => game.gameId === gameId
   );
 
-  if (!currentCompetition || !currentGame) {
+  if (!currentGame) {
     return <div>Loading...</div>;
   }
 
