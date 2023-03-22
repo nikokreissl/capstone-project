@@ -4,7 +4,7 @@ import { useContext } from "react";
 import GameDetail from "../../../../components/Competition/GameDetail";
 
 export default function GameDetailPage() {
-  const { competitions } = useContext(DataContext);
+  const { competitions, handleGameUpdate } = useContext(DataContext);
 
   const router = useRouter();
   const { competitionId, gameId } = router.query;
@@ -26,6 +26,11 @@ export default function GameDetailPage() {
   }
 
   return (
-    <GameDetail game={currentGame} onClickBack={handleBackToCompetition} />
+    <GameDetail
+      game={currentGame}
+      onClickBack={handleBackToCompetition}
+      onUpdateGame={handleGameUpdate}
+      competitionId={currentCompetition.id}
+    />
   );
 }

@@ -56,6 +56,23 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  function handleGameUpdate(competitionId, gameId, newGameDetails) {
+    const currentCompetition = competitions
+      .find((competition) => competition.id === competitionId)
+      .gamesPlayed.map((game) =>
+        game.gameId === gameId
+          ? {
+              ...game,
+              userScore: newGameDetails.userScore,
+              opponentScore: newGameDetails.opponentScore,
+              userXgoals: newGameDetails.userXgoals,
+              opponentXgoals: newGameDetails.opponentXgoals,
+            }
+          : game
+      );
+    console.log(newGameDetails);
+  }
+
   return (
     <DataContext.Provider
       value={{
@@ -64,6 +81,7 @@ export default function App({ Component, pageProps }) {
         handleUpdateCompetition,
         handleArchiveCompetition,
         handleDeleteCompetition,
+        handleGameUpdate,
       }}
     >
       <GlobalStyle />
