@@ -24,8 +24,12 @@ export default function CompetitionDetailPage() {
     setIsEdit(!isEdit);
   }
 
-  function handleClickHome() {
+  function handleDirectBack() {
     router.back();
+  }
+
+  function handleDirectHome() {
+    router.push("/");
   }
 
   function handleGameDetailRedirect(competitionId, gameId) {
@@ -45,12 +49,12 @@ export default function CompetitionDetailPage() {
           onUpdateCompetition={handleUpdateCompetition}
           onArchiveCompetition={handleArchiveCompetition}
           onDeleteCompetition={handleDeleteCompetition}
-          onClickBack={handleClickHome}
+          onClickBack={handleDirectBack}
         />
       ) : (
         <CompetitionDetail
           competition={competition}
-          onClickBack={handleClickHome}
+          onClickBack={handleDirectHome}
           onToggleEdit={toggleEdit}
           onClickgameDetail={handleGameDetailRedirect}
         />
