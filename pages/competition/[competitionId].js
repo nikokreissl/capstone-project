@@ -24,16 +24,22 @@ export default function CompetitionDetailPage() {
     setIsEdit(!isEdit);
   }
 
-  function handleDirectBack() {
-    router.back();
-  }
-
   function handleDirectHome() {
     router.push("/");
   }
 
   function handleGameDetailRedirect(competitionId, gameId) {
     router.push(`/competition/${competitionId}/game-detail/${gameId}`);
+  }
+
+  function handleTrackNewGameRedirect(competitionId) {
+    if (competition.gamesPlayed.length === competition.totalGames) {
+      alert(
+        "You have already tracked all games! In order to track more games, update the total number of games."
+      );
+    } else {
+      router.push(`/competition/${competitionId}/track-new-game`);
+    }
   }
 
   if (!competition) {
@@ -57,6 +63,7 @@ export default function CompetitionDetailPage() {
           onClickBack={handleDirectHome}
           onToggleEdit={toggleEdit}
           onClickgameDetail={handleGameDetailRedirect}
+          onTrackNewGame={handleTrackNewGameRedirect}
         />
       )}
     </main>

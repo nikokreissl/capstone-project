@@ -80,6 +80,27 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  function handleTrackNewGame(competitionId, gameDetails) {
+    const currentCompetition = competitions.find(
+      (competition) => competition.id === competitionId
+    );
+    const newGame = {
+      gameId: uid(),
+      userScore: gameDetails.userScore,
+      opponentScore: gameDetails.opponentScore,
+      userXgoals: gameDetails.userXgoals,
+      opponentXgoals: gameDetails.opponentXgoals,
+    };
+    const newGameOverview = [...currentCompetition.gamesPlayed, newGame];
+    setCompetition(
+      competitions.map((competition) =>
+        competition.id === competitionId
+          ? { ...competition, gamesPlayed: newGameOverview }
+          : competition
+      )
+    );
+  }
+
   return (
     <DataContext.Provider
       value={{
@@ -89,6 +110,7 @@ export default function App({ Component, pageProps }) {
         handleArchiveCompetition,
         handleDeleteCompetition,
         handleGameUpdate,
+        handleTrackNewGame,
       }}
     >
       <GlobalStyle />

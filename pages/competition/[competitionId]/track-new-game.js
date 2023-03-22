@@ -1,21 +1,25 @@
 import {
   StyledButtonWrapper,
   StyledButton,
-} from "../../../../components/GeneralComponents/Buttons/StyledButton.js";
+} from "../../../components/GeneralComponents/Buttons/StyledButton.js";
 import {
   StyledDetailContainer,
   StyledFieldset,
   StyledNumberInput,
   StyledGameForm,
   StyledGameButton,
-} from "../../../../components/Competition/GameDetail/StyledGameDetail";
+} from "../../../components/Competition/GameDetail/StyledGameDetail";
 import { useState } from "react";
+import { DataContext } from "../../_app.js";
+import { useContext } from "react";
+import { useRouter } from "next/router.js";
 
-export default function TrackNewGamePage({
-  onClickBack,
-  onUpdateGame,
-  competitionId,
-}) {
+export default function TrackNewGamePage() {
+  const router = useRouter();
+  const { competitionId } = router.query;
+
+  const { handleTrackNewGame } = useContext(DataContext);
+
   const [userScore, setUserScore] = useState(0);
   const [opponentScore, setOpponentScore] = useState(0);
   const [userXgoals, setUserXgoals] = useState(0.0);
@@ -37,6 +41,18 @@ export default function TrackNewGamePage({
     setOpponentXgoals(Number(event.target.value));
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    const newGame = {
+      userScore,
+      opponentScore,
+      opponentXgoals,
+      userXgoals,
+    };
+    handleTrackNewGame(competitionId, newGame);
+    router.push(`/competition/${competitionId}`);
+  }
+
   return (
     <main>
       <StyledDetailContainer>
@@ -44,7 +60,7 @@ export default function TrackNewGamePage({
           <StyledButton>🔙 Cancel</StyledButton>
         </StyledButtonWrapper>
         <h2>Track new Game</h2>
-        <StyledGameForm>
+        <StyledGameForm onSubmit={handleSubmit}>
           <StyledFieldset>
             <legend>Score</legend>
             <label htmlFor="user-score">Yours</label>

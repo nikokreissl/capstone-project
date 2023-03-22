@@ -13,6 +13,7 @@ export default function CompetitionDetail({
   onToggleEdit,
   competition,
   onClickgameDetail,
+  onTrackNewGame,
 }) {
   const competitionWins = competition.gamesPlayed.filter(
     (game) => game.userScore > game.opponentScore
@@ -37,7 +38,11 @@ export default function CompetitionDetail({
         Wins: {competitionWins.length} / Loses: {competitionLoses.length}
       </p>
       <p>Remaining games: {competition.totalGames - competitionGames.length}</p>
-      <StyledCompetitionDetailButton>Track Game</StyledCompetitionDetailButton>
+      <StyledCompetitionDetailButton
+        onClick={() => onTrackNewGame(competition.id)}
+      >
+        Track Game
+      </StyledCompetitionDetailButton>
       <StyledGameList>
         {reversedCompetitionGames.map((game) => (
           <StyledGameListItemComponent
