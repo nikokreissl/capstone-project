@@ -1,8 +1,13 @@
-import { useState } from "react";
-import { useContext } from "react";
-import { DataContext } from "../../pages/_app";
+import { useState, useContext } from "react";
+import { DataContext } from "../../../pages/_app";
 import { useRouter } from "next/router";
-import styled from "styled-components";
+import {
+  StyledCompetitionForm,
+  StyledCompetitionFormLabel,
+  StyledCompetitionFormInput,
+  StyledCompetitionFormButton,
+  StyledCompetitionFormLabelInputWrapper,
+} from "../CompetitionForm";
 
 export default function CreateCompetitionForm() {
   const router = useRouter();
@@ -31,8 +36,10 @@ export default function CreateCompetitionForm() {
     <>
       <button onClick={() => router.back()}>Cancel</button>
       <StyledCompetitionForm onSubmit={handleSubmit}>
-        <label htmlFor="competition-name">Name</label>
-        <input
+        <StyledCompetitionFormLabel htmlFor="competition-name">
+          Name
+        </StyledCompetitionFormLabel>
+        <StyledCompetitionFormInput
           type="text"
           name="competition-name"
           id="competition-name"
@@ -41,25 +48,24 @@ export default function CreateCompetitionForm() {
           onChange={handleNameInput}
           required
         />
-        <label htmlFor="competition-games">Number of Games</label>
-        <input
-          type="number"
-          name="competition-games"
-          id="competition-games"
-          value={competitionGameInput}
-          onChange={handleGameInput}
-          min={1}
-          max={100}
-        />
-        <button>Create competition</button>
+        <StyledCompetitionFormLabelInputWrapper>
+          <StyledCompetitionFormLabel htmlFor="competition-games">
+            Number of Games
+          </StyledCompetitionFormLabel>
+          <StyledCompetitionFormInput
+            type="number"
+            name="competition-games"
+            id="competition-games"
+            value={competitionGameInput}
+            onChange={handleGameInput}
+            min={1}
+            max={100}
+          />
+        </StyledCompetitionFormLabelInputWrapper>
+        <StyledCompetitionFormButton>
+          Create competition
+        </StyledCompetitionFormButton>
       </StyledCompetitionForm>
     </>
   );
 }
-
-const StyledCompetitionForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  gap: 10px;
-`;

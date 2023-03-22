@@ -1,4 +1,4 @@
-import CreateCompetitionForm from "../../components/CreateCompetition";
+import CreateCompetitionForm from "../../components/Competition/CreateCompetition";
 
 export default function CreateCompetitionPage() {
   return (

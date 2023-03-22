@@ -1,7 +1,8 @@
-import CompetitionCard from "../components/CompetitionCard";
+import CompetitionCard from "../components/Competition/CompetitionCard";
 import { useContext } from "react";
 import { DataContext } from "./_app";
-import Link from "next/link";
+import { StyledDetailsLink } from "../components/Competition/CompetitionCard/StyledCompetitionCard";
+import { StyledCompetitionList } from "../components/Competition/CompetitionList/StylesCompetitionList";
 
 export default function Home() {
   const { competitions } = useContext(DataContext);
@@ -13,14 +14,16 @@ export default function Home() {
   return (
     <>
       <main>
-        <Link href={"/competition/create"}>Create new competition</Link>
-        <ul>
+        <StyledDetailsLink href={"/competition/create"}>
+          Create new competition
+        </StyledDetailsLink>
+        <StyledCompetitionList>
           {competitions.map((competition) => (
             <li key={competition.id}>
               <CompetitionCard competition={competition} />
             </li>
           ))}
-        </ul>
+        </StyledCompetitionList>
       </main>
     </>
   );

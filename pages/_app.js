@@ -4,7 +4,7 @@ import { useState } from "react";
 import { givenCompetitions } from "../data/competition";
 import { createContext } from "react";
 import { uid } from "uid";
-import Heading from "../components/Heading";
+import Heading from "../components/GeneralComponents/Heading";
 
 export const DataContext = createContext();
 
@@ -56,6 +56,67 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  function handleGameUpdate(competitionId, gameId, newGameDetails) {
+    const currentCompetition = competitions.find(
+      (competition) => competition.id === competitionId
+    );
+    const newGameOverview = currentCompetition.gamesPlayed.map((game) =>
+      game.gameId === gameId
+        ? {
+            ...game,
+            userScore: newGameDetails.userScore,
+            opponentScore: newGameDetails.opponentScore,
+            userXgoals: newGameDetails.userXgoals,
+            opponentXgoals: newGameDetails.opponentXgoals,
+          }
+        : game
+    );
+    setCompetition(
+      competitions.map((competition) =>
+        competition.id === competitionId
+          ? { ...competition, gamesPlayed: newGameOverview }
+          : competition
+      )
+    );
+  }
+
+  function handleTrackNewGame(competitionId, gameDetails) {
+    const currentCompetition = competitions.find(
+      (competition) => competition.id === competitionId
+    );
+    const newGame = {
+      gameId: uid(),
+      userScore: gameDetails.userScore,
+      opponentScore: gameDetails.opponentScore,
+      userXgoals: gameDetails.userXgoals,
+      opponentXgoals: gameDetails.opponentXgoals,
+    };
+    const newGameOverview = [...currentCompetition.gamesPlayed, newGame];
+    setCompetition(
+      competitions.map((competition) =>
+        competition.id === competitionId
+          ? { ...competition, gamesPlayed: newGameOverview }
+          : competition
+      )
+    );
+  }
+
+  function handleGameDelete(competitionId, gameId) {
+    const currentCompetition = competitions.find(
+      (competition) => competition.id === competitionId
+    );
+    const updatedCurrentCompetitioGames = currentCompetition.gamesPlayed.filter(
+      (game) => game.gameId !== gameId
+    );
+    setCompetition(
+      competitions.map((competition) =>
+        competition.id === competitionId
+          ? { ...competition, gamesPlayed: updatedCurrentCompetitioGames }
+          : competition
+      )
+    );
+  }
+
   return (
     <DataContext.Provider
       value={{
@@ -64,6 +125,9 @@ export default function App({ Component, pageProps }) {
         handleUpdateCompetition,
         handleArchiveCompetition,
         handleDeleteCompetition,
+        handleGameUpdate,
+        handleTrackNewGame,
+        handleGameDelete,
       }}
     >
       <GlobalStyle />
