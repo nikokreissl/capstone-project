@@ -37,11 +37,7 @@ export default function CompetitionDetail({
         Wins: {competitionWins.length} / Loses: {competitionLoses.length}
       </p>
       <p>Remaining games: {competition.totalGames - competitionGames.length}</p>
-      <StyledCompetitionDetailButton
-        onClick={() => onClickgameDetail(competition.id, game.gameId)}
-      >
-        Track Game
-      </StyledCompetitionDetailButton>
+      <StyledCompetitionDetailButton>Track Game</StyledCompetitionDetailButton>
       <StyledGameList>
         {reversedCompetitionGames.map((game) => (
           <StyledGameListItemComponent

@@ -1,26 +1,25 @@
 import {
   StyledButtonWrapper,
   StyledButton,
-} from "../../GeneralComponents/Buttons/StyledButton";
+} from "../../../../components/GeneralComponents/Buttons/StyledButton.js";
 import {
   StyledDetailContainer,
   StyledFieldset,
   StyledNumberInput,
   StyledGameForm,
   StyledGameButton,
-} from "./StyledGameDetail.js";
+} from "../../../../components/Competition/GameDetail/StyledGameDetail";
 import { useState } from "react";
 
-export default function GameDetail({
-  game,
+export default function TrackNewGamePage({
   onClickBack,
   onUpdateGame,
   competitionId,
 }) {
-  const [userScore, setUserScore] = useState(game.userScore);
-  const [opponentScore, setOpponentScore] = useState(game.opponentScore);
-  const [userXgoals, setUserXgoals] = useState(game.userXgoals);
-  const [opponentXgoals, setOpponentXgoals] = useState(game.opponentXgoals);
+  const [userScore, setUserScore] = useState(0);
+  const [opponentScore, setOpponentScore] = useState(0);
+  const [userXgoals, setUserXgoals] = useState(0.0);
+  const [opponentXgoals, setOpponentXgoals] = useState(0.0);
 
   function handleUserScoreChange(event) {
     setUserScore(Number(event.target.value));
@@ -38,26 +37,14 @@ export default function GameDetail({
     setOpponentXgoals(Number(event.target.value));
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const newGame = {
-      userScore,
-      opponentScore,
-      opponentXgoals,
-      userXgoals,
-    };
-    onUpdateGame(competitionId, game.gameId, newGame);
-  }
-
   return (
     <main>
       <StyledDetailContainer>
         <StyledButtonWrapper>
-          <StyledButton onClick={onClickBack}>🔙 Back</StyledButton>
-          <StyledButton>❌ Delete</StyledButton>
+          <StyledButton>🔙 Cancel</StyledButton>
         </StyledButtonWrapper>
-        <h2>Game {game.gameId}</h2>
-        <StyledGameForm onSubmit={handleSubmit}>
+        <h2>Track new Game</h2>
+        <StyledGameForm>
           <StyledFieldset>
             <legend>Score</legend>
             <label htmlFor="user-score">Yours</label>
@@ -105,7 +92,7 @@ export default function GameDetail({
             />
             <label htmlFor="opponent-xgoals">Opponent</label>
           </StyledFieldset>
-          <StyledGameButton>Update</StyledGameButton>
+          <StyledGameButton>Save</StyledGameButton>
         </StyledGameForm>
       </StyledDetailContainer>
     </main>
