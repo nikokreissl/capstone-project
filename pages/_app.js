@@ -101,6 +101,22 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  function handleGameDelete(competitionId, gameId) {
+    const currentCompetition = competitions.find(
+      (competition) => competition.id === competitionId
+    );
+    const updatedCurrentCompetitioGames = currentCompetition.gamesPlayed.filter(
+      (game) => game.gameId !== gameId
+    );
+    setCompetition(
+      competitions.map((competition) =>
+        competition.id === competitionId
+          ? { ...competition, gamesPlayed: updatedCurrentCompetitioGames }
+          : competition
+      )
+    );
+  }
+
   return (
     <DataContext.Provider
       value={{
@@ -111,6 +127,7 @@ export default function App({ Component, pageProps }) {
         handleDeleteCompetition,
         handleGameUpdate,
         handleTrackNewGame,
+        handleGameDelete,
       }}
     >
       <GlobalStyle />

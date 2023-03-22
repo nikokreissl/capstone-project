@@ -28,7 +28,7 @@ export default function EditCompetition({
   }
 
   function handleCompetitionGamesChange(event) {
-    setCompetitionGames(event.target.value);
+    setCompetitionGames(Number(event.target.value));
   }
 
   function handleUpdateSubmit(event) {

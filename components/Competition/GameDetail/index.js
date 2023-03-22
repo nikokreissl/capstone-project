@@ -16,6 +16,7 @@ export default function GameDetail({
   onClickBack,
   onUpdateGame,
   competitionId,
+  onDeleteGame,
 }) {
   const [userScore, setUserScore] = useState(game.userScore);
   const [opponentScore, setOpponentScore] = useState(game.opponentScore);
@@ -49,12 +50,17 @@ export default function GameDetail({
     onUpdateGame(competitionId, game.gameId, newGame);
   }
 
+  function handleDeleteGame() {
+    onClickBack();
+    onDeleteGame(competitionId, game.gameId);
+  }
+
   return (
     <main>
       <StyledDetailContainer>
         <StyledButtonWrapper>
           <StyledButton onClick={onClickBack}>🔙 Back</StyledButton>
-          <StyledButton>❌ Delete</StyledButton>
+          <StyledButton onClick={handleDeleteGame}>❌ Delete</StyledButton>
         </StyledButtonWrapper>
         <h2>Game {game.gameId}</h2>
         <StyledGameForm onSubmit={handleSubmit}>

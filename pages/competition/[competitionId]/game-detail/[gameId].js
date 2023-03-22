@@ -4,7 +4,8 @@ import { useContext } from "react";
 import GameDetail from "../../../../components/Competition/GameDetail";
 
 export default function GameDetailPage() {
-  const { competitions, handleGameUpdate } = useContext(DataContext);
+  const { competitions, handleGameUpdate, handleGameDelete } =
+    useContext(DataContext);
 
   const router = useRouter();
   const { competitionId, gameId } = router.query;
@@ -13,13 +14,13 @@ export default function GameDetailPage() {
     (competition) => competition.id === competitionId
   );
 
-  if (!currentCompetition) {
-    return <div>Loading...</div>;
-  }
-
   const currentGame = currentCompetition.gamesPlayed.find(
     (game) => game.gameId === gameId
   );
+
+  if (!currentCompetition || !currentGame) {
+    return <div>Loading...</div>;
+  }
 
   function handleBackToCompetition() {
     router.push(`/competition/${currentCompetition.id}`);
@@ -30,6 +31,7 @@ export default function GameDetailPage() {
       game={currentGame}
       onClickBack={handleBackToCompetition}
       onUpdateGame={handleGameUpdate}
+      onDeleteGame={handleGameDelete}
       competitionId={currentCompetition.id}
     />
   );

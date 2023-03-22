@@ -57,7 +57,11 @@ export default function TrackNewGamePage() {
     <main>
       <StyledDetailContainer>
         <StyledButtonWrapper>
-          <StyledButton>🔙 Cancel</StyledButton>
+          <StyledButton
+            onClick={() => router.push(`/competition/${competitionId}`)}
+          >
+            🔙 Cancel
+          </StyledButton>
         </StyledButtonWrapper>
         <h2>Track new Game</h2>
         <StyledGameForm onSubmit={handleSubmit}>
