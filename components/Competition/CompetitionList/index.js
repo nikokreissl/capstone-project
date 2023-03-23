@@ -1,5 +1,5 @@
 import {
-  StyledCompetitionList,
+  StyledHomeList,
   StyledHomeContainer,
   StyledHomeItemHeadline,
 } from "./StylesCompetitionList";
@@ -14,13 +14,13 @@ export default function CompetitionList({ competitions, headline }) {
       {competitions.length < 1 ? (
         <EmptyState itemName="competition" href="competition/create" />
       ) : (
-        <StyledCompetitionList>
+        <StyledHomeList>
           {competitions.map((competition) => (
             <li key={competition.id}>
               <CompetitionCard competition={competition} />
             </li>
           ))}
-        </StyledCompetitionList>
+        </StyledHomeList>
       )}
     </StyledHomeContainer>
   );

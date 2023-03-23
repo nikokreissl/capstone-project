@@ -1,4 +1,4 @@
-export const objectives = [
+export const givenObjectives = [
   {
     id: "6T8pK9rLqJ",
     name: "Unlock Player XYZ",

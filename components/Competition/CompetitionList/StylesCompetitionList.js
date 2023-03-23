@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCompetitionList = styled.ul`
+export const StyledHomeList = styled.ul`
   list-style: none;
   padding: 0;
 `;

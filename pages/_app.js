@@ -1,9 +1,11 @@
 import GlobalStyle from "../styles";
 import Head from "next/head";
 import { givenCompetitions } from "../data/competition";
+import { givenObjectives } from "../data/objectives";
 import { createContext } from "react";
 import Heading from "../components/GeneralComponents/Heading";
 import { useCompetitions } from "../hooks/competition-hook";
+import { useState } from "react";
 
 export const DataContext = createContext();
 
@@ -19,6 +21,8 @@ export default function App({ Component, pageProps }) {
     handleGameDelete,
   } = useCompetitions(givenCompetitions);
 
+  const [objectives, setObjectvies] = useState(givenObjectives);
+
   return (
     <DataContext.Provider
       value={{
@@ -30,6 +34,7 @@ export default function App({ Component, pageProps }) {
         handleGameUpdate,
         handleTrackNewGame,
         handleGameDelete,
+        objectives,
       }}
     >
       <GlobalStyle />

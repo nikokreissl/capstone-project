@@ -5,9 +5,9 @@ import CompetitionList from "../components/Competition/CompetitionList";
 import ObjectiveList from "../components/Objectives/ObjectiveList";
 
 export default function Home() {
-  const { competitions } = useContext(DataContext);
+  const { competitions, objectives } = useContext(DataContext);
 
-  if (!competitions) {
+  if (!competitions || !objectives) {
     return <div>Loading...</div>;
   }
 
@@ -18,7 +18,7 @@ export default function Home() {
           Create new competition
         </StyledDetailsLink>
         <CompetitionList competitions={competitions} headline="Competitions" />
-        <ObjectiveList headline="Objectives" />
+        <ObjectiveList objectives={objectives} headline="Objectives" />
       </main>
     </>
   );

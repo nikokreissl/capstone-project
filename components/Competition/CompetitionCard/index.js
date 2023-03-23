@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { StyledArticle, StyledDetailsLink } from "./StyledCompetitionCard.js";
 
 export default function CompetitionCard({ competition }) {
