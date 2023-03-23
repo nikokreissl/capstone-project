@@ -23,14 +23,8 @@ export function useCompetitions(givenCompetitions) {
     const updatedCompetition = competitions.find(
       (competition) => competitionId === competition.id
     );
-    if (newCompetitionGames < updatedCompetition.gamesPlayed.length) {
-      alert(
-        "Number of games must be greater than the current number of games added to the competition. Your changed won't be saved."
-      );
-    } else {
-      updatedCompetition.name = newCompetitionName;
-      updatedCompetition.totalGames = newCompetitionGames;
-    }
+    updatedCompetition.name = newCompetitionName;
+    updatedCompetition.totalGames = newCompetitionGames;
   }
 
   function handleArchiveCompetition(competitionId) {
