@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { DataContext } from "./_app";
 import { StyledDetailsLink } from "../components/Competition/CompetitionCard/StyledCompetitionCard";
-import HomeItem from "../components/Competition/CompetitionList";
+import CompetitionList from "../components/Competition/CompetitionList";
+import ObjectiveList from "../components/Objectives/ObjectiveList";
 
 export default function Home() {
   const { competitions } = useContext(DataContext);
@@ -16,7 +17,8 @@ export default function Home() {
         <StyledDetailsLink href={"/competition/create"}>
           Create new competition
         </StyledDetailsLink>
-        <HomeItem competitions={competitions} headline="Competitions" />
+        <CompetitionList competitions={competitions} headline="Competitions" />
+        <ObjectiveList headline="Objectives" />
       </main>
     </>
   );

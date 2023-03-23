@@ -6,7 +6,7 @@ import {
 import CompetitionCard from "../CompetitionCard";
 import EmptyState from "../../GeneralComponents/Empty-State";
 
-export default function HomeItem({ competitions, headline }) {
+export default function CompetitionList({ competitions, headline }) {
   return (
     <StyledHomeContainer>
       <StyledHomeItemHeadline>{headline}</StyledHomeItemHeadline>
