@@ -39,8 +39,8 @@ export default function EditCompetition({
         "Number of games must be greater than the current number of games added to the competition. Your changed won't be saved."
       );
     } else {
-      onUpdateCompetition(id, competitionName, competitionGames);
       onToggleEdit();
+      onUpdateCompetition(id, competitionName, competitionGames);
     }
   }
 
