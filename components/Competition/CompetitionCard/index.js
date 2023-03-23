@@ -15,7 +15,7 @@ export default function CompetitionCard({ competition }) {
   );
   return (
     <StyledArticle>
-      <h2>{competition.name}</h2>
+      <h3>{competition.name}</h3>
       <p>
         Record: Wins {competitionWins.length} / Loses {competitionLoses.length}
       </p>
