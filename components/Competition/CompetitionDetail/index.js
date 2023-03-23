@@ -1,12 +1,12 @@
-import StyledGameListItemComponent, {
+import {
   StyledCompetitionDetailsContainer,
   StyledCompetitionDetailButton,
-  StyledGameList,
 } from "./StyledCompetitionDetails";
 import {
   StyledButton,
   StyledButtonWrapper,
 } from "../../GeneralComponents/Buttons/StyledButton";
+import GameList from "../GameList";
 
 export default function CompetitionDetail({
   onClickBack,
@@ -43,27 +43,12 @@ export default function CompetitionDetail({
       >
         Track Game
       </StyledCompetitionDetailButton>
-      <StyledGameList>
-        {reversedCompetitionGames.map((game) => (
-          <StyledGameListItemComponent
-            key={game.gameId}
-            gameNumber={
-              reversedCompetitionGames.length -
-              reversedCompetitionGames.indexOf(game)
-            }
-          >
-            Game{" "}
-            {reversedCompetitionGames.length -
-              reversedCompetitionGames.indexOf(game)}{" "}
-            - {game.userScore}:{game.opponentScore}
-            <button
-              onClick={() => onClickgameDetail(competition.id, game.gameId)}
-            >
-              ✏️ Edit Game
-            </button>
-          </StyledGameListItemComponent>
-        ))}
-      </StyledGameList>
+      <GameList
+        reversedCompetitionGames={reversedCompetitionGames}
+        onClickgameDetail={onClickgameDetail}
+        competition={competition}
+        onTrackNewGame={onTrackNewGame}
+      />
     </StyledCompetitionDetailsContainer>
   );
 }
