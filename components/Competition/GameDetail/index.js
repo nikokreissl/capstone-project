@@ -47,7 +47,12 @@ export default function GameDetail({
       opponentXgoals,
       userXgoals,
     };
-    onUpdateGame(competitionId, game.gameId, newGame);
+    if (userScore === opponentScore) {
+      alert("You can not enter draws!");
+    } else {
+      onUpdateGame(competitionId, game.gameId, newGame);
+      onClickBack();
+    }
   }
 
   function handleDeleteGame() {

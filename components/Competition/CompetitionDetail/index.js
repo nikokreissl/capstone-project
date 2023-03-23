@@ -47,7 +47,6 @@ export default function CompetitionDetail({
         reversedCompetitionGames={reversedCompetitionGames}
         onClickgameDetail={onClickgameDetail}
         competition={competition}
-        onTrackNewGame={onTrackNewGame}
       />
     </StyledCompetitionDetailsContainer>
   );
