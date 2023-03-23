@@ -33,8 +33,15 @@ export default function EditCompetition({
 
   function handleUpdateSubmit(event) {
     event.preventDefault();
-    onUpdateCompetition(id, competitionName, competitionGames);
-    onToggleEdit();
+
+    if (competitionGames < competition.gamesPlayed.length) {
+      alert(
+        "Number of games must be greater than the current number of games added to the competition. Your changed won't be saved."
+      );
+    } else {
+      onToggleEdit();
+      onUpdateCompetition(id, competitionName, competitionGames);
+    }
   }
 
   function deleteCompetition() {

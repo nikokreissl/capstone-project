@@ -49,8 +49,12 @@ export default function TrackNewGamePage() {
       opponentXgoals,
       userXgoals,
     };
-    handleTrackNewGame(competitionId, newGame);
-    router.push(`/competition/${competitionId}`);
+    if (userScore === opponentScore) {
+      alert("You can not enter draws!");
+    } else {
+      handleTrackNewGame(competitionId, newGame);
+      router.push(`/competition/${competitionId}`);
+    }
   }
 
   return (
