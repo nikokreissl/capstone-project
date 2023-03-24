@@ -16,8 +16,9 @@ export default function EditObjective({
   onUpdateObjective,
   onDeleteObjective,
   onClickBack,
+  onArchiveCompetition,
 }) {
-  const { name, id } = objective;
+  const { name, id, isArchived } = objective;
 
   const [objectiveName, setObjectiveName] = useState(name);
 
@@ -57,9 +58,8 @@ export default function EditObjective({
         <StyledButton onClick={deleteObjective}>
           ❌ Delete competition
         </StyledButton>
-        <StyledButton>
-          {/* {isArchived ? "🔃 Restore from archive" : "📖 Archive competition"} */}
-          📖 Archive competition
+        <StyledButton onClick={() => onArchiveCompetition(id)}>
+          {isArchived ? "🔃 Restore from archive" : "📖 Archive objective"}
         </StyledButton>
       </StyledButtonWrapper>
     </>

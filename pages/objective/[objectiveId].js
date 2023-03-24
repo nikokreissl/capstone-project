@@ -7,8 +7,12 @@ import { useRouter } from "next/router";
 
 export default function ObjectiveDetailPage() {
   const [isEdit, setIsEdit] = useState(false);
-  const { objectives, handleUpdateObjective, handleDeleteObjective } =
-    useContext(DataContext);
+  const {
+    objectives,
+    handleUpdateObjective,
+    handleDeleteObjective,
+    handleArchiveObjective,
+  } = useContext(DataContext);
   const router = useRouter();
   const { objectiveId } = router.query;
 
@@ -36,6 +40,7 @@ export default function ObjectiveDetailPage() {
           objective={currentObjective}
           onUpdateObjective={handleUpdateObjective}
           onDeleteObjective={handleDeleteObjective}
+          onArchiveCompetition={handleArchiveObjective}
           onClickBack={handleDirectHome}
         />
       ) : (
@@ -43,6 +48,7 @@ export default function ObjectiveDetailPage() {
           objective={currentObjective}
           onClickBack={handleDirectHome}
           onToggleEdit={toggleEdit}
+          on
         />
       )}
     </main>
