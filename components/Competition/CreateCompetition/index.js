@@ -22,7 +22,7 @@ export default function CreateCompetitionForm() {
   }
 
   function handleGameInput(event) {
-    setCompetitionGameInput(event.target.value);
+    setCompetitionGameInput(Number(event.target.value));
   }
 
   function handleSubmit(event) {

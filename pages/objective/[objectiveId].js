@@ -13,5 +13,14 @@ export default function ObjectiveDetailPage() {
     (objective) => objective.id === objectiveId
   );
 
-  return <ObjectiveDetail objective={currentObjective} />;
+  function handleDirectHome() {
+    router.push("/");
+  }
+
+  return (
+    <ObjectiveDetail
+      objective={currentObjective}
+      onClickBack={handleDirectHome}
+    />
+  );
 }

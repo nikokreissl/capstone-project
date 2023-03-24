@@ -1,7 +1,7 @@
 import {
-  StyledCompetitionDetailsContainer,
-  StyledCompetitionDetailButton,
-} from "./StyledCompetitionDetails";
+  StyledDetailsContainer,
+  StyledDetailButton,
+} from "../../GeneralComponents/DetailView";
 import {
   StyledButton,
   StyledButtonWrapper,
@@ -23,11 +23,13 @@ export default function CompetitionDetail({
     (game) => game.userScore < game.opponentScore
   );
 
+  console.log(competition);
+
   const competitionGames = competition.gamesPlayed;
   const reversedCompetitionGames = [...competitionGames].reverse();
 
   return (
-    <StyledCompetitionDetailsContainer>
+    <StyledDetailsContainer>
       <StyledButtonWrapper>
         <StyledButton onClick={onClickBack}>🔙 Back</StyledButton>
         <StyledButton onClick={onToggleEdit}>⚙️ Edit</StyledButton>
@@ -38,16 +40,14 @@ export default function CompetitionDetail({
         Wins: {competitionWins.length} / Loses: {competitionLoses.length}
       </p>
       <p>Remaining games: {competition.totalGames - competitionGames.length}</p>
-      <StyledCompetitionDetailButton
-        onClick={() => onTrackNewGame(competition.id)}
-      >
+      <StyledDetailButton onClick={() => onTrackNewGame(competition.id)}>
         Track Game
-      </StyledCompetitionDetailButton>
+      </StyledDetailButton>
       <GameList
         reversedCompetitionGames={reversedCompetitionGames}
         onClickgameDetail={onClickgameDetail}
         competition={competition}
       />
-    </StyledCompetitionDetailsContainer>
+    </StyledDetailsContainer>
   );
 }
