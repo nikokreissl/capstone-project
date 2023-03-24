@@ -7,7 +7,11 @@ import {
   StyledDetailButton,
 } from "../../GeneralComponents/DetailView";
 
-export default function ObjectiveDetail({ objective, onClickBack }) {
+export default function ObjectiveDetail({
+  objective,
+  onClickBack,
+  onToggleEdit,
+}) {
   if (!objective) {
     return <p>Loading...</p>;
   }
@@ -20,7 +24,7 @@ export default function ObjectiveDetail({ objective, onClickBack }) {
       <StyledDetailsContainer>
         <StyledButtonWrapper>
           <StyledButton onClick={onClickBack}>🔙 Back</StyledButton>
-          <StyledButton>⚙️ Edit</StyledButton>
+          <StyledButton onClick={onToggleEdit}>⚙️ Edit</StyledButton>
         </StyledButtonWrapper>
         <h2>{objective.name}</h2>
         <h3>Details</h3>

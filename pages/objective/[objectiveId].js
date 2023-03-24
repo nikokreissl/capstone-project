@@ -3,8 +3,10 @@ import { useRouter } from "next/router";
 import ObjectiveDetail from "../../components/Objectives/ObjectiveDetail";
 import { useContext } from "react";
 import { DataContext } from "../_app";
+import { useState } from "react";
 
 export default function ObjectiveDetailPage() {
+  const [isEdit, setIsEdit] = useState(false);
   const { objectives } = useContext(DataContext);
   const router = useRouter();
   const { objectiveId } = router.query;
@@ -17,6 +19,11 @@ export default function ObjectiveDetailPage() {
     (objective) => objective.id === objectiveId
   );
 
+  function toggleEdit() {
+    setIsEdit(!isEdit);
+    console.log(isEdit);
+  }
+
   function handleDirectHome() {
     router.push("/");
   }
@@ -25,6 +32,7 @@ export default function ObjectiveDetailPage() {
     <ObjectiveDetail
       objective={currentObjective}
       onClickBack={handleDirectHome}
+      onToggleEdit={toggleEdit}
     />
   );
 }
