@@ -2,12 +2,12 @@ import { useState, useContext } from "react";
 import { DataContext } from "../../../pages/_app";
 import { useRouter } from "next/router";
 import {
-  StyledCompetitionForm,
-  StyledCompetitionFormLabel,
-  StyledCompetitionFormInput,
-  StyledCompetitionFormButton,
-  StyledCompetitionFormLabelInputWrapper,
-} from "../CompetitionForm";
+  StyledForm,
+  StyledFormLabel,
+  StyledFormInput,
+  StyledFormButton,
+  StyledFormLabelInputWrapper,
+} from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
 
 export default function CreateCompetitionForm() {
   const router = useRouter();
@@ -22,7 +22,7 @@ export default function CreateCompetitionForm() {
   }
 
   function handleGameInput(event) {
-    setCompetitionGameInput(event.target.value);
+    setCompetitionGameInput(Number(event.target.value));
   }
 
   function handleSubmit(event) {
@@ -35,11 +35,9 @@ export default function CreateCompetitionForm() {
   return (
     <>
       <button onClick={() => router.back()}>Cancel</button>
-      <StyledCompetitionForm onSubmit={handleSubmit}>
-        <StyledCompetitionFormLabel htmlFor="competition-name">
-          Name
-        </StyledCompetitionFormLabel>
-        <StyledCompetitionFormInput
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledFormLabel htmlFor="competition-name">Name</StyledFormLabel>
+        <StyledFormInput
           type="text"
           name="competition-name"
           id="competition-name"
@@ -48,11 +46,11 @@ export default function CreateCompetitionForm() {
           onChange={handleNameInput}
           required
         />
-        <StyledCompetitionFormLabelInputWrapper>
-          <StyledCompetitionFormLabel htmlFor="competition-games">
+        <StyledFormLabelInputWrapper>
+          <StyledFormLabel htmlFor="competition-games">
             Number of Games
-          </StyledCompetitionFormLabel>
-          <StyledCompetitionFormInput
+          </StyledFormLabel>
+          <StyledFormInput
             type="number"
             name="competition-games"
             id="competition-games"
@@ -61,11 +59,9 @@ export default function CreateCompetitionForm() {
             min={1}
             max={100}
           />
-        </StyledCompetitionFormLabelInputWrapper>
-        <StyledCompetitionFormButton>
-          Create competition
-        </StyledCompetitionFormButton>
-      </StyledCompetitionForm>
+        </StyledFormLabelInputWrapper>
+        <StyledFormButton>Create competition</StyledFormButton>
+      </StyledForm>
     </>
   );
 }
