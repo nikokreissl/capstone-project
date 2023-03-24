@@ -7,13 +7,10 @@ import { useRouter } from "next/router";
 
 export default function ObjectiveDetailPage() {
   const [isEdit, setIsEdit] = useState(false);
-  const { objectives, handleUpdateObjective } = useContext(DataContext);
+  const { objectives, handleUpdateObjective, handleDeleteObjective } =
+    useContext(DataContext);
   const router = useRouter();
   const { objectiveId } = router.query;
-
-  if (!objectives) {
-    return <p>Loading...</p>;
-  }
 
   const currentObjective = objectives.find(
     (objective) => objective.id === objectiveId
@@ -21,11 +18,14 @@ export default function ObjectiveDetailPage() {
 
   function toggleEdit() {
     setIsEdit(!isEdit);
-    console.log(isEdit);
   }
 
   function handleDirectHome() {
     router.push("/");
+  }
+
+  if (!currentObjective) {
+    return <p>Loading...</p>;
   }
 
   return (
@@ -35,6 +35,8 @@ export default function ObjectiveDetailPage() {
           onToggleEdit={toggleEdit}
           objective={currentObjective}
           onUpdateObjective={handleUpdateObjective}
+          onDeleteObjective={handleDeleteObjective}
+          onClickBack={handleDirectHome}
         />
       ) : (
         <ObjectiveDetail

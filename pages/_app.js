@@ -44,6 +44,12 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  function handleDeleteObjective(objectiveId) {
+    setObjectvies(
+      objectives.filter((objective) => objective.id !== objectiveId)
+    );
+  }
+
   return (
     <DataContext.Provider
       value={{
@@ -58,6 +64,7 @@ export default function App({ Component, pageProps }) {
         objectives,
         handleAddObjective,
         handleUpdateObjective,
+        handleDeleteObjective,
       }}
     >
       <GlobalStyle />

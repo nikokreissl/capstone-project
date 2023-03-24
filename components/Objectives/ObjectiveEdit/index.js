@@ -14,6 +14,8 @@ export default function EditObjective({
   onToggleEdit,
   objective,
   onUpdateObjective,
+  onDeleteObjective,
+  onClickBack,
 }) {
   const { name, id } = objective;
 
@@ -28,6 +30,11 @@ export default function EditObjective({
     onUpdateObjective(objectiveName, id);
 
     onToggleEdit();
+  }
+
+  function deleteObjective() {
+    onClickBack();
+    onDeleteObjective(id);
   }
 
   return (
@@ -47,7 +54,9 @@ export default function EditObjective({
         <StyledFormButton>Update objective</StyledFormButton>
       </StyledForm>
       <StyledButtonWrapper>
-        <StyledButton>❌ Delete competition</StyledButton>
+        <StyledButton onClick={deleteObjective}>
+          ❌ Delete competition
+        </StyledButton>
         <StyledButton>
           {/* {isArchived ? "🔃 Restore from archive" : "📖 Archive competition"} */}
           📖 Archive competition
