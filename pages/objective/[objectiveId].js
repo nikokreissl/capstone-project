@@ -1,9 +1,9 @@
-import React from "react";
-import { useRouter } from "next/router";
+import EditObjective from "../../components/Objectives/ObjectiveEdit";
 import ObjectiveDetail from "../../components/Objectives/ObjectiveDetail";
 import { useContext } from "react";
 import { DataContext } from "../_app";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function ObjectiveDetailPage() {
   const [isEdit, setIsEdit] = useState(false);
@@ -29,10 +29,16 @@ export default function ObjectiveDetailPage() {
   }
 
   return (
-    <ObjectiveDetail
-      objective={currentObjective}
-      onClickBack={handleDirectHome}
-      onToggleEdit={toggleEdit}
-    />
+    <main>
+      {isEdit ? (
+        <EditObjective onToggleEdit={toggleEdit} />
+      ) : (
+        <ObjectiveDetail
+          objective={currentObjective}
+          onClickBack={handleDirectHome}
+          onToggleEdit={toggleEdit}
+        />
+      )}
+    </main>
   );
 }
