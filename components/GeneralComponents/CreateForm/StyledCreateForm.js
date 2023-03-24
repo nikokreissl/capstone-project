@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { StyledButton } from "../Buttons/StyledButton";
 
-export const StyledCreateForm = styled.form`
+export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 70%;
@@ -12,17 +12,17 @@ export const StyledCreateForm = styled.form`
   border-radius: 5px;
 `;
 
-export const StyledCreateFormLabel = styled.label``;
+export const StyledFormLabel = styled.label``;
 
-export const StyledCreateFormInput = styled.input``;
+export const StyledFormInput = styled.input``;
 
-export const StyledCreateFormButton = styled(StyledButton)`
+export const StyledFormButton = styled(StyledButton)`
   margin-top: 10px;
   width: 50%;
   align-self: center;
 `;
 
-export const StyledCreateFormLabelInputWrapper = styled.div`
+export const StyledFormLabelInputWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 10px;

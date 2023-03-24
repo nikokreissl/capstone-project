@@ -1,9 +1,8 @@
 import {
-  StyledCreateForm,
-  StyledCreateFormLabel,
-  StyledCreateFormInput,
-  StyledCreateFormButton,
-  StyledCreateFormLabelInputWrapper,
+  StyledForm,
+  StyledFormLabel,
+  StyledFormInput,
+  StyledFormButton,
 } from "../../GeneralComponents/CreateForm/StyledCreateForm";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -31,11 +30,9 @@ export default function CreateObjectiveForm() {
   return (
     <>
       <button onClick={() => router.back()}>Cancel</button>
-      <StyledCreateForm onSubmit={handleSubmit}>
-        <StyledCreateFormLabel htmlFor="objective-name">
-          Name
-        </StyledCreateFormLabel>
-        <StyledCreateFormInput
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledFormLabel htmlFor="objective-name">Name</StyledFormLabel>
+        <StyledFormInput
           type="text"
           name="objective-name"
           id="objective-name"
@@ -44,8 +41,8 @@ export default function CreateObjectiveForm() {
           onChange={handleNameInput}
           required
         />
-        <StyledCreateFormButton>Create objective</StyledCreateFormButton>
-      </StyledCreateForm>
+        <StyledFormButton>Create objective</StyledFormButton>
+      </StyledForm>
     </>
   );
 }

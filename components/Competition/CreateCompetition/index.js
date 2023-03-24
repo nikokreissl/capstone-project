@@ -2,11 +2,11 @@ import { useState, useContext } from "react";
 import { DataContext } from "../../../pages/_app";
 import { useRouter } from "next/router";
 import {
-  StyledCreateForm,
-  StyledCreateFormLabel,
-  StyledCreateFormInput,
-  StyledCreateFormButton,
-  StyledCreateFormLabelInputWrapper,
+  StyledForm,
+  StyledFormLabel,
+  StyledFormInput,
+  StyledFormButton,
+  StyledFormLabelInputWrapper,
 } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
 
 export default function CreateCompetitionForm() {
@@ -35,11 +35,9 @@ export default function CreateCompetitionForm() {
   return (
     <>
       <button onClick={() => router.back()}>Cancel</button>
-      <StyledCreateForm onSubmit={handleSubmit}>
-        <StyledCreateFormLabel htmlFor="competition-name">
-          Name
-        </StyledCreateFormLabel>
-        <StyledCreateFormInput
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledFormLabel htmlFor="competition-name">Name</StyledFormLabel>
+        <StyledFormInput
           type="text"
           name="competition-name"
           id="competition-name"
@@ -48,11 +46,11 @@ export default function CreateCompetitionForm() {
           onChange={handleNameInput}
           required
         />
-        <StyledCreateFormLabelInputWrapper>
-          <StyledCreateFormLabel htmlFor="competition-games">
+        <StyledFormLabelInputWrapper>
+          <StyledFormLabel htmlFor="competition-games">
             Number of Games
-          </StyledCreateFormLabel>
-          <StyledCreateFormInput
+          </StyledFormLabel>
+          <StyledFormInput
             type="number"
             name="competition-games"
             id="competition-games"
@@ -61,9 +59,9 @@ export default function CreateCompetitionForm() {
             min={1}
             max={100}
           />
-        </StyledCreateFormLabelInputWrapper>
-        <StyledCreateFormButton>Create competition</StyledCreateFormButton>
-      </StyledCreateForm>
+        </StyledFormLabelInputWrapper>
+        <StyledFormButton>Create competition</StyledFormButton>
+      </StyledForm>
     </>
   );
 }

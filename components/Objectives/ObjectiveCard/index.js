@@ -12,7 +12,9 @@ export default function ObjectiveCard({ objective }) {
         Challenges finished: {challengeProgress.length} /{" "}
         {objective.challenges.length}
       </p>
-      <StyledDetailsLink href={"/"}>View Details</StyledDetailsLink>
+      <StyledDetailsLink href={`objective/${objective.id}`}>
+        View Details
+      </StyledDetailsLink>
     </StyledArticle>
   );
 }

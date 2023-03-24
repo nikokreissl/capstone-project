@@ -1,11 +1,11 @@
 import { useState } from "react";
 import {
-  StyledCompetitionForm,
-  StyledCompetitionFormButton,
-  StyledCompetitionFormInput,
-  StyledCompetitionFormLabel,
-  StyledCompetitionFormLabelInputWrapper,
-} from "../CompetitionForm";
+  StyledForm,
+  StyledFormButton,
+  StyledFormLabel,
+  StyledFormInput,
+  StyledFormLabelInputWrapper,
+} from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
 import {
   StyledButton,
   StyledButtonWrapper,
@@ -52,11 +52,9 @@ export default function EditCompetition({
   return (
     <>
       <StyledButton onClick={onToggleEdit}>🗑️ Discard changes</StyledButton>
-      <StyledCompetitionForm onSubmit={handleUpdateSubmit}>
-        <StyledCompetitionFormLabel htmlFor="competition-name">
-          Name
-        </StyledCompetitionFormLabel>
-        <StyledCompetitionFormInput
+      <StyledForm onSubmit={handleUpdateSubmit}>
+        <StyledFormLabel htmlFor="competition-name">Name</StyledFormLabel>
+        <StyledFormInput
           type="text"
           name="competition-name"
           id="competition-name"
@@ -65,11 +63,11 @@ export default function EditCompetition({
           pattern="^(?!\s*$).+"
           required
         />
-        <StyledCompetitionFormLabelInputWrapper>
-          <StyledCompetitionFormLabel htmlFor="competition-games">
+        <StyledFormLabelInputWrapper>
+          <StyledFormLabel htmlFor="competition-games">
             Number of Games
-          </StyledCompetitionFormLabel>
-          <StyledCompetitionFormInput
+          </StyledFormLabel>
+          <StyledFormInput
             type="number"
             name="competition-games"
             id="competition-games"
@@ -78,11 +76,9 @@ export default function EditCompetition({
             min={1}
             max={100}
           />
-        </StyledCompetitionFormLabelInputWrapper>
-        <StyledCompetitionFormButton>
-          Update competition
-        </StyledCompetitionFormButton>
-      </StyledCompetitionForm>
+        </StyledFormLabelInputWrapper>
+        <StyledFormButton>Update competition</StyledFormButton>
+      </StyledForm>
       <StyledButtonWrapper>
         <StyledButton onClick={deleteCompetition}>
           ❌ Delete competition
