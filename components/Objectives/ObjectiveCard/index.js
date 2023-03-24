@@ -1,11 +1,17 @@
 import { StyledArticle, StyledDetailsLink } from "./StyledObjectiveCard.js";
 
 export default function ObjectiveCard({ objective }) {
-  console.log(objective);
+  const challengeProgress = objective.challenges.filter(
+    (challenge) => challenge.timesNeeded === challenge.timesCompleted
+  );
+
   return (
     <StyledArticle>
       <h3>{objective.name}</h3>
-      <p>Challenges finished: X</p>
+      <p>
+        Challenges finished: {challengeProgress.length} /{" "}
+        {objective.challenges.length}
+      </p>
       <StyledDetailsLink href={"/"}>View Details</StyledDetailsLink>
     </StyledArticle>
   );

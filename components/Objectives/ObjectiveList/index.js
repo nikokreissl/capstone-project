@@ -7,8 +7,6 @@ import EmptyState from "../../GeneralComponents/Empty-State";
 import ObjectiveCard from "../ObjectiveCard";
 
 export default function ObjectiveList({ objectives, headline }) {
-  console.log(objectives);
-
   return (
     <StyledHomeContainer>
       <StyledHomeItemHeadline>{headline}</StyledHomeItemHeadline>
