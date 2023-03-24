@@ -9,6 +9,10 @@ export default function ObjectiveDetailPage() {
   const router = useRouter();
   const { objectiveId } = router.query;
 
+  if (!objectives) {
+    return <p>Loading...</p>;
+  }
+
   const currentObjective = objectives.find(
     (objective) => objective.id === objectiveId
   );

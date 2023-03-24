@@ -8,6 +8,10 @@ import {
 } from "../../GeneralComponents/DetailView";
 
 export default function ObjectiveDetail({ objective, onClickBack }) {
+  if (!objective) {
+    return <p>Loading...</p>;
+  }
+
   const challengeProgress = objective.challenges.filter(
     (challenge) => challenge.timesNeeded === challenge.timesCompleted
   );
