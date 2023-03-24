@@ -19,7 +19,7 @@ export default function Home() {
           <StyledDetailsLink href={"/competition/create"}>
             Create new competition
           </StyledDetailsLink>
-          <StyledDetailsLink href={"/competition/create"}>
+          <StyledDetailsLink href={"/objective/create"}>
             Create new objective
           </StyledDetailsLink>
         </StyledButtonWrapper>

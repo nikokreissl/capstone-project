@@ -2,12 +2,12 @@ import { useState, useContext } from "react";
 import { DataContext } from "../../../pages/_app";
 import { useRouter } from "next/router";
 import {
-  StyledCompetitionForm,
-  StyledCompetitionFormLabel,
-  StyledCompetitionFormInput,
-  StyledCompetitionFormButton,
-  StyledCompetitionFormLabelInputWrapper,
-} from "../CompetitionForm";
+  StyledCreateForm,
+  StyledCreateFormLabel,
+  StyledCreateFormInput,
+  StyledCreateFormButton,
+  StyledCreateFormLabelInputWrapper,
+} from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
 
 export default function CreateCompetitionForm() {
   const router = useRouter();
@@ -35,11 +35,11 @@ export default function CreateCompetitionForm() {
   return (
     <>
       <button onClick={() => router.back()}>Cancel</button>
-      <StyledCompetitionForm onSubmit={handleSubmit}>
-        <StyledCompetitionFormLabel htmlFor="competition-name">
+      <StyledCreateForm onSubmit={handleSubmit}>
+        <StyledCreateFormLabel htmlFor="competition-name">
           Name
-        </StyledCompetitionFormLabel>
-        <StyledCompetitionFormInput
+        </StyledCreateFormLabel>
+        <StyledCreateFormInput
           type="text"
           name="competition-name"
           id="competition-name"
@@ -48,11 +48,11 @@ export default function CreateCompetitionForm() {
           onChange={handleNameInput}
           required
         />
-        <StyledCompetitionFormLabelInputWrapper>
-          <StyledCompetitionFormLabel htmlFor="competition-games">
+        <StyledCreateFormLabelInputWrapper>
+          <StyledCreateFormLabel htmlFor="competition-games">
             Number of Games
-          </StyledCompetitionFormLabel>
-          <StyledCompetitionFormInput
+          </StyledCreateFormLabel>
+          <StyledCreateFormInput
             type="number"
             name="competition-games"
             id="competition-games"
@@ -61,11 +61,9 @@ export default function CreateCompetitionForm() {
             min={1}
             max={100}
           />
-        </StyledCompetitionFormLabelInputWrapper>
-        <StyledCompetitionFormButton>
-          Create competition
-        </StyledCompetitionFormButton>
-      </StyledCompetitionForm>
+        </StyledCreateFormLabelInputWrapper>
+        <StyledCreateFormButton>Create competition</StyledCreateFormButton>
+      </StyledCreateForm>
     </>
   );
 }
