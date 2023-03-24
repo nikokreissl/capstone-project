@@ -23,8 +23,6 @@ export default function CompetitionDetail({
     (game) => game.userScore < game.opponentScore
   );
 
-  console.log(competition);
-
   const competitionGames = competition.gamesPlayed;
   const reversedCompetitionGames = [...competitionGames].reverse();
 

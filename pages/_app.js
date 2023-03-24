@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }) {
     handleGameDelete,
   } = useCompetitions(givenCompetitions);
 
-  const [objectives, setObjectvies] = useState(givenObjectives);
+  const [objectives, setObjectives] = useState(givenObjectives);
 
   function handleAddObjective(newObjectiveName) {
     const objective = {
@@ -31,7 +31,33 @@ export default function App({ Component, pageProps }) {
       name: newObjectiveName,
       challenges: [],
     };
-    setObjectvies([objective, ...objectives]);
+    setObjectives([objective, ...objectives]);
+  }
+
+  function handleUpdateObjective(newObjectiveName, objectiveId) {
+    setObjectives(
+      objectives.map((objective) =>
+        objective.id === objectiveId
+          ? { ...objective, name: newObjectiveName }
+          : objective
+      )
+    );
+  }
+
+  function handleDeleteObjective(objectiveId) {
+    setObjectives(
+      objectives.filter((objective) => objective.id !== objectiveId)
+    );
+  }
+
+  function handleArchiveObjective(objectiveId) {
+    setObjectives(
+      objectives.map((objective) =>
+        objectiveId === objective.id
+          ? { ...objective, isArchived: !objective.isArchived }
+          : objective
+      )
+    );
   }
 
   return (
@@ -47,6 +73,9 @@ export default function App({ Component, pageProps }) {
         handleGameDelete,
         objectives,
         handleAddObjective,
+        handleUpdateObjective,
+        handleDeleteObjective,
+        handleArchiveObjective,
       }}
     >
       <GlobalStyle />

@@ -20,11 +20,17 @@ export function useCompetitions(givenCompetitions) {
     newCompetitionName,
     newCompetitionGames
   ) {
-    const updatedCompetition = competitions.find(
-      (competition) => competitionId === competition.id
+    setCompetition(
+      competitions.map((competition) =>
+        competitionId === competition.id
+          ? {
+              ...competition,
+              name: newCompetitionName,
+              totalGames: newCompetitionGames,
+            }
+          : competition
+      )
     );
-    updatedCompetition.name = newCompetitionName;
-    updatedCompetition.totalGames = newCompetitionGames;
   }
 
   function handleArchiveCompetition(competitionId) {
