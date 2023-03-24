@@ -12,4 +12,5 @@ export const StyledButton = styled.button`
 export const StyledButtonWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
+  gap: 10px;
 `;

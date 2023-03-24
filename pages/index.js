@@ -3,6 +3,7 @@ import { DataContext } from "./_app";
 import { StyledDetailsLink } from "../components/Competition/CompetitionCard/StyledCompetitionCard";
 import CompetitionList from "../components/Competition/CompetitionList";
 import ObjectiveList from "../components/Objectives/ObjectiveList";
+import { StyledButtonWrapper } from "../components/GeneralComponents/Buttons/StyledButton";
 
 export default function Home() {
   const { competitions, objectives } = useContext(DataContext);
@@ -14,9 +15,14 @@ export default function Home() {
   return (
     <>
       <main>
-        <StyledDetailsLink href={"/competition/create"}>
-          Create new competition
-        </StyledDetailsLink>
+        <StyledButtonWrapper>
+          <StyledDetailsLink href={"/competition/create"}>
+            Create new competition
+          </StyledDetailsLink>
+          <StyledDetailsLink href={"/competition/create"}>
+            Create new objective
+          </StyledDetailsLink>
+        </StyledButtonWrapper>
         <CompetitionList competitions={competitions} headline="Competitions" />
         <ObjectiveList objectives={objectives} headline="Objectives" />
       </main>
