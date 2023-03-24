@@ -34,6 +34,16 @@ export default function App({ Component, pageProps }) {
     setObjectvies([objective, ...objectives]);
   }
 
+  function handleUpdateObjective(newObjectiveName, objectiveId) {
+    setObjectvies(
+      objectives.map((objective) =>
+        objective.id === objectiveId
+          ? { ...objective, name: newObjectiveName }
+          : objective
+      )
+    );
+  }
+
   return (
     <DataContext.Provider
       value={{
@@ -47,6 +57,7 @@ export default function App({ Component, pageProps }) {
         handleGameDelete,
         objectives,
         handleAddObjective,
+        handleUpdateObjective,
       }}
     >
       <GlobalStyle />

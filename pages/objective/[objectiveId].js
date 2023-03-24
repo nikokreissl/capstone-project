@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 export default function ObjectiveDetailPage() {
   const [isEdit, setIsEdit] = useState(false);
-  const { objectives } = useContext(DataContext);
+  const { objectives, handleUpdateObjective } = useContext(DataContext);
   const router = useRouter();
   const { objectiveId } = router.query;
 
@@ -31,7 +31,11 @@ export default function ObjectiveDetailPage() {
   return (
     <main>
       {isEdit ? (
-        <EditObjective onToggleEdit={toggleEdit} />
+        <EditObjective
+          onToggleEdit={toggleEdit}
+          objective={currentObjective}
+          onUpdateObjective={handleUpdateObjective}
+        />
       ) : (
         <ObjectiveDetail
           objective={currentObjective}
