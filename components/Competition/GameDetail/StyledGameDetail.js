@@ -29,3 +29,11 @@ export const StyledNumberInput = styled.input`
 export const StyledGameButton = styled(StyledButton)`
   align-self: center;
 `;
+
+// Challenge
+
+export const StyledTimesWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;

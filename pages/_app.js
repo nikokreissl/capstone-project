@@ -5,8 +5,7 @@ import { givenObjectives } from "../data/objectives";
 import { createContext } from "react";
 import Heading from "../components/GeneralComponents/Heading";
 import { useCompetitions } from "../hooks/competition-hook";
-import { useState } from "react";
-import { uid } from "uid";
+import { useObjectives } from "../hooks/objective-hook";
 
 export const DataContext = createContext();
 
@@ -22,43 +21,16 @@ export default function App({ Component, pageProps }) {
     handleGameDelete,
   } = useCompetitions(givenCompetitions);
 
-  const [objectives, setObjectives] = useState(givenObjectives);
-
-  function handleAddObjective(newObjectiveName) {
-    const objective = {
-      id: uid(),
-      isArchived: false,
-      name: newObjectiveName,
-      challenges: [],
-    };
-    setObjectives([objective, ...objectives]);
-  }
-
-  function handleUpdateObjective(newObjectiveName, objectiveId) {
-    setObjectives(
-      objectives.map((objective) =>
-        objective.id === objectiveId
-          ? { ...objective, name: newObjectiveName }
-          : objective
-      )
-    );
-  }
-
-  function handleDeleteObjective(objectiveId) {
-    setObjectives(
-      objectives.filter((objective) => objective.id !== objectiveId)
-    );
-  }
-
-  function handleArchiveObjective(objectiveId) {
-    setObjectives(
-      objectives.map((objective) =>
-        objectiveId === objective.id
-          ? { ...objective, isArchived: !objective.isArchived }
-          : objective
-      )
-    );
-  }
+  const {
+    objectives,
+    handleAddObjective,
+    handleUpdateObjective,
+    handleDeleteObjective,
+    handleArchiveObjective,
+    handleAddChallenge,
+    handleChallengeUpdate,
+    handleChallengeDelete,
+  } = useObjectives(givenObjectives);
 
   return (
     <DataContext.Provider
@@ -76,6 +48,9 @@ export default function App({ Component, pageProps }) {
         handleUpdateObjective,
         handleDeleteObjective,
         handleArchiveObjective,
+        handleAddChallenge,
+        handleChallengeUpdate,
+        handleChallengeDelete,
       }}
     >
       <GlobalStyle />

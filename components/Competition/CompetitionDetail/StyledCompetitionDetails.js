@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { StyledButton } from "../../GeneralComponents/Buttons/StyledButton";
 
 export const StyledGameList = styled.ul`
   margin: 12px;

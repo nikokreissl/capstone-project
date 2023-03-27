@@ -18,7 +18,8 @@ export const givenObjectives = [
       },
       {
         challengeId: "6T8pK9rLqJ",
-        description: "Score in 5 wins twice with a german player",
+        description:
+          "Score in 5 wins twice with a german player.Score in 5 wins twice with a german player.Score in 5 wins twice with a german player.",
         timesNeeded: 5,
         timesCompleted: 3,
       },
