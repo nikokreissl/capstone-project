@@ -60,6 +60,27 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  function handleAddChallenge(newChallengeDetails, objectiveId) {
+    const currentObjective = objectives.find(
+      (objective) => objectiveId === objective.id
+    );
+    const newChallenge = {
+      challengeId: uid(),
+      description: newChallengeDetails.description,
+      timesNeeded: newChallengeDetails.timesNeeded,
+      timesCompleted: newChallengeDetails.timesCompleted,
+    };
+    const newAllChallenges = [...currentObjective.challenges, newChallenge];
+    console.log(newAllChallenges);
+    setObjectives(
+      objectives.map((objective) =>
+        objectiveId === objective.id
+          ? { ...objective, challenges: newAllChallenges }
+          : objective
+      )
+    );
+  }
+
   return (
     <DataContext.Provider
       value={{
@@ -76,6 +97,7 @@ export default function App({ Component, pageProps }) {
         handleUpdateObjective,
         handleDeleteObjective,
         handleArchiveObjective,
+        handleAddChallenge,
       }}
     >
       <GlobalStyle />
