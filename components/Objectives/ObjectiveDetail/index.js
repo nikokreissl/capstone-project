@@ -6,11 +6,14 @@ import {
   StyledDetailsContainer,
   StyledDetailButton,
 } from "../../GeneralComponents/DetailView";
+import ChallengeList from "../ChallengeList";
 
 export default function ObjectiveDetail({
   objective,
   onClickBack,
   onToggleEdit,
+  onAddnewChallenge,
+  onEditChallengeClick,
 }) {
   if (!objective) {
     return <p>Loading...</p>;
@@ -19,6 +22,7 @@ export default function ObjectiveDetail({
   const challengeProgress = objective.challenges.filter(
     (challenge) => challenge.timesNeeded === challenge.timesCompleted
   );
+
   return (
     <StyledDetailsContainer>
       <StyledButtonWrapper>
@@ -31,7 +35,13 @@ export default function ObjectiveDetail({
         Challenges completed: {challengeProgress.length} /{" "}
         {objective.challenges.length}
       </p>
-      <StyledDetailButton>Add challenge</StyledDetailButton>
+      <StyledDetailButton onClick={() => onAddnewChallenge(objective.id)}>
+        Add challenge
+      </StyledDetailButton>
+      <ChallengeList
+        objective={objective}
+        onEditChallengeClick={onEditChallengeClick}
+      />
     </StyledDetailsContainer>
   );
 }
