@@ -12,6 +12,7 @@ export default function ObjectiveDetail({
   objective,
   onClickBack,
   onToggleEdit,
+  onAddnewChallenge,
 }) {
   if (!objective) {
     return <p>Loading...</p>;
@@ -33,7 +34,9 @@ export default function ObjectiveDetail({
         Challenges completed: {challengeProgress.length} /{" "}
         {objective.challenges.length}
       </p>
-      <StyledDetailButton>Add challenge</StyledDetailButton>
+      <StyledDetailButton onClick={() => onAddnewChallenge(objective.id)}>
+        Add challenge
+      </StyledDetailButton>
       <ChallengeList objective={objective} />
     </StyledDetailsContainer>
   );

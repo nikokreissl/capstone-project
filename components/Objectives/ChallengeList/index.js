@@ -16,7 +16,7 @@ export default function ChallengeList({ objective }) {
           <StyledChallengeDescription>
             {challenge.description}
           </StyledChallengeDescription>
-          <StyledChallengeProgess>{`${challenge.timesNeeded} / ${challenge.timesCompleted}`}</StyledChallengeProgess>
+          <StyledChallengeProgess>{`${challenge.timesCompleted} / ${challenge.timesNeeded}`}</StyledChallengeProgess>
           <StyledChallengeProgessButton>
             ✏️ Edit Challenge
           </StyledChallengeProgessButton>

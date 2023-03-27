@@ -19,7 +19,11 @@ export default function AddChallengePage() {
     <main>
       <StyledDetailContainer>
         <StyledButtonWrapper>
-          <StyledButton>🔙 Cancel</StyledButton>
+          <StyledButton
+            onClick={() => router.push(`/objective/${objectiveId}`)}
+          >
+            🔙 Cancel
+          </StyledButton>
         </StyledButtonWrapper>
         <h2>Track new Challenge</h2>
         <StyledGameForm>
