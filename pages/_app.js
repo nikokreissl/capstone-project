@@ -5,8 +5,8 @@ import { givenObjectives } from "../data/objectives";
 import { createContext } from "react";
 import Heading from "../components/GeneralComponents/Heading";
 import { useCompetitions } from "../hooks/competition-hook";
-import { useState } from "react";
 import { uid } from "uid";
+import useLocalStorageState from "use-local-storage-state";
 
 export const DataContext = createContext();
 
@@ -22,7 +22,9 @@ export default function App({ Component, pageProps }) {
     handleGameDelete,
   } = useCompetitions(givenCompetitions);
 
-  const [objectives, setObjectives] = useState(givenObjectives);
+  const [objectives, setObjectives] = useLocalStorageState("objectives", {
+    defaultValue: givenObjectives,
+  });
 
   function handleAddObjective(newObjectiveName) {
     const objective = {
