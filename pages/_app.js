@@ -71,7 +71,6 @@ export default function App({ Component, pageProps }) {
       timesCompleted: newChallengeDetails.timesCompleted,
     };
     const newAllChallenges = [...currentObjective.challenges, newChallenge];
-    console.log(newAllChallenges);
     setObjectives(
       objectives.map((objective) =>
         objectiveId === objective.id
