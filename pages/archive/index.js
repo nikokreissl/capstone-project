@@ -6,6 +6,7 @@ export default function ArchivePage() {
   const { objectives, competitions } = useContext(DataContext);
   return (
     <main>
+      <h2>Archive</h2>
       <ArchiveCard
         itemName="Competitions"
         object={competitions}
