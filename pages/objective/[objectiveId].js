@@ -33,7 +33,7 @@ export default function ObjectiveDetailPage() {
   }
 
   function handleChallengeDetailRedirect(objectiveId, challengeId) {
-    router.push(`/objective/${objectiveId}/game-detail/${challengeId}`);
+    router.push(`/objective/${objectiveId}/challenge-detail/${challengeId}`);
   }
 
   if (!currentObjective) {
@@ -57,6 +57,7 @@ export default function ObjectiveDetailPage() {
           onClickBack={handleDirectHome}
           onToggleEdit={toggleEdit}
           onAddnewChallenge={handleAddNewChallenge}
+          onEditChallengeClick={handleChallengeDetailRedirect}
         />
       )}
     </main>

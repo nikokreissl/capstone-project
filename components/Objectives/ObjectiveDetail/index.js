@@ -13,6 +13,7 @@ export default function ObjectiveDetail({
   onClickBack,
   onToggleEdit,
   onAddnewChallenge,
+  onEditChallengeClick,
 }) {
   if (!objective) {
     return <p>Loading...</p>;
@@ -37,7 +38,10 @@ export default function ObjectiveDetail({
       <StyledDetailButton onClick={() => onAddnewChallenge(objective.id)}>
         Add challenge
       </StyledDetailButton>
-      <ChallengeList objective={objective} />
+      <ChallengeList
+        objective={objective}
+        onEditChallengeClick={onEditChallengeClick}
+      />
     </StyledDetailsContainer>
   );
 }
