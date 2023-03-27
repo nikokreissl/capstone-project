@@ -16,6 +16,7 @@ export default function ChallengeDetail({
   objectiveId,
   onClickBack,
   onUpdateChallenge,
+  onDeleteChallenge,
 }) {
   const [challengeDescription, setChallengeDescription] = useState(
     challenge.description
@@ -54,12 +55,17 @@ export default function ChallengeDetail({
     }
   }
 
+  function handleDeleteChallenge() {
+    onDeleteChallenge(challenge.challengeId, objectiveId);
+    onClickBack();
+  }
+
   return (
     <main>
       <StyledDetailContainer>
         <StyledButtonWrapper>
           <StyledButton onClick={onClickBack}>🔙 Back</StyledButton>
-          <StyledButton>❌ Delete</StyledButton>
+          <StyledButton onClick={handleDeleteChallenge}>❌ Delete</StyledButton>
         </StyledButtonWrapper>
         <h2>Track new Challenge</h2>
         <StyledGameForm onSubmit={handleSubmit}>

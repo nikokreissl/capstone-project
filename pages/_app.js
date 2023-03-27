@@ -108,6 +108,22 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  function handleChallengeDelete(challengeId, objectiveId) {
+    const currentObjective = objectives.find(
+      (objective) => objectiveId === objective.id
+    );
+    const newChallengeOverview = currentObjective.challenges.filter(
+      (challenge) => challengeId !== challenge.challengeId
+    );
+    setObjectives(
+      objectives.map((objective) =>
+        objectiveId === objective.id
+          ? { ...objective, challenges: newChallengeOverview }
+          : objective
+      )
+    );
+  }
+
   return (
     <DataContext.Provider
       value={{
@@ -126,6 +142,7 @@ export default function App({ Component, pageProps }) {
         handleArchiveObjective,
         handleAddChallenge,
         handleChallengeUpdate,
+        handleChallengeDelete,
       }}
     >
       <GlobalStyle />

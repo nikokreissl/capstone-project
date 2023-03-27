@@ -7,7 +7,8 @@ export default function ChallengeDetailPage() {
   const router = useRouter();
   const { objectiveId, challengeId } = router.query;
 
-  const { objectives, handleChallengeUpdate } = useContext(DataContext);
+  const { objectives, handleChallengeUpdate, handleChallengeDelete } =
+    useContext(DataContext);
 
   const currentObjective = objectives.find(
     (objective) => objectiveId === objective.id
@@ -34,6 +35,7 @@ export default function ChallengeDetailPage() {
       challenge={currentChallenge}
       onClickBack={handleClickBack}
       onUpdateChallenge={handleChallengeUpdate}
+      onDeleteChallenge={handleChallengeDelete}
     />
   );
 }
