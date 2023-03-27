@@ -5,8 +5,7 @@ import { givenObjectives } from "../data/objectives";
 import { createContext } from "react";
 import Heading from "../components/GeneralComponents/Heading";
 import { useCompetitions } from "../hooks/competition-hook";
-import { uid } from "uid";
-import useLocalStorageState from "use-local-storage-state";
+import { useObjectives } from "../hooks/objective-hook";
 
 export const DataContext = createContext();
 
@@ -22,108 +21,16 @@ export default function App({ Component, pageProps }) {
     handleGameDelete,
   } = useCompetitions(givenCompetitions);
 
-  const [objectives, setObjectives] = useLocalStorageState("objectives", {
-    defaultValue: givenObjectives,
-  });
-
-  function handleAddObjective(newObjectiveName) {
-    const objective = {
-      id: uid(),
-      isArchived: false,
-      name: newObjectiveName,
-      challenges: [],
-    };
-    setObjectives([objective, ...objectives]);
-  }
-
-  function handleUpdateObjective(newObjectiveName, objectiveId) {
-    setObjectives(
-      objectives.map((objective) =>
-        objective.id === objectiveId
-          ? { ...objective, name: newObjectiveName }
-          : objective
-      )
-    );
-  }
-
-  function handleDeleteObjective(objectiveId) {
-    setObjectives(
-      objectives.filter((objective) => objective.id !== objectiveId)
-    );
-  }
-
-  function handleArchiveObjective(objectiveId) {
-    setObjectives(
-      objectives.map((objective) =>
-        objectiveId === objective.id
-          ? { ...objective, isArchived: !objective.isArchived }
-          : objective
-      )
-    );
-  }
-
-  function handleAddChallenge(newChallengeDetails, objectiveId) {
-    const currentObjective = objectives.find(
-      (objective) => objectiveId === objective.id
-    );
-    const newChallenge = {
-      challengeId: uid(),
-      description: newChallengeDetails.description,
-      timesNeeded: newChallengeDetails.timesNeeded,
-      timesCompleted: newChallengeDetails.timesCompleted,
-    };
-    const newAllChallenges = [...currentObjective.challenges, newChallenge];
-    setObjectives(
-      objectives.map((objective) =>
-        objectiveId === objective.id
-          ? { ...objective, challenges: newAllChallenges }
-          : objective
-      )
-    );
-  }
-
-  function handleChallengeUpdate(
-    updatedChallengeDetails,
-    challengeId,
-    objectiveId
-  ) {
-    const currentObjective = objectives.find(
-      (objective) => objectiveId === objective.id
-    );
-    const updatedChallenges = currentObjective.challenges.map((challenge) =>
-      challengeId === challenge.challengeId
-        ? {
-            ...challenge,
-            description: updatedChallengeDetails.description,
-            timesNeeded: updatedChallengeDetails.timesNeeded,
-            timesCompleted: updatedChallengeDetails.timesCompleted,
-          }
-        : challenge
-    );
-    setObjectives(
-      objectives.map((objective) =>
-        objective.id === objectiveId
-          ? { ...objective, challenges: updatedChallenges }
-          : objective
-      )
-    );
-  }
-
-  function handleChallengeDelete(challengeId, objectiveId) {
-    const currentObjective = objectives.find(
-      (objective) => objectiveId === objective.id
-    );
-    const newChallengeOverview = currentObjective.challenges.filter(
-      (challenge) => challengeId !== challenge.challengeId
-    );
-    setObjectives(
-      objectives.map((objective) =>
-        objectiveId === objective.id
-          ? { ...objective, challenges: newChallengeOverview }
-          : objective
-      )
-    );
-  }
+  const {
+    objectives,
+    handleAddObjective,
+    handleUpdateObjective,
+    handleDeleteObjective,
+    handleArchiveObjective,
+    handleAddChallenge,
+    handleChallengeUpdate,
+    handleChallengeDelete,
+  } = useObjectives(givenObjectives);
 
   return (
     <DataContext.Provider
