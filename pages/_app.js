@@ -1,9 +1,11 @@
 import GlobalStyle from "../styles";
 import Head from "next/head";
+import Heading from "../components/GeneralComponents/Heading";
+import Navigation from "../components/GeneralComponents/Navigation";
 import { givenCompetitions } from "../data/competition";
 import { givenObjectives } from "../data/objectives";
 import { createContext } from "react";
-import Heading from "../components/GeneralComponents/Heading";
+
 import { useCompetitions } from "../hooks/competition-hook";
 import { useState } from "react";
 import { uid } from "uid";
@@ -85,6 +87,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <Heading>FIFA23 Tracker</Heading>
       <Component {...pageProps} />
+      <Navigation />
     </DataContext.Provider>
   );
 }
