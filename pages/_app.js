@@ -81,6 +81,33 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  function handleChallengeUpdate(
+    updatedChallengeDetails,
+    challengeId,
+    objectiveId
+  ) {
+    const currentObjective = objectives.find(
+      (objective) => objectiveId === objective.id
+    );
+    const updatedChallenges = currentObjective.challenges.map((challenge) =>
+      challengeId === challenge.challengeId
+        ? {
+            ...challenge,
+            description: updatedChallengeDetails.description,
+            timesNeeded: updatedChallengeDetails.timesNeeded,
+            timesCompleted: updatedChallengeDetails.timesCompleted,
+          }
+        : challenge
+    );
+    setObjectives(
+      objectives.map((objective) =>
+        objective.id === objectiveId
+          ? { ...objective, challenges: updatedChallenges }
+          : objective
+      )
+    );
+  }
+
   return (
     <DataContext.Provider
       value={{
@@ -98,6 +125,7 @@ export default function App({ Component, pageProps }) {
         handleDeleteObjective,
         handleArchiveObjective,
         handleAddChallenge,
+        handleChallengeUpdate,
       }}
     >
       <GlobalStyle />

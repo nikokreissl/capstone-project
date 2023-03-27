@@ -11,7 +11,12 @@ import {
 } from "../../Competition/GameDetail/StyledGameDetail";
 import { useState } from "react";
 
-export default function ChallengeDetail({ onClickBack, challenge }) {
+export default function ChallengeDetail({
+  challenge,
+  objectiveId,
+  onClickBack,
+  onUpdateChallenge,
+}) {
   const [challengeDescription, setChallengeDescription] = useState(
     challenge.description
   );
@@ -34,6 +39,21 @@ export default function ChallengeDetail({ onClickBack, challenge }) {
     setChallengeTimesCompleted(Number(event.target.value));
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    const newDetails = {
+      description: challengeDescription,
+      timesNeeded: challengeTimesNeeded,
+      timesCompleted: challengeTimesCompleted,
+    };
+    if (challengeTimesNeeded < challengeTimesCompleted) {
+      alert("Times needed can not be smaller than times completed");
+    } else {
+      onUpdateChallenge(newDetails, challenge.challengeId, objectiveId);
+      onClickBack();
+    }
+  }
+
   return (
     <main>
       <StyledDetailContainer>
@@ -42,7 +62,7 @@ export default function ChallengeDetail({ onClickBack, challenge }) {
           <StyledButton>❌ Delete</StyledButton>
         </StyledButtonWrapper>
         <h2>Track new Challenge</h2>
-        <StyledGameForm>
+        <StyledGameForm onSubmit={handleSubmit}>
           <label htmlFor="challenge-description">Description</label>
           <textarea
             name="challenge-description"
@@ -73,7 +93,6 @@ export default function ChallengeDetail({ onClickBack, challenge }) {
               onChange={handleTimesCompletedInput}
             />
           </StyledTimesWrapper>
-
           <StyledGameButton>Update</StyledGameButton>
         </StyledGameForm>
       </StyledDetailContainer>
