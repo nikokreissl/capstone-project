@@ -1,130 +1,130 @@
 export const formations = [
   {
     name: "3-1-4-2",
-    positions: [gk, rcb, ccb, lcb, rm, rcm, cdm, lcm, lm, rst, lst],
+    positions: ["GK", "RCB", "CCB", "LCB", "RM", "RCM", "CDM", "LCM", "LM", "RST", "LST"],
   },
   {
     name: "3-4-1-2",
-    positions: [gk, rcb, ccb, lcb, rm, rcm, lcm, lm, cam, rst, lst],
+    positions: ["GK", "RCB", "CCB", "LCB", "RM", "RCM", "LCM", "LM", "CAM", "RST", "LST"],
   },
   {
     name: "3-4-2-1",
-    positions: [gk, rcb, ccb, lcb, rm, rcm, lcm, lm, rcf, lcf, st],
+    positions: ["GK", "RCB", "CCB", "LCB", "RM", "RCM", "LCM", "LM", "RCF", "LCF", "ST"],
   },
   {
     name: "3-4-3",
-    positions: [gk, rcb, ccb, lcb, rm, rcm, lcm, lm, rw, st, lw],
+    positions: ["GK", "RCB", "CCB", "LCB", "RM", "RCM", "LCM", "LM", "RW", "ST", "LW"],
   },
   {
     name: "3-5-2",
-    positions: [gk, rcb, ccb, lcb, rm, rcdm, lcdm, lm, cam, rst, lst],
+    positions: ["GK", "RCB", "CCB", "LCB", "RM", "LCDM", "LCDM", "LM", "CAM", "RST", "LST"],
   },
   {
     name: "4-1-2-1-2",
-    positions: [gk, rb, rcb, lcb, lb, cdm, rm, lm, cam, rst, lst],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "CDM", "RM", "LM", "CAM", "RST", "LST"],
   },
   {
     name: "4-1-2-1-2 (2)",
-    positions: [gk, rb, rcb, lcb, lb, cdm, rcm, lcm, cam, rst, lst],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "CDM", "RCM", "LCM", "CAM", "RST", "LST"],
   },
   {
     name: "4-1-3-2",
-    positions: [gk, rb, rcb, lcb, lb, cdm, rcm, ccm, lcm, rst, lst],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "CDM", "RCM", "CCM", "LCM", "RST", "LST"],
   },
   {
     name: "4-1-4-1",
-    positions: [gk, rb, rcb, lcb, lb, cdm, rm, rcm, lcm, lm, st],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "CDM", "RM", "RCM", "LCM", "LM", "ST"],
   },
   {
     name: "4-2-2-2",
-    positions: [gk, rb, rcb, lcb, lb, rcdm, lcdm, rcam, lcam, rst, lst],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RCDM", "LCDM", "RCAM", "LCAM", "RST", "LST"],
   },
   {
     name: "4-2-3-1",
-    positions: [gk, rb, rcb, lcb, lb, rcdm, lcdm, rcam, ccam, lcam, st],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RCDM", "LCDM", "RCAM", "CCAM", "LCAM", "ST"],
   },
   {
     name: "4-2-3-1 (2)",
-    positions: [gk, rb, rcb, lcb, lb, rcdm, lcdm, rm, lm, cam, st],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RCDM", "LCDM", "RM", "LM", "CAM", "ST"],
   },
   {
     name: "4-2-4",
-    positions: [gk, rb, rcb, lcb, lb, rcm, lcm, rw, rst, lst, lw],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RCM", "LCM", "RW", "RST", "LST", "LW"],
   },
   {
     name: "4-3-1-2",
-    positions: [gk, rb, rcb, lcb, lb, rcm, ccm, lcm, cam, rst, lst],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RCM", "CCM", "LCM", "CAM", "RST", "LST"],
   },
   {
     name: "4-3-2-1",
-    positions: [gk, rb, rcb, lcb, lb, rcm, ccm, lcm, rcf, lcf, st],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RCM", "CCM", "LCM", "RCF", "LCF", "ST"],
   },
   {
     name: "4-3-3",
-    positions: [gk, rb, rcb, lcb, lb, rcm, ccm, lcm, rw, st, lw],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RCM", "CCM", "LCM", "RW", "ST", "LW"],
   },
   {
     name: "4-3-3 (2)",
-    positions: [gk, rb, rcb, lcb, lb, cdm, rcm, lcm, rw, st, lw],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "CDM", "RCM", "LCM", "RW", "ST", "LW"],
   },
   {
     name: "4-3-3 (3)",
-    positions: [gk, rb, rcb, lcb, lb, rcdm, lcdm, cm, rw, st, lw],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RCDM", "LCDM", "CM", "RW", "ST", "LW"],
   },
   {
     name: "4-3-3 (4)",
-    positions: [gk, rb, rcb, lcb, lb, rcm, lcm, cam, rw, st, lw],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RCM", "LCM", "CAM", "RW", "ST", "LW"],
   },
   {
     name: "4-3-3 (5)",
-    positions: [gk, rb, rcb, lcb, lb, cdm, rcm, lcm, cf, rw, lw],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "CDM", "RCM", "LCM", "CF", "RW", "LW"],
   },
   {
     name: "4-4-1-1",
-    positions: [gk, rb, rcb, lcb, lb, rm, rcm, lcm, lm, cf, st],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RM", "RCM", "LCM", "LM", "CF", "ST"],
   },
   {
     name: "4-4-1-1 (2)",
-    positions: [gk, rb, rcb, lcb, lb, rm, rcm, lcm, lm, cam, st],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RM", "RCM", "LCM", "LM", "CAM", "ST"],
   },
   {
     name: "4-4-2",
-    positions: [gk, rb, rcb, lcb, lb, rm, rcm, lcm, lm, rst, lst],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RM", "RCM", "LCM", "LM", "RST", "LST"],
   },
   {
     name: "4-4-2 (2)",
-    positions: [gk, rb, rcb, lcb, lb, rm, rcdm, lcdm, lm, rst, lst],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RCDM", "LCDM", "RM",  "LM", "RST", "LST"],
   },
   {
     name: "4-5-1",
-    positions: [gk, rb, rcb, lcb, lb, rm, cm, lm, rcam, lcam, st],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RM", "CM", "LM", "RCAM", "LCAM", "ST"],
   },
   {
     name: "4-5-1 (2)",
-    positions: [gk, rb, rcb, lcb, lb, rm, lcm, ccm, rcm, lm, st],
+    positions: ["GK", "RB", "RCB", "LCB", "LB", "RM", "LCM", "CCM", "RCM", "LM", "ST"],
   },
   {
     name: "5-2-1-2",
-    positions: [gk, rwb, rcb, ccb, lcb, lwb, rcm, lcm, cam, rst, lst],
+    positions: ["GK", "RWB", "RCB", "CCB", "LCB", "LWB", "RCM", "LCM", "CAM", "RST", "LST"],
   },
   {
     name: "5-2-2-1",
-    positions: [gk, rwb, rcb, ccb, lcb, lwb, rcm, lcm, rw, st, lw],
+    positions: ["GK", "RWB", "RCB", "CCB", "LCB", "LWB", "RCM", "LCM", "RW", "ST", "LW"],
   },
   {
     name: "5-1-2-2",
-    positions: [gk, rwb, rcb, ccb, lcb, lwb, rcm, cdm, lcm, rst, lst],
+    positions: ["GK", "RWB", "RCB", "CCB", "LCB", "LWB", "RCM", "CDM", "LCM", "RST", "LST"],
   },
   {
     name: "5-4-1",
-    positions: [gk, rwb, rcb, ccb, lcb, lwb, rm, rcm, lcm, lm, st],
+    positions: ["GK", "RWB", "RCB", "CCB", "LCB", "LWB", "RM", "RCM", "LCM", "LM", "ST"],
   },
 ];
 
 export const generalInstructions = [
   {
     instructionType: "Defense",
-    defensiveStyle: [
+    defensivestyle: [
       "Balanced",
       "Pressure on Heavy Touch",
       "Press After Possession Loss",
@@ -154,7 +154,7 @@ export const generalInstructions = [
 
 export const playerInstructions = [
   {
-    position: "gk",
+    position:,
     instructions: [],
   },
 ];
