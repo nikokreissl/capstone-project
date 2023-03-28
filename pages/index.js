@@ -16,6 +16,14 @@ export default function Home() {
     return <div>Loading...</div>;
   }
 
+  const notArchivedCompetitions = competitions.filter(
+    (competition) => competition.isArchived === false
+  );
+
+  const notArchivedObjectives = objectives.filter(
+    (objective) => objective.isArchived === false
+  );
+
   function handleSelectItemChange(event) {
     setSelectedCreateItem(event.target.value);
   }
@@ -45,8 +53,11 @@ export default function Home() {
         </StyledCreateItemSelect>
         <button>Create</button>
       </StyledCreateItemForm>
-      <CompetitionList competitions={competitions} headline="Competitions" />
-      <ObjectiveList objectives={objectives} headline="Objectives" />
+      <CompetitionList
+        competitions={notArchivedCompetitions}
+        headline="Competitions"
+      />
+      <ObjectiveList objectives={notArchivedObjectives} headline="Objectives" />
     </main>
   );
 }
