@@ -124,14 +124,24 @@ export const formations = [
 export const generalInstructions = [
   {
     instructionType: "Defense",
-    defensiveStyle: ["balanced", "drop back", "pressure on heavy touch"],
+    defensiveStyle: [
+      "Balanced",
+      "Pressure on Heavy Touch",
+      "Press After Possession Loss",
+      "Constant Pressure",
+    ],
     width: 50,
     depth: 50,
   },
   {
-    instructionType: "offense",
-    buildUpPlay: ["balanced", "fast build up"],
-    chanceCreation: ["balanced", "direct passing"],
+    instructionType: "Offense",
+    buildUpPlay: ["Balanced", "Slow Build Up", "Long Ball", "Fast Build Up"],
+    chanceCreation: [
+      "Balanced",
+      "Possession",
+      "Direct Passing",
+      "Forward Runs",
+    ],
     width: 50,
     playersInBox: 5,
   },
