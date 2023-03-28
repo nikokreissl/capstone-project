@@ -8,6 +8,7 @@ import styled from "styled-components";
 
 export default function Home() {
   const router = useRouter();
+  const path = router.asPath;
   const { competitions, objectives } = useContext(DataContext);
 
   const [selectedCreateItem, setSelectedCreateItem] = useState();
@@ -56,8 +57,13 @@ export default function Home() {
       <CompetitionList
         competitions={notArchivedCompetitions}
         headline="Competitions"
+        path={path}
       />
-      <ObjectiveList objectives={notArchivedObjectives} headline="Objectives" />
+      <ObjectiveList
+        objectives={notArchivedObjectives}
+        headline="Objectives"
+        path={path}
+      />
     </main>
   );
 }

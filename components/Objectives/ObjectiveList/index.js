@@ -6,7 +6,7 @@ import {
 import EmptyState from "../../GeneralComponents/Empty-State";
 import ObjectiveCard from "../ObjectiveCard";
 
-export default function ObjectiveList({ objectives, headline }) {
+export default function ObjectiveList({ objectives, headline, path }) {
   return (
     <StyledHomeContainer>
       <StyledHomeItemHeadline>{headline}</StyledHomeItemHeadline>
@@ -17,7 +17,7 @@ export default function ObjectiveList({ objectives, headline }) {
         <StyledHomeList>
           {objectives.map((objective) => (
             <li key={objective.id}>
-              <ObjectiveCard objective={objective} />
+              <ObjectiveCard objective={objective} path={path} />
             </li>
           ))}
         </StyledHomeList>

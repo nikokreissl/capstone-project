@@ -16,6 +16,7 @@ import { useRouter } from "next/router.js";
 
 export default function TrackNewGamePage() {
   const router = useRouter();
+  const path = router.asPath;
   const { competitionId } = router.query;
 
   const { handleTrackNewGame } = useContext(DataContext);
@@ -53,6 +54,18 @@ export default function TrackNewGamePage() {
       alert("You can not enter draws!");
     } else {
       handleTrackNewGame(competitionId, newGame);
+      if (path.includes("archive")) {
+        router.push(`/competition/${competitionId}/?archive`);
+      } else {
+        router.push(`/competition/${competitionId}`);
+      }
+    }
+  }
+
+  function handleCancelCreate() {
+    if (path.includes("archive")) {
+      router.push(`/competition/${competitionId}/?archive`);
+    } else {
       router.push(`/competition/${competitionId}`);
     }
   }
@@ -61,11 +74,7 @@ export default function TrackNewGamePage() {
     <main>
       <StyledDetailContainer>
         <StyledButtonWrapper>
-          <StyledButton
-            onClick={() => router.push(`/competition/${competitionId}`)}
-          >
-            🔙 Cancel
-          </StyledButton>
+          <StyledButton onClick={handleCancelCreate}>🔙 Cancel</StyledButton>
         </StyledButtonWrapper>
         <h2>Track new Game</h2>
         <StyledGameForm onSubmit={handleSubmit}>

@@ -1,8 +1,12 @@
 import CompetitionList from "../../components/Competition/CompetitionList";
 import { useContext } from "react";
 import { DataContext } from "../_app";
+import { useRouter } from "next/router";
 
 export default function ArchiveCompetitionsPage() {
+  const router = useRouter();
+  const path = router.asPath;
+
   const { competitions } = useContext(DataContext);
 
   if (!competitions) {
@@ -18,6 +22,7 @@ export default function ArchiveCompetitionsPage() {
       <CompetitionList
         competitions={archivedCompetitions}
         headline="Competitions"
+        path={path}
       />
     </main>
   );
