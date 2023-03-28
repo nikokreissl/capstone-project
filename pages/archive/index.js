@@ -10,12 +10,12 @@ export default function ArchivePage() {
       <ArchiveCard
         itemName="Competitions"
         object={competitions}
-        href="competitions"
+        href="archive/competitions"
       />
       <ArchiveCard
         itemName="Objectives"
         object={objectives}
-        href="competitions"
+        href="archive/objectives"
       />
     </main>
   );

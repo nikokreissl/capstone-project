@@ -31,25 +31,23 @@ export default function Home() {
   }
 
   return (
-    <>
-      <main>
-        <StyledCreateItemForm onSubmit={handleCreateItem}>
-          <StyledCreateItemSelect
-            value={selectedCreateItem}
-            onChange={handleSelectItemChange}
-            name="create-element"
-            id="create-element"
-          >
-            <option value="">Select item...</option>
-            <option value="competition">Competition</option>
-            <option value="objective">Objective</option>
-          </StyledCreateItemSelect>
-          <button>Create</button>
-        </StyledCreateItemForm>
-        <CompetitionList competitions={competitions} headline="Competitions" />
-        <ObjectiveList objectives={objectives} headline="Objectives" />
-      </main>
-    </>
+    <main>
+      <StyledCreateItemForm onSubmit={handleCreateItem}>
+        <StyledCreateItemSelect
+          value={selectedCreateItem}
+          onChange={handleSelectItemChange}
+          name="create-element"
+          id="create-element"
+        >
+          <option value="">Select item...</option>
+          <option value="competition">Competition</option>
+          <option value="objective">Objective</option>
+        </StyledCreateItemSelect>
+        <button>Create</button>
+      </StyledCreateItemForm>
+      <CompetitionList competitions={competitions} headline="Competitions" />
+      <ObjectiveList objectives={objectives} headline="Objectives" />
+    </main>
   );
 }
 
