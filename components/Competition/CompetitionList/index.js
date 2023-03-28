@@ -12,7 +12,11 @@ export default function CompetitionList({ competitions, headline, path }) {
       <StyledHomeItemHeadline>{headline}</StyledHomeItemHeadline>
       <hr />
       {competitions.length < 1 ? (
-        <EmptyState itemName="competition" href="competition/create" />
+        <EmptyState
+          itemName="competition"
+          href="competition/create"
+          path={path}
+        />
       ) : (
         <StyledHomeList>
           {competitions.map((competition) => (

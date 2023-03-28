@@ -12,7 +12,7 @@ export default function ObjectiveList({ objectives, headline, path }) {
       <StyledHomeItemHeadline>{headline}</StyledHomeItemHeadline>
       <hr />
       {objectives.length < 1 ? (
-        <EmptyState itemName="objective" href="/objective/create" />
+        <EmptyState itemName="objective" href="/objective/create" path={path} />
       ) : (
         <StyledHomeList>
           {objectives.map((objective) => (
