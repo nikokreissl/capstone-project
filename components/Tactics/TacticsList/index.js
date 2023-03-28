@@ -6,7 +6,7 @@ import {
 import TacticCard from "../TacticsCard";
 import EmptyState from "../../GeneralComponents/Empty-State";
 
-export default function TacticsList({ headline, tactics }) {
+export default function TacticsList({ headline, tactics, path }) {
   return (
     <StyledHomeContainer>
       <StyledHomeItemHeadline>{headline}</StyledHomeItemHeadline>
@@ -14,7 +14,7 @@ export default function TacticsList({ headline, tactics }) {
       <StyledHomeList>
         {tactics.map((tactic) => (
           <li key={tactic.id}>
-            <TacticCard tactic={tactic} />
+            <TacticCard tactic={tactic} path={path} />
           </li>
         ))}
       </StyledHomeList>
