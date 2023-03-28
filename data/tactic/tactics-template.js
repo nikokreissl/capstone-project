@@ -483,18 +483,16 @@ export const formations = [
 
 export const generalInstructions = [
   {
-    instructionType: "Defense",
-    defensivestyle: [
+    defensiveStyle: [
       "Balanced",
       "Pressure on Heavy Touch",
       "Press After Possession Loss",
       "Constant Pressure",
     ],
-    width: 50,
-    depth: 50,
+    defensiveWidth: 50,
+    defensiveDepth: 50,
   },
   {
-    instructionType: "Offense",
     buildUpPlay: ["Balanced", "Slow Build Up", "Long Ball", "Fast Build Up"],
     chanceCreation: [
       "Balanced",
@@ -502,11 +500,8 @@ export const generalInstructions = [
       "Direct Passing",
       "Forward Runs",
     ],
-    width: 50,
+    offensiveWidth: 50,
     playersInBox: 5,
-  },
-  {
-    instructionType: "Corners & Free Kicks",
     corners: 3,
     freeKicks: 3,
   },
