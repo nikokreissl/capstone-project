@@ -28,14 +28,6 @@ export default function ObjectiveDetailPage() {
     router.push("/");
   }
 
-  function handleAddNewChallenge(challengeId) {
-    router.push(`/objective/${challengeId}/add-challenge`);
-  }
-
-  function handleChallengeDetailRedirect(objectiveId, challengeId) {
-    router.push(`/objective/${objectiveId}/challenge-detail/${challengeId}`);
-  }
-
   if (!currentObjective) {
     return <p>Loading...</p>;
   }
@@ -56,8 +48,7 @@ export default function ObjectiveDetailPage() {
           objective={currentObjective}
           onClickBack={handleDirectHome}
           onToggleEdit={toggleEdit}
-          onAddnewChallenge={handleAddNewChallenge}
-          onEditChallengeClick={handleChallengeDetailRedirect}
+          on
         />
       )}
     </main>

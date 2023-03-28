@@ -1,10 +1,8 @@
-import useLocalStorageState from "use-local-storage-state";
+import { useState } from "react";
 import { uid } from "uid";
 
 export function useCompetitions(givenCompetitions) {
-  const [competitions, setCompetition] = useLocalStorageState("competitions", {
-    defaultValue: givenCompetitions,
-  });
+  const [competitions, setCompetition] = useState(givenCompetitions);
 
   function handleAddCompetition(competitionName, competitionGames) {
     const newCompetition = {
