@@ -6,18 +6,18 @@ import {
 import EmptyState from "../../GeneralComponents/Empty-State";
 import ObjectiveCard from "../ObjectiveCard";
 
-export default function ObjectiveList({ objectives, headline }) {
+export default function ObjectiveList({ objectives, headline, path }) {
   return (
     <StyledHomeContainer>
       <StyledHomeItemHeadline>{headline}</StyledHomeItemHeadline>
       <hr />
       {objectives.length < 1 ? (
-        <EmptyState itemName="objective" href="/objective/create" />
+        <EmptyState itemName="objective" href="/objective/create" path={path} />
       ) : (
         <StyledHomeList>
           {objectives.map((objective) => (
             <li key={objective.id}>
-              <ObjectiveCard objective={objective} />
+              <ObjectiveCard objective={objective} path={path} />
             </li>
           ))}
         </StyledHomeList>

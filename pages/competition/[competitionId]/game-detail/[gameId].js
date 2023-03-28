@@ -8,6 +8,7 @@ export default function GameDetailPage() {
     useContext(DataContext);
 
   const router = useRouter();
+  const path = router.asPath;
   const { competitionId, gameId } = router.query;
 
   const currentCompetition = competitions.find(
@@ -27,7 +28,11 @@ export default function GameDetailPage() {
   }
 
   function handleBackToCompetition() {
-    router.push(`/competition/${currentCompetition.id}`);
+    if (path.includes("archive")) {
+      router.push(`/competition/${currentCompetition.id}/?archive`);
+    } else {
+      router.push(`/competition/${currentCompetition.id}`);
+    }
   }
 
   return (

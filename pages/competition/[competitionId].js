@@ -8,6 +8,7 @@ export default function CompetitionDetailPage() {
   const [isEdit, setIsEdit] = useState(false);
 
   const router = useRouter();
+  const path = router.asPath;
   const { competitionId } = router.query;
 
   const {
@@ -25,11 +26,21 @@ export default function CompetitionDetailPage() {
   }
 
   function handleDirectHome() {
-    router.push("/");
+    if (path.includes("archive")) {
+      router.push("/archive/competitions");
+    } else {
+      router.push("/");
+    }
   }
 
   function handleGameDetailRedirect(competitionId, gameId) {
-    router.push(`/competition/${competitionId}/game-detail/${gameId}`);
+    if (path.includes("archive")) {
+      router.push(
+        `/competition/${competitionId}/game-detail/${gameId}/?archive`
+      );
+    } else {
+      router.push(`/competition/${competitionId}/game-detail/${gameId}`);
+    }
   }
 
   function handleTrackNewGameRedirect(competitionId) {
@@ -37,6 +48,8 @@ export default function CompetitionDetailPage() {
       alert(
         "You have already tracked all games! In order to track more games, update the total number of games."
       );
+    } else if (path.includes("archive")) {
+      router.push(`/competition/${competitionId}/track-new-game/?archive`);
     } else {
       router.push(`/competition/${competitionId}/track-new-game`);
     }

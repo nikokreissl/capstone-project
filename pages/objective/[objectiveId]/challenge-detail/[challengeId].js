@@ -5,6 +5,7 @@ import ChallengeDetail from "../../../../components/Objectives/ChallengeDetail";
 
 export default function ChallengeDetailPage() {
   const router = useRouter();
+  const path = router.asPath;
   const { objectiveId, challengeId } = router.query;
 
   const { objectives, handleChallengeUpdate, handleChallengeDelete } =
@@ -26,7 +27,11 @@ export default function ChallengeDetailPage() {
     return <p>Loading...</p>;
   }
   function handleClickBack() {
-    router.push(`/objective/${currentObjective.id}`);
+    if (path.includes("archive")) {
+      router.push(`/objective/${currentObjective.id}/?archive`);
+    } else {
+      router.push(`/objective/${currentObjective.id}`);
+    }
   }
 
   return (

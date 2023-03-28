@@ -8,6 +8,7 @@ import styled from "styled-components";
 
 export default function Home() {
   const router = useRouter();
+  const path = router.asPath;
   const { competitions, objectives } = useContext(DataContext);
 
   const [selectedCreateItem, setSelectedCreateItem] = useState();
@@ -15,6 +16,14 @@ export default function Home() {
   if (!competitions || !objectives) {
     return <div>Loading...</div>;
   }
+
+  const notArchivedCompetitions = competitions.filter(
+    (competition) => competition.isArchived === false
+  );
+
+  const notArchivedObjectives = objectives.filter(
+    (objective) => objective.isArchived === false
+  );
 
   function handleSelectItemChange(event) {
     setSelectedCreateItem(event.target.value);
@@ -31,25 +40,31 @@ export default function Home() {
   }
 
   return (
-    <>
-      <main>
-        <StyledCreateItemForm onSubmit={handleCreateItem}>
-          <StyledCreateItemSelect
-            value={selectedCreateItem}
-            onChange={handleSelectItemChange}
-            name="create-element"
-            id="create-element"
-          >
-            <option value="">Select item...</option>
-            <option value="competition">Competition</option>
-            <option value="objective">Objective</option>
-          </StyledCreateItemSelect>
-          <button>Create</button>
-        </StyledCreateItemForm>
-        <CompetitionList competitions={competitions} headline="Competitions" />
-        <ObjectiveList objectives={objectives} headline="Objectives" />
-      </main>
-    </>
+    <main>
+      <StyledCreateItemForm onSubmit={handleCreateItem}>
+        <StyledCreateItemSelect
+          value={selectedCreateItem}
+          onChange={handleSelectItemChange}
+          name="create-element"
+          id="create-element"
+        >
+          <option value="">Select item...</option>
+          <option value="competition">Competition</option>
+          <option value="objective">Objective</option>
+        </StyledCreateItemSelect>
+        <button>Create</button>
+      </StyledCreateItemForm>
+      <CompetitionList
+        competitions={notArchivedCompetitions}
+        headline="Competitions"
+        path={path}
+      />
+      <ObjectiveList
+        objectives={notArchivedObjectives}
+        headline="Objectives"
+        path={path}
+      />
+    </main>
   );
 }
 

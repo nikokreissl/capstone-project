@@ -1,11 +1,11 @@
 import { StyledArticle, StyledDetailsLink } from "./StyledCompetitionCard.js";
 
-export default function CompetitionCard({ competition }) {
+export default function CompetitionCard({ competition, path }) {
   if (!competition) {
     return <p>Loading...</p>;
   }
 
-  const competitionWins = competition?.gamesPlayed.filter(
+  const competitionWins = competition.gamesPlayed.filter(
     (game) => game.userScore > game.opponentScore
   );
 
@@ -22,7 +22,7 @@ export default function CompetitionCard({ competition }) {
         Remaining Games:{" "}
         {competition?.totalGames - competition.gamesPlayed.length}
       </p>
-      <StyledDetailsLink href={`/competition/${competition.id}`}>
+      <StyledDetailsLink href={`/competition/${competition.id}/?${path}`}>
         View Details
       </StyledDetailsLink>
     </StyledArticle>

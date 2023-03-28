@@ -16,6 +16,7 @@ import { DataContext } from "../../_app";
 
 export default function AddChallengePage() {
   const router = useRouter();
+  const path = router.asPath;
   const { objectiveId } = router.query;
 
   const { handleAddChallenge } = useContext(DataContext);
@@ -47,6 +48,18 @@ export default function AddChallengePage() {
       alert("Times needed can not be smaller than times completed");
     } else {
       handleAddChallenge(challengeDetails, objectiveId);
+      if (path.includes("archive")) {
+        router.push(`/objective/${objectiveId}/?archive`);
+      } else {
+        router.push(`/objective/${objectiveId}`);
+      }
+    }
+  }
+
+  function handleAddCancel() {
+    if (path.includes("archive")) {
+      router.push(`/objective/${objectiveId}/?archive`);
+    } else {
       router.push(`/objective/${objectiveId}`);
     }
   }
@@ -55,11 +68,7 @@ export default function AddChallengePage() {
     <main>
       <StyledDetailContainer>
         <StyledButtonWrapper>
-          <StyledButton
-            onClick={() => router.push(`/objective/${objectiveId}`)}
-          >
-            🔙 Cancel
-          </StyledButton>
+          <StyledButton onClick={handleAddCancel}>🔙 Cancel</StyledButton>
         </StyledButtonWrapper>
         <h2>Track new Challenge</h2>
         <StyledGameForm onSubmit={handleSubmit}>

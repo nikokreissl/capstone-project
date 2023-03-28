@@ -14,6 +14,7 @@ export default function ObjectiveDetailPage() {
     handleArchiveObjective,
   } = useContext(DataContext);
   const router = useRouter();
+  const path = router.asPath;
   const { objectiveId } = router.query;
 
   const currentObjective = objectives.find(
@@ -25,15 +26,29 @@ export default function ObjectiveDetailPage() {
   }
 
   function handleDirectHome() {
-    router.push("/");
+    if (path.includes("archive")) {
+      router.push("/archive/objectives");
+    } else {
+      router.push("/");
+    }
   }
 
   function handleAddNewChallenge(challengeId) {
-    router.push(`/objective/${challengeId}/add-challenge`);
+    if (path.includes("archive")) {
+      router.push(`/objective/${challengeId}/add-challenge/?archive`);
+    } else {
+      router.push(`/objective/${challengeId}/add-challenge`);
+    }
   }
 
   function handleChallengeDetailRedirect(objectiveId, challengeId) {
-    router.push(`/objective/${objectiveId}/challenge-detail/${challengeId}`);
+    if (path.includes("archive")) {
+      router.push(
+        `/objective/${objectiveId}/challenge-detail/${challengeId}/?archive`
+      );
+    } else {
+      router.push(`/objective/${objectiveId}/challenge-detail/${challengeId}`);
+    }
   }
 
   if (!currentObjective) {
