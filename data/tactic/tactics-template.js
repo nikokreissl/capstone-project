@@ -531,6 +531,7 @@ export const playerInstructions = [
       "Conservative Interception",
     ],
     runType: ["Mixed Attack", "Inverted", "Overlap"],
+    defensivePosition: ["Keep Position", "Narrow Cover"],
   },
   {
     position: "CB",
@@ -544,6 +545,7 @@ export const playerInstructions = [
       "Aggressive Interception",
       "Conservative Interception",
     ],
+    defensivePosition: ["Keep Position", "Narrow Cover"],
   },
   {
     position: "LB / RB",
@@ -558,6 +560,7 @@ export const playerInstructions = [
       "Conservative Interception",
     ],
     runType: ["Mixed Attack", "Inverted", "Overlap"],
+    defensivePosition: ["Keep Position", "Narrow Cover"],
   },
   {
     position: "CDM",
@@ -573,11 +576,7 @@ export const playerInstructions = [
       "Conservative Interception",
     ],
     positioningFreedom: ["Stick to Position", "Free Roam"],
-    supportOnCrosses: [
-      "Balanced Crossing Runs",
-      "Get Into Box For Cross",
-      "Stay on Edge Of Box For Cross",
-    ],
+    defensiveBehavior: ["Balanced", "Cut Passing Lanes", "Narrow Cover"],
   },
   {
     position: "CM",
@@ -585,6 +584,7 @@ export const playerInstructions = [
       "Balanced Attack",
       "Stay Back While Attacking",
       "Get Forward",
+      "Drop Back To Defense",
     ],
     defensivePosition: ["Cover Wing", "Cover Center"],
     interception: [
@@ -601,18 +601,17 @@ export const playerInstructions = [
   },
   {
     position: "CAM",
-    attackingSupport: [
-      "Balanced Attack",
-      "Stay Back While Attacking",
-      "Get Forward",
+    defensiveSupport: [
+      "Basic Defence Support",
+      "Come Back on Defence",
+      "Stay Forward",
     ],
-    defensivePosition: ["Cover Wing", "Cover Center"],
     interception: [
       "Normal Interception",
       "Aggressive Interception",
       "Conservative Interception",
     ],
-    positioningFreedom: ["Stick to Position", "Free Roam"],
+    positioningFreedom: ["Stick to Position", "Free Roam", "Drift Wide"],
     supportOnCrosses: [
       "Balanced Crossing Runs",
       "Get Into Box For Cross",
@@ -638,10 +637,14 @@ export const playerInstructions = [
       "Come Short",
       "Target Man",
     ],
+    defensiveSupport: [
+      "Basic Defence Support",
+      "Come Back on Defence",
+      "Stay Forward",
+    ],
   },
   {
     position: "LW / RW",
-    attackingRuns: ["Mixed Attack", "Get In Behind", "Target Man", "False 9"],
     chanceCreation: ["Balanced Width", "Cut Inside", "Stay Wide", "Free Roam"],
     defensiveSupport: [
       "Basic Defence Support",
