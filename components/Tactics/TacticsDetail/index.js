@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { StyledDetailsContainer } from "../../GeneralComponents/DetailView";
-import {
-  StyledButton,
-  StyledButtonWrapper,
-} from "../../GeneralComponents/Buttons/StyledButton";
+import { StyledDetailsLink } from "../../Competition/CompetitionCard/StyledCompetitionCard";
 import { StyledTab, StyledTabsContainer } from "./StyledTacticsDetail";
+
 import InstructionDetail from "../Instruction";
 
-export default function TacticsDetail({ tactic }) {
+export default function TacticsDetail({ tactic, path }) {
   const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
   const [showPlayerInstructions, setShowPlayerInstructions] = useState(false);
 
@@ -31,11 +29,8 @@ export default function TacticsDetail({ tactic }) {
 
   return (
     <>
+      <StyledDetailsLink href={"/tactics"}>Back</StyledDetailsLink>
       <StyledDetailsContainer>
-        <StyledButtonWrapper>
-          <StyledButton>🔙 Back</StyledButton>
-          <StyledButton>⚙️ Edit</StyledButton>
-        </StyledButtonWrapper>
         <h2>{tactic.name}</h2>
         <h3>{tactic.formation}</h3>
       </StyledDetailsContainer>

@@ -6,7 +6,7 @@ export default function InstructionDetail({ instruction }) {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <>
+    <StyledInstructionContainer>
       <StyledInstructionHeaderContainer>
         <StyledInstructionWrapper>
           <h4>{instruction.instructionFor}</h4>
@@ -16,6 +16,7 @@ export default function InstructionDetail({ instruction }) {
         </StyledInstructionWrapper>
         <StyledInstructionHeaderDivider />
       </StyledInstructionHeaderContainer>
+
       {showMore && (
         <StyledInstructionDetailsContainer>
           {instruction.detailedInstructions.map((detailedInstruction) => (
@@ -30,13 +31,19 @@ export default function InstructionDetail({ instruction }) {
           ))}
         </StyledInstructionDetailsContainer>
       )}
-    </>
+    </StyledInstructionContainer>
   );
 }
 
-const StyledInstructionHeaderContainer = styled.div`
+const StyledInstructionContainer = styled.section`
+  margin: 0;
+  padding: 0;
   width: 100%;
+`;
+
+const StyledInstructionHeaderContainer = styled.article`
   background-color: lightgray;
+  padding-bottom: 5px;
 `;
 
 const StyledInstructionWrapper = styled.div`
