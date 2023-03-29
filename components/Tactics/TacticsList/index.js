@@ -11,13 +11,21 @@ export default function TacticsList({ headline, tactics, path }) {
     <StyledHomeContainer>
       <StyledHomeItemHeadline>{headline}</StyledHomeItemHeadline>
       <hr />
-      <StyledHomeList>
-        {tactics.map((tactic) => (
-          <li key={tactic.id}>
-            <TacticCard tactic={tactic} path={path} />
-          </li>
-        ))}
-      </StyledHomeList>
+      {tactics.length < 1 ? (
+        <EmptyState
+          itemName="tactic"
+          href="/tactics/create-new-tactic"
+          path={path}
+        />
+      ) : (
+        <StyledHomeList>
+          {tactics.map((tactic) => (
+            <li key={tactic.id}>
+              <TacticCard tactic={tactic} path={path} />
+            </li>
+          ))}
+        </StyledHomeList>
+      )}
     </StyledHomeContainer>
   );
 }
