@@ -1,13 +1,14 @@
 import { useState } from "react";
-import {
-  StyledDetailButton,
-  StyledDetailsContainer,
-} from "../../GeneralComponents/DetailView";
+import { StyledDetailsContainer } from "../../GeneralComponents/DetailView";
 import {
   StyledButton,
   StyledButtonWrapper,
 } from "../../GeneralComponents/Buttons/StyledButton";
-import { StyledTab, StyledTabsContainer } from "./StyledTacticsDetail";
+import {
+  StyledTab,
+  StyledTabsContainer,
+  StyledInstruction,
+} from "./StyledTacticsDetail";
 
 export default function TacticsDetail({ tactic }) {
   const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
@@ -51,6 +52,25 @@ export default function TacticsDetail({ tactic }) {
           Player Instructions
         </StyledTab>
       </StyledTabsContainer>
+      {showGeneralInstructions && (
+        <>
+          <StyledInstruction instructionHeadline="Defense">
+            <p>Defensive Style: {tactic.generalInstructions.defensiveStyle}</p>
+            <p>Defensive Width: {tactic.generalInstructions.defensiveWidth}</p>
+            <p>Defensive Depth: {tactic.generalInstructions.defensiveDepth}</p>
+          </StyledInstruction>
+          <StyledInstruction instructionHeadline="Attacking">
+            <p>Build Up Play: {tactic.generalInstructions.buildUpPlay}</p>
+            <p>Chance Creation: {tactic.generalInstructions.chanceCreation}</p>
+            <p>Offensive Width: {tactic.generalInstructions.offensiveWidth}</p>
+            <p>Players in Box: {tactic.generalInstructions.playersInBox}</p>
+          </StyledInstruction>
+          <StyledInstruction instructionHeadline="Corners & Free Kicks">
+            <p>Corners: {tactic.generalInstructions.corners}</p>
+            <p>Free Kicks: {tactic.generalInstructions.freeKicks}</p>
+          </StyledInstruction>
+        </>
+      )}
     </>
   );
 }
