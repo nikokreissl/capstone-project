@@ -4,11 +4,8 @@ import {
   StyledButton,
   StyledButtonWrapper,
 } from "../../GeneralComponents/Buttons/StyledButton";
-import {
-  StyledTab,
-  StyledTabsContainer,
-  StyledInstruction,
-} from "./StyledTacticsDetail";
+import { StyledTab, StyledTabsContainer } from "./StyledTacticsDetail";
+import InstructionDetail from "../Instruction";
 
 export default function TacticsDetail({ tactic }) {
   const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
@@ -26,6 +23,10 @@ export default function TacticsDetail({ tactic }) {
       setShowPlayerInstructions(!showPlayerInstructions);
       setShowGeneralInstructions(!showGeneralInstructions);
     }
+  }
+
+  if (!tactic) {
+    return <p>Loading...</p>;
   }
 
   return (
@@ -54,21 +55,12 @@ export default function TacticsDetail({ tactic }) {
       </StyledTabsContainer>
       {showGeneralInstructions && (
         <>
-          <StyledInstruction instructionHeadline="Defense">
-            <p>Defensive Style: {tactic.generalInstructions.defensiveStyle}</p>
-            <p>Defensive Width: {tactic.generalInstructions.defensiveWidth}</p>
-            <p>Defensive Depth: {tactic.generalInstructions.defensiveDepth}</p>
-          </StyledInstruction>
-          <StyledInstruction instructionHeadline="Attacking">
-            <p>Build Up Play: {tactic.generalInstructions.buildUpPlay}</p>
-            <p>Chance Creation: {tactic.generalInstructions.chanceCreation}</p>
-            <p>Offensive Width: {tactic.generalInstructions.offensiveWidth}</p>
-            <p>Players in Box: {tactic.generalInstructions.playersInBox}</p>
-          </StyledInstruction>
-          <StyledInstruction instructionHeadline="Corners & Free Kicks">
-            <p>Corners: {tactic.generalInstructions.corners}</p>
-            <p>Free Kicks: {tactic.generalInstructions.freeKicks}</p>
-          </StyledInstruction>
+          {tactic.generalInstructions.map((instruction) => (
+            <InstructionDetail
+              key={instruction.instructionType}
+              instruction={instruction}
+            />
+          ))}
         </>
       )}
     </>

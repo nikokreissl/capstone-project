@@ -12,7 +12,7 @@ export default function TacticDetailPage() {
 
   const currentTactic = userTactics.find((tactic) => tactic.id === tacticId);
 
-  if (!userTactics.length || !currentTactic) {
+  if (!userTactics || !currentTactic) {
     return <p>Loading...</p>;
   }
 

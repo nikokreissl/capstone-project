@@ -3,17 +3,59 @@ export const givenUserTactics = [
     id: "abc123",
     name: "Custom Tactic #1",
     formation: "4-4-2",
-    generalInstructions: {
-      defensiveStyle: "Balanced",
-      defensiveWidth: 60,
-      defensiveDepth: 65,
-      buildUpPlay: "Fast Build Up",
-      chanceCreation: "Direct Passing",
-      offensiveWidth: 45,
-      playersInBox: 3,
-      corners: 4,
-      freeKicks: 2,
-    },
+    generalInstructions: [
+      {
+        instructionType: "Defence",
+        detailedInstructions: [
+          {
+            instructionName: "Defensive Style",
+            value: "Balanced",
+          },
+          {
+            instructionName: "Defensive Width",
+            value: 60,
+          },
+          {
+            instructionName: "Defensive Depth",
+            value: 65,
+          },
+        ],
+      },
+      {
+        instructionType: "Attacking",
+        detailedInstructions: [
+          {
+            instructionName: "Build Up Play",
+            value: "Fast Build Up",
+          },
+          {
+            instructionName: "Chance Creation",
+            value: "Direct Passing",
+          },
+          {
+            instructionName: "Offensive Width",
+            value: 45,
+          },
+          {
+            instructionName: "Players In Box",
+            value: 3,
+          },
+        ],
+      },
+      {
+        instructionType: "Corners & Free Kicks",
+        detailedInstructions: [
+          {
+            instructionName: "Corners",
+            value: 4,
+          },
+          {
+            instructionName: "Free Kicks",
+            value: 2,
+          },
+        ],
+      },
+    ],
     playerInstructions: [
       {
         position: "GK",
