@@ -1,4 +1,4 @@
-export const userTactics = [
+export const givenUserTactics = [
   {
     id: "abc123",
     name: "Custom Tactic #1",
