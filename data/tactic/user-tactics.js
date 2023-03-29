@@ -59,85 +59,234 @@ export const givenUserTactics = [
     playerInstructions: [
       {
         position: "GK",
-        savingOnCrosses: "Comes for Crosses",
-        savingOutsideBox: "Balanced",
+        detailedInstructions: [
+          {
+            instructionName: "Saving On Crosses",
+            value: "Comes for Crosses",
+          },
+          {
+            instructionName: "Saving Outside Box",
+            value: "Balanced",
+          },
+        ],
       },
       {
         position: "RB",
-        attackingRuns: "Stay Back While Attacking",
-        interception: "Normal Interception",
-        runType: "Overlap",
-        defensivePosition: "Keep Position",
+        detailedInstructions: [
+          {
+            instructionName: "Attacking Runs",
+            value: "Stay Back While Attacking",
+          },
+          {
+            instructionName: "Interception",
+            value: "Normal Interception",
+          },
+          {
+            instructionName: "Run Type",
+            value: "Overlap",
+          },
+          {
+            instructionName: "Defensive Position",
+            value: "Keep Position",
+          },
+        ],
       },
       {
         position: "RCB",
-        attackingSupport: "Stay Back While Attacking",
-        interception: "Normal Interception",
-        defensivePosition: "Keep Position",
+        detailedInstructions: [
+          {
+            instructionName: "Attacking Support",
+            value: "Stay Back While Attacking",
+          },
+          {
+            instructionName: "Interception",
+            value: "Normal Interception",
+          },
+          {
+            instructionName: "Defensive Position",
+            value: "Keep Position",
+          },
+        ],
       },
       {
         position: "LCB",
-        attackingSupport: "Stay Back While Attacking",
-        interception: "Normal Interception",
-        defensivePosition: "Keep Position",
+        detailedInstructions: [
+          {
+            instructionName: "Attacking Support",
+            value: "Stay Back While Attacking",
+          },
+          {
+            instructionName: "Interception",
+            value: "Normal Interception",
+          },
+          {
+            instructionName: "Defensive Position",
+            value: "Keep Position",
+          },
+        ],
       },
       {
         position: "LB",
-        attackingRuns: "Stay Back While Attacking",
-        interception: "Normal Interception",
-        runType: "Overlap",
-        defensivePosition: "Keep Position",
+        detailedInstructions: [
+          {
+            instructionName: "Attacking Runs",
+            value: "Stay Back While Attacking",
+          },
+          {
+            instructionName: "Interception",
+            value: "Normal Interception",
+          },
+          {
+            instructionName: "Run Type",
+            value: "Overlap",
+          },
+          {
+            instructionName: "Defensive Position",
+            value: "Keep Position",
+          },
+        ],
       },
       {
         position: "RM",
-        chanceCreation: "Cut Inside",
-        interception: "Normal Interception",
-        supportOnCrosses: "Get Into Box For Cross",
-        supportRuns: "Get In Behind",
-        defensiveSupport: "Come Back on Defence",
+        detailedInstructions: [
+          {
+            instructionName: "Chance Creation",
+            value: "Cut Inside",
+          },
+          {
+            instructionName: "Interception",
+            value: "Normal Interception",
+          },
+          {
+            instructionName: "Support On Crosses",
+            value: "Get Into Box For Cross",
+          },
+          {
+            instructionName: "Support Runs",
+            value: "Get In Behind",
+          },
+          {
+            instructionName: "Defensive Support",
+            value: "Come Back on Defence",
+          },
+        ],
       },
       {
         position: "RCM",
-        attackingSupport: "Stay Back While Attacking",
-        defensivePosition: "Cover Center",
-        interception: "Normal Interception",
-        positioningFreedom: "Stick to Position",
-        supportOnCrosses: "Stay on Edge Of Box For Cross",
+        detailedInstructions: [
+          {
+            inscructionName: "Attacking Support",
+            value: "Stay Back While Attacking",
+          },
+          {
+            inscructionName: "Defensive Position",
+            value: "Cover Center",
+          },
+          {
+            instructionName: "Interception",
+            value: "Normal Interception",
+          },
+          {
+            inscructionName: "Positioning Freedom",
+            value: "Stick to Position",
+          },
+          {
+            inscructionName: "Support On Crosses",
+            value: "Stay on Edge Of Box For Cross",
+          },
+        ],
       },
       {
         position: "LCM",
-        attackingSupport: "Balanced Attack",
-        defensivePosition: "Cover Wing",
-        interception: "Aggressive Interception",
-        positioningFreedom: "Stick to Position",
-        supportOnCrosses: "Get Into Box For Cross",
+        detailedInstructions: [
+          {
+            inscructionName: "Attacking Support",
+            value: "Balanced Attack",
+          },
+          {
+            inscructionName: "Defensive Position",
+            value: "Cover Wing",
+          },
+          {
+            instructionName: "Interception",
+            value: "Aggressive Interception",
+          },
+          {
+            inscructionName: "Positioning Freedom",
+            value: "Stick to Position",
+          },
+          {
+            inscructionName: "Support On Crosses",
+            value: "Get Into Box For Cross",
+          },
+        ],
       },
       {
         position: "LM",
-        chanceCreation: "Cut Inside",
-        interception: "Normal Interception",
-        supportOnCrosses: "Get Into Box For Cross",
-        supportRuns: "Get In Behind",
-        defensiveSupport: "Come Back on Defence",
+        detailedInstructions: [
+          {
+            instructionName: "Chance Creation",
+            value: "Cut Inside",
+          },
+          {
+            instructionName: "Interception",
+            value: "Normal Interception",
+          },
+          {
+            instructionName: "Support On Crosses",
+            value: "Get Into Box For Cross",
+          },
+          {
+            instructionName: "Support Runs",
+            value: "Get In Behind",
+          },
+          {
+            instructionName: "Defensive Support",
+            value: "Come Back on Defence",
+          },
+        ],
       },
       {
         position: "RST",
-        attackingRuns: "Get In Behind",
-        defensiveSupport: "Stay Forward",
-        interception: "Normal Interception",
-        supportRuns: "Stay Central",
+        detailedInstructions: [
+          {
+            instructionName: "Attacking Runs",
+            value: "Get In Behind",
+          },
+          {
+            instructionName: "Defensive Support",
+            value: "Stay Forward",
+          },
+          {
+            instructionName: "Interception",
+            value: "Normal Interception",
+          },
+          {
+            instructionName: "Support Runs",
+            value: "Stay Central",
+          },
+        ],
       },
       {
         position: "LST",
-        attackingRuns: [
-          "Mixed Attack",
-          "Get In Behind",
-          "Target Man",
-          "False 9",
+        detailedInstructions: [
+          {
+            instructionName: "Attacking Runs",
+            value: "Mixed Attack",
+          },
+          {
+            instructionName: "Defensive Support",
+            value: "Come Back on Defence",
+          },
+          {
+            instructionName: "Interception",
+            value: "Aggressive Interception",
+          },
+          {
+            instructionName: "Support Runs",
+            value: "Balanced Width",
+          },
         ],
-        defensiveSupport: "Come Back on Defence",
-        interception: "Aggressive Interception",
-        supportRuns: "Balanced Width",
       },
     ],
   },
