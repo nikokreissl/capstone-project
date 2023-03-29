@@ -57,7 +57,7 @@ export default function TacticsDetail({ tactic }) {
         <>
           {tactic.generalInstructions.map((instruction) => (
             <InstructionDetail
-              key={instruction.instructionType}
+              key={instruction.instructionFor}
               instruction={instruction}
             />
           ))}
@@ -66,7 +66,10 @@ export default function TacticsDetail({ tactic }) {
       {showPlayerInstructions && (
         <>
           {tactic.playerInstructions.map((player) => (
-            <InstructionDetail key={player.position} instruction={player} />
+            <InstructionDetail
+              key={player.instructionFor}
+              instruction={player}
+            />
           ))}
         </>
       )}

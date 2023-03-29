@@ -86,8 +86,8 @@ export const givenUserTactics = [
             value: "Overlap",
           },
           {
-            instructionName: "Defensive instructionFor",
-            value: "Keep instructionFor",
+            instructionName: "Defensive Position",
+            value: "Keep Position",
           },
         ],
       },
@@ -103,8 +103,8 @@ export const givenUserTactics = [
             value: "Normal Interception",
           },
           {
-            instructionName: "Defensive instructionFor",
-            value: "Keep instructionFor",
+            instructionName: "Defensive Position",
+            value: "Keep Position",
           },
         ],
       },
@@ -120,8 +120,8 @@ export const givenUserTactics = [
             value: "Normal Interception",
           },
           {
-            instructionName: "Defensive instructionFor",
-            value: "Keep instructionFor",
+            instructionName: "Defensive Position",
+            value: "Keep Position",
           },
         ],
       },
@@ -141,8 +141,8 @@ export const givenUserTactics = [
             value: "Overlap",
           },
           {
-            instructionName: "Defensive instructionFor",
-            value: "Keep instructionFor",
+            instructionName: "Defensive Position",
+            value: "Keep Position",
           },
         ],
       },
@@ -179,7 +179,7 @@ export const givenUserTactics = [
             value: "Stay Back While Attacking",
           },
           {
-            inscructionName: "Defensive instructionFor",
+            inscructionName: "Defensive Position",
             value: "Cover Center",
           },
           {
@@ -187,8 +187,8 @@ export const givenUserTactics = [
             value: "Normal Interception",
           },
           {
-            inscructionName: "instructionForing Freedom",
-            value: "Stick to instructionFor",
+            inscructionName: "Positioning Freedom",
+            value: "Stick to Position",
           },
           {
             inscructionName: "Support On Crosses",
@@ -204,7 +204,7 @@ export const givenUserTactics = [
             value: "Balanced Attack",
           },
           {
-            inscructionName: "Defensive instructionFor",
+            inscructionName: "Defensive Position",
             value: "Cover Wing",
           },
           {
@@ -212,8 +212,8 @@ export const givenUserTactics = [
             value: "Aggressive Interception",
           },
           {
-            inscructionName: "instructionForing Freedom",
-            value: "Stick to instructionFor",
+            inscructionName: "Positioning Freedom",
+            value: "Stick to Position",
           },
           {
             inscructionName: "Support On Crosses",

@@ -20,8 +20,12 @@ export default function InstructionDetail({ instruction }) {
         <StyledInstructionDetailsContainer>
           {instruction.detailedInstructions.map((detailedInstruction) => (
             <StyledInstructionDetails key={detailedInstruction.instructionName}>
-              <h5>{detailedInstruction.instructionName}</h5>
-              <p>{detailedInstruction.value}</p>
+              <StyledInstructionDetailsTitle>
+                {detailedInstruction.instructionName}
+              </StyledInstructionDetailsTitle>
+              <StyledInstructionsDetailsParagraph>
+                {detailedInstruction.value}
+              </StyledInstructionsDetailsParagraph>
             </StyledInstructionDetails>
           ))}
         </StyledInstructionDetailsContainer>
@@ -48,18 +52,30 @@ const StyledInstructionHeaderDivider = styled.hr`
 
 const StyledInstructionDetailsContainer = styled.div`
   width: 100%;
+  padding: 10px;
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
+  gap: 10px;
 `;
 
 const StyledInstructionDetails = styled.div`
-  width: 32vw;
-  height: 60px;
+  width: 40vw;
+  height: 80px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   border: 1px solid black;
   border-radius: 3px;
-  margin: 1px;
+`;
+
+const StyledInstructionDetailsTitle = styled.h5`
+  heigth: 25px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+`;
+
+const StyledInstructionsDetailsParagraph = styled.p`
+  text-align: center;
+  font-size: 0.9rem;
 `;
