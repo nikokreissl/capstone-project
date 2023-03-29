@@ -3,14 +3,13 @@ import styled from "styled-components";
 import { useState } from "react";
 
 export default function InstructionDetail({ instruction }) {
-  console.log(instruction);
   const [showMore, setShowMore] = useState(false);
 
   return (
     <>
       <StyledInstructionHeaderContainer>
         <StyledInstructionWrapper>
-          <h4>{instruction.instructionType}</h4>
+          <h4>{instruction.instructionFor}</h4>
           <button onClick={() => setShowMore(!showMore)}>
             {showMore ? "Show less" : "Show more"}
           </button>

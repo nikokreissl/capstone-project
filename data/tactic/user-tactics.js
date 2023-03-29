@@ -5,7 +5,7 @@ export const givenUserTactics = [
     formation: "4-4-2",
     generalInstructions: [
       {
-        instructionType: "Defence",
+        instructionFor: "Defence",
         detailedInstructions: [
           {
             instructionName: "Defensive Style",
@@ -22,7 +22,7 @@ export const givenUserTactics = [
         ],
       },
       {
-        instructionType: "Attacking",
+        instructionFor: "Attacking",
         detailedInstructions: [
           {
             instructionName: "Build Up Play",
@@ -43,7 +43,7 @@ export const givenUserTactics = [
         ],
       },
       {
-        instructionType: "Corners & Free Kicks",
+        instructionFor: "Corners & Free Kicks",
         detailedInstructions: [
           {
             instructionName: "Corners",
@@ -58,7 +58,7 @@ export const givenUserTactics = [
     ],
     playerInstructions: [
       {
-        position: "GK",
+        instructionFor: "GK",
         detailedInstructions: [
           {
             instructionName: "Saving On Crosses",
@@ -71,7 +71,7 @@ export const givenUserTactics = [
         ],
       },
       {
-        position: "RB",
+        instructionFor: "RB",
         detailedInstructions: [
           {
             instructionName: "Attacking Runs",
@@ -86,13 +86,13 @@ export const givenUserTactics = [
             value: "Overlap",
           },
           {
-            instructionName: "Defensive Position",
-            value: "Keep Position",
+            instructionName: "Defensive instructionFor",
+            value: "Keep instructionFor",
           },
         ],
       },
       {
-        position: "RCB",
+        instructionFor: "RCB",
         detailedInstructions: [
           {
             instructionName: "Attacking Support",
@@ -103,13 +103,13 @@ export const givenUserTactics = [
             value: "Normal Interception",
           },
           {
-            instructionName: "Defensive Position",
-            value: "Keep Position",
+            instructionName: "Defensive instructionFor",
+            value: "Keep instructionFor",
           },
         ],
       },
       {
-        position: "LCB",
+        instructionFor: "LCB",
         detailedInstructions: [
           {
             instructionName: "Attacking Support",
@@ -120,13 +120,13 @@ export const givenUserTactics = [
             value: "Normal Interception",
           },
           {
-            instructionName: "Defensive Position",
-            value: "Keep Position",
+            instructionName: "Defensive instructionFor",
+            value: "Keep instructionFor",
           },
         ],
       },
       {
-        position: "LB",
+        instructionFor: "LB",
         detailedInstructions: [
           {
             instructionName: "Attacking Runs",
@@ -141,13 +141,13 @@ export const givenUserTactics = [
             value: "Overlap",
           },
           {
-            instructionName: "Defensive Position",
-            value: "Keep Position",
+            instructionName: "Defensive instructionFor",
+            value: "Keep instructionFor",
           },
         ],
       },
       {
-        position: "RM",
+        instructionFor: "RM",
         detailedInstructions: [
           {
             instructionName: "Chance Creation",
@@ -172,14 +172,14 @@ export const givenUserTactics = [
         ],
       },
       {
-        position: "RCM",
+        instructionFor: "RCM",
         detailedInstructions: [
           {
             inscructionName: "Attacking Support",
             value: "Stay Back While Attacking",
           },
           {
-            inscructionName: "Defensive Position",
+            inscructionName: "Defensive instructionFor",
             value: "Cover Center",
           },
           {
@@ -187,8 +187,8 @@ export const givenUserTactics = [
             value: "Normal Interception",
           },
           {
-            inscructionName: "Positioning Freedom",
-            value: "Stick to Position",
+            inscructionName: "instructionForing Freedom",
+            value: "Stick to instructionFor",
           },
           {
             inscructionName: "Support On Crosses",
@@ -197,14 +197,14 @@ export const givenUserTactics = [
         ],
       },
       {
-        position: "LCM",
+        instructionFor: "LCM",
         detailedInstructions: [
           {
             inscructionName: "Attacking Support",
             value: "Balanced Attack",
           },
           {
-            inscructionName: "Defensive Position",
+            inscructionName: "Defensive instructionFor",
             value: "Cover Wing",
           },
           {
@@ -212,8 +212,8 @@ export const givenUserTactics = [
             value: "Aggressive Interception",
           },
           {
-            inscructionName: "Positioning Freedom",
-            value: "Stick to Position",
+            inscructionName: "instructionForing Freedom",
+            value: "Stick to instructionFor",
           },
           {
             inscructionName: "Support On Crosses",
@@ -222,7 +222,7 @@ export const givenUserTactics = [
         ],
       },
       {
-        position: "LM",
+        instructionFor: "LM",
         detailedInstructions: [
           {
             instructionName: "Chance Creation",
@@ -247,7 +247,7 @@ export const givenUserTactics = [
         ],
       },
       {
-        position: "RST",
+        instructionFor: "RST",
         detailedInstructions: [
           {
             instructionName: "Attacking Runs",
@@ -268,7 +268,7 @@ export const givenUserTactics = [
         ],
       },
       {
-        position: "LST",
+        instructionFor: "LST",
         detailedInstructions: [
           {
             instructionName: "Attacking Runs",

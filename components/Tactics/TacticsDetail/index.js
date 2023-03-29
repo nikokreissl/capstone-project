@@ -63,7 +63,13 @@ export default function TacticsDetail({ tactic }) {
           ))}
         </>
       )}
-      {showPlayerInstructions && <>{}</>}
+      {showPlayerInstructions && (
+        <>
+          {tactic.playerInstructions.map((player) => (
+            <InstructionDetail key={player.position} instruction={player} />
+          ))}
+        </>
+      )}
     </>
   );
 }
