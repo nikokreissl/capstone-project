@@ -38,10 +38,6 @@ export default function App({ Component, pageProps }) {
 
   const [userTactics, setUserTactics] = useState(givenUserTactics);
 
-  // const formation = "3-1-4-2";
-
-  // createDefaultTactic(formation);
-
   function handleAddTactic(newFormation) {
     const tactic = {
       id: uid(),

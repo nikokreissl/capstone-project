@@ -25,6 +25,7 @@ export function getGeneralInstructions() {
       };
     }
   );
+  return defaultGeneralInstuctions;
 }
 
 export function createDefaultTactic(createFormation) {

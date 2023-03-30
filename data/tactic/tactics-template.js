@@ -15,7 +15,7 @@ export const formations = [
         key: "CB",
       },
       {
-        position: "RCB",
+        position: "LCB",
         key: "CB",
       },
       {
@@ -51,465 +51,1425 @@ export const formations = [
   {
     name: "3-4-1-2",
     positions: [
-      "GK",
-      "RCB",
-      "CCB",
-      "LCB",
-      "RM",
-      "RCM",
-      "LCM",
-      "LM",
-      "CAM",
-      "RST",
-      "LST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "CCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "CAM",
+        key: "CAM",
+      },
+      {
+        position: "RST",
+        key: "ST",
+      },
+      {
+        position: "LST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "3-4-2-1",
     positions: [
-      "GK",
-      "RCB",
-      "CCB",
-      "LCB",
-      "RM",
-      "RCM",
-      "LCM",
-      "LM",
-      "RCF",
-      "LCF",
-      "ST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "CCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "RCF",
+        key: "CF",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
+      {
+        position: "LCF",
+        key: "CF",
+      },
     ],
   },
   {
     name: "3-4-3",
     positions: [
-      "GK",
-      "RCB",
-      "CCB",
-      "LCB",
-      "RM",
-      "RCM",
-      "LCM",
-      "LM",
-      "RW",
-      "ST",
-      "LW",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "CCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "RW",
+        key: "RW",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
+      {
+        position: "RW",
+        key: "RW",
+      },
     ],
   },
   {
     name: "3-5-2",
     positions: [
-      "GK",
-      "RCB",
-      "CCB",
-      "LCB",
-      "RM",
-      "LCDM",
-      "LCDM",
-      "LM",
-      "CAM",
-      "RST",
-      "LST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "CCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "RCDM",
+        key: "CDM",
+      },
+      {
+        position: "RCDM",
+        key: "CDM",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "CAM",
+        key: "CAM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "RST",
+        key: "ST",
+      },
+      {
+        position: "LST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-1-2-1-2",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "CDM",
-      "RM",
-      "LM",
-      "CAM",
-      "RST",
-      "LST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      ,
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "CDM",
+        key: "CDM",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "CAM",
+        key: "CAM",
+      },
+      {
+        position: "RST",
+        key: "ST",
+      },
+      {
+        position: "LST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-1-2-1-2 (2)",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "CDM",
-      "RCM",
-      "LCM",
-      "CAM",
-      "RST",
-      "LST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      ,
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "CDM",
+        key: "CDM",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "CAM",
+        key: "CAM",
+      },
+      {
+        position: "RST",
+        key: "ST",
+      },
+      {
+        position: "LST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-1-3-2",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "CDM",
-      "RCM",
-      "CCM",
-      "LCM",
-      "RST",
-      "LST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      ,
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "CDM",
+        key: "CDM",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "CCM",
+        key: "CM",
+      },
+      {
+        position: "RAM",
+        key: "CM",
+      },
+      {
+        position: "RST",
+        key: "ST",
+      },
+      {
+        position: "LST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-1-4-1",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "CDM",
-      "RM",
-      "RCM",
-      "LCM",
-      "LM",
-      "ST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "CDM",
+        key: "CDM",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-2-2-2",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RCDM",
-      "LCDM",
-      "RCAM",
-      "LCAM",
-      "RST",
-      "LST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RCDM",
+        key: "CDM",
+      },
+      {
+        position: "LCDM",
+        key: "CDM",
+      },
+      {
+        position: "RCAM",
+        key: "CAM",
+      },
+      {
+        position: "LCAM",
+        key: "CAM",
+      },
+      {
+        position: "RST",
+        key: "ST",
+      },
+      {
+        position: "LST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-2-3-1",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RCDM",
-      "LCDM",
-      "RCAM",
-      "CCAM",
-      "LCAM",
-      "ST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RCDM",
+        key: "CDM",
+      },
+      {
+        position: "LCDM",
+        key: "CDM",
+      },
+      {
+        position: "RCAM",
+        key: "CAM",
+      },
+      {
+        position: "CCAM",
+        key: "CAM",
+      },
+      {
+        position: "LCAM",
+        key: "CAM",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-2-3-1 (2)",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RCDM",
-      "LCDM",
-      "RM",
-      "LM",
-      "CAM",
-      "ST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RCDM",
+        key: "CDM",
+      },
+      {
+        position: "LCDM",
+        key: "CDM",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "CAM",
+        key: "CAM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-2-4",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RCM",
-      "LCM",
-      "RW",
-      "RST",
-      "LST",
-      "LW",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "RW",
+        key: "RW",
+      },
+      {
+        position: "LW",
+        key: "LW",
+      },
+      {
+        position: "RST",
+        key: "ST",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-3-1-2",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RCM",
-      "CCM",
-      "LCM",
-      "CAM",
-      "RST",
-      "LST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "CCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "CAM",
+        key: "CAM",
+      },
+      {
+        position: "RST",
+        key: "ST",
+      },
+      {
+        position: "RST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-3-2-1",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RCM",
-      "CCM",
-      "LCM",
-      "RCF",
-      "LCF",
-      "ST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "CCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "RCF",
+        key: "CF",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
+      {
+        position: "LCF",
+        key: "CF",
+      },
     ],
   },
   {
     name: "4-3-3",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RCM",
-      "CCM",
-      "LCM",
-      "RW",
-      "ST",
-      "LW",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "CCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "RW",
+        key: "RW",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
+      {
+        position: "LW",
+        key: "LW",
+      },
     ],
   },
   {
     name: "4-3-3 (2)",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "CDM",
-      "RCM",
-      "LCM",
-      "RW",
-      "ST",
-      "LW",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "CDM",
+        key: "CDM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "RW",
+        key: "RW",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
+      {
+        position: "LW",
+        key: "LW",
+      },
     ],
   },
   {
     name: "4-3-3 (3)",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RCDM",
-      "LCDM",
-      "CM",
-      "RW",
-      "ST",
-      "LW",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RCDM",
+        key: "CDM",
+      },
+      {
+        position: "CM",
+        key: "CM",
+      },
+      {
+        position: "LCDM",
+        key: "CDM",
+      },
+      {
+        position: "RW",
+        key: "RW",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
+      {
+        position: "LW",
+        key: "LW",
+      },
     ],
   },
   {
     name: "4-3-3 (4)",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RCM",
-      "LCM",
-      "CAM",
-      "RW",
-      "ST",
-      "LW",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "CAM",
+        key: "CAM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "RW",
+        key: "RW",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
+      {
+        position: "LW",
+        key: "LW",
+      },
     ],
   },
   {
     name: "4-3-3 (5)",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "CDM",
-      "RCM",
-      "LCM",
-      "CF",
-      "RW",
-      "LW",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "CDM",
+        key: "CDM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "RW",
+        key: "RW",
+      },
+      {
+        position: "CF",
+        key: "CF",
+      },
+      {
+        position: "LW",
+        key: "LW",
+      },
     ],
   },
   {
     name: "4-4-1-1",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RM",
-      "RCM",
-      "LCM",
-      "LM",
-      "CF",
-      "ST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "CF",
+        key: "CF",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-4-1-1 (2)",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RM",
-      "RCM",
-      "LCM",
-      "LM",
-      "CAM",
-      "ST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "CAM",
+        key: "CAM",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-4-2",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RM",
-      "RCM",
-      "LCM",
-      "LM",
-      "RST",
-      "LST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "RST",
+        key: "ST",
+      },
+      {
+        position: "LST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-4-2 (2)",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RCDM",
-      "LCDM",
-      "RM",
-      "LM",
-      "RST",
-      "LST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "RCDM",
+        key: "CDM",
+      },
+      {
+        position: "LCDM",
+        key: "CDM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "RST",
+        key: "ST",
+      },
+      {
+        position: "LST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-5-1",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RM",
-      "CM",
-      "LM",
-      "RCAM",
-      "LCAM",
-      "ST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "RCAM",
+        key: "CAM",
+      },
+      {
+        position: "CM",
+        key: "CM",
+      },
+      {
+        position: "LCAM",
+        key: "CAM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "4-5-1 (2)",
     positions: [
-      "GK",
-      "RB",
-      "RCB",
-      "LCB",
-      "LB",
-      "RM",
-      "LCM",
-      "CCM",
-      "RCM",
-      "LM",
-      "ST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RB",
+        key: "RB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LB",
+        key: "LB",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "CM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "5-2-1-2",
     positions: [
-      "GK",
-      "RWB",
-      "RCB",
-      "CCB",
-      "LCB",
-      "LWB",
-      "RCM",
-      "LCM",
-      "CAM",
-      "RST",
-      "LST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RWB",
+        key: "RWB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "CCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LWB",
+        key: "LWB",
+      },
+      {
+        position: "RDCM",
+        key: "CDM",
+      },
+      {
+        position: "LDCM",
+        key: "CDM",
+      },
+      {
+        position: "CAM",
+        key: "CAM",
+      },
+      {
+        position: "RST",
+        key: "ST",
+      },
+      {
+        position: "LST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "5-2-2-1",
     positions: [
-      "GK",
-      "RWB",
-      "RCB",
-      "CCB",
-      "LCB",
-      "LWB",
-      "RCM",
-      "LCM",
-      "RW",
-      "ST",
-      "LW",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RWB",
+        key: "RWB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "CCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LWB",
+        key: "LWB",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "RCF",
+        key: "CF",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
+      {
+        position: "LCF",
+        key: "CF",
+      },
     ],
   },
   {
     name: "5-1-2-2",
     positions: [
-      "GK",
-      "RWB",
-      "RCB",
-      "CCB",
-      "LCB",
-      "LWB",
-      "RCM",
-      "CDM",
-      "LCM",
-      "RST",
-      "LST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RWB",
+        key: "RWB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "CCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LWB",
+        key: "LWB",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "CDM",
+        key: "CDM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "RST",
+        key: "ST",
+      },
+      {
+        position: "LST",
+        key: "ST",
+      },
     ],
   },
   {
     name: "5-4-1",
     positions: [
-      "GK",
-      "RWB",
-      "RCB",
-      "CCB",
-      "LCB",
-      "LWB",
-      "RM",
-      "RCM",
-      "LCM",
-      "LM",
-      "ST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RWB",
+        key: "RWB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "CCB",
+        key: "CB",
+      },
+      {
+        position: "LCB",
+        key: "CB",
+      },
+      {
+        position: "LWB",
+        key: "LWB",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "ST",
+        key: "ST",
+      },
     ],
   },
 ];
