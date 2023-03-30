@@ -5,7 +5,7 @@ import { StyledTab, StyledTabsContainer } from "./StyledTacticsDetail";
 
 import InstructionDetail from "../Instruction";
 
-export default function TacticsDetail({ tactic, path }) {
+export default function TacticsDetail({ tactic }) {
   const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
   const [showPlayerInstructions, setShowPlayerInstructions] = useState(false);
 
