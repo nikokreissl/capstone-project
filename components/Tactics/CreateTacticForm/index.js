@@ -28,8 +28,12 @@ export default function CreateTacticForm({ onBackToTactics }) {
       name: formationNameValue,
       formation: formationValue,
     };
-    onBackToTactics();
-    handleAddTactic(newFormation);
+    if (!formationValue) {
+      alert("Please select a formation");
+    } else {
+      onBackToTactics();
+      handleAddTactic(newFormation);
+    }
   }
 
   return (
@@ -42,6 +46,8 @@ export default function CreateTacticForm({ onBackToTactics }) {
           onChange={handleFormationNameInput}
           name="tactic-name"
           id="tactic-name"
+          pattern="^(?!\s*$).+"
+          required
         />
         <StyledFormLabel htmlFor="formation">Choose Formation</StyledFormLabel>
         <select
