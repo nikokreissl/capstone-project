@@ -4,22 +4,45 @@ import {
   StyledFormInput,
   StyledForm,
 } from "../../GeneralComponents/CreateForm/StyledCreateForm";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { DataContext } from "../../../pages/_app";
 
 import { StyledDetailsLink } from "../../Competition/CompetitionCard/StyledCompetitionCard";
-export default function CreateTacticForm() {
+export default function CreateTacticForm({ onBackToTactics }) {
   const [formationValue, setFormationValue] = useState();
 
   function handleFormationChange(event) {
     setFormationValue(event.target.value);
   }
+  const [formationNameValue, setFormationNameValue] = useState("");
+
+  function handleFormationNameInput(event) {
+    setFormationNameValue(event.target.value);
+  }
+
+  const { handleAddTactic } = useContext(DataContext);
+
+  function handleFormationSubmit(event) {
+    event.preventDefault();
+    const newFormation = {
+      name: formationNameValue,
+      formation: formationValue,
+    };
+    onBackToTactics();
+    handleAddTactic(newFormation);
+  }
 
   return (
     <>
       <StyledDetailsLink href={"/"}>Cancel</StyledDetailsLink>
-      <StyledForm>
+      <StyledForm onSubmit={handleFormationSubmit}>
         <StyledFormLabel htmlFor="tactic-name">Tactic name</StyledFormLabel>
-        <StyledFormInput name="tactic-name" id="tactic-name" />
+        <StyledFormInput
+          value={formationNameValue}
+          onChange={handleFormationNameInput}
+          name="tactic-name"
+          id="tactic-name"
+        />
         <StyledFormLabel htmlFor="formation">Choose Formation</StyledFormLabel>
         <select
           value={formationValue}

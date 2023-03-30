@@ -5,15 +5,10 @@ import Navigation from "../components/GeneralComponents/Navigation";
 import { givenCompetitions } from "../data/competition";
 import { givenObjectives } from "../data/objectives";
 import { givenUserTactics } from "../data/tactic/user-tactics";
-import {
-  formations,
-  playersDetailInstructions,
-  playerInstructionValues,
-} from "../data/tactic/tactics-template";
 import { createContext, useState } from "react";
 import { useCompetitions } from "../hooks/competition-hook";
 import { useObjectives } from "../hooks/objective-hook";
-import { useGetGeneralInstructions } from "../hooks/tactic-hook";
+import { getGeneralInstructions, createDefaultTactic } from "../utils/utils";
 import { uid } from "uid";
 
 export const DataContext = createContext();
@@ -43,86 +38,19 @@ export default function App({ Component, pageProps }) {
 
   const [userTactics, setUserTactics] = useState(givenUserTactics);
 
-  const { defaultGeneralInstuctions } = useGetGeneralInstructions();
+  // const formation = "3-1-4-2";
 
-  const createFormation = "3-1-4-2";
-
-  function createDefaultTactic(createFormation) {
-    function findFormationDetails(newFormation) {
-      return formations.find((formation) => newFormation === formation.name);
-    }
-
-    const formationDetails = findFormationDetails(createFormation);
-
-    function createPlayerInstructionsArray(formationDetails) {
-      return formationDetails.positions.map((position) => {
-        return {
-          instructionFor: position.position,
-          key: position.key,
-        };
-      });
-    }
-
-    const playerInstructionsArray =
-      createPlayerInstructionsArray(formationDetails);
-
-    function addInstructionsToPlayerPositions(playerInstructionsArray) {
-      return playerInstructionsArray.map((playerInstruction) => {
-        return {
-          ...playerInstruction,
-          detailedInstructions: playersDetailInstructions
-            .find((playerDetailInstructions) =>
-              playerDetailInstructions.key.includes(playerInstruction.key)
-            )
-            .instructions.map((instruction) => ({
-              instructionName: instruction,
-            })),
-        };
-      });
-    }
-
-    const playerInstructionsArrayWithInstructions =
-      addInstructionsToPlayerPositions(playerInstructionsArray);
-
-    function addValuesToInstructions(playerInstructionsArrayWithInstructions) {
-      const newInstructions = playerInstructionsArrayWithInstructions.map(
-        (instruction) => {
-          const newDetailedInstructions = instruction.detailedInstructions.map(
-            (detailedInstruction) => {
-              const matchingValue = playerInstructionValues.find(
-                (value) =>
-                  value.instructionName === detailedInstruction.instructionName
-              );
-              if (matchingValue) {
-                return {
-                  ...detailedInstruction,
-                  value: matchingValue.values[0],
-                };
-              }
-              return detailedInstruction;
-            }
-          );
-          return {
-            ...instruction,
-            detailedInstructions: newDetailedInstructions,
-          };
-        }
-      );
-      console.log(newInstructions);
-      return newInstructions;
-    }
-    addValuesToInstructions(playerInstructionsArrayWithInstructions);
-  }
-
-  createDefaultTactic(createFormation);
+  // createDefaultTactic(formation);
 
   function handleAddTactic(newFormation) {
     const tactic = {
       id: uid(),
       name: newFormation.name,
       formation: newFormation.formation,
-      generalInstructions: defaultGeneralInstuctions,
+      generalInstructions: getGeneralInstructions(),
+      playerInstructions: createDefaultTactic(newFormation.formation),
     };
+    setUserTactics([tactic, ...userTactics]);
   }
 
   return (
@@ -145,6 +73,7 @@ export default function App({ Component, pageProps }) {
         handleChallengeUpdate,
         handleChallengeDelete,
         userTactics,
+        handleAddTactic,
       }}
     >
       <GlobalStyle />
