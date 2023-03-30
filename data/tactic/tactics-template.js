@@ -2,17 +2,50 @@ export const formations = [
   {
     name: "3-1-4-2",
     positions: [
-      "GK",
-      "RCB",
-      "CCB",
-      "LCB",
-      "RM",
-      "RCM",
-      "CDM",
-      "LCM",
-      "LM",
-      "RST",
-      "LST",
+      {
+        position: "GK",
+        key: "GK",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "CCB",
+        key: "CB",
+      },
+      {
+        position: "RCB",
+        key: "CB",
+      },
+      {
+        position: "CDM",
+        key: "CDM",
+      },
+      {
+        position: "RM",
+        key: "RM",
+      },
+      {
+        position: "RCM",
+        key: "CM",
+      },
+      {
+        position: "LCM",
+        key: "CM",
+      },
+      {
+        position: "LM",
+        key: "LM",
+      },
+      {
+        position: "RST",
+        key: "ST",
+      },
+      {
+        position: "LST",
+        key: "ST",
+      },
     ],
   },
   {
@@ -481,216 +514,263 @@ export const formations = [
   },
 ];
 
-export const generalInstructions = [
+export const generalInstructionsTemplate = [
   {
-    defensiveStyle: [
-      "Balanced",
-      "Pressure on Heavy Touch",
-      "Press After Possession Loss",
-      "Constant Pressure",
+    instructionFor: "Defence",
+    detailedInstructions: [
+      {
+        instructionName: "Defensive Style",
+        value: [
+          "Balanced",
+          "Pressure on Heavy Touch",
+          "Press After Possession Loss",
+          "Constant Pressure",
+        ],
+      },
+      {
+        instructionName: "Defensive Width",
+        value: 50,
+      },
+      {
+        instructionName: "Defensive Depth",
+        value: 50,
+      },
     ],
-    defensiveWidth: 50,
-    defensiveDepth: 50,
   },
   {
-    buildUpPlay: ["Balanced", "Slow Build Up", "Long Ball", "Fast Build Up"],
-    chanceCreation: [
-      "Balanced",
-      "Possession",
-      "Direct Passing",
-      "Forward Runs",
+    instructionFor: "Attacking",
+    detailedInstructions: [
+      {
+        instructionName: "Build Up Play",
+        value: ["Balanced", "Slow Build Up", "Long Ball", "Fast Build Up"],
+      },
+      {
+        instructionName: "Chance Creation",
+        value: ["Balanced", "Possession", "Direct Passing", "Forward Runs"],
+      },
+      {
+        instructionName: "Offensive Width",
+        value: 50,
+      },
+      {
+        instructionName: "Players In Box",
+        value: 3,
+      },
     ],
-    offensiveWidth: 50,
-    playersInBox: 5,
-    corners: 3,
-    freeKicks: 3,
+  },
+  {
+    instructionFor: "Corners & Free Kicks",
+    detailedInstructions: [
+      {
+        instructionName: "Corners",
+        value: 3,
+      },
+      {
+        instructionName: "Free Kicks",
+        value: 3,
+      },
+    ],
   },
 ];
 
-export const playerInstructions = [
+export const playersDetailInstructions = [
   {
     position: "GK",
-    savingOnCrosses: ["Balanced", "Comes for Crosses", "Cautions with crosses"],
-    savingOutsideBox: ["Balanced", "Sweeper Keeper"],
+    key: ["GK"],
+    instructions: ["Saving On Crosses", "Saving Outside Box"],
   },
   {
     position: "RWB / LWB",
-    attackingRuns: [
-      "Balanced Attack",
-      "Join the Attack",
-      "Stay Back While Attacking",
+    key: ["RWB", "LWB"],
+    instructions: [
+      "Attacking Runs",
+      "Interception",
+      "Run Type",
+      "Defensive Position (Defenders)",
     ],
-    interception: [
-      "Normal Interception",
-      "Aggressive Interception",
-      "Conservative Interception",
-    ],
-    runType: ["Mixed Attack", "Inverted", "Overlap"],
-    defensivePosition: ["Keep Position", "Narrow Cover"],
   },
   {
     position: "CB",
-    attackingSupport: [
-      "Stay Back While Attacking",
-      "Join the Attack",
-      "Play As Striker",
+    key: ["CB"],
+    instructions: [
+      "Attacking Support (CB)",
+      "Interception",
+      "Defensive Position (Defenders)",
     ],
-    interception: [
-      "Normal Interception",
-      "Aggressive Interception",
-      "Conservative Interception",
-    ],
-    defensivePosition: ["Keep Position", "Narrow Cover"],
   },
   {
     position: "LB / RB",
-    attackingRuns: [
-      "Balanced Attack",
-      "Join the Attack",
-      "Stay Back While Attacking",
+    key: ["LB", "RB"],
+    instructions: [
+      "Attacking Runs",
+      "Interception",
+      "Run Type",
+      "Defensive Position (Defenders)",
     ],
-    interception: [
-      "Normal Interception",
-      "Aggressive Interception",
-      "Conservative Interception",
-    ],
-    runType: ["Mixed Attack", "Inverted", "Overlap"],
-    defensivePosition: ["Keep Position", "Narrow Cover"],
   },
   {
     position: "CDM",
-    attackingSupport: [
-      "Balanced Attack",
-      "Stay Back While Attacking",
-      "Get Forward",
+    key: ["CDM"],
+    instructions: [
+      "Attacking Support (Midfielders)",
+      "Defensive Position (Midfielders)",
+      "Positioning Freedom",
+      "Defensive Behavior",
     ],
-    defensivePosition: ["Cover Wing", "Cover Center"],
-    interception: [
-      "Normal Interception",
-      "Aggressive Interception",
-      "Conservative Interception",
-    ],
-    positioningFreedom: ["Stick to Position", "Free Roam"],
-    defensiveBehavior: ["Balanced", "Cut Passing Lanes", "Narrow Cover"],
   },
   {
     position: "CM",
-    attackingSupport: [
-      "Balanced Attack",
-      "Stay Back While Attacking",
-      "Get Forward",
-      "Drop Back To Defense",
-    ],
-    defensivePosition: ["Cover Wing", "Cover Center"],
-    interception: [
-      "Normal Interception",
-      "Aggressive Interception",
-      "Conservative Interception",
-    ],
-    positioningFreedom: ["Stick to Position", "Free Roam"],
-    supportOnCrosses: [
-      "Balanced Crossing Runs",
-      "Get Into Box For Cross",
-      "Stay on Edge Of Box For Cross",
+    key: ["CM"],
+    instructions: [
+      "Attacking Support (Midfielders)",
+      "Defensive Position (Midfielders)",
+      "Interception",
+      "Support On Crosses",
     ],
   },
   {
     position: "CAM",
-    defensiveSupport: [
-      "Basic Defence Support",
-      "Come Back on Defence",
-      "Stay Forward",
-    ],
-    interception: [
-      "Normal Interception",
-      "Aggressive Interception",
-      "Conservative Interception",
-    ],
-    positioningFreedom: ["Stick to Position", "Free Roam", "Drift Wide"],
-    supportOnCrosses: [
-      "Balanced Crossing Runs",
-      "Get Into Box For Cross",
-      "Stay on Edge Of Box For Cross",
+    key: ["CAM"],
+    instructions: [
+      "Defensive Support",
+      "Interception",
+      "Positioning Freedom",
+      "Support On Crosses",
     ],
   },
   {
     position: "LM / RM",
-    chanceCreation: ["Balanced Width", "Cut Inside", "Stay Wide", "Free Roam"],
-    interception: [
-      "Normal Interception",
-      "Aggressive Interception",
-      "Conservative Interception",
-    ],
-    supportOnCrosses: [
-      "Balanced Crossing Runs",
-      "Get Into Box For Cross",
-      "Stay on Edge Of Box For Cross",
-    ],
-    supportRuns: [
-      "Balanced Support",
-      "Get In Behind",
-      "Come Short",
-      "Target Man",
-    ],
-    defensiveSupport: [
-      "Basic Defence Support",
-      "Come Back on Defence",
-      "Stay Forward",
+    key: ["LM", "RM"],
+    instructions: [
+      "Chance Creation",
+      "Interception",
+      "Support On Crosses",
+      "Support Runs",
+      "Defensive Support",
     ],
   },
   {
     position: "LW / RW",
-    chanceCreation: ["Balanced Width", "Cut Inside", "Stay Wide", "Free Roam"],
-    defensiveSupport: [
-      "Basic Defence Support",
-      "Come Back on Defence",
-      "Stay Forward",
-    ],
-    interception: [
-      "Normal Interception",
-      "Aggressive Interception",
-      "Conservative Interception",
-    ],
-    supportOnCrosses: [
-      "Balanced Crossing Runs",
-      "Get Into Box For Cross",
-      "Stay on Edge Of Box For Cross",
-    ],
-    supportRuns: [
-      "Balanced Support",
-      "Get In Behind",
-      "Come Short",
-      "Target Man",
+    key: ["LW", "RW"],
+    instructions: [
+      "Chance Creation",
+      "Interception",
+      "Support On Crosses",
+      "Support Runs",
+      "Defensive Support",
     ],
   },
   {
     position: "CF",
-    attackingRuns: ["Mixed Attack", "Get In Behind", "Target Man", "False 9"],
-    defensiveSupport: [
-      "Basic Defence Support",
-      "Come Back on Defence",
-      "Stay Forward",
+    key: ["CF"],
+    instructions: [
+      "Attacking Runs",
+      "Defensive Support",
+      "Interception",
+      "Attacking Positioning",
     ],
-    interception: [
-      "Normal Interception",
-      "Aggressive Interception",
-      "Conservative Interception",
-    ],
-    supportRuns: ["Balanced Width", "Drift Wide", "Stay Central"],
   },
   {
     position: "ST",
-    attackingRuns: ["Mixed Attack", "Get In Behind", "Target Man", "False 9"],
-    defensiveSupport: [
-      "Basic Defence Support",
-      "Come Back on Defence",
-      "Stay Forward",
+    key: ["ST"],
+    instructions: [
+      "Attacking Runs",
+      "Defensive Support",
+      "Interception",
+      "Attacking Positioning",
     ],
-    interception: [
+  },
+];
+
+export const playerInstructionValues = [
+  {
+    instructionName: "Saving On Crosses",
+    values: ["Balanced", "Comes for Crosses", "Cautions with crosses"],
+  },
+
+  {
+    instructionName: "Saving Outside Box",
+    values: ["Balanced", "Sweeper Keeper"],
+  },
+  {
+    instructionName: "Attacking Runs",
+    values: ["Balanced Attack", "Join the Attack", "Stay Back While Attacking"],
+  },
+  {
+    instructionName: "Interception",
+    values: [
       "Normal Interception",
       "Aggressive Interception",
       "Conservative Interception",
     ],
-    supportRuns: ["Balanced Width", "Drift Wide", "Stay Central"],
+  },
+  {
+    instructionName: "Run Type",
+    values: ["Mixed Attack", "Inverted", "Overlap"],
+  },
+  {
+    instructionName: "Defensive Position (Defenders)",
+    values: ["Keep Position", "Narrow Cover"],
+  },
+  {
+    instructionName: "Attacking Support (CB)",
+    values: ["Stay Back While Attacking", "Join the Attack", "Play As Striker"],
+  },
+  {
+    instructionName: "Attacking Runs",
+    values: ["Balanced Attack", "Join the Attack", "Stay Back While Attacking"],
+  },
+  {
+    instructionName: "Run Type",
+    values: ["Mixed Attack", "Inverted", "Overlap"],
+  },
+  {
+    instructionName: "Attacking Support (Midfielders)",
+    values: [
+      "Balanced Attack",
+      "Stay Back While Attacking",
+      "Get Forward",
+      "Drop Back to Defence",
+    ],
+  },
+  {
+    instructionName: "Defensive Position (Midfielders)",
+    values: ["Cover Wing", "Cover Center"],
+  },
+  {
+    instructionName: "Positioning Freedom",
+    values: ["Stick to Position", "Free Roam", "Drift Wide"],
+  },
+  {
+    instructionName: "Defensive Behavior",
+    values: ["Balanced", "Cut Passing Lanes", "Narrow Cover"],
+  },
+  {
+    instructionName: "Support On Crosses",
+    values: [
+      "Balanced Crossing Runs",
+      "Get Into Box For Cross",
+      "Stay on Edge Of Box For Cross",
+    ],
+  },
+  {
+    instructionName: "Defensive Support",
+    values: ["Basic Defence Support", "Come Back on Defence", "Stay Forward"],
+  },
+  {
+    instructionName: "Chance Creation",
+    values: ["Balanced Width", "Cut Inside", "Stay Wide", "Free Roam"],
+  },
+  {
+    instructionName: "Support Runs",
+    values: ["Balanced Support", "Get In Behind", "Come Short", "Target Man"],
+  },
+  {
+    instructionName: "Attacking Runs",
+    values: ["Mixed Attack", "Get In Behind", "Target Man", "False 9"],
+  },
+  {
+    instructionName: "Attacking Positioning",
+    values: ["Balanced Width", "Drift Wide", "Stay Central"],
   },
 ];

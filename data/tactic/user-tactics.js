@@ -262,7 +262,7 @@ export const givenUserTactics = [
             value: "Normal Interception",
           },
           {
-            instructionName: "Support Runs",
+            instructionName: "Attacking Positioning",
             value: "Stay Central",
           },
         ],
@@ -283,7 +283,7 @@ export const givenUserTactics = [
             value: "Aggressive Interception",
           },
           {
-            instructionName: "Support Runs",
+            instructionName: "Attacking Positioning",
             value: "Balanced Width",
           },
         ],
