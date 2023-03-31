@@ -8,6 +8,7 @@ import {
   StyledFormButton,
   StyledFormLabelInputWrapper,
 } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
+import { StyledDetailsLink } from "../CompetitionCard/StyledCompetitionCard";
 
 export default function CreateCompetitionForm() {
   const router = useRouter();
@@ -34,7 +35,7 @@ export default function CreateCompetitionForm() {
 
   return (
     <>
-      <button onClick={() => router.back()}>Cancel</button>
+      <StyledDetailsLink href={"/"}>Cancel</StyledDetailsLink>
       <StyledForm onSubmit={handleSubmit}>
         <StyledFormLabel htmlFor="competition-name">Name</StyledFormLabel>
         <StyledFormInput
