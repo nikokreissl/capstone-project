@@ -5,6 +5,7 @@ import {
 import { useState } from "react";
 import { StyledButton } from "../../GeneralComponents/Buttons/StyledButton";
 import styled from "styled-components";
+import { generalInstructionsTemplate } from "../../../data/tactic/tactics-template";
 
 export default function TacticsEdit({ tactic, onToggleEdit }) {
   const [tacticName, setTacticName] = useState(tactic.name);
@@ -30,7 +31,12 @@ export default function TacticsEdit({ tactic, onToggleEdit }) {
     }
   }
 
-  console.log(tactic);
+  function getGivenValueGeneralInstruction(inFor, inName) {
+    const givenValue = tactic.generalInstructions
+      .find((g) => g.instructionFor === inFor)
+      .detailedInstructions.find((d) => d.instructionName === inName).value;
+    return givenValue;
+  }
 
   return (
     <>
@@ -62,18 +68,71 @@ export default function TacticsEdit({ tactic, onToggleEdit }) {
             Player Instructions
           </StyledTab>
         </StyledTabsContainer>
-        {/* {showGeneralInstructions && "General Instructions"}
-        {showPlayerInstructions && "Player Instructions"} */}
-        {tactic.generalInstructions.map((instruction) => (
-          <h4 key={instruction.instructionFor}>{instruction.instructionFor}</h4>
+        {generalInstructionsTemplate.map((instruction) => (
+          <div key={instruction.instructionFor}>
+            <h4>{instruction.instructionFor}</h4>
+            {instruction.detailedInstructions.map((detailedInstruction) => (
+              <StyledDetailedInstructionEditWrapper
+                key={detailedInstruction.instructionName}
+              >
+                <label htmlFor={detailedInstruction.instructionName}>
+                  {detailedInstruction.instructionName}
+                </label>
+                {Array.isArray(detailedInstruction.value) ? (
+                  <select>
+                    {detailedInstruction.value.map((value) => (
+                      <option
+                        key={value}
+                        selected={
+                          getGivenValueGeneralInstruction(
+                            instruction.instructionFor,
+                            detailedInstruction.instructionName
+                          ) === value
+                        }
+                      >
+                        {value}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <input
+                    htmlFor={detailedInstruction.instructionName}
+                    type={"number"}
+                    value={getGivenValueGeneralInstruction(
+                      instruction.instructionFor,
+                      detailedInstruction.instructionName
+                    )}
+                  />
+                )}
+              </StyledDetailedInstructionEditWrapper>
+            ))}
+          </div>
         ))}
       </StyledForm>
     </>
   );
 }
 
+// {generalInstructionsTemplate
+//     .find(
+//       (g) => g.instructionFor === instruction.instructionFor
+//     )
+//     .detailedInstructions.find(
+//       (d) =>
+//         d.instructionName ===
+//         detailedInstruction.instructionName
+//     )
+//     .value.map((v) => (
+//       <option key={v}>{v}</option>
+//     ))}
+
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 10px;
+`;
+
+const StyledDetailedInstructionEditWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;

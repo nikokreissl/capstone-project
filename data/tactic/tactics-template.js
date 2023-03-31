@@ -1490,10 +1490,14 @@ export const generalInstructionsTemplate = [
       {
         instructionName: "Defensive Width",
         value: 50,
+        minValue: 1,
+        maxValue: 100,
       },
       {
         instructionName: "Defensive Depth",
         value: 50,
+        minValue: 1,
+        maxValue: 100,
       },
     ],
   },
@@ -1511,10 +1515,14 @@ export const generalInstructionsTemplate = [
       {
         instructionName: "Offensive Width",
         value: 50,
+        minValue: 1,
+        maxValue: 100,
       },
       {
         instructionName: "Players In Box",
         value: 3,
+        minValue: 1,
+        maxValue: 5,
       },
     ],
   },
@@ -1524,10 +1532,14 @@ export const generalInstructionsTemplate = [
       {
         instructionName: "Corners",
         value: 3,
+        minValue: 1,
+        maxValue: 5,
       },
       {
         instructionName: "Free Kicks",
         value: 3,
+        minValue: 1,
+        maxValue: 5,
       },
     ],
   },
