@@ -40,14 +40,13 @@ export default function TacticsDetail({ tactic }) {
   return (
     <>
       {showEdit ? (
-        <TacticsEdit onToggleEdit={toggleShowEdit} />
+        <TacticsEdit tactic={tactic} onToggleEdit={toggleShowEdit} />
       ) : (
         <>
           <StyledButtonWrapper>
             <StyledDetailsLink href={"/tactics"}>Back</StyledDetailsLink>
             <StyledButton onClick={toggleShowEdit}>⚙️ Edit</StyledButton>
           </StyledButtonWrapper>
-          <StyledDetailsContainer></StyledDetailsContainer>
           <StyledDetailsContainer>
             <h2>{tactic.name}</h2>
             <h3>{tactic.formation}</h3>

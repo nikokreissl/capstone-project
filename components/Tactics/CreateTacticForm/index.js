@@ -53,8 +53,8 @@ export default function CreateTacticForm({ onBackToTactics }) {
         <select
           value={formationValue}
           onChange={handleFormationChange}
-          name="create-formation"
-          id="create-formation"
+          name="formation"
+          id="formation"
         >
           <option value="">Select formation...</option>
           {formations.map((formation) => (
