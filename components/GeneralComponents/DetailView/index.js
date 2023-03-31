@@ -6,7 +6,7 @@ export const StyledDetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 70vw;
+  width: 90vw;
 `;
 
 export const StyledDetailButton = styled(StyledButton)`

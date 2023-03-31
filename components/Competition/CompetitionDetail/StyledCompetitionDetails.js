@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledGameList = styled.ul`
   margin: 12px;
+  padding: 0;
 `;
 
 export default function StyledGameListItemComponent({ children, gameNumber }) {

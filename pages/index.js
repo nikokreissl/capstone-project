@@ -68,7 +68,7 @@ export default function Home() {
   );
 }
 
-const StyledCreateItemForm = styled.form`
+export const StyledCreateItemForm = styled.form`
   width: 80vw;
   margin: 20px;
   display: flex;
@@ -76,6 +76,6 @@ const StyledCreateItemForm = styled.form`
   gap: 0.5em;
 `;
 
-const StyledCreateItemSelect = styled.select`
+export const StyledCreateItemSelect = styled.select`
   width: 30vw;
 `;

@@ -8,7 +8,7 @@ export const StyledHomeList = styled.ul`
 export const StyledHomeContainer = styled.section`
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 90vw;
 `;
 
 export const StyledHomeItemHeadline = styled.h2`
