@@ -2,13 +2,16 @@ import { useState } from "react";
 import { StyledDetailsContainer } from "../../GeneralComponents/DetailView";
 import { StyledDetailsLink } from "../../Competition/CompetitionCard/StyledCompetitionCard";
 import { StyledTab, StyledTabsContainer } from "./StyledTacticsDetail";
+import {
+  StyledButton,
+  StyledButtonWrapper,
+} from "../../GeneralComponents/Buttons/StyledButton";
+import TacticsEdit from "../TacticsEdit";
 
 import InstructionDetail from "../Instruction";
 
 export default function TacticsDetail({ tactic }) {
   const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
-  const [showPlayerInstructions, setShowPlayerInstructions] = useState(false);
-
   function handleClickGeneralInstructions() {
     if (showGeneralInstructions === false) {
       setShowGeneralInstructions(!showGeneralInstructions);
@@ -16,11 +19,18 @@ export default function TacticsDetail({ tactic }) {
     }
   }
 
+  const [showPlayerInstructions, setShowPlayerInstructions] = useState(false);
   function handleClickPlayerInstructions() {
     if (showPlayerInstructions === false) {
       setShowPlayerInstructions(!showPlayerInstructions);
       setShowGeneralInstructions(!showGeneralInstructions);
     }
+  }
+
+  const [showEdit, setShowEdit] = useState(true);
+
+  function toggleShowEdit() {
+    setShowEdit(!showEdit);
   }
 
   if (!tactic) {
@@ -29,43 +39,53 @@ export default function TacticsDetail({ tactic }) {
 
   return (
     <>
-      <StyledDetailsLink href={"/tactics"}>Back</StyledDetailsLink>
-      <StyledDetailsContainer>
-        <h2>{tactic.name}</h2>
-        <h3>{tactic.formation}</h3>
-      </StyledDetailsContainer>
-      <StyledTabsContainer>
-        <StyledTab
-          shown={showGeneralInstructions}
-          handleTabClick={handleClickGeneralInstructions}
-        >
-          General Instructions
-        </StyledTab>
-        <StyledTab
-          shown={showPlayerInstructions}
-          handleTabClick={handleClickPlayerInstructions}
-        >
-          Player Instructions
-        </StyledTab>
-      </StyledTabsContainer>
-      {showGeneralInstructions && (
+      {showEdit ? (
+        <TacticsEdit onToggleEdit={toggleShowEdit} />
+      ) : (
         <>
-          {tactic.generalInstructions.map((instruction) => (
-            <InstructionDetail
-              key={instruction.instructionFor}
-              instruction={instruction}
-            />
-          ))}
-        </>
-      )}
-      {showPlayerInstructions && (
-        <>
-          {tactic.playerInstructions.map((player) => (
-            <InstructionDetail
-              key={player.instructionFor}
-              instruction={player}
-            />
-          ))}
+          <StyledButtonWrapper>
+            <StyledDetailsLink href={"/tactics"}>Back</StyledDetailsLink>
+            <StyledButton onClick={toggleShowEdit}>⚙️ Edit</StyledButton>
+          </StyledButtonWrapper>
+          <StyledDetailsContainer></StyledDetailsContainer>
+          <StyledDetailsContainer>
+            <h2>{tactic.name}</h2>
+            <h3>{tactic.formation}</h3>
+          </StyledDetailsContainer>
+          <StyledTabsContainer>
+            <StyledTab
+              shown={showGeneralInstructions}
+              handleTabClick={handleClickGeneralInstructions}
+            >
+              General Instructions
+            </StyledTab>
+            <StyledTab
+              shown={showPlayerInstructions}
+              handleTabClick={handleClickPlayerInstructions}
+            >
+              Player Instructions
+            </StyledTab>
+          </StyledTabsContainer>
+          {showGeneralInstructions && (
+            <>
+              {tactic.generalInstructions.map((instruction) => (
+                <InstructionDetail
+                  key={instruction.instructionFor}
+                  instruction={instruction}
+                />
+              ))}
+            </>
+          )}
+          {showPlayerInstructions && (
+            <>
+              {tactic.playerInstructions.map((player) => (
+                <InstructionDetail
+                  key={player.instructionFor}
+                  instruction={player}
+                />
+              ))}
+            </>
+          )}
         </>
       )}
     </>
