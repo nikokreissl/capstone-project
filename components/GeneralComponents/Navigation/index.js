@@ -1,16 +1,32 @@
 import styled from "styled-components";
 import Link from "next/link";
 
+const navigationLinks = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Tactics",
+    href: "/tactics",
+  },
+  {
+    name: "Home",
+    href: "/archive",
+  },
+];
+
 export default function Navigation() {
   return (
     <StyledNavigation>
       <StyledNavigationList>
-        <StyledNavigationListItem>
-          <StyledNavigationLink href={"/"}>Home</StyledNavigationLink>
-        </StyledNavigationListItem>
-        <StyledNavigationListItem>
-          <StyledNavigationLink href={"/archive"}>Archive</StyledNavigationLink>
-        </StyledNavigationListItem>
+        {navigationLinks.map((navigationLink) => {
+          <StyledNavigationListItem>
+            <StyledNavigationLink href={navigationLink.href}>
+              {navigationLink.name}
+            </StyledNavigationLink>
+          </StyledNavigationListItem>;
+        })}
       </StyledNavigationList>
     </StyledNavigation>
   );
