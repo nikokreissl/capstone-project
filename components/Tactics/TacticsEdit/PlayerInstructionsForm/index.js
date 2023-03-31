@@ -6,16 +6,12 @@ import {
 } from "../../../../data/tactic/tactics-template";
 
 export default function EditTacticPlayerForm({ tactic }) {
-  console.log(tactic);
   function getGivenValueInstruction(tactic, inFor, inName) {
     const givenValue = tactic.playerInstructions
       .find((p) => p.instructionFor === inFor)
       .detailedInstructions.find((d) => d.instructionName === inName).value;
     return givenValue;
   }
-
-  //   getGivenValueInstruction(tactic, "GK", "Saving On Crosses");
-
   const currentFormation = findFormation(tactic.formation);
   function findFormation(tacticFormation) {
     return formations.find((formation) => formation.name === tacticFormation)
@@ -72,11 +68,13 @@ export default function EditTacticPlayerForm({ tactic }) {
                   <option
                     key={value}
                     value={value}
-                    defaultValue={getGivenValueInstruction(
-                      tactic,
-                      position.position,
-                      instruction.instructionName
-                    )}
+                    selected={
+                      getGivenValueInstruction(
+                        tactic,
+                        position.position,
+                        instruction.instructionName
+                      ) === value
+                    }
                   >
                     {value}
                   </option>

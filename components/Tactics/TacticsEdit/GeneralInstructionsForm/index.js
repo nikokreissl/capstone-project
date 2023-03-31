@@ -29,11 +29,13 @@ export default function EditTacticGeneralForm({ tactic }) {
                     <option
                       key={value}
                       value={value}
-                      defaultValue={getGivenValueGeneralInstruction(
-                        tactic,
-                        instruction.instructionFor,
-                        detailedInstruction.instructionName
-                      )}
+                      selected={
+                        getGivenValueGeneralInstruction(
+                          tactic,
+                          instruction.instructionFor,
+                          detailedInstruction.instructionName
+                        ) === value
+                      }
                     >
                       {value}
                     </option>

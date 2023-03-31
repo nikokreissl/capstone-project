@@ -62,8 +62,8 @@ export default function TacticsEdit({ tactic, onToggleEdit }) {
             Player Instructions
           </StyledTab>
         </StyledTabsContainer>
-        <EditTacticGeneralForm tactic={tactic} />
-        <EditTacticPlayerForm tactic={tactic} />
+        {showGeneralInstructions && <EditTacticGeneralForm tactic={tactic} />}
+        {showPlayerInstructions && <EditTacticPlayerForm tactic={tactic} />}
       </StyledForm>
     </>
   );
