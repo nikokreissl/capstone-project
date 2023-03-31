@@ -11,7 +11,7 @@ const navigationLinks = [
     href: "/tactics",
   },
   {
-    name: "Home",
+    name: "Archive",
     href: "/archive",
   },
 ];
@@ -20,13 +20,13 @@ export default function Navigation() {
   return (
     <StyledNavigation>
       <StyledNavigationList>
-        {navigationLinks.map((navigationLink) => {
-          <StyledNavigationListItem>
+        {navigationLinks.map((navigationLink) => (
+          <StyledNavigationListItem key={navigationLink.href}>
             <StyledNavigationLink href={navigationLink.href}>
               {navigationLink.name}
             </StyledNavigationLink>
-          </StyledNavigationListItem>;
-        })}
+          </StyledNavigationListItem>
+        ))}
       </StyledNavigationList>
     </StyledNavigation>
   );
@@ -53,7 +53,11 @@ const StyledNavigationListItem = styled.li`
   text-align: center;
 `;
 
-const StyledNavigationLink = styled(Link)`
+function StyledNavigationLink({ children, href }) {
+  return <StyledLink href={href}>{children}</StyledLink>;
+}
+
+const StyledLink = styled(Link)`
   height: 50px;
   display: block;
 `;
