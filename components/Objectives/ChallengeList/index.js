@@ -6,13 +6,18 @@ import StyledChallengeListItemComponent, {
 } from "./StyledChallengeList";
 import EmptyState from "../../GeneralComponents/Empty-State";
 
-export default function ChallengeList({ objective, onEditChallengeClick }) {
+export default function ChallengeList({
+  objective,
+  onEditChallengeClick,
+  path,
+}) {
   return (
     <>
       {objective.challenges.length < 1 ? (
         <EmptyState
           itemName="challenge"
           href={`${objective.id}/add-challenge`}
+          path={path}
         />
       ) : (
         <StyledChallengeList>
