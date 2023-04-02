@@ -1,7 +1,3 @@
-import {
-  StyledTab,
-  StyledTabsContainer,
-} from "../TacticsDetail/StyledTacticsDetail";
 import { useState } from "react";
 import { StyledButton } from "../../GeneralComponents/Buttons/StyledButton";
 import styled from "styled-components";
@@ -14,29 +10,12 @@ export default function TacticsEdit({ tactic, onToggleEdit }) {
     setTacticName(event.target.value);
   }
 
-  const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
-  function handleClickGeneralInstructions(event) {
-    event.preventDefault();
-    if (showGeneralInstructions === false) {
-      setShowGeneralInstructions(!showGeneralInstructions);
-      setShowPlayerInstructions(!showPlayerInstructions);
-    }
-  }
-
-  const [showPlayerInstructions, setShowPlayerInstructions] = useState(false);
-  function handleClickPlayerInstructions(event) {
-    event.preventDefault();
-    if (showPlayerInstructions === false) {
-      setShowPlayerInstructions(!showPlayerInstructions);
-      setShowGeneralInstructions(!showGeneralInstructions);
-    }
-  }
+  console.log(tactic);
 
   return (
     <>
       <StyledButton onClick={onToggleEdit}>🗑️ Discard changes</StyledButton>
       <StyledForm>
-        <button>Submit</button>
         <h2>{tactic.name}</h2>
         <label htmlFor="tactic-name">Tactic name</label>
         <input
@@ -48,22 +27,12 @@ export default function TacticsEdit({ tactic, onToggleEdit }) {
           onChange={handleFormationNameInput}
           required
         />
-        <StyledTabsContainer>
-          <StyledTab
-            shown={showGeneralInstructions}
-            handleTabClick={handleClickGeneralInstructions}
-          >
-            General Instructions
-          </StyledTab>
-          <StyledTab
-            shown={showPlayerInstructions}
-            handleTabClick={handleClickPlayerInstructions}
-          >
-            Player Instructions
-          </StyledTab>
-        </StyledTabsContainer>
-        {showGeneralInstructions && <EditTacticGeneralForm tactic={tactic} />}
-        {showPlayerInstructions && <EditTacticPlayerForm tactic={tactic} />}
+        <StyledH3>General Instructions</StyledH3>
+        <EditTacticGeneralForm tactic={tactic} />
+        <StyledH3>Player Instructions</StyledH3>
+
+        <EditTacticPlayerForm tactic={tactic} />
+        <StyledSubmitButton>Submit</StyledSubmitButton>
       </StyledForm>
     </>
   );
@@ -73,4 +42,16 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 10px;
+`;
+
+const StyledSubmitButton = styled.button`
+  position: sticky;
+  bottom: 10px;
+`;
+
+const StyledH3 = styled.h3`
+  padding: 10px;
+  background-color: lightgray;
+  position: sticky;
+  top: 0;
 `;
