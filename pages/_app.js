@@ -49,7 +49,46 @@ export default function App({ Component, pageProps }) {
     setUserTactics([tactic, ...userTactics]);
   }
 
-  function handleUpdateTactic(newFormation) {}
+  function handleUpdateTactic(updatedFormationData, tacticId) {
+    const currentTactic = userTactics.find((tactic) => tactic.id === tacticId);
+    console.log(tacticId);
+
+    function updateInstructions(data, generalInstructions) {
+      for (const [key, value] of Object.entries(data)) {
+        for (const instruction of generalInstructions) {
+          if (key.startsWith(instruction.instructionFor)) {
+            for (const detailedInstruction of instruction.detailedInstructions) {
+              if (key.endsWith(detailedInstruction.instructionName)) {
+                detailedInstruction.value = value;
+              }
+            }
+          }
+        }
+      }
+      return generalInstructions;
+    }
+
+    const updatedGeneralInstructions = updateInstructions(
+      updatedFormationData,
+      currentTactic.generalInstructions
+    );
+    const updatedPlayerInstructions = updateInstructions(
+      updatedFormationData,
+      currentTactic.playerInstructions
+    );
+    setUserTactics(
+      userTactics.map((tactic) =>
+        tacticId === tactic.id
+          ? {
+              ...tactic,
+              name: updatedFormationData.tacticname,
+              generalInstructions: updatedGeneralInstructions,
+              playerInstructions: updatedPlayerInstructions,
+            }
+          : tactic
+      )
+    );
+  }
 
   return (
     <DataContext.Provider
@@ -72,6 +111,7 @@ export default function App({ Component, pageProps }) {
         handleChallengeDelete,
         userTactics,
         handleAddTactic,
+        handleUpdateTactic,
       }}
     >
       <GlobalStyle />

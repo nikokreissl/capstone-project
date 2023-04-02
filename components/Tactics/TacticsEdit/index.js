@@ -4,7 +4,7 @@ import styled from "styled-components";
 import EditTacticGeneralForm from "./GeneralInstructionsForm";
 import EditTacticPlayerForm from "./PlayerInstructionsForm";
 
-export default function TacticsEdit({ tactic, onToggleEdit }) {
+export default function TacticsEdit({ tactic, onToggleEdit, onUpdateTactic }) {
   const [tacticName, setTacticName] = useState(tactic.name);
   function handleFormationNameInput(event) {
     setTacticName(event.target.value);
@@ -16,7 +16,7 @@ export default function TacticsEdit({ tactic, onToggleEdit }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    console.log(data);
+    onUpdateTactic(data, tactic.id);
   }
 
   return (

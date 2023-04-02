@@ -10,7 +10,7 @@ import TacticsEdit from "../TacticsEdit";
 
 import InstructionDetail from "../Instruction";
 
-export default function TacticsDetail({ tactic }) {
+export default function TacticsDetail({ tactic, onUpdateTactic }) {
   const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
   function handleClickGeneralInstructions() {
     if (showGeneralInstructions === false) {
@@ -40,7 +40,11 @@ export default function TacticsDetail({ tactic }) {
   return (
     <>
       {showEdit ? (
-        <TacticsEdit tactic={tactic} onToggleEdit={toggleShowEdit} />
+        <TacticsEdit
+          tactic={tactic}
+          onToggleEdit={toggleShowEdit}
+          onUpdateTactic={onUpdateTactic}
+        />
       ) : (
         <>
           <StyledButtonWrapper>
