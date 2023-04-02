@@ -11,19 +11,24 @@ export default function EditTacticGeneralForm({ tactic }) {
   return (
     <>
       {generalInstructionsTemplate.map((instruction) => (
-        <fieldset key={instruction.instructionFor}>
+        <fieldset
+          key={instruction.instructionFor}
+          name={instruction.instructionFor}
+        >
           <legend>{instruction.instructionFor}</legend>
           {instruction.detailedInstructions.map((detailedInstruction) => (
             <StyledDetailedInstructionEditWrapper
               key={detailedInstruction.instructionName}
             >
-              <label htmlFor={detailedInstruction.instructionName}>
+              <label
+                htmlFor={`${instruction.instructionFor} ${detailedInstruction.instructionName}`}
+              >
                 {detailedInstruction.instructionName}
               </label>
               {Array.isArray(detailedInstruction.value) ? (
                 <select
-                  name={detailedInstruction.instructionName}
-                  id={detailedInstruction.instructionName}
+                  name={`${instruction.instructionFor} ${detailedInstruction.instructionName}`}
+                  id={`${instruction.instructionFor}-${detailedInstruction.instructionName}`}
                 >
                   {detailedInstruction.value.map((value) => (
                     <option
@@ -43,7 +48,8 @@ export default function EditTacticGeneralForm({ tactic }) {
                 </select>
               ) : (
                 <input
-                  htmlFor={detailedInstruction.instructionName}
+                  name={`${instruction.instructionFor} ${detailedInstruction.instructionName}`}
+                  id={`${instruction.instructionFor}-${detailedInstruction.instructionName}`}
                   type={"number"}
                   min={`${detailedInstruction.minValue}`}
                   max={`${detailedInstruction.maxValue}`}

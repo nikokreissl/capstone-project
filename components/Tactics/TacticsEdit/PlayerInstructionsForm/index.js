@@ -50,19 +50,21 @@ export default function EditTacticPlayerForm({ tactic }) {
   return (
     <>
       {finalFormation.map((position) => (
-        <fieldset key={position.position}>
+        <fieldset key={position.position} name={position.position}>
           <legend>{position.position}</legend>
 
           {position.instructions.map((instruction) => (
             <StyledDetailedInstructionEditWrapper
               key={instruction.instructionName}
             >
-              <label htmlFor={instruction.instructionName}>
+              <label
+                htmlFor={`${position.position}-${instruction.instructionName}`}
+              >
                 {instruction.instructionName}
               </label>
               <select
-                name={instruction.instructionName}
-                id={instruction.instructionName}
+                name={`${position.position} ${instruction.instructionName}`}
+                id={`${position.position}-${instruction.instructionName}`}
               >
                 {instruction.values.map((value) => (
                   <option

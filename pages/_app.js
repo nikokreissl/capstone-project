@@ -49,6 +49,8 @@ export default function App({ Component, pageProps }) {
     setUserTactics([tactic, ...userTactics]);
   }
 
+  function handleUpdateTactic(newFormation) {}
+
   return (
     <DataContext.Provider
       value={{

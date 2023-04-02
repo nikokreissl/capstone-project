@@ -10,12 +10,19 @@ export default function TacticsEdit({ tactic, onToggleEdit }) {
     setTacticName(event.target.value);
   }
 
-  console.log(tactic);
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+
+    console.log(data);
+  }
 
   return (
     <>
       <StyledButton onClick={onToggleEdit}>🗑️ Discard changes</StyledButton>
-      <StyledForm>
+      <StyledForm onSubmit={handleSubmit}>
         <h2>{tactic.name}</h2>
         <label htmlFor="tactic-name">Tactic name</label>
         <input
@@ -46,7 +53,7 @@ const StyledForm = styled.form`
 
 const StyledSubmitButton = styled.button`
   position: sticky;
-  bottom: 10px;
+  bottom: 50px;
 `;
 
 const StyledH3 = styled.h3`
