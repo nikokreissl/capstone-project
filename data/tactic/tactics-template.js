@@ -190,8 +190,8 @@ export const formations = [
         key: "ST",
       },
       {
-        position: "RW",
-        key: "RW",
+        position: "LW",
+        key: "LW",
       },
     ],
   },
@@ -219,7 +219,7 @@ export const formations = [
         key: "CDM",
       },
       {
-        position: "RCDM",
+        position: "LCDM",
         key: "CDM",
       },
       {
@@ -263,7 +263,6 @@ export const formations = [
         position: "LCB",
         key: "CB",
       },
-      ,
       {
         position: "LB",
         key: "LB",
@@ -313,7 +312,6 @@ export const formations = [
         position: "LCB",
         key: "CB",
       },
-      ,
       {
         position: "LB",
         key: "LB",
@@ -363,7 +361,6 @@ export const formations = [
         position: "LCB",
         key: "CB",
       },
-      ,
       {
         position: "LB",
         key: "LB",
@@ -683,7 +680,7 @@ export const formations = [
         key: "ST",
       },
       {
-        position: "RST",
+        position: "LST",
         key: "ST",
       },
     ],
@@ -1490,10 +1487,14 @@ export const generalInstructionsTemplate = [
       {
         instructionName: "Defensive Width",
         value: 50,
+        minValue: 1,
+        maxValue: 100,
       },
       {
         instructionName: "Defensive Depth",
         value: 50,
+        minValue: 1,
+        maxValue: 100,
       },
     ],
   },
@@ -1511,10 +1512,14 @@ export const generalInstructionsTemplate = [
       {
         instructionName: "Offensive Width",
         value: 50,
+        minValue: 1,
+        maxValue: 100,
       },
       {
         instructionName: "Players In Box",
         value: 3,
+        minValue: 1,
+        maxValue: 5,
       },
     ],
   },
@@ -1524,10 +1529,14 @@ export const generalInstructionsTemplate = [
       {
         instructionName: "Corners",
         value: 3,
+        minValue: 1,
+        maxValue: 5,
       },
       {
         instructionName: "Free Kicks",
         value: 3,
+        minValue: 1,
+        maxValue: 5,
       },
     ],
   },

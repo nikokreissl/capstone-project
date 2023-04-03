@@ -14,6 +14,7 @@ export default function ObjectiveDetail({
   onToggleEdit,
   onAddnewChallenge,
   onEditChallengeClick,
+  path,
 }) {
   if (!objective) {
     return <p>Loading...</p>;
@@ -41,6 +42,7 @@ export default function ObjectiveDetail({
       <ChallengeList
         objective={objective}
         onEditChallengeClick={onEditChallengeClick}
+        path={path}
       />
     </StyledDetailsContainer>
   );

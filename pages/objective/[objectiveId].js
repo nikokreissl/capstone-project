@@ -73,6 +73,7 @@ export default function ObjectiveDetailPage() {
           onToggleEdit={toggleEdit}
           onAddnewChallenge={handleAddNewChallenge}
           onEditChallengeClick={handleChallengeDetailRedirect}
+          path={path}
         />
       )}
     </main>

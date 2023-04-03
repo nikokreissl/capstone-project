@@ -38,7 +38,7 @@ export default function CreateTacticForm({ onBackToTactics }) {
 
   return (
     <>
-      <StyledDetailsLink href={"/"}>Cancel</StyledDetailsLink>
+      <StyledDetailsLink href={"/tactics"}>Cancel</StyledDetailsLink>
       <StyledForm onSubmit={handleFormationSubmit}>
         <StyledFormLabel htmlFor="tactic-name">Tactic name</StyledFormLabel>
         <StyledFormInput
@@ -53,8 +53,8 @@ export default function CreateTacticForm({ onBackToTactics }) {
         <select
           value={formationValue}
           onChange={handleFormationChange}
-          name="create-formation"
-          id="create-formation"
+          name="formation"
+          id="formation"
         >
           <option value="">Select formation...</option>
           {formations.map((formation) => (
