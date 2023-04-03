@@ -38,7 +38,7 @@ export default function CreateTacticForm({ onBackToTactics }) {
 
   return (
     <>
-      <StyledDetailsLink href={"/"}>Cancel</StyledDetailsLink>
+      <StyledDetailsLink href={"/tactics"}>Cancel</StyledDetailsLink>
       <StyledForm onSubmit={handleFormationSubmit}>
         <StyledFormLabel htmlFor="tactic-name">Tactic name</StyledFormLabel>
         <StyledFormInput

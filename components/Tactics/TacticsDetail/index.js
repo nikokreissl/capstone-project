@@ -27,8 +27,7 @@ export default function TacticsDetail({ tactic, onUpdateTactic }) {
     }
   }
 
-  const [showEdit, setShowEdit] = useState(true);
-
+  const [showEdit, setShowEdit] = useState(false);
   function toggleShowEdit() {
     setShowEdit(!showEdit);
   }
