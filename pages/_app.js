@@ -5,11 +5,12 @@ import Navigation from "../components/GeneralComponents/Navigation";
 import { givenCompetitions } from "../data/competition";
 import { givenObjectives } from "../data/objectives";
 import { givenUserTactics } from "../data/tactic/user-tactics";
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import { useCompetitions } from "../hooks/competition-hook";
 import { useObjectives } from "../hooks/objective-hook";
 import { getGeneralInstructions, createDefaultTactic } from "../utils/utils";
 import { uid } from "uid";
+import useLocalStorageState from "use-local-storage-state";
 
 export const DataContext = createContext();
 
@@ -36,7 +37,9 @@ export default function App({ Component, pageProps }) {
     handleChallengeDelete,
   } = useObjectives(givenObjectives);
 
-  const [userTactics, setUserTactics] = useState(givenUserTactics);
+  const [userTactics, setUserTactics] = useLocalStorageState("userTactics", {
+    defaultValue: givenUserTactics,
+  });
 
   function handleAddTactic(newFormation) {
     const tactic = {
