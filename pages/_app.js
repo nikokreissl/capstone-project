@@ -55,9 +55,9 @@ export default function App({ Component, pageProps }) {
   function handleUpdateTactic(updatedFormationData, tacticId) {
     const currentTactic = userTactics.find((tactic) => tactic.id === tacticId);
 
-    function updateInstructions(data, generalInstructions) {
+    function updateInstructions(data, instructions) {
       for (const [key, value] of Object.entries(data)) {
-        for (const instruction of generalInstructions) {
+        for (const instruction of instructions) {
           if (key.startsWith(instruction.instructionFor)) {
             for (const detailedInstruction of instruction.detailedInstructions) {
               if (key.endsWith(detailedInstruction.instructionName)) {
