@@ -4,8 +4,12 @@ import { useContext } from "react";
 import { DataContext } from "../_app";
 
 export default function TacticDetailPage() {
-  const { userTactics, handleUpdateTactic, handleDeleteTactic } =
-    useContext(DataContext);
+  const {
+    userTactics,
+    handleUpdateTactic,
+    handleDeleteTactic,
+    handleArchiveTactic,
+  } = useContext(DataContext);
 
   const router = useRouter();
   const { tacticId } = router.query;
@@ -21,13 +25,22 @@ export default function TacticDetailPage() {
     return <p>Loading...</p>;
   }
 
+  function handleDirectHome() {
+    if (path.includes("archive")) {
+      router.push("/archive/tactics");
+    } else {
+      router.push("/tactics");
+    }
+  }
+
   return (
     <main>
       <TacticsDetail
         tactic={currentTactic}
         onUpdateTactic={handleUpdateTactic}
         onDeleteTactic={handleDeleteTactic}
-        router={router}
+        onArchiveTactic={handleArchiveTactic}
+        onClickBack={handleDirectHome}
       />
     </main>
   );

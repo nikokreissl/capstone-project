@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { StyledButton } from "../../GeneralComponents/Buttons/StyledButton";
+import {
+  StyledButton,
+  StyledButtonWrapper,
+} from "../../GeneralComponents/Buttons/StyledButton";
 import styled from "styled-components";
 import EditTacticGeneralForm from "./GeneralInstructionsForm";
 import EditTacticPlayerForm from "./PlayerInstructionsForm";
@@ -9,7 +12,8 @@ export default function TacticsEdit({
   onToggleEdit,
   onUpdateTactic,
   onDeleteTactic,
-  router,
+  onArchiveTactic,
+  onClickBack,
 }) {
   const [tacticName, setTacticName] = useState(tactic.name);
   function handleFormationNameInput(event) {
@@ -28,7 +32,11 @@ export default function TacticsEdit({
 
   function handleDelete(tacticId) {
     onDeleteTactic(tacticId);
-    router.push("/tactics");
+    onClickBack();
+  }
+
+  function handleArchiveClick(tacticId) {
+    onArchiveTactic(tacticId);
   }
 
   return (
@@ -53,9 +61,16 @@ export default function TacticsEdit({
         <EditTacticPlayerForm tactic={tactic} />
         <StyledSubmitButton>Submit</StyledSubmitButton>
       </StyledForm>
-      <StyledButton onClick={() => handleDelete(tactic.id)}>
-        ❌ Delete competition
-      </StyledButton>
+      <StyledButtonWrapper>
+        <StyledButton onClick={() => handleDelete(tactic.id)}>
+          ❌ Delete competition
+        </StyledButton>
+        <StyledButton onClick={() => handleArchiveClick(tactic.id)}>
+          {tactic.isArchived
+            ? "🔃 Restore from archive"
+            : "📖 Archive competition"}
+        </StyledButton>
+      </StyledButtonWrapper>
     </>
   );
 }
