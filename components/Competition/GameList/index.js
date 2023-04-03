@@ -7,11 +7,16 @@ export default function GameList({
   reversedCompetitionGames,
   onClickgameDetail,
   competition,
+  path,
 }) {
   return (
     <>
       {reversedCompetitionGames.length < 1 ? (
-        <EmptyState itemName="game" href={`${competition.id}/track-new-game`} />
+        <EmptyState
+          itemName="game"
+          href={`${competition.id}/track-new-game`}
+          path={path}
+        />
       ) : (
         <StyledGameList>
           {reversedCompetitionGames.map((game) => (

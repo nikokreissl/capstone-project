@@ -14,6 +14,7 @@ export default function CompetitionDetail({
   competition,
   onClickgameDetail,
   onTrackNewGame,
+  path,
 }) {
   const competitionWins = competition.gamesPlayed.filter(
     (game) => game.userScore > game.opponentScore
@@ -45,6 +46,7 @@ export default function CompetitionDetail({
         reversedCompetitionGames={reversedCompetitionGames}
         onClickgameDetail={onClickgameDetail}
         competition={competition}
+        path={path}
       />
     </StyledDetailsContainer>
   );

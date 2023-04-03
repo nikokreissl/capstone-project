@@ -77,6 +77,7 @@ export default function CompetitionDetailPage() {
           onToggleEdit={toggleEdit}
           onClickgameDetail={handleGameDetailRedirect}
           onTrackNewGame={handleTrackNewGameRedirect}
+          path={path}
         />
       )}
     </main>
