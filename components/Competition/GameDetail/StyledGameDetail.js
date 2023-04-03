@@ -2,33 +2,43 @@ import styled from "styled-components";
 import { StyledButton } from "../../GeneralComponents/Buttons/StyledButton";
 
 export const StyledDetailContainer = styled.section`
-  width: 70vw;
+  width: 90vw;
   display: flex;
   flex-direction: column;
   gap: 10px;
 `;
 
-export const StyledGameForm = styled.form`
+export default function EditScoreComponent() {
+  return (
+    <StyledEditScoreContainer>
+      <h3>Score</h3>
+      <p>Yours 0 : 0 Opponent</p>
+      <StyledEditScoreUpdateContainer />
+      <StyledEditScoreUpdateComponent updateScoreText="Update your score" />
+    </StyledEditScoreContainer>
+  );
+}
+
+const StyledEditScoreContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
-`;
-
-export const StyledFieldset = styled.fieldset`
-  display: flex;
-  padding: 20px;
-  justify-content: center;
   align-items: center;
 `;
 
-export const StyledNumberInput = styled.input`
-  width: 50px;
-  margin: 5px;
+function StyledEditScoreUpdateComponent({ updateScoreText }) {
+  return (
+    <EditScoreComponent>
+      <StyledEditScoreUpdateText>{updateScoreText}</StyledEditScoreUpdateText>
+    </EditScoreComponent>
+  );
+}
+
+const StyledEditScoreUpdateContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 `;
 
-export const StyledGameButton = styled(StyledButton)`
-  align-self: center;
-`;
+const StyledEditScoreUpdateText = styled.p``;
 
 // Challenge
 

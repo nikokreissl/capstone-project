@@ -2,14 +2,9 @@ import {
   StyledButtonWrapper,
   StyledButton,
 } from "../../GeneralComponents/Buttons/StyledButton";
-import {
-  StyledDetailContainer,
-  StyledFieldset,
-  StyledNumberInput,
-  StyledGameForm,
-  StyledGameButton,
-} from "./StyledGameDetail.js";
+import { StyledDetailContainer } from "./StyledGameDetail.js";
 import { useState } from "react";
+import EditScoreComponent from "./StyledGameDetail.js";
 
 export default function GameDetail({
   game,
@@ -68,56 +63,7 @@ export default function GameDetail({
           <StyledButton onClick={handleDeleteGame}>❌ Delete</StyledButton>
         </StyledButtonWrapper>
         <h2>Game {game.gameId}</h2>
-        <StyledGameForm onSubmit={handleSubmit}>
-          <StyledFieldset>
-            <legend>Score</legend>
-            <label htmlFor="user-score">Yours</label>
-            <StyledNumberInput
-              type="number"
-              name="user-score"
-              id="user-score"
-              value={userScore}
-              min={0}
-              onChange={handleUserScoreChange}
-            />
-            :
-            <StyledNumberInput
-              type="number"
-              name="opponent-score"
-              id="opponent-score"
-              min={0}
-              value={opponentScore}
-              onChange={handleOpponentScoreChange}
-            />
-            <label htmlFor="opponent-score">Opponent</label>
-          </StyledFieldset>
-          <StyledFieldset>
-            <legend>xGoals</legend>
-            <label htmlFor="user-xgoals">Yours</label>
-            <StyledNumberInput
-              type="number"
-              name="user-xgoals"
-              id="user-xgoals"
-              pattern="[0-9]+([\.][0-9]+)?"
-              step={0.1}
-              min={0}
-              value={userXgoals}
-              onChange={handleUserXgoalsChange}
-            />
-            <StyledNumberInput
-              type="number"
-              name="opponent-xgoals"
-              id="opponent-xgoals"
-              pattern="[0-9]+([\.][0-9]+)?"
-              step={0.1}
-              min={0}
-              value={opponentXgoals}
-              onChange={handleOpponentXgoalsChange}
-            />
-            <label htmlFor="opponent-xgoals">Opponent</label>
-          </StyledFieldset>
-          <StyledGameButton>Update</StyledGameButton>
-        </StyledGameForm>
+        <EditScoreComponent />
       </StyledDetailContainer>
     </main>
   );
