@@ -10,7 +10,12 @@ import TacticsEdit from "../TacticsEdit";
 
 import InstructionDetail from "../Instruction";
 
-export default function TacticsDetail({ tactic, onUpdateTactic }) {
+export default function TacticsDetail({
+  tactic,
+  onUpdateTactic,
+  onDeleteTactic,
+  router,
+}) {
   const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
   function handleClickGeneralInstructions() {
     if (showGeneralInstructions === false) {
@@ -43,6 +48,8 @@ export default function TacticsDetail({ tactic, onUpdateTactic }) {
           tactic={tactic}
           onToggleEdit={toggleShowEdit}
           onUpdateTactic={onUpdateTactic}
+          onDeleteTactic={onDeleteTactic}
+          router={router}
         />
       ) : (
         <>

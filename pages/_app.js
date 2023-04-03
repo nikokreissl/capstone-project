@@ -89,6 +89,10 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  function handleDeleteTactic(TacticId) {
+    setUserTactics(userTactics.filter((tactic) => tactic.id !== TacticId));
+  }
+
   return (
     <DataContext.Provider
       value={{
@@ -111,6 +115,7 @@ export default function App({ Component, pageProps }) {
         userTactics,
         handleAddTactic,
         handleUpdateTactic,
+        handleDeleteTactic,
       }}
     >
       <GlobalStyle />

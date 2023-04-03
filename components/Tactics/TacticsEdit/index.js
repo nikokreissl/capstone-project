@@ -4,7 +4,13 @@ import styled from "styled-components";
 import EditTacticGeneralForm from "./GeneralInstructionsForm";
 import EditTacticPlayerForm from "./PlayerInstructionsForm";
 
-export default function TacticsEdit({ tactic, onToggleEdit, onUpdateTactic }) {
+export default function TacticsEdit({
+  tactic,
+  onToggleEdit,
+  onUpdateTactic,
+  onDeleteTactic,
+  router,
+}) {
   const [tacticName, setTacticName] = useState(tactic.name);
   function handleFormationNameInput(event) {
     setTacticName(event.target.value);
@@ -17,6 +23,12 @@ export default function TacticsEdit({ tactic, onToggleEdit, onUpdateTactic }) {
     const data = Object.fromEntries(formData);
 
     onUpdateTactic(data, tactic.id);
+    onToggleEdit();
+  }
+
+  function handleDelete(tacticId) {
+    onDeleteTactic(tacticId);
+    router.push("/tactics");
   }
 
   return (
@@ -41,6 +53,9 @@ export default function TacticsEdit({ tactic, onToggleEdit, onUpdateTactic }) {
         <EditTacticPlayerForm tactic={tactic} />
         <StyledSubmitButton>Submit</StyledSubmitButton>
       </StyledForm>
+      <StyledButton onClick={() => handleDelete(tactic.id)}>
+        ❌ Delete competition
+      </StyledButton>
     </>
   );
 }
