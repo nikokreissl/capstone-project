@@ -67,7 +67,7 @@ export default function App({ Component, pageProps }) {
           }
         }
       }
-      return generalInstructions;
+      return instructions;
     }
 
     const updatedGeneralInstructions = updateInstructions(

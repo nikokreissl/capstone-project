@@ -12,11 +12,7 @@ export default function TacticsList({ headline, tactics, path }) {
       <StyledHomeItemHeadline>{headline}</StyledHomeItemHeadline>
       <hr />
       {tactics.length < 1 ? (
-        <EmptyState
-          itemName="tactic"
-          href="/tactics/create-new-tactic"
-          path={path}
-        />
+        <EmptyState itemName="tactic" href="/tactics/create" path={path} />
       ) : (
         <StyledHomeList>
           {tactics.map((tactic) => (
