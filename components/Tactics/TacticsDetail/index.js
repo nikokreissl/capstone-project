@@ -15,6 +15,7 @@ export default function TacticsDetail({
   onUpdateTactic,
   onDeleteTactic,
   onArchiveTactic,
+  onClickBack,
   router,
 }) {
   const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
@@ -56,7 +57,7 @@ export default function TacticsDetail({
       ) : (
         <>
           <StyledButtonWrapper>
-            <StyledDetailsLink href={"/tactics"}>Back</StyledDetailsLink>
+            <StyledButton onClick={onClickBack}>Back</StyledButton>
             <StyledButton onClick={toggleShowEdit}>⚙️ Edit</StyledButton>
           </StyledButtonWrapper>
           <StyledDetailsContainer>

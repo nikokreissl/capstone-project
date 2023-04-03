@@ -9,12 +9,20 @@ export default function TacticsOverviewPage() {
   const router = useRouter();
   const path = router.asPath;
 
+  const notArchivedTactics = userTactics.filter(
+    (tactic) => tactic.isArchived === false
+  );
+
   return (
     <main>
       <StyledDetailsLink href={"tactics/create"}>
         Create new tactic
       </StyledDetailsLink>
-      <TacticsList headline="Tactics" tactics={userTactics} path={path} />
+      <TacticsList
+        headline="Tactics"
+        tactics={notArchivedTactics}
+        path={path}
+      />
     </main>
   );
 }
