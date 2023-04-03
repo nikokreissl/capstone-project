@@ -13,7 +13,7 @@ export default function TacticsEdit({
   onUpdateTactic,
   onDeleteTactic,
   onArchiveTactic,
-  router,
+  onClickBack,
 }) {
   const [tacticName, setTacticName] = useState(tactic.name);
   function handleFormationNameInput(event) {
@@ -32,7 +32,7 @@ export default function TacticsEdit({
 
   function handleDelete(tacticId) {
     onDeleteTactic(tacticId);
-    router.push("/tactics");
+    onClickBack();
   }
 
   function handleArchiveClick(tacticId) {

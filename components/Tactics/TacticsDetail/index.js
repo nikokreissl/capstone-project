@@ -16,7 +16,6 @@ export default function TacticsDetail({
   onDeleteTactic,
   onArchiveTactic,
   onClickBack,
-  router,
 }) {
   const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
   function handleClickGeneralInstructions() {
@@ -52,7 +51,8 @@ export default function TacticsDetail({
           onUpdateTactic={onUpdateTactic}
           onDeleteTactic={onDeleteTactic}
           onArchiveTactic={onArchiveTactic}
-          router={router}
+          onToggleShowEdit={toggleShowEdit}
+          onClickBack={onClickBack}
         />
       ) : (
         <>
