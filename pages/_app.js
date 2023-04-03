@@ -44,6 +44,7 @@ export default function App({ Component, pageProps }) {
   function handleAddTactic(newFormation) {
     const tactic = {
       id: uid(),
+      isArchived: false,
       name: newFormation.name,
       formation: newFormation.formation,
       generalInstructions: getGeneralInstructions(),
@@ -96,6 +97,19 @@ export default function App({ Component, pageProps }) {
     setUserTactics(userTactics.filter((tactic) => tactic.id !== TacticId));
   }
 
+  function handleArchiveTactic(tacticId) {
+    setUserTactics(
+      userTactics.map((tactic) =>
+        tacticId === tactic.id
+          ? {
+              ...tactic,
+              isArchived: !tactic.isArchived,
+            }
+          : tactic
+      )
+    );
+  }
+
   return (
     <DataContext.Provider
       value={{
@@ -119,6 +133,7 @@ export default function App({ Component, pageProps }) {
         handleAddTactic,
         handleUpdateTactic,
         handleDeleteTactic,
+        handleArchiveTactic,
       }}
     >
       <GlobalStyle />

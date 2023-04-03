@@ -4,8 +4,12 @@ import { useContext } from "react";
 import { DataContext } from "../_app";
 
 export default function TacticDetailPage() {
-  const { userTactics, handleUpdateTactic, handleDeleteTactic } =
-    useContext(DataContext);
+  const {
+    userTactics,
+    handleUpdateTactic,
+    handleDeleteTactic,
+    handleArchiveTactic,
+  } = useContext(DataContext);
 
   const router = useRouter();
   const { tacticId } = router.query;
@@ -27,6 +31,7 @@ export default function TacticDetailPage() {
         tactic={currentTactic}
         onUpdateTactic={handleUpdateTactic}
         onDeleteTactic={handleDeleteTactic}
+        onArchiveTactic={handleArchiveTactic}
         router={router}
       />
     </main>

@@ -14,6 +14,7 @@ export default function TacticsDetail({
   tactic,
   onUpdateTactic,
   onDeleteTactic,
+  onArchiveTactic,
   router,
 }) {
   const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
@@ -49,6 +50,7 @@ export default function TacticsDetail({
           onToggleEdit={toggleShowEdit}
           onUpdateTactic={onUpdateTactic}
           onDeleteTactic={onDeleteTactic}
+          onArchiveTactic={onArchiveTactic}
           router={router}
         />
       ) : (
