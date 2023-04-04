@@ -104,6 +104,28 @@ export function useObjectives(givenObjectives) {
       )
     );
   }
+
+  function handleChallengeQuickEditUpdate(challengeId, objectiveId, newCount) {
+    const currentObjective = objectives.find(
+      (objective) => objectiveId === objective.id
+    );
+    const updatedChallenges = currentObjective.challenges.map((challenge) =>
+      challengeId === challenge.challengeId
+        ? {
+            ...challenge,
+            timesCompleted: newCount,
+          }
+        : challenge
+    );
+    setObjectives(
+      objectives.map((objective) =>
+        objective.id === objectiveId
+          ? { ...objective, challenges: updatedChallenges }
+          : objective
+      )
+    );
+  }
+
   return {
     objectives,
     handleAddObjective,
@@ -113,5 +135,6 @@ export function useObjectives(givenObjectives) {
     handleAddChallenge,
     handleChallengeUpdate,
     handleChallengeDelete,
+    handleChallengeQuickEditUpdate,
   };
 }

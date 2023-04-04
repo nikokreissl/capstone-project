@@ -12,6 +12,7 @@ export default function ObjectiveDetailPage() {
     handleUpdateObjective,
     handleDeleteObjective,
     handleArchiveObjective,
+    handleChallengeQuickEditUpdate,
   } = useContext(DataContext);
   const router = useRouter();
   const path = router.asPath;
@@ -73,6 +74,7 @@ export default function ObjectiveDetailPage() {
           onToggleEdit={toggleEdit}
           onAddnewChallenge={handleAddNewChallenge}
           onEditChallengeClick={handleChallengeDetailRedirect}
+          onChallengeQuickEditUpdate={handleChallengeQuickEditUpdate}
           path={path}
         />
       )}

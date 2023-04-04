@@ -9,6 +9,16 @@ import { useContext, useState } from "react";
 import { DataContext } from "../../../_app";
 
 export default function ChallengeDetailPage() {
+  const [challengeDescription, setChallengeDescription] = useState(
+    currentChallenge.description
+  );
+  const [challengeTimesNeeded, setChallengechallengeTimesNeeded] = useState(
+    currentChallenge.timesNeeded
+  );
+  const [challengeTimesCompleted, setChallengeTimesCompleted] = useState(
+    currentChallenge.timesCompleted
+  );
+
   const router = useRouter();
   const path = router.asPath;
   const { objectiveId, challengeId } = router.query;
@@ -34,16 +44,6 @@ export default function ChallengeDetailPage() {
   if (!currentChallenge) {
     return <p>Loading...</p>;
   }
-
-  const [challengeDescription, setChallengeDescription] = useState(
-    currentChallenge.description
-  );
-  const [challengeTimesNeeded, setChallengechallengeTimesNeeded] = useState(
-    currentChallenge.timesNeeded
-  );
-  const [challengeTimesCompleted, setChallengeTimesCompleted] = useState(
-    currentChallenge.timesCompleted
-  );
 
   function handleDescriptionInput(event) {
     setChallengeDescription(event.target.value);

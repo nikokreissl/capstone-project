@@ -35,6 +35,7 @@ export default function App({ Component, pageProps }) {
     handleAddChallenge,
     handleChallengeUpdate,
     handleChallengeDelete,
+    handleChallengeQuickEditUpdate,
   } = useObjectives(givenObjectives);
 
   const [userTactics, setUserTactics] = useLocalStorageState("userTactics", {
@@ -129,6 +130,7 @@ export default function App({ Component, pageProps }) {
         handleAddChallenge,
         handleChallengeUpdate,
         handleChallengeDelete,
+        handleChallengeQuickEditUpdate,
         userTactics,
         handleAddTactic,
         handleUpdateTactic,

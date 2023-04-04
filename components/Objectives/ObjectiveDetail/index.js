@@ -14,6 +14,7 @@ export default function ObjectiveDetail({
   onToggleEdit,
   onAddnewChallenge,
   onEditChallengeClick,
+  onChallengeQuickEditUpdate,
   path,
 }) {
   if (!objective) {
@@ -42,6 +43,7 @@ export default function ObjectiveDetail({
       <ChallengeList
         objective={objective}
         onEditChallengeClick={onEditChallengeClick}
+        onChallengeQuickEditUpdate={onChallengeQuickEditUpdate}
         path={path}
       />
     </StyledDetailsContainer>

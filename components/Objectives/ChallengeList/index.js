@@ -1,9 +1,13 @@
-import StyledChallengeListItemComponent, {
-  StyledChallengeList,
-} from "./StyledChallengeList";
+import { StyledChallengeList } from "./StyledChallengeList";
+import ChallengeListItemComponent from "./ListItem";
 import EmptyState from "../../GeneralComponents/Empty-State";
 
-export default function ChallengeList({ objective, path }) {
+export default function ChallengeList({
+  objective,
+  path,
+  onEditChallengeClick,
+  onChallengeQuickEditUpdate,
+}) {
   return (
     <>
       {objective.challenges.length < 1 ? (
@@ -15,11 +19,13 @@ export default function ChallengeList({ objective, path }) {
       ) : (
         <StyledChallengeList>
           {objective.challenges.map((challenge) => (
-            <StyledChallengeListItemComponent
+            <ChallengeListItemComponent
               key={challenge.challengeId}
               challengeNumber={objective.challenges.indexOf(challenge)}
+              onEditChallengeClick={onEditChallengeClick}
+              objectiveId={objective.id}
               challenge={challenge}
-              path={path}
+              onChallengeQuickEditUpdate={onChallengeQuickEditUpdate}
             />
           ))}
         </StyledChallengeList>
