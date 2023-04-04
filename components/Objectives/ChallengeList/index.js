@@ -1,16 +1,9 @@
 import StyledChallengeListItemComponent, {
   StyledChallengeList,
-  StyledChallengeDescription,
-  StyledChallengeProgess,
-  StyledChallengeProgessButton,
 } from "./StyledChallengeList";
 import EmptyState from "../../GeneralComponents/Empty-State";
 
-export default function ChallengeList({
-  objective,
-  onEditChallengeClick,
-  path,
-}) {
+export default function ChallengeList({ objective, path }) {
   return (
     <>
       {objective.challenges.length < 1 ? (
@@ -25,19 +18,9 @@ export default function ChallengeList({
             <StyledChallengeListItemComponent
               key={challenge.challengeId}
               challengeNumber={objective.challenges.indexOf(challenge)}
-            >
-              <StyledChallengeDescription>
-                {challenge.description}
-              </StyledChallengeDescription>
-              <StyledChallengeProgess>{`${challenge.timesCompleted} / ${challenge.timesNeeded}`}</StyledChallengeProgess>
-              <StyledChallengeProgessButton
-                onClick={() =>
-                  onEditChallengeClick(objective.id, challenge.challengeId)
-                }
-              >
-                ✏️ Edit Challenge
-              </StyledChallengeProgessButton>
-            </StyledChallengeListItemComponent>
+              challenge={challenge}
+              path={path}
+            />
           ))}
         </StyledChallengeList>
       )}

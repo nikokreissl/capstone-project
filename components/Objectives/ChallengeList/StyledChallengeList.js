@@ -1,16 +1,28 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export const StyledChallengeList = styled.ul`
-  margin: 12px;
+  margin: 0;
+  padding: 0;
 `;
 
 export default function StyledChallengeListItemComponent({
-  children,
   challengeNumber,
+  challenge,
+  path,
 }) {
+  const { description, timesNeeded, timesCompleted } = challenge;
   return (
     <StyledChallengeListItem challengeNumber={challengeNumber}>
-      {children}
+      <StyledChallengeDescription>{description}</StyledChallengeDescription>
+      <StyledChallengeQuickEditWrapper>
+        <StyledChallengeProgress>
+          {timesCompleted} / {timesNeeded}
+        </StyledChallengeProgress>
+        <button>+1</button>
+        <button>-1</button>
+        <StyleChallengeEditButton>Edit ✏️</StyleChallengeEditButton>
+      </StyledChallengeQuickEditWrapper>
     </StyledChallengeListItem>
   );
 }
@@ -21,21 +33,26 @@ const StyledChallengeListItem = styled.li`
   list-style: none;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 5px;
 `;
 
-export const StyledChallengeDescription = styled.p`
-  flex: 80%;
-`;
-export const StyledChallengeProgess = styled.p`
-  flex: 80px;
-  text-align: center;
-  margin-left: 5px;
+const StyledChallengeDescription = styled.p`
+  flex-basis: 70%;
 `;
 
-export const StyledChallengeProgessButton = styled.button`
-  flex: 170px;
-  height: 50px;
-  text-align: center;
-  margin-left: 5px;
+const StyledChallengeQuickEditWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 30px);
+  justify-items: center;
+  gap: 5px;
+`;
+
+const StyledChallengeProgress = styled.p`
+  grid-column: 1 / -1;
+`;
+
+const StyleChallengeEditButton = styled.button`
+  grid-column: 1 / -1;
+  width: 100%;
 `;
