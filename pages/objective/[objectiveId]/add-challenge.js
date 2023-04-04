@@ -6,7 +6,12 @@ import {
 } from "../../../components/GeneralComponents/Buttons/StyledButton";
 import { useState, useContext } from "react";
 import { DataContext } from "../../_app";
-import EditChallengeComponent from "../../../components/Objectives/ChallengeDetail/";
+import {
+  StyledEditChallengeForm,
+  StyledTimesWrapper,
+  StyledTimesText,
+  StyledTimesButton,
+} from "../../../components/Objectives/ChallengeDetail/StyledChallengeDetail";
 
 export default function AddChallengePage() {
   const router = useRouter();
@@ -73,15 +78,65 @@ export default function AddChallengePage() {
           <StyledButton onClick={handleAddCancel}>🔙 Cancel</StyledButton>
         </StyledButtonWrapper>
         <h2>Track new Challenge</h2>
-        <EditChallengeComponent
-          onSubmitChallenge={handleSubmit}
-          onDescriptionChange={handleDescriptionInput}
-          challengeDescription={challengeDescription}
-          challengeTimesNeeded={challengeTimesNeeded}
-          challengeTimesCompleted={challengeTimesCompleted}
-          onChallengeTimesChange={handleChallengeTimesUpdate}
-          editType="create"
-        />
+        <StyledEditChallengeForm onSubmit={handleSubmit}>
+          <label htmlFor="challenge-description">Description</label>
+          <textarea
+            name="challenge-description"
+            id="challenge-description"
+            rows="5"
+            pattern="^(?!\s*$).+"
+            value={challengeDescription}
+            onChange={handleDescriptionInput}
+            required
+          ></textarea>
+          <StyledTimesWrapper>
+            <StyledTimesText>Times needed:</StyledTimesText>
+            <StyledTimesButton
+              type="button"
+              onClick={() => handleChallengeTimesUpdate("needed", "increment")}
+            >
+              +1
+            </StyledTimesButton>
+            <p>{challengeTimesNeeded}</p>
+            <StyledTimesButton
+              type="button"
+              onClick={() => handleChallengeTimesUpdate("needed", "decrement")}
+              disabled={
+                challengeTimesNeeded < 1 ||
+                challengeTimesNeeded === challengeTimesCompleted
+                  ? true
+                  : false
+              }
+            >
+              -1
+            </StyledTimesButton>
+          </StyledTimesWrapper>
+          <StyledTimesWrapper>
+            <StyledTimesText>Times completed:</StyledTimesText>
+            <StyledTimesButton
+              type="button"
+              onClick={() =>
+                handleChallengeTimesUpdate("completed", "increment")
+              }
+              disabled={
+                challengeTimesNeeded === challengeTimesCompleted ? true : false
+              }
+            >
+              +1
+            </StyledTimesButton>
+            <p>{challengeTimesCompleted}</p>
+            <StyledTimesButton
+              type="button"
+              onClick={() =>
+                handleChallengeTimesUpdate("completed", "decrement")
+              }
+              disabled={challengeTimesCompleted < 1 ? true : false}
+            >
+              -1
+            </StyledTimesButton>
+          </StyledTimesWrapper>
+          <button>Update</button>
+        </StyledEditChallengeForm>
       </StyledDetailContainer>
     </main>
   );
