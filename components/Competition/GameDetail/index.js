@@ -4,9 +4,7 @@ import {
 } from "../../GeneralComponents/Buttons/StyledButton";
 import { StyledDetailContainer } from "./StyledGameDetail.js";
 import { useState } from "react";
-import EditScoreComponent, {
-  EditeScoreUpdateComponent,
-} from "./StyledGameDetail.js";
+import EditScoreComponent from "./StyledGameDetail.js";
 
 export default function GameDetail({
   game,
@@ -61,8 +59,7 @@ export default function GameDetail({
     }
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit() {
     const newGame = {
       userScore,
       opponentScore,
@@ -109,6 +106,7 @@ export default function GameDetail({
           {updateValue === 1 ? "0.1" : "1"}
         </button>
       </StyledDetailContainer>
+      <button onClick={handleSubmit}>Update</button>
     </main>
   );
 }
