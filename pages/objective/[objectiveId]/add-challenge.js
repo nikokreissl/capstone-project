@@ -1,18 +1,12 @@
 import { useRouter } from "next/router";
-import {
-  StyledDetailContainer,
-  StyledNumberInput,
-  StyledGameForm,
-  StyledGameButton,
-  StyledTimesWrapper,
-} from "../../../components/Competition/GameDetail/StyledGameDetail";
+import { StyledDetailContainer } from "../../../components/Competition/GameDetail/StyledGameDetail";
 import {
   StyledButton,
   StyledButtonWrapper,
 } from "../../../components/GeneralComponents/Buttons/StyledButton";
-import { useState } from "react";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { DataContext } from "../../_app";
+import EditChallengeComponent from "../../../components/Objectives/ChallengeDetail/";
 
 export default function AddChallengePage() {
   const router = useRouter();
@@ -29,12 +23,20 @@ export default function AddChallengePage() {
     setChallengeDescription(event.target.value);
   }
 
-  function handleTimesNeededInput(event) {
-    setChallengechallengeTimesNeeded(Number(event.target.value));
-  }
-
-  function handleTimesCompletedInput(event) {
-    setChallengeTimesCompleted(Number(event.target.value));
+  function handleChallengeTimesUpdate(timesType, operation) {
+    if (timesType === "needed") {
+      if (operation === "increment") {
+        setChallengechallengeTimesNeeded(challengeTimesNeeded + 1);
+      } else if (operation === "decrement") {
+        setChallengechallengeTimesNeeded(challengeTimesNeeded - 1);
+      }
+    } else if (timesType === "completed") {
+      if (operation === "increment") {
+        setChallengeTimesCompleted(challengeTimesCompleted + 1);
+      } else if (operation === "decrement") {
+        setChallengeTimesCompleted(challengeTimesCompleted - 1);
+      }
+    }
   }
 
   function handleSubmit(event) {
@@ -71,40 +73,15 @@ export default function AddChallengePage() {
           <StyledButton onClick={handleAddCancel}>🔙 Cancel</StyledButton>
         </StyledButtonWrapper>
         <h2>Track new Challenge</h2>
-        <StyledGameForm onSubmit={handleSubmit}>
-          <label htmlFor="challenge-description">Description</label>
-          <textarea
-            name="challenge-description"
-            id="challenge-description"
-            rows="5"
-            pattern="^(?!\s*$).+"
-            value={challengeDescription}
-            onChange={handleDescriptionInput}
-            required
-          ></textarea>
-          <StyledTimesWrapper>
-            <label htmlFor="times-needed">Times needed</label>
-            <StyledNumberInput
-              type="number"
-              name="times-needed"
-              id="times-needed"
-              min={0}
-              value={challengeTimesNeeded}
-              onChange={handleTimesNeededInput}
-            />
-            <label htmlFor="times-completed">Times completed</label>
-            <StyledNumberInput
-              type="number"
-              name="times-completed"
-              id="times-completed"
-              min={0}
-              value={challengeTimesCompleted}
-              onChange={handleTimesCompletedInput}
-            />
-          </StyledTimesWrapper>
-
-          <StyledGameButton>Save</StyledGameButton>
-        </StyledGameForm>
+        <EditChallengeComponent
+          onSubmitChallenge={handleSubmit}
+          onDescriptionChange={handleDescriptionInput}
+          challengeDescription={challengeDescription}
+          challengeTimesNeeded={challengeTimesNeeded}
+          challengeTimesCompleted={challengeTimesCompleted}
+          onChallengeTimesChange={handleChallengeTimesUpdate}
+          editType="create"
+        />
       </StyledDetailContainer>
     </main>
   );

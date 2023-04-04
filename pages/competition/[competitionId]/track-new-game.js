@@ -63,8 +63,7 @@ export default function TrackNewGamePage() {
     }
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit() {
     const newGame = {
       userScore,
       opponentScore,
