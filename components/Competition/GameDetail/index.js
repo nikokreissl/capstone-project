@@ -4,7 +4,9 @@ import {
 } from "../../GeneralComponents/Buttons/StyledButton";
 import { StyledDetailContainer } from "./StyledGameDetail.js";
 import { useState } from "react";
-import EditScoreComponent from "./StyledGameDetail.js";
+import EditScoreComponent, {
+  EditeScoreUpdateComponent,
+} from "./StyledGameDetail.js";
 
 export default function GameDetail({
   game,
@@ -17,21 +19,46 @@ export default function GameDetail({
   const [opponentScore, setOpponentScore] = useState(game.opponentScore);
   const [userXgoals, setUserXgoals] = useState(game.userXgoals);
   const [opponentXgoals, setOpponentXgoals] = useState(game.opponentXgoals);
+  const [updateValue, setUpdateValue] = useState(1);
 
-  function handleUserScoreChange(event) {
-    setUserScore(Number(event.target.value));
+  function handleScoreChange(player, operation) {
+    if (player === "user") {
+      if (operation === "increment") {
+        setUserScore(userScore + 1);
+      } else if (operation === "decrement") {
+        setUserScore(userScore - 1);
+      }
+    } else if (player === "opponent") {
+      if (operation === "increment") {
+        setOpponentScore(opponentScore + 1);
+      } else if (operation === "decrement") {
+        setOpponentScore(opponentScore - 1);
+      }
+    }
   }
 
-  function handleOpponentScoreChange(event) {
-    setOpponentScore(Number(event.target.value));
+  function handleXgoalsChange(player, operation, value) {
+    if (player === "user") {
+      if (operation === "increment") {
+        setUserXgoals(parseFloat((userXgoals + value).toFixed(1)));
+      } else if (operation === "decrement") {
+        setUserXgoals(parseFloat((userXgoals - value).toFixed(1)));
+      }
+    } else if (player === "opponent") {
+      if (operation === "increment") {
+        setOpponentXgoals(parseFloat((opponentXgoals + value).toFixed(1)));
+      } else if (operation === "decrement") {
+        setOpponentXgoals(parseFloat((opponentXgoals - value).toFixed(1)));
+      }
+    }
   }
 
-  function handleUserXgoalsChange(event) {
-    setUserXgoals(Number(event.target.value));
-  }
-
-  function handleOpponentXgoalsChange(event) {
-    setOpponentXgoals(Number(event.target.value));
+  function updateXgoalsValue() {
+    if (updateValue === 1) {
+      setUpdateValue(0.1);
+    } else {
+      setUpdateValue(1);
+    }
   }
 
   function handleSubmit(event) {
@@ -63,7 +90,24 @@ export default function GameDetail({
           <StyledButton onClick={handleDeleteGame}>❌ Delete</StyledButton>
         </StyledButtonWrapper>
         <h2>Game {game.gameId}</h2>
-        <EditScoreComponent />
+        <EditScoreComponent
+          headline="Score"
+          userCount={userScore}
+          opponentCount={opponentScore}
+          onValueUpdate={handleScoreChange}
+          value={1}
+        />
+        <EditScoreComponent
+          headline="xGoals"
+          userCount={userXgoals}
+          opponentCount={opponentXgoals}
+          onValueUpdate={handleXgoalsChange}
+          value={updateValue}
+        />
+        <p>Change xGoals update value to:</p>
+        <button onClick={updateXgoalsValue}>
+          {updateValue === 1 ? "0.1" : "1"}
+        </button>
       </StyledDetailContainer>
     </main>
   );
