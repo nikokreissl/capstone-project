@@ -1,9 +1,13 @@
 import { useState } from "react";
 import {
+  StyledForm,
+  StyledSubmitButton,
+  StyledH3,
+} from "./PlayerInstructionsForm/StyledTacticsEdit";
+import {
   StyledButton,
   StyledButtonWrapper,
 } from "../../GeneralComponents/Buttons/StyledButton";
-import styled from "styled-components";
 import EditTacticGeneralForm from "./GeneralInstructionsForm";
 import EditTacticPlayerForm from "./PlayerInstructionsForm";
 
@@ -57,7 +61,6 @@ export default function TacticsEdit({
         <StyledH3>General Instructions</StyledH3>
         <EditTacticGeneralForm tactic={tactic} />
         <StyledH3>Player Instructions</StyledH3>
-
         <EditTacticPlayerForm tactic={tactic} />
         <StyledSubmitButton>Submit</StyledSubmitButton>
       </StyledForm>
@@ -74,21 +77,3 @@ export default function TacticsEdit({
     </>
   );
 }
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-const StyledSubmitButton = styled.button`
-  position: sticky;
-  bottom: 50px;
-`;
-
-const StyledH3 = styled.h3`
-  padding: 10px;
-  background-color: lightgray;
-  position: sticky;
-  top: 0;
-`;
