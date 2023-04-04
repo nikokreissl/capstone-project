@@ -15,7 +15,7 @@ export default function ChallengeDetailPage() {
 
   const {
     objectives,
-    handleChallengeUpdate: onUpdateChallenge,
+    handleChallengeUpdate,
     handleChallengeDelete: onDeleteChallenge,
   } = useContext(DataContext);
 
@@ -33,51 +33,6 @@ export default function ChallengeDetailPage() {
 
   if (!currentChallenge) {
     return <p>Loading...</p>;
-  }
-
-  const [challengeDescription, setChallengeDescription] = useState(
-    currentChallenge.description
-  );
-  const [challengeTimesNeeded, setChallengechallengeTimesNeeded] = useState(
-    currentChallenge.timesNeeded
-  );
-  const [challengeTimesCompleted, setChallengeTimesCompleted] = useState(
-    currentChallenge.timesCompleted
-  );
-
-  function handleDescriptionInput(event) {
-    setChallengeDescription(event.target.value);
-  }
-
-  function handleChallengeTimesUpdate(timesType, operation) {
-    if (timesType === "needed") {
-      if (operation === "increment") {
-        setChallengechallengeTimesNeeded(challengeTimesNeeded + 1);
-      } else if (operation === "decrement") {
-        setChallengechallengeTimesNeeded(challengeTimesNeeded - 1);
-      }
-    } else if (timesType === "completed") {
-      if (operation === "increment") {
-        setChallengeTimesCompleted(challengeTimesCompleted + 1);
-      } else if (operation === "decrement") {
-        setChallengeTimesCompleted(challengeTimesCompleted - 1);
-      }
-    }
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const newDetails = {
-      description: challengeDescription,
-      timesNeeded: challengeTimesNeeded,
-      timesCompleted: challengeTimesCompleted,
-    };
-    if (challengeTimesNeeded < challengeTimesCompleted) {
-      alert("Times needed can not be smaller than times completed");
-    } else {
-      onUpdateChallenge(newDetails, currentChallenge.challengeId, objectiveId);
-      handleClickBack();
-    }
   }
 
   function handleDeleteChallenge() {
@@ -101,13 +56,10 @@ export default function ChallengeDetailPage() {
       </StyledButtonWrapper>
       <h2>Track new Challenge</h2>
       <EditChallengeComponent
-        onSubmitChallenge={handleSubmit}
-        onDescriptionChange={handleDescriptionInput}
-        challengeDescription={challengeDescription}
-        challengeTimesNeeded={challengeTimesNeeded}
-        challengeTimesCompleted={challengeTimesCompleted}
-        onChallengeTimesChange={handleChallengeTimesUpdate}
-        editType="update"
+        onRedirectBack={handleClickBack}
+        challenge={currentChallenge}
+        onUpdateChallenge={handleChallengeUpdate}
+        objectiveId={currentObjective.id}
       />
     </StyledDetailContainer>
   );

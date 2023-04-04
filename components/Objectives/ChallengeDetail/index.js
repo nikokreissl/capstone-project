@@ -4,18 +4,59 @@ import {
   StyledTimesText,
   StyledTimesButton,
 } from "./StyledChallengeDetail";
+import { useState } from "react";
 
 export default function EditChallengeComponent({
-  onSubmitChallenge,
-  onDescriptionChange,
-  challengeDescription,
-  challengeTimesNeeded,
-  challengeTimesCompleted,
-  onChallengeTimesChange,
-  editType,
+  onRedirectBack,
+  challenge,
+  onUpdateChallenge,
+  objectiveId,
 }) {
+  const { description, timesNeeded, timesCompleted, challengeId } = challenge;
+
+  const [challengeDescription, setChallengeDescription] = useState(description);
+  const [challengeTimesNeeded, setChallengechallengeTimesNeeded] =
+    useState(timesNeeded);
+  const [challengeTimesCompleted, setChallengeTimesCompleted] =
+    useState(timesCompleted);
+
+  function handleDescriptionInput(event) {
+    setChallengeDescription(event.target.value);
+  }
+
+  function handleChallengeTimesUpdate(timesType, operation) {
+    if (timesType === "needed") {
+      if (operation === "increment") {
+        setChallengechallengeTimesNeeded(challengeTimesNeeded + 1);
+      } else if (operation === "decrement") {
+        setChallengechallengeTimesNeeded(challengeTimesNeeded - 1);
+      }
+    } else if (timesType === "completed") {
+      if (operation === "increment") {
+        setChallengeTimesCompleted(challengeTimesCompleted + 1);
+      } else if (operation === "decrement") {
+        setChallengeTimesCompleted(challengeTimesCompleted - 1);
+      }
+    }
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const newDetails = {
+      description: challengeDescription,
+      timesNeeded: challengeTimesNeeded,
+      timesCompleted: challengeTimesCompleted,
+    };
+    if (challengeTimesNeeded < challengeTimesCompleted) {
+      alert("Times needed can not be smaller than times completed");
+    } else {
+      onUpdateChallenge(newDetails, challengeId, objectiveId);
+      onRedirectBack();
+    }
+  }
+
   return (
-    <StyledEditChallengeForm onSubmit={onSubmitChallenge}>
+    <StyledEditChallengeForm onSubmit={handleSubmit}>
       <label htmlFor="challenge-description">Description</label>
       <textarea
         name="challenge-description"
@@ -23,21 +64,21 @@ export default function EditChallengeComponent({
         rows="5"
         pattern="^(?!\s*$).+"
         value={challengeDescription}
-        onChange={onDescriptionChange}
+        onChange={handleDescriptionInput}
         required
       ></textarea>
       <StyledTimesWrapper>
         <StyledTimesText>Times needed:</StyledTimesText>
         <StyledTimesButton
           type="button"
-          onClick={() => onChallengeTimesChange("needed", "increment")}
+          onClick={() => handleChallengeTimesUpdate("needed", "increment")}
         >
           +1
         </StyledTimesButton>
         <p>{challengeTimesNeeded}</p>
         <StyledTimesButton
           type="button"
-          onClick={() => onChallengeTimesChange("needed", "decrement")}
+          onClick={() => handleChallengeTimesUpdate("needed", "decrement")}
           disabled={
             challengeTimesNeeded < 1 ||
             challengeTimesNeeded === challengeTimesCompleted
@@ -52,7 +93,7 @@ export default function EditChallengeComponent({
         <StyledTimesText>Times completed:</StyledTimesText>
         <StyledTimesButton
           type="button"
-          onClick={() => onChallengeTimesChange("completed", "increment")}
+          onClick={() => handleChallengeTimesUpdate("completed", "increment")}
           disabled={
             challengeTimesNeeded === challengeTimesCompleted ? true : false
           }
@@ -62,15 +103,13 @@ export default function EditChallengeComponent({
         <p>{challengeTimesCompleted}</p>
         <StyledTimesButton
           type="button"
-          onClick={() => onChallengeTimesChange("completed", "decrement")}
+          onClick={() => handleChallengeTimesUpdate("completed", "decrement")}
           disabled={challengeTimesCompleted < 1 ? true : false}
         >
           -1
         </StyledTimesButton>
       </StyledTimesWrapper>
-      <button>
-        {editType === "update" ? "Update challenge" : "Create challenge"}
-      </button>
+      <button>Update</button>
     </StyledEditChallengeForm>
   );
 }
