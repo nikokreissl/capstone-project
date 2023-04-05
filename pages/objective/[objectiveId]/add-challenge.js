@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { StyledDetailContainer } from "../../../components/Competition/GameDetail/StyledGameDetail";
-import { StyledButtonComponent } from "../../../components/GeneralComponents/Buttons";
 import { StyledLinkComponent } from "../../../components/GeneralComponents/Links";
 import { useState, useContext } from "react";
 import { DataContext } from "../../_app";

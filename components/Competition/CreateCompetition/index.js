@@ -3,11 +3,9 @@ import { DataContext } from "../../../pages/_app";
 import { useRouter } from "next/router";
 import {
   StyledForm,
-  StyledFormButton,
   StyledFormLabelInputWrapper,
 } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
-import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 
 export default function CreateCompetitionForm() {
   const router = useRouter();

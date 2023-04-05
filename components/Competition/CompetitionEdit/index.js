@@ -45,7 +45,7 @@ export default function EditCompetition({
 
   return (
     <>
-      <StyledButtonComponent type="delete" callback={onToggleEdit}>
+      <StyledButtonComponent type="back" callback={onToggleEdit}>
         Discard changes
       </StyledButtonComponent>
       <StyledForm onSubmit={handleUpdateSubmit}>
@@ -73,12 +73,19 @@ export default function EditCompetition({
         </StyledFormLabelInputWrapper>
         <button>Update</button>
       </StyledForm>
-      <StyledButtonComponent type="delete" callback={deleteCompetition}>
+      <StyledButtonComponent
+        type="delete"
+        callback={deleteCompetition}
+        item="Competition"
+        crud="deleted"
+      >
         Delete
       </StyledButtonComponent>
       <StyledButtonComponent
         type="archive"
         callback={() => onArchiveCompetition(id)}
+        item="Competition"
+        crud="archived"
       >
         {isArchived ? "Restore" : "Archive"}
       </StyledButtonComponent>

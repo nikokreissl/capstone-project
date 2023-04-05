@@ -98,7 +98,12 @@ export default function GameDetail({
         >
           Back
         </StyledLinkComponent>
-        <StyledButtonComponent type="delete" onClick={handleDeleteGame}>
+        <StyledButtonComponent
+          type="delete"
+          onClick={handleDeleteGame}
+          item="Game"
+          crud="deleted"
+        >
           Delete
         </StyledButtonComponent>
         <h2>Game {game.gameId}</h2>
@@ -117,9 +122,9 @@ export default function GameDetail({
           value={updateValue}
         />
         <p>Change xGoals update value to:</p>
-        <StyledButtonComponent type="submit" onClick={updateXgoalsValue}>
+        <button type="submit" onClick={updateXgoalsValue}>
           {updateValue === 1 ? "0.1" : "1"}
-        </StyledButtonComponent>
+        </button>
       </StyledDetailContainer>
       <button onClick={handleSubmit}>Update</button>
     </main>

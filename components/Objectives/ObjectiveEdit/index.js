@@ -31,7 +31,7 @@ export default function EditObjective({
 
   return (
     <>
-      <StyledButtonComponent type="delete" callback={onToggleEdit}>
+      <StyledButtonComponent type="back" callback={onToggleEdit}>
         Discard changes
       </StyledButtonComponent>
       <StyledForm onSubmit={handleSubmit}>
@@ -47,12 +47,19 @@ export default function EditObjective({
         />
         <button>Update</button>
       </StyledForm>
-      <StyledButtonComponent type="delete" callback={deleteObjective}>
+      <StyledButtonComponent
+        type="delete"
+        callback={deleteObjective}
+        item="Competition"
+        crud="deleted"
+      >
         Delete
       </StyledButtonComponent>
       <StyledButtonComponent
         type="archive"
         callback={() => onArchiveCompetition(id)}
+        item="Objective"
+        crud="archived"
       >
         {isArchived ? "Restore" : "Archive"}
       </StyledButtonComponent>

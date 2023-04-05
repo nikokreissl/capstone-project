@@ -1,18 +1,25 @@
 import styled from "styled-components";
 import Image from "next/image";
 import TrashIcon from "../../../public/trash-can.svg";
-import SubmitIcon from "../../../public/paper-plane.svg";
 import ArchiveIcon from "../../../public/box-open.svg";
 import EditIcon from "../../../public/pen-to-square.svg";
+import BackIcon from "../../../public/back-icon.svg";
 import { useState } from "react";
 import Spinner from "../CircleAnimation";
+import { successMessage, infoMessage } from "../notifications";
 
-export function StyledButtonComponent({ children, type, callback }) {
+export function StyledButtonComponent({
+  children,
+  type,
+  callback,
+  item,
+  crud,
+}) {
   function getIcon(type) {
-    if (type === "submit") {
-      return SubmitIcon;
-    } else if (type === "edit") {
+    if (type === "edit") {
       return EditIcon;
+    } else if (type === "back") {
+      return BackIcon;
     } else if (type === "delete") {
       return TrashIcon;
     } else if (type === "archive") {
@@ -22,12 +29,16 @@ export function StyledButtonComponent({ children, type, callback }) {
 
   const [waiting, setWaiting] = useState(false);
 
-  function handleClick() {
+  async function handleClick() {
     setWaiting(true);
     setTimeout(() => {
       setWaiting(false);
+      {
+        (type === "delete" && infoMessage(item, crud)) ||
+          (type === "archive" && infoMessage(item, crud));
+      }
       callback();
-    }, 2000);
+    }, 1000);
   }
 
   return (
