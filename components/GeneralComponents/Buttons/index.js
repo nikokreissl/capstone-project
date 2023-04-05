@@ -5,6 +5,7 @@ import SubmitIcon from "../../../public/paper-plane.svg";
 import ArchiveIcon from "../../../public/box-open.svg";
 import EditIcon from "../../../public/pen-to-square.svg";
 import { useState } from "react";
+import Spinner from "../CircleAnimation";
 
 export function StyledButtonComponent({ children, type, callback }) {
   function getIcon(type) {
@@ -32,7 +33,7 @@ export function StyledButtonComponent({ children, type, callback }) {
   return (
     <StyledButton onClick={handleClick}>
       {waiting ? (
-        "Waiting..."
+        <Spinner />
       ) : (
         <>
           <Image src={getIcon(type)} alt={type} width={20} height={20} />

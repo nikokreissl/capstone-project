@@ -5,6 +5,7 @@ import ObjectiveList from "../components/Objectives/ObjectiveList";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import styled from "styled-components";
+import Spinner from "../components/GeneralComponents/CircleAnimation";
 
 export default function Home() {
   const router = useRouter();
