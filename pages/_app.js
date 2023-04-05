@@ -11,6 +11,7 @@ import { useObjectives } from "../hooks/objective-hook";
 import { getGeneralInstructions, createDefaultTactic } from "../utils/utils";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
+import { ToastContainer } from "react-toastify";
 
 export const DataContext = createContext();
 
@@ -139,13 +140,25 @@ export default function App({ Component, pageProps }) {
       }}
     >
       <GlobalStyle />
-
       <Head>
         <title>Capstone Project</title>
       </Head>
       <Heading>FIFA23 Tracker</Heading>
+      ;
       <Component {...pageProps} />
       <Navigation />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </DataContext.Provider>
   );
 }

@@ -5,7 +5,7 @@ import ObjectiveList from "../components/Objectives/ObjectiveList";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import styled from "styled-components";
-import Spinner from "../components/GeneralComponents/CircleAnimation";
+import { successMessage } from "../components/GeneralComponents/SuccessMessage";
 
 export default function Home() {
   const router = useRouter();
@@ -42,6 +42,7 @@ export default function Home() {
 
   return (
     <main>
+      <button onClick={successMessage}>Show Toas</button>
       <StyledCreateItemForm onSubmit={handleCreateItem}>
         <StyledCreateItemSelect
           value={selectedCreateItem}
