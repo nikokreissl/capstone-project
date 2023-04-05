@@ -1,9 +1,6 @@
 import { StyledDetailContainer } from "../../../../components/Competition/GameDetail/StyledGameDetail";
-import {
-  StyledButtonWrapper,
-  StyledButton,
-} from "../../../../components/GeneralComponents/Buttons/StyledButton";
 import { StyledLinkComponent } from "../../../../components/GeneralComponents/Links";
+import { StyledButtonComponent } from "../../../../components/GeneralComponents/Buttons";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { DataContext } from "../../../_app";
@@ -38,10 +35,10 @@ export default function ChallengeDetailPage() {
 
   function handleDeleteChallenge() {
     onDeleteChallenge(currentChallenge.challengeId, objectiveId);
-    handleClickBack();
+    callbackBack();
   }
 
-  function handleClickBack() {
+  function callbackBack() {
     if (path.includes("archive")) {
       router.push(`/objective/${currentObjective.id}/?archive`);
     } else {
@@ -61,10 +58,12 @@ export default function ChallengeDetailPage() {
       >
         Back
       </StyledLinkComponent>
-      <StyledButton onClick={handleDeleteChallenge}>❌ Delete</StyledButton>
+      <StyledButtonComponent type="delete" callback={handleDeleteChallenge}>
+        Delete
+      </StyledButtonComponent>
       <h2>Track new Challenge</h2>
       <EditChallengeComponent
-        onRedirectBack={handleClickBack}
+        onRedirectBack={callbackBack}
         challenge={currentChallenge}
         onUpdateChallenge={handleChallengeUpdate}
         objectiveId={currentObjective.id}

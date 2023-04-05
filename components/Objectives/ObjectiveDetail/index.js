@@ -1,10 +1,7 @@
-import { StyledButton } from "../../GeneralComponents/Buttons/StyledButton";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
-import {
-  StyledDetailsContainer,
-  StyledDetailButton,
-} from "../../GeneralComponents/DetailView";
+import { StyledDetailsContainer } from "../../GeneralComponents/DetailView";
 import ChallengeList from "../ChallengeList";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 
 export default function ObjectiveDetail({
   objective,
@@ -29,7 +26,9 @@ export default function ObjectiveDetail({
       >
         Back
       </StyledLinkComponent>
-      <StyledButton onClick={onToggleEdit}>⚙️ Edit</StyledButton>
+      <StyledButtonComponent type="edit" callback={onToggleEdit}>
+        Edit
+      </StyledButtonComponent>
       <h2>{objective.name}</h2>
       <h3>Details</h3>
       <p>

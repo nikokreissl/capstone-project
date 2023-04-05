@@ -1,5 +1,5 @@
 import { StyledDetailsContainer } from "../../GeneralComponents/DetailView";
-import { StyledButton } from "../../GeneralComponents/Buttons/StyledButton";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import GameList from "../GameList";
 
@@ -23,7 +23,9 @@ export default function CompetitionDetail({ onToggleEdit, competition, path }) {
       >
         Back
       </StyledLinkComponent>
-      <StyledButton onClick={onToggleEdit}>⚙️ Edit</StyledButton>
+      <StyledButtonComponent callback={onToggleEdit} type="edit">
+        Edit
+      </StyledButtonComponent>
       <h2>{competition.name}</h2>
       <h3>Details</h3>
       <p>

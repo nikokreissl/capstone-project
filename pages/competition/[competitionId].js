@@ -46,6 +46,7 @@ export default function CompetitionDetailPage() {
           onUpdateCompetition={handleUpdateCompetition}
           onArchiveCompetition={handleArchiveCompetition}
           onDeleteCompetition={handleDeleteCompetition}
+          onClickBack={handleDirectHome}
         />
       ) : (
         <CompetitionDetail

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { StyledDetailsLink } from "../../Competition/CompetitionCard/StyledCompetitionCard";
+import { StyledLinkComponent } from "../Links";
 
 export default function EmptyState({ itemName, href, path }) {
   return (
@@ -12,7 +12,9 @@ export default function EmptyState({ itemName, href, path }) {
 below.`}
       </StyledEmptyStateText>
       {!path.includes("archive") && (
-        <StyledDetailsLink href={href}>Create new {itemName}</StyledDetailsLink>
+        <StyledLinkComponent type="add" href={href}>
+          Create {itemName}
+        </StyledLinkComponent>
       )}
     </>
   );

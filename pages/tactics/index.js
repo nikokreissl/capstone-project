@@ -1,5 +1,5 @@
 import TacticsList from "../../components/Tactics/TacticsList";
-import { StyledDetailsLink } from "../../components/Competition/CompetitionCard/StyledCompetitionCard";
+import { StyledLinkComponent } from "../../components/GeneralComponents/Links";
 import { useContext } from "react";
 import { DataContext } from "../_app";
 import { useRouter } from "next/router";
@@ -15,9 +15,9 @@ export default function TacticsOverviewPage() {
 
   return (
     <main>
-      <StyledDetailsLink href={"tactics/create"}>
-        Create new tactic
-      </StyledDetailsLink>
+      <StyledLinkComponent type="add" href={"tactics/create"}>
+        Create
+      </StyledLinkComponent>
       <TacticsList
         headline="Tactics"
         tactics={notArchivedTactics}

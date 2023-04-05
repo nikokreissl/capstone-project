@@ -1,7 +1,3 @@
-import {
-  StyledButtonWrapper,
-  StyledButton,
-} from "../../../components/GeneralComponents/Buttons/StyledButton.js";
 import { StyledLinkComponent } from "../../../components/GeneralComponents/Links/index.js";
 import EditScoreComponent, {
   StyledDetailContainer,

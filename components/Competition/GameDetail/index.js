@@ -1,7 +1,4 @@
-import {
-  StyledButtonWrapper,
-  StyledButton,
-} from "../../GeneralComponents/Buttons/StyledButton";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons/index.js";
 import { StyledDetailContainer } from "./StyledGameDetail.js";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import { useState } from "react";
@@ -101,7 +98,9 @@ export default function GameDetail({
         >
           Back
         </StyledLinkComponent>
-        <StyledButton onClick={handleDeleteGame}>❌ Delete</StyledButton>
+        <StyledButtonComponent type="delete" onClick={handleDeleteGame}>
+          Delete
+        </StyledButtonComponent>
         <h2>Game {game.gameId}</h2>
         <EditScoreComponent
           headline="Score"
@@ -118,9 +117,9 @@ export default function GameDetail({
           value={updateValue}
         />
         <p>Change xGoals update value to:</p>
-        <button onClick={updateXgoalsValue}>
+        <StyledButtonComponent type="submit" onClick={updateXgoalsValue}>
           {updateValue === 1 ? "0.1" : "1"}
-        </button>
+        </StyledButtonComponent>
       </StyledDetailContainer>
       <button onClick={handleSubmit}>Update</button>
     </main>

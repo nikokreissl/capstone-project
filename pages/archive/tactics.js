@@ -1,4 +1,5 @@
 import TacticsList from "../../components/Tactics/TacticsList";
+import { StyledLinkComponent } from "../../components/GeneralComponents/Links";
 import { useContext } from "react";
 import { DataContext } from "../_app";
 import { useRouter } from "next/router";
@@ -19,6 +20,12 @@ export default function ArchiveTacticsPage() {
 
   return (
     <main>
+      <StyledLinkComponent
+        href={path.includes("archive") ? "/archive" : "/"}
+        type="back"
+      >
+        Back
+      </StyledLinkComponent>
       <TacticsList tactics={archivedTactics} headline="Tactics" path={path} />
     </main>
   );

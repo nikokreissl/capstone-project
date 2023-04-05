@@ -1,13 +1,9 @@
 import { formations } from "../../../data/tactic/tactics-template";
-import {
-  StyledFormLabel,
-  StyledFormInput,
-  StyledForm,
-} from "../../GeneralComponents/CreateForm/StyledCreateForm";
+import { StyledForm } from "../../GeneralComponents/CreateForm/StyledCreateForm";
 import { useState, useContext } from "react";
 import { DataContext } from "../../../pages/_app";
+import { StyledLinkComponent } from "../../GeneralComponents/Links";
 
-import { StyledDetailsLink } from "../../Competition/CompetitionCard/StyledCompetitionCard";
 export default function CreateTacticForm({ onBackToTactics }) {
   const [formationValue, setFormationValue] = useState();
 
@@ -38,10 +34,12 @@ export default function CreateTacticForm({ onBackToTactics }) {
 
   return (
     <>
-      <StyledDetailsLink href={"/tactics"}>Cancel</StyledDetailsLink>
+      <StyledLinkComponent type="back" href="/tactics">
+        Cancel
+      </StyledLinkComponent>
       <StyledForm onSubmit={handleFormationSubmit}>
-        <StyledFormLabel htmlFor="tactic-name">Tactic name</StyledFormLabel>
-        <StyledFormInput
+        <label htmlFor="tactic-name">Tactic name</label>
+        <input
           value={formationNameValue}
           onChange={handleFormationNameInput}
           name="tactic-name"
@@ -49,7 +47,7 @@ export default function CreateTacticForm({ onBackToTactics }) {
           pattern="^(?!\s*$).+"
           required
         />
-        <StyledFormLabel htmlFor="formation">Choose Formation</StyledFormLabel>
+        <label htmlFor="formation">Choose Formation</label>
         <select
           value={formationValue}
           onChange={handleFormationChange}

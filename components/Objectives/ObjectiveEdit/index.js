@@ -1,14 +1,6 @@
 import { useState } from "react";
-import {
-  StyledForm,
-  StyledFormButton,
-  StyledFormLabel,
-  StyledFormInput,
-} from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
-import {
-  StyledButton,
-  StyledButtonWrapper,
-} from "../../GeneralComponents/Buttons/StyledButton";
+import { StyledForm } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons/index.js";
 
 export default function EditObjective({
   onToggleEdit,
@@ -27,7 +19,6 @@ export default function EditObjective({
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
     onUpdateObjective(objectiveName, id);
 
     onToggleEdit();
@@ -40,10 +31,12 @@ export default function EditObjective({
 
   return (
     <>
-      <StyledButton onClick={onToggleEdit}>🗑️ Discard changes</StyledButton>
+      <StyledButtonComponent type="delete" callback={onToggleEdit}>
+        Discard changes
+      </StyledButtonComponent>
       <StyledForm onSubmit={handleSubmit}>
-        <StyledFormLabel htmlFor="objective-name">Name</StyledFormLabel>
-        <StyledFormInput
+        <label htmlFor="objective-name">Name</label>
+        <input
           type="text"
           name="objective-name"
           id="objective-name"
@@ -52,16 +45,17 @@ export default function EditObjective({
           value={objectiveName}
           onChange={handleObjectiveNameChange}
         />
-        <StyledFormButton>Update objective</StyledFormButton>
+        <button>Update</button>
       </StyledForm>
-      <StyledButtonWrapper>
-        <StyledButton onClick={deleteObjective}>
-          ❌ Delete competition
-        </StyledButton>
-        <StyledButton onClick={() => onArchiveCompetition(id)}>
-          {isArchived ? "🔃 Restore from archive" : "📖 Archive objective"}
-        </StyledButton>
-      </StyledButtonWrapper>
+      <StyledButtonComponent type="delete" callback={deleteObjective}>
+        Delete
+      </StyledButtonComponent>
+      <StyledButtonComponent
+        type="archive"
+        callback={() => onArchiveCompetition(id)}
+      >
+        {isArchived ? "Restore" : "Archive"}
+      </StyledButtonComponent>
     </>
   );
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { StyledDetailsContainer } from "../../GeneralComponents/DetailView";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import { StyledTab, StyledTabsContainer } from "./StyledTacticsDetail";
-import { StyledButton } from "../../GeneralComponents/Buttons/StyledButton";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 import TacticsEdit from "../TacticsEdit";
 import InstructionDetail from "../Instruction";
 
@@ -11,10 +11,11 @@ export default function TacticsDetail({
   onUpdateTactic,
   onDeleteTactic,
   onArchiveTactic,
+  onDirectHome,
   path,
 }) {
   const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
-  function handleClickGeneralInstructions() {
+  function callbackGeneralInstructions() {
     if (showGeneralInstructions === false) {
       setShowGeneralInstructions(!showGeneralInstructions);
       setShowPlayerInstructions(!showPlayerInstructions);
@@ -22,7 +23,7 @@ export default function TacticsDetail({
   }
 
   const [showPlayerInstructions, setShowPlayerInstructions] = useState(false);
-  function handleClickPlayerInstructions() {
+  function callbackPlayerInstructions() {
     if (showPlayerInstructions === false) {
       setShowPlayerInstructions(!showPlayerInstructions);
       setShowGeneralInstructions(!showGeneralInstructions);
@@ -38,14 +39,6 @@ export default function TacticsDetail({
     return <p>Loading...</p>;
   }
 
-  function handleDirectHome() {
-    if (path.includes("archive")) {
-      router.push("/archive/tactics");
-    } else {
-      router.push("/tactics");
-    }
-  }
-
   return (
     <>
       {showEdit ? (
@@ -56,7 +49,7 @@ export default function TacticsDetail({
           onDeleteTactic={onDeleteTactic}
           onArchiveTactic={onArchiveTactic}
           onToggleShowEdit={toggleShowEdit}
-          onClickBack={handleDirectHome}
+          onClickBack={onDirectHome}
         />
       ) : (
         <>
@@ -66,7 +59,9 @@ export default function TacticsDetail({
           >
             Back
           </StyledLinkComponent>
-          <StyledButton onClick={toggleShowEdit}>⚙️ Edit</StyledButton>
+          <StyledButtonComponent type="edit" callback={toggleShowEdit}>
+            Edit
+          </StyledButtonComponent>
           <StyledDetailsContainer>
             <h2>{tactic.name}</h2>
             <h3>{tactic.formation}</h3>
@@ -74,13 +69,13 @@ export default function TacticsDetail({
           <StyledTabsContainer>
             <StyledTab
               shown={showGeneralInstructions}
-              handleTabClick={handleClickGeneralInstructions}
+              handleTabClick={callbackGeneralInstructions}
             >
               General Instructions
             </StyledTab>
             <StyledTab
               shown={showPlayerInstructions}
-              handleTabClick={handleClickPlayerInstructions}
+              handleTabClick={callbackPlayerInstructions}
             >
               Player Instructions
             </StyledTab>

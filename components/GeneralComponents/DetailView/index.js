@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { StyledButton } from "../Buttons/StyledButton";
 
 export const StyledDetailsContainer = styled.div`
   padding: 25px;
@@ -9,7 +8,7 @@ export const StyledDetailsContainer = styled.div`
   width: 90vw;
 `;
 
-export const StyledDetailButton = styled(StyledButton)`
+export const StyledDetailButton = styled.button`
   width: 50%;
   align-self: center;
 `;

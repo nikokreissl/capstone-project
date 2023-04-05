@@ -1,9 +1,7 @@
 import { useRouter } from "next/router";
 import { StyledDetailContainer } from "../../../components/Competition/GameDetail/StyledGameDetail";
-import {
-  StyledButton,
-  StyledButtonWrapper,
-} from "../../../components/GeneralComponents/Buttons/StyledButton";
+import { StyledButtonComponent } from "../../../components/GeneralComponents/Buttons";
+import { StyledLinkComponent } from "../../../components/GeneralComponents/Links";
 import { useState, useContext } from "react";
 import { DataContext } from "../../_app";
 import {
@@ -74,9 +72,16 @@ export default function AddChallengePage() {
   return (
     <main>
       <StyledDetailContainer>
-        <StyledButtonWrapper>
-          <StyledButton onClick={handleAddCancel}>🔙 Cancel</StyledButton>
-        </StyledButtonWrapper>
+        <StyledLinkComponent
+          href={
+            path.includes("archive")
+              ? `/objective/${objectiveId}/?archive`
+              : `/objective/${objectiveId}`
+          }
+          type="back"
+        >
+          Cancel
+        </StyledLinkComponent>
         <h2>Track new Challenge</h2>
         <StyledEditChallengeForm onSubmit={handleSubmit}>
           <label htmlFor="challenge-description">Description</label>

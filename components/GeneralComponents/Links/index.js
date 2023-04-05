@@ -18,12 +18,13 @@ export function StyledLinkComponent({ href, type, children }) {
 
   return (
     <StyledLink href={href}>
-      <Image src={getIcon(type)} alt="View more" width={20} height={20} />
+      <Image src={getIcon(type)} alt={type} width={20} height={20} />
       {children}
     </StyledLink>
   );
 }
 const StyledLink = styled(Link)`
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;

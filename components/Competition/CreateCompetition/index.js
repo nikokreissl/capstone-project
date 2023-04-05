@@ -3,12 +3,11 @@ import { DataContext } from "../../../pages/_app";
 import { useRouter } from "next/router";
 import {
   StyledForm,
-  StyledFormLabel,
-  StyledFormInput,
   StyledFormButton,
   StyledFormLabelInputWrapper,
 } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
-import { StyledDetailsLink } from "../CompetitionCard/StyledCompetitionCard";
+import { StyledLinkComponent } from "../../GeneralComponents/Links";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 
 export default function CreateCompetitionForm() {
   const router = useRouter();
@@ -35,10 +34,12 @@ export default function CreateCompetitionForm() {
 
   return (
     <>
-      <StyledDetailsLink href={"/"}>Cancel</StyledDetailsLink>
+      <StyledLinkComponent type="back" href={"/"}>
+        Cancel
+      </StyledLinkComponent>
       <StyledForm onSubmit={handleSubmit}>
-        <StyledFormLabel htmlFor="competition-name">Name</StyledFormLabel>
-        <StyledFormInput
+        <label htmlFor="competition-name">Name</label>
+        <input
           type="text"
           name="competition-name"
           id="competition-name"
@@ -48,10 +49,8 @@ export default function CreateCompetitionForm() {
           required
         />
         <StyledFormLabelInputWrapper>
-          <StyledFormLabel htmlFor="competition-games">
-            Number of Games
-          </StyledFormLabel>
-          <StyledFormInput
+          <label htmlFor="competition-games">Number of Games</label>
+          <input
             type="number"
             name="competition-games"
             id="competition-games"
@@ -59,9 +58,10 @@ export default function CreateCompetitionForm() {
             onChange={handleGameInput}
             min={1}
             max={100}
+            required
           />
         </StyledFormLabelInputWrapper>
-        <StyledFormButton>Create competition</StyledFormButton>
+        <button>Create</button>
       </StyledForm>
     </>
   );

@@ -4,10 +4,7 @@ import {
   StyledSubmitButton,
   StyledH3,
 } from "./PlayerInstructionsForm/StyledTacticsEdit";
-import {
-  StyledButton,
-  StyledButtonWrapper,
-} from "../../GeneralComponents/Buttons/StyledButton";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 import EditTacticGeneralForm from "./GeneralInstructionsForm";
 import EditTacticPlayerForm from "./PlayerInstructionsForm";
 
@@ -45,7 +42,9 @@ export default function TacticsEdit({
 
   return (
     <>
-      <StyledButton onClick={onToggleEdit}>🗑️ Discard changes</StyledButton>
+      <StyledButtonComponent type="delete" callback={onToggleEdit}>
+        Discard changes
+      </StyledButtonComponent>
       <StyledForm onSubmit={handleSubmit}>
         <h2>{tactic.name}</h2>
         <label htmlFor="tactic-name">Tactic name</label>
@@ -64,16 +63,18 @@ export default function TacticsEdit({
         <EditTacticPlayerForm tactic={tactic} />
         <StyledSubmitButton>Submit</StyledSubmitButton>
       </StyledForm>
-      <StyledButtonWrapper>
-        <StyledButton onClick={() => handleDelete(tactic.id)}>
-          ❌ Delete competition
-        </StyledButton>
-        <StyledButton onClick={() => handleArchiveClick(tactic.id)}>
-          {tactic.isArchived
-            ? "🔃 Restore from archive"
-            : "📖 Archive competition"}
-        </StyledButton>
-      </StyledButtonWrapper>
+      <StyledButtonComponent
+        type="delete"
+        callback={() => handleDelete(tactic.id)}
+      >
+        Delete
+      </StyledButtonComponent>
+      <StyledButtonComponent
+        type="archive"
+        callback={() => handleArchiveClick(tactic.id)}
+      >
+        {tactic.isArchived ? "Restore" : "Archive"}
+      </StyledButtonComponent>
     </>
   );
 }

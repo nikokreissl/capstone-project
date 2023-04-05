@@ -1,9 +1,8 @@
 import {
   StyledForm,
-  StyledFormLabel,
-  StyledFormInput,
   StyledFormButton,
 } from "../../GeneralComponents/CreateForm/StyledCreateForm";
+import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useContext } from "react";
@@ -29,10 +28,12 @@ export default function CreateObjectiveForm() {
 
   return (
     <>
-      <button onClick={() => router.back()}>Cancel</button>
+      <StyledLinkComponent href={"/"} type="back">
+        Cancel
+      </StyledLinkComponent>
       <StyledForm onSubmit={handleSubmit}>
-        <StyledFormLabel htmlFor="objective-name">Name</StyledFormLabel>
-        <StyledFormInput
+        <label htmlFor="objective-name">Name</label>
+        <input
           type="text"
           name="objective-name"
           id="objective-name"

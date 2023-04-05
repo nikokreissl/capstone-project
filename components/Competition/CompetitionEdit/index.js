@@ -2,14 +2,9 @@ import { useState } from "react";
 import {
   StyledForm,
   StyledFormButton,
-  StyledFormLabel,
-  StyledFormInput,
   StyledFormLabelInputWrapper,
 } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
-import {
-  StyledButton,
-  StyledButtonWrapper,
-} from "../../GeneralComponents/Buttons/StyledButton";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 
 export default function EditCompetition({
   onToggleEdit,
@@ -33,7 +28,6 @@ export default function EditCompetition({
 
   function handleUpdateSubmit(event) {
     event.preventDefault();
-
     if (competitionGames < competition.gamesPlayed.length) {
       alert(
         "Number of games must be greater than the current number of games added to the competition. Your changed won't be saved."
@@ -51,10 +45,12 @@ export default function EditCompetition({
 
   return (
     <>
-      <StyledButton onClick={onToggleEdit}>🗑️ Discard changes</StyledButton>
+      <StyledButtonComponent type="delete" callback={onToggleEdit}>
+        Discard changes
+      </StyledButtonComponent>
       <StyledForm onSubmit={handleUpdateSubmit}>
-        <StyledFormLabel htmlFor="competition-name">Name</StyledFormLabel>
-        <StyledFormInput
+        <label htmlFor="competition-name">Name</label>
+        <input
           type="text"
           name="competition-name"
           id="competition-name"
@@ -64,10 +60,8 @@ export default function EditCompetition({
           required
         />
         <StyledFormLabelInputWrapper>
-          <StyledFormLabel htmlFor="competition-games">
-            Number of Games
-          </StyledFormLabel>
-          <StyledFormInput
+          <label htmlFor="competition-games">Number of Games</label>
+          <input
             type="number"
             name="competition-games"
             id="competition-games"
@@ -77,16 +71,17 @@ export default function EditCompetition({
             max={100}
           />
         </StyledFormLabelInputWrapper>
-        <StyledFormButton>Update competition</StyledFormButton>
+        <button>Update</button>
       </StyledForm>
-      <StyledButtonWrapper>
-        <StyledButton onClick={deleteCompetition}>
-          ❌ Delete competition
-        </StyledButton>
-        <StyledButton onClick={() => onArchiveCompetition(id)}>
-          {isArchived ? "🔃 Restore from archive" : "📖 Archive competition"}
-        </StyledButton>
-      </StyledButtonWrapper>
+      <StyledButtonComponent type="delete" callback={deleteCompetition}>
+        Delete
+      </StyledButtonComponent>
+      <StyledButtonComponent
+        type="archive"
+        callback={() => onArchiveCompetition(id)}
+      >
+        {isArchived ? "Restore" : "Archive"}
+      </StyledButtonComponent>
     </>
   );
 }
