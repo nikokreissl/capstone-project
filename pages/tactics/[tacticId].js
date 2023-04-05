@@ -25,14 +25,6 @@ export default function TacticDetailPage() {
     return <p>Loading...</p>;
   }
 
-  function handleDirectHome() {
-    if (path.includes("archive")) {
-      router.push("/archive/tactics");
-    } else {
-      router.push("/tactics");
-    }
-  }
-
   return (
     <main>
       <TacticsDetail
@@ -40,7 +32,7 @@ export default function TacticDetailPage() {
         onUpdateTactic={handleUpdateTactic}
         onDeleteTactic={handleDeleteTactic}
         onArchiveTactic={handleArchiveTactic}
-        onClickBack={handleDirectHome}
+        path={path}
       />
     </main>
   );

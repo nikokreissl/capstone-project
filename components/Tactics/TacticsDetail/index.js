@@ -1,13 +1,9 @@
 import { useState } from "react";
 import { StyledDetailsContainer } from "../../GeneralComponents/DetailView";
-import { StyledDetailsLink } from "../../Competition/CompetitionCard/StyledCompetitionCard";
+import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import { StyledTab, StyledTabsContainer } from "./StyledTacticsDetail";
-import {
-  StyledButton,
-  StyledButtonWrapper,
-} from "../../GeneralComponents/Buttons/StyledButton";
+import { StyledButton } from "../../GeneralComponents/Buttons/StyledButton";
 import TacticsEdit from "../TacticsEdit";
-
 import InstructionDetail from "../Instruction";
 
 export default function TacticsDetail({
@@ -15,7 +11,7 @@ export default function TacticsDetail({
   onUpdateTactic,
   onDeleteTactic,
   onArchiveTactic,
-  onClickBack,
+  path,
 }) {
   const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
   function handleClickGeneralInstructions() {
@@ -42,6 +38,14 @@ export default function TacticsDetail({
     return <p>Loading...</p>;
   }
 
+  function handleDirectHome() {
+    if (path.includes("archive")) {
+      router.push("/archive/tactics");
+    } else {
+      router.push("/tactics");
+    }
+  }
+
   return (
     <>
       {showEdit ? (
@@ -52,14 +56,17 @@ export default function TacticsDetail({
           onDeleteTactic={onDeleteTactic}
           onArchiveTactic={onArchiveTactic}
           onToggleShowEdit={toggleShowEdit}
-          onClickBack={onClickBack}
+          onClickBack={handleDirectHome}
         />
       ) : (
         <>
-          <StyledButtonWrapper>
-            <StyledButton onClick={onClickBack}>Back</StyledButton>
-            <StyledButton onClick={toggleShowEdit}>⚙️ Edit</StyledButton>
-          </StyledButtonWrapper>
+          <StyledLinkComponent
+            href={path.includes("archive") ? "/archive/tactics" : "/tactics"}
+            type="back"
+          >
+            Back
+          </StyledLinkComponent>
+          <StyledButton onClick={toggleShowEdit}>⚙️ Edit</StyledButton>
           <StyledDetailsContainer>
             <h2>{tactic.name}</h2>
             <h3>{tactic.formation}</h3>
