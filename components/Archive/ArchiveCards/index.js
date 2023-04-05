@@ -1,4 +1,4 @@
-import { StyledDetailsLink } from "../../Competition/CompetitionCard/StyledCompetitionCard";
+import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import styled from "styled-components";
 
 export default function ArchiveCard({ itemName, object, href }) {
@@ -8,7 +8,9 @@ export default function ArchiveCard({ itemName, object, href }) {
     <StyledArchiveCard>
       <h3>All {itemName}</h3>
       <p>Total: {archivedItems.length}</p>
-      <StyledDetailsLink href={href}>View Details</StyledDetailsLink>
+      <StyledLinkComponent type="view" href={href}>
+        View Details
+      </StyledLinkComponent>
     </StyledArchiveCard>
   );
 }

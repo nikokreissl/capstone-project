@@ -5,7 +5,6 @@ import EmptyState from "../../GeneralComponents/Empty-State";
 export default function ChallengeList({
   objective,
   path,
-  onEditChallengeClick,
   onChallengeQuickEditUpdate,
 }) {
   return (
@@ -22,10 +21,10 @@ export default function ChallengeList({
             <ChallengeListItemComponent
               key={challenge.challengeId}
               challengeNumber={objective.challenges.indexOf(challenge)}
-              onEditChallengeClick={onEditChallengeClick}
               objectiveId={objective.id}
               challenge={challenge}
               onChallengeQuickEditUpdate={onChallengeQuickEditUpdate}
+              path={path}
             />
           ))}
         </StyledChallengeList>

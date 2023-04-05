@@ -3,16 +3,15 @@ import {
   StyledChallengeDescription,
   StyledChallengeQuickEditWrapper,
   StyledChallengeProgress,
-  StyleChallengeEditButton,
 } from "./StyledChallengeList";
-import { useState } from "react";
+import Link from "next/link";
 
 export default function ChallengeListItemComponent({
   challengeNumber,
   challenge,
-  onEditChallengeClick,
   onChallengeQuickEditUpdate,
   objectiveId,
+  path,
 }) {
   const { description, challengeId, timesNeeded, timesCompleted } = challenge;
 
@@ -46,11 +45,15 @@ export default function ChallengeListItemComponent({
         >
           -1
         </button>
-        <StyleChallengeEditButton
-          onClick={() => onEditChallengeClick(objectiveId, challengeId)}
+        <Link
+          href={
+            path.includes("archive")
+              ? `/objective/${objectiveId}/challenge-detail/${challengeId}/?archive`
+              : `/objective/${objectiveId}/challenge-detail/${challengeId}`
+          }
         >
-          Edit ✏️
-        </StyleChallengeEditButton>
+          Edit
+        </Link>
       </StyledChallengeQuickEditWrapper>
     </StyledChallengeListItem>
   );

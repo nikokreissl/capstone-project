@@ -2,6 +2,7 @@ import {
   StyledButtonWrapper,
   StyledButton,
 } from "../../../components/GeneralComponents/Buttons/StyledButton.js";
+import { StyledLinkComponent } from "../../../components/GeneralComponents/Links/index.js";
 import EditScoreComponent, {
   StyledDetailContainer,
 } from "../../../components/Competition/GameDetail/StyledGameDetail";
@@ -82,20 +83,19 @@ export default function TrackNewGamePage() {
     }
   }
 
-  function handleCancelCreate() {
-    if (path.includes("archive")) {
-      router.push(`/competition/${competitionId}/?archive`);
-    } else {
-      router.push(`/competition/${competitionId}`);
-    }
-  }
-
   return (
     <main>
       <StyledDetailContainer>
-        <StyledButtonWrapper>
-          <StyledButton onClick={handleCancelCreate}>🔙 Cancel</StyledButton>
-        </StyledButtonWrapper>
+        <StyledLinkComponent
+          href={
+            path.includes("archive")
+              ? `/competition/${competitionId}/?archive`
+              : `/competition/${competitionId}`
+          }
+          type="back"
+        >
+          Cancel
+        </StyledLinkComponent>
         <h2>Track new game</h2>
         <EditScoreComponent
           headline="Score"

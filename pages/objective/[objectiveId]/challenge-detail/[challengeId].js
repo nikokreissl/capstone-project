@@ -3,8 +3,9 @@ import {
   StyledButtonWrapper,
   StyledButton,
 } from "../../../../components/GeneralComponents/Buttons/StyledButton";
+import { StyledLinkComponent } from "../../../../components/GeneralComponents/Links";
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { DataContext } from "../../../_app";
 import EditChallengeComponent from "../../../../components/Objectives/ChallengeDetail/";
 
@@ -50,10 +51,17 @@ export default function ChallengeDetailPage() {
 
   return (
     <StyledDetailContainer>
-      <StyledButtonWrapper>
-        <StyledButton onClick={handleClickBack}>🔙 Back</StyledButton>
-        <StyledButton onClick={handleDeleteChallenge}>❌ Delete</StyledButton>
-      </StyledButtonWrapper>
+      <StyledLinkComponent
+        type="back"
+        href={
+          path.includes("archive")
+            ? `/objective/${currentObjective.id}/?archive`
+            : `/objective/${currentObjective.id}`
+        }
+      >
+        Back
+      </StyledLinkComponent>
+      <StyledButton onClick={handleDeleteChallenge}>❌ Delete</StyledButton>
       <h2>Track new Challenge</h2>
       <EditChallengeComponent
         onRedirectBack={handleClickBack}

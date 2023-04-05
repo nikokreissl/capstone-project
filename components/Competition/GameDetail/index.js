@@ -3,15 +3,16 @@ import {
   StyledButton,
 } from "../../GeneralComponents/Buttons/StyledButton";
 import { StyledDetailContainer } from "./StyledGameDetail.js";
+import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import { useState } from "react";
 import EditScoreComponent from "./StyledGameDetail.js";
 
 export default function GameDetail({
   game,
-  onClickBack,
   onUpdateGame,
   competitionId,
   onDeleteGame,
+  path,
 }) {
   const [userScore, setUserScore] = useState(game.userScore);
   const [opponentScore, setOpponentScore] = useState(game.opponentScore);
@@ -70,22 +71,37 @@ export default function GameDetail({
       alert("You can not enter draws!");
     } else {
       onUpdateGame(competitionId, game.gameId, newGame);
-      onClickBack();
+      handleBackToCompetition();
     }
   }
 
   function handleDeleteGame() {
-    onClickBack();
+    handleBackToCompetition();
     onDeleteGame(competitionId, game.gameId);
+  }
+
+  function handleBackToCompetition() {
+    if (path.includes("archive")) {
+      router.push(`/competition/${competitionId}/?archive`);
+    } else {
+      router.push(`/competition/${competitionId}`);
+    }
   }
 
   return (
     <main>
       <StyledDetailContainer>
-        <StyledButtonWrapper>
-          <StyledButton onClick={onClickBack}>🔙 Back</StyledButton>
-          <StyledButton onClick={handleDeleteGame}>❌ Delete</StyledButton>
-        </StyledButtonWrapper>
+        <StyledLinkComponent
+          href={
+            path.includes("archive")
+              ? `/competition/${competitionId}/?archive`
+              : `/competition/${competitionId}`
+          }
+          type="back"
+        >
+          Back
+        </StyledLinkComponent>
+        <StyledButton onClick={handleDeleteGame}>❌ Delete</StyledButton>
         <h2>Game {game.gameId}</h2>
         <EditScoreComponent
           headline="Score"

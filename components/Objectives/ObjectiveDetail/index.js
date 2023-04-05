@@ -1,7 +1,5 @@
-import {
-  StyledButton,
-  StyledButtonWrapper,
-} from "../../GeneralComponents/Buttons/StyledButton";
+import { StyledButton } from "../../GeneralComponents/Buttons/StyledButton";
+import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import {
   StyledDetailsContainer,
   StyledDetailButton,
@@ -10,9 +8,7 @@ import ChallengeList from "../ChallengeList";
 
 export default function ObjectiveDetail({
   objective,
-  onClickBack,
   onToggleEdit,
-  onAddnewChallenge,
   onEditChallengeClick,
   onChallengeQuickEditUpdate,
   path,
@@ -27,19 +23,29 @@ export default function ObjectiveDetail({
 
   return (
     <StyledDetailsContainer>
-      <StyledButtonWrapper>
-        <StyledButton onClick={onClickBack}>🔙 Back</StyledButton>
-        <StyledButton onClick={onToggleEdit}>⚙️ Edit</StyledButton>
-      </StyledButtonWrapper>
+      <StyledLinkComponent
+        href={path.includes("archive") ? "/archive/objectives" : "/"}
+        type="back"
+      >
+        Back
+      </StyledLinkComponent>
+      <StyledButton onClick={onToggleEdit}>⚙️ Edit</StyledButton>
       <h2>{objective.name}</h2>
       <h3>Details</h3>
       <p>
         Challenges completed: {challengeProgress.length} /{" "}
         {objective.challenges.length}
       </p>
-      <StyledDetailButton onClick={() => onAddnewChallenge(objective.id)}>
+      <StyledLinkComponent
+        href={
+          path.includes("archive")
+            ? `/objective/${objective.id}/add-challenge/?archive`
+            : `/objective/${objective.id}/add-challenge`
+        }
+        type="add"
+      >
         Add challenge
-      </StyledDetailButton>
+      </StyledLinkComponent>
       <ChallengeList
         objective={objective}
         onEditChallengeClick={onEditChallengeClick}

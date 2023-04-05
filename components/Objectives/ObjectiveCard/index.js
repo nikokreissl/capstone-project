@@ -1,4 +1,5 @@
-import { StyledArticle, StyledDetailsLink } from "./StyledObjectiveCard.js";
+import { StyledArticle } from "./StyledObjectiveCard.js";
+import { StyledLinkComponent } from "../../GeneralComponents/Links/index.js";
 
 export default function ObjectiveCard({ objective, path }) {
   const challengeProgress = objective.challenges.filter(
@@ -12,9 +13,12 @@ export default function ObjectiveCard({ objective, path }) {
         Challenges finished: {challengeProgress.length} /{" "}
         {objective.challenges.length}
       </p>
-      <StyledDetailsLink href={`/objective/${objective.id}/?=${path}`}>
+      <StyledLinkComponent
+        type="view"
+        href={`/objective/${objective.id}/?=${path}`}
+      >
         View Details
-      </StyledDetailsLink>
+      </StyledLinkComponent>
     </StyledArticle>
   );
 }
