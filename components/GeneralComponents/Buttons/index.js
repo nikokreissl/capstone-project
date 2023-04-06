@@ -9,11 +9,11 @@ import SubmitIcon from "../../../public/paper-plane.svg";
 import { useState } from "react";
 import Spinner from "../CircleAnimation";
 import {
-  successCreateMessage,
-  archiveMessage,
-  successUpdateMessage,
-  deleteMessage,
-} from "../Notifications";
+  SuccessCreateMessage,
+  ArchiveMessage,
+  SuccessUpdateMessage,
+  DeleteMessage,
+} from "../Notifications/index.js";
 
 export function StyledButtonComponent({
   children,
@@ -40,13 +40,13 @@ export function StyledButtonComponent({
 
   function fireMessage(intemName) {
     if (type === "archive") {
-      return archiveMessage(intemName);
+      return ArchiveMessage(intemName);
     } else if (type === "add") {
-      return successCreateMessage();
+      return SuccessCreateMessage();
     } else if (type === "update") {
-      return successUpdateMessage(intemName);
+      return SuccessUpdateMessage(intemName);
     } else if (type === "delete") {
-      return deleteMessage();
+      return DeleteMessage();
     }
   }
 

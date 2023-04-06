@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const successCreateMessage = () =>
+export const SuccessCreateMessage = () =>
   toast.success(`Successfully created`, {
     position: "top-right",
     autoClose: 1300,
@@ -13,7 +13,7 @@ export const successCreateMessage = () =>
     theme: "colored",
   });
 
-export const successUpdateMessage = () =>
+export const SuccessUpdateMessage = () =>
   toast.success(`Successfully updated`, {
     position: "top-right",
     autoClose: 1300,
@@ -25,7 +25,7 @@ export const successUpdateMessage = () =>
     theme: "colored",
   });
 
-export const archiveMessage = (item) =>
+export const ArchiveMessage = (item) =>
   toast.info(`${item} successfully archived`, {
     position: "top-right",
     autoClose: 1300,
@@ -37,7 +37,7 @@ export const archiveMessage = (item) =>
     theme: "dark",
   });
 
-export const deleteMessage = () =>
+export const DeleteMessage = () =>
   toast.info(`Successfully deleted`, {
     position: "top-right",
     autoClose: 1300,
