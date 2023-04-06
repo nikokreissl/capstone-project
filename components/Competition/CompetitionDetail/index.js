@@ -30,7 +30,7 @@ export default function CompetitionDetail({ onToggleEdit, competition, path }) {
       <StyledButtonComponent callback={onToggleEdit} type="edit">
         Edit
       </StyledButtonComponent>
-      <PageHeadlineComponent>Competitions details</PageHeadlineComponent>
+      <PageHeadlineComponent>Competition details</PageHeadlineComponent>
       <StyledPageDescription>
         Add new games to the competition once played by clicking{" "}
         <strong>Add game</strong> or edit name and number by clicking{" "}

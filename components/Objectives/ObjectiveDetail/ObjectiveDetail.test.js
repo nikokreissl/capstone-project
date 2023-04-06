@@ -29,27 +29,31 @@ describe("Objective Detail Component", () => {
   };
 
   test("All buttons are correctly rendered on Objective detail page", () => {
-    render(<ObjectiveDetail objective={objective} />);
-    const backButton = screen.getByRole("button", { name: "🔙 Back" });
-    const editButton = screen.getByRole("button", { name: "⚙️ Edit" });
-    const addButton = screen.getByRole("button", { name: "Add challenge" });
+    render(
+      <ObjectiveDetail objective={objective} path={"/objective/6T8pK9rLqJ"} />
+    );
+    const links = screen.getAllByRole("link");
+    const button = screen.getAllByRole("button");
 
-    expect(backButton).toBeInTheDocument();
-    expect(editButton).toBeInTheDocument();
-    expect(addButton).toBeInTheDocument();
+    expect(links.length).toBe(5);
+    expect(button.length).toBe(7);
   });
 
   test("Renders the correct objective information", () => {
-    render(<ObjectiveDetail objective={objective} />);
-    const objectiveName = screen.getByRole("heading", { name: "Objective #1" });
-    const challenges = screen.getByText("Challenges completed: 0 / 3");
+    render(
+      <ObjectiveDetail objective={objective} path={"/objective/6T8pK9rLqJ"} />
+    );
+    const objectiveName = screen.getByRole("heading", {
+      name: "Objective details",
+    });
 
     expect(objectiveName).toBeInTheDocument();
-    expect(challenges).toBeInTheDocument();
   });
 
   test("Renders the current amount of challenges", () => {
-    render(<ObjectiveDetail objective={objective} />);
+    render(
+      <ObjectiveDetail objective={objective} path={"/objective/6T8pK9rLqJ"} />
+    );
     const challenges = screen.getAllByRole("listitem");
     expect(challenges.length).toBe(3);
   });

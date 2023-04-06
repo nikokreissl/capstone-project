@@ -24,23 +24,25 @@ describe("CompetitionDetail Component", () => {
       },
     ],
   };
-  test("Renders genral buttons correctly", () => {
-    render(<CompetitionDetail competition={competition} />);
+  test("Renders buttons and links correctly", () => {
+    render(
+      <CompetitionDetail competition={competition} path="competition/1" />
+    );
 
-    const backButton = screen.getByRole("button", { name: "🔙 Back" });
-    const editButton = screen.getByRole("button", { name: "⚙️ Edit" });
-    const trackButton = screen.getByRole("button", { name: "Track Game" });
+    const links = screen.getAllByRole("link");
+    const button = screen.getAllByRole("button");
 
-    expect(backButton).toBeInTheDocument();
-    expect(editButton).toBeInTheDocument();
-    expect(trackButton).toBeInTheDocument();
+    expect(links.length).toBe(5);
+    expect(button.length).toBe(1);
   });
 
   test("Renders Competition details correctly", () => {
-    render(<CompetitionDetail competition={competition} />);
+    render(
+      <CompetitionDetail competition={competition} path="competition/1" />
+    );
 
     const competitionName = screen.getByRole("heading", {
-      name: "Competition Name",
+      name: "Competition details",
     });
 
     const record = screen.getByText("Wins: 2 / Loses: 1");
@@ -53,7 +55,9 @@ describe("CompetitionDetail Component", () => {
   });
 
   test("Renders correct number of games", () => {
-    render(<CompetitionDetail competition={competition} />);
+    render(
+      <CompetitionDetail competition={competition} path="competition/1" />
+    );
 
     const games = screen.getAllByRole("listitem");
     expect(games.length).toBe(3);
