@@ -10,6 +10,7 @@ export default function GameDetail({
   competitionId,
   onDeleteGame,
   path,
+  router,
 }) {
   const [userScore, setUserScore] = useState(game.userScore);
   const [opponentScore, setOpponentScore] = useState(game.opponentScore);
@@ -98,12 +99,7 @@ export default function GameDetail({
         >
           Back
         </StyledLinkComponent>
-        <StyledButtonComponent
-          type="delete"
-          onClick={handleDeleteGame}
-          item="Game"
-          crud="deleted"
-        >
+        <StyledButtonComponent type="delete" onClick={handleDeleteGame}>
           Delete
         </StyledButtonComponent>
         <h2>Game {game.gameId}</h2>
@@ -126,7 +122,9 @@ export default function GameDetail({
           {updateValue === 1 ? "0.1" : "1"}
         </button>
       </StyledDetailContainer>
-      <button onClick={handleSubmit}>Update</button>
+      <StyledButtonComponent type="update" callback={handleSubmit}>
+        Update
+      </StyledButtonComponent>
     </main>
   );
 }

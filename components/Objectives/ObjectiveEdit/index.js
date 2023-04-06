@@ -47,19 +47,13 @@ export default function EditObjective({
         />
         <button>Update</button>
       </StyledForm>
-      <StyledButtonComponent
-        type="delete"
-        callback={deleteObjective}
-        item="Competition"
-        crud="deleted"
-      >
+      <StyledButtonComponent type="delete" callback={deleteObjective}>
         Delete
       </StyledButtonComponent>
       <StyledButtonComponent
         type="archive"
         callback={() => onArchiveCompetition(id)}
         item="Objective"
-        crud="archived"
       >
         {isArchived ? "Restore" : "Archive"}
       </StyledButtonComponent>

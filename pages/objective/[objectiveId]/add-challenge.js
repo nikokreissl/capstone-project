@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { StyledDetailContainer } from "../../../components/Competition/GameDetail/StyledGameDetail";
 import { StyledLinkComponent } from "../../../components/GeneralComponents/Links";
+import { StyledButtonComponent } from "../../../components/GeneralComponents/Buttons";
 import { useState, useContext } from "react";
 import { DataContext } from "../../_app";
 import {
@@ -25,6 +26,14 @@ export default function AddChallengePage() {
     setChallengeDescription(event.target.value);
   }
 
+  function checkValidInput(input) {
+    if (input.startsWith(" ")) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   function handleChallengeTimesUpdate(timesType, operation) {
     if (timesType === "needed") {
       if (operation === "increment") {
@@ -41,8 +50,7 @@ export default function AddChallengePage() {
     }
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit() {
     const challengeDetails = {
       description: challengeDescription,
       timesNeeded: challengeTimesNeeded,
@@ -60,14 +68,6 @@ export default function AddChallengePage() {
     }
   }
 
-  function handleAddCancel() {
-    if (path.includes("archive")) {
-      router.push(`/objective/${objectiveId}/?archive`);
-    } else {
-      router.push(`/objective/${objectiveId}`);
-    }
-  }
-
   return (
     <main>
       <StyledDetailContainer>
@@ -82,7 +82,7 @@ export default function AddChallengePage() {
           Cancel
         </StyledLinkComponent>
         <h2>Track new Challenge</h2>
-        <StyledEditChallengeForm onSubmit={handleSubmit}>
+        <StyledEditChallengeForm onSubmit={(event) => event.preventDefault()}>
           <label htmlFor="challenge-description">Description</label>
           <textarea
             name="challenge-description"
@@ -139,7 +139,17 @@ export default function AddChallengePage() {
               -1
             </StyledTimesButton>
           </StyledTimesWrapper>
-          <button>Update</button>
+          <StyledButtonComponent
+            type="add"
+            callback={handleSubmit}
+            disabled={
+              !challengeDescription || !checkValidInput(challengeDescription)
+                ? true
+                : false
+            }
+          >
+            Create
+          </StyledButtonComponent>
         </StyledEditChallengeForm>
       </StyledDetailContainer>
     </main>

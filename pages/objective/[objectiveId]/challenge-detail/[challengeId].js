@@ -58,12 +58,7 @@ export default function ChallengeDetailPage() {
       >
         Back
       </StyledLinkComponent>
-      <StyledButtonComponent
-        type="delete"
-        callback={handleDeleteChallenge}
-        item="Challenge"
-        crud="deleted"
-      >
+      <StyledButtonComponent type="delete" callback={handleDeleteChallenge}>
         Delete
       </StyledButtonComponent>
       <h2>Track new Challenge</h2>

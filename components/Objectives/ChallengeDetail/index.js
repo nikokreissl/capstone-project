@@ -4,6 +4,7 @@ import {
   StyledTimesText,
   StyledTimesButton,
 } from "./StyledChallengeDetail";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 import { useState } from "react";
 
 export default function EditChallengeComponent({
@@ -24,6 +25,14 @@ export default function EditChallengeComponent({
     setChallengeDescription(event.target.value);
   }
 
+  function checkValidInput(input) {
+    if (input.startsWith(" ")) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   function handleChallengeTimesUpdate(timesType, operation) {
     if (timesType === "needed") {
       if (operation === "increment") {
@@ -40,8 +49,7 @@ export default function EditChallengeComponent({
     }
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit() {
     const newDetails = {
       description: challengeDescription,
       timesNeeded: challengeTimesNeeded,
@@ -56,7 +64,7 @@ export default function EditChallengeComponent({
   }
 
   return (
-    <StyledEditChallengeForm onSubmit={handleSubmit}>
+    <StyledEditChallengeForm onSubmit={(event) => event.preventDefault()}>
       <label htmlFor="challenge-description">Description</label>
       <textarea
         name="challenge-description"
@@ -109,7 +117,17 @@ export default function EditChallengeComponent({
           -1
         </StyledTimesButton>
       </StyledTimesWrapper>
-      <button>Update</button>
+      <StyledButtonComponent
+        type="update"
+        callback={handleSubmit}
+        disabled={
+          !challengeDescription || !checkValidInput(challengeDescription)
+            ? true
+            : false
+        }
+      >
+        Update
+      </StyledButtonComponent>
     </StyledEditChallengeForm>
   );
 }

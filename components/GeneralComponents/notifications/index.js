@@ -1,20 +1,8 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// export const successMessage = (item, crud) =>
-//   toast.success(`${item} successfully ${crud}`, {
-//     position: "top-right",
-//     autoClose: 2000,
-//     hideProgressBar: false,
-//     closeOnClick: true,
-//     pauseOnHover: true,
-//     draggable: true,
-//     progress: undefined,
-//     theme: "colored",
-//   });
-
-export const successMessage = () =>
-  toast.success("Success", {
+export const successCreateMessage = () =>
+  toast.success(`Successfully created`, {
     position: "top-right",
     autoClose: 1300,
     hideProgressBar: false,
@@ -25,8 +13,32 @@ export const successMessage = () =>
     theme: "colored",
   });
 
-export const infoMessage = (item, crud) =>
-  toast.info(`${item} successfully ${crud}`, {
+export const successUpdateMessage = () =>
+  toast.success(`Successfully updated`, {
+    position: "top-right",
+    autoClose: 1300,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
+export const archiveMessage = (item) =>
+  toast.info(`${item} successfully archived`, {
+    position: "top-right",
+    autoClose: 1300,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
+
+export const deleteMessage = () =>
+  toast.info(`Successfully deleted`, {
     position: "top-right",
     autoClose: 1300,
     hideProgressBar: false,

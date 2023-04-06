@@ -34,6 +34,7 @@ export default function GameDetailPage() {
       onDeleteGame={handleGameDelete}
       competitionId={currentCompetition.id}
       path={path}
+      router={router}
     />
   );
 }

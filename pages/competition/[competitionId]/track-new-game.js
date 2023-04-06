@@ -1,4 +1,5 @@
 import { StyledLinkComponent } from "../../../components/GeneralComponents/Links/index.js";
+import { StyledButtonComponent } from "../../../components/GeneralComponents/Buttons/index.js";
 import EditScoreComponent, {
   StyledDetailContainer,
 } from "../../../components/Competition/GameDetail/StyledGameDetail";
@@ -112,7 +113,9 @@ export default function TrackNewGamePage() {
           {updateValue === 1 ? "0.1" : "1"}
         </button>
       </StyledDetailContainer>
-      <button onClick={handleSubmit}>Save</button>
+      <StyledButtonComponent type="add" callback={handleSubmit}>
+        Save
+      </StyledButtonComponent>
     </main>
   );
 }

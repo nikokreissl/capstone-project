@@ -23,7 +23,6 @@ export default function TacticsEdit({
 
   function handleSubmit(event) {
     event.preventDefault();
-
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
@@ -66,8 +65,6 @@ export default function TacticsEdit({
       <StyledButtonComponent
         type="delete"
         callback={() => handleDelete(tactic.id)}
-        item="Tactic"
-        crud="deleted"
       >
         Delete
       </StyledButtonComponent>
@@ -75,7 +72,6 @@ export default function TacticsEdit({
         type="archive"
         callback={() => handleArchiveClick(tactic.id)}
         item="Tactic"
-        crud="archived"
       >
         {tactic.isArchived ? "Restore" : "Archive"}
       </StyledButtonComponent>

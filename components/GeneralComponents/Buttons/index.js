@@ -4,16 +4,23 @@ import TrashIcon from "../../../public/trash-can.svg";
 import ArchiveIcon from "../../../public/box-open.svg";
 import EditIcon from "../../../public/pen-to-square.svg";
 import BackIcon from "../../../public/back-icon.svg";
+import AddIcon from "../../../public/add-item.svg";
+import SubmitIcon from "../../../public/paper-plane.svg";
 import { useState } from "react";
 import Spinner from "../CircleAnimation";
-import { successMessage, infoMessage } from "../notifications";
+import {
+  successCreateMessage,
+  archiveMessage,
+  successUpdateMessage,
+  deleteMessage,
+} from "../notifications";
 
 export function StyledButtonComponent({
   children,
   type,
   callback,
   item,
-  crud,
+  disabled,
 }) {
   function getIcon(type) {
     if (type === "edit") {
@@ -24,25 +31,43 @@ export function StyledButtonComponent({
       return TrashIcon;
     } else if (type === "archive") {
       return ArchiveIcon;
+    } else if (type === "add") {
+      return AddIcon;
+    } else if (type === "update") {
+      return SubmitIcon;
+    }
+  }
+
+  function fireMessage(intemName) {
+    if (type === "archive") {
+      return archiveMessage(intemName);
+    } else if (type === "add") {
+      return successCreateMessage();
+    } else if (type === "update") {
+      return successUpdateMessage(intemName);
+    } else if (type === "delete") {
+      return deleteMessage();
     }
   }
 
   const [waiting, setWaiting] = useState(false);
 
-  async function handleClick() {
+  function handleClick() {
     setWaiting(true);
     setTimeout(() => {
-      setWaiting(false);
       {
-        (type === "delete" && infoMessage(item, crud)) ||
-          (type === "archive" && infoMessage(item, crud));
+        (type === "delete" && fireMessage(item)) ||
+          (type === "archive" && fireMessage(item)) ||
+          (type === "add" && fireMessage(item)) ||
+          (type === "update" && fireMessage(item));
       }
       callback();
+      setWaiting(false);
     }, 1000);
   }
 
   return (
-    <StyledButton onClick={handleClick}>
+    <StyledButton onClick={handleClick} disabled={disabled}>
       {waiting ? (
         <Spinner />
       ) : (

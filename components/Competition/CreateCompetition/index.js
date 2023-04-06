@@ -6,12 +6,21 @@ import {
   StyledFormLabelInputWrapper,
 } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 
 export default function CreateCompetitionForm() {
   const router = useRouter();
 
   const [competitionNameInput, setCompetitionNameInput] = useState("");
   const [competitionGameInput, setCompetitionGameInput] = useState(1);
+
+  function checkValidInput(input) {
+    if (input.startsWith(" ")) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   const { handleAddCompetition } = useContext(DataContext);
 
@@ -23,8 +32,7 @@ export default function CreateCompetitionForm() {
     setCompetitionGameInput(Number(event.target.value));
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit() {
     handleAddCompetition(competitionNameInput, competitionGameInput);
 
     router.push("/");
@@ -35,13 +43,14 @@ export default function CreateCompetitionForm() {
       <StyledLinkComponent type="back" href={"/"}>
         Cancel
       </StyledLinkComponent>
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm onSubmit={(event) => event.preventDefault()}>
         <label htmlFor="competition-name">Name</label>
         <input
           type="text"
           name="competition-name"
           id="competition-name"
           pattern="^(?!\s*$).+"
+          maxLength={50}
           value={competitionNameInput}
           onChange={handleNameInput}
           required
@@ -59,7 +68,17 @@ export default function CreateCompetitionForm() {
             required
           />
         </StyledFormLabelInputWrapper>
-        <button>Create</button>
+        <StyledButtonComponent
+          type="add"
+          callback={handleSubmit}
+          disabled={
+            !competitionNameInput || !checkValidInput(competitionNameInput)
+              ? true
+              : false
+          }
+        >
+          Create
+        </StyledButtonComponent>
       </StyledForm>
     </>
   );

@@ -42,9 +42,6 @@ export default function Home() {
 
   return (
     <main>
-      <button onClick={() => successMessage("Competition", "create")}>
-        Click
-      </button>
       <StyledCreateItemForm onSubmit={handleCreateItem}>
         <StyledCreateItemSelect
           value={selectedCreateItem}

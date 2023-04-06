@@ -3,23 +3,30 @@ import { StyledForm } from "../../GeneralComponents/CreateForm/StyledCreateForm"
 import { useState, useContext } from "react";
 import { DataContext } from "../../../pages/_app";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 
 export default function CreateTacticForm({ onBackToTactics }) {
   const [formationValue, setFormationValue] = useState();
-
   function handleFormationChange(event) {
     setFormationValue(event.target.value);
   }
-  const [formationNameValue, setFormationNameValue] = useState("");
 
+  const [formationNameValue, setFormationNameValue] = useState("");
   function handleFormationNameInput(event) {
     setFormationNameValue(event.target.value);
   }
 
   const { handleAddTactic } = useContext(DataContext);
 
-  function handleFormationSubmit(event) {
-    event.preventDefault();
+  function checkValidInput(input) {
+    if (input.startsWith(" ")) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  function handleFormationSubmit() {
     const newFormation = {
       name: formationNameValue,
       formation: formationValue,
@@ -37,7 +44,7 @@ export default function CreateTacticForm({ onBackToTactics }) {
       <StyledLinkComponent type="back" href="/tactics">
         Cancel
       </StyledLinkComponent>
-      <StyledForm onSubmit={handleFormationSubmit}>
+      <StyledForm onSubmit={(event) => event.preventDefault()}>
         <label htmlFor="tactic-name">Tactic name</label>
         <input
           value={formationNameValue}
@@ -59,7 +66,19 @@ export default function CreateTacticForm({ onBackToTactics }) {
             <option key={formation.name}>{formation.name}</option>
           ))}
         </select>
-        <button>Create</button>
+        <StyledButtonComponent
+          type="add"
+          callback={handleFormationSubmit}
+          disabled={
+            !formationNameValue ||
+            !checkValidInput(formationNameValue) ||
+            !formationValue
+              ? true
+              : false
+          }
+        >
+          Create
+        </StyledButtonComponent>
       </StyledForm>
     </>
   );
