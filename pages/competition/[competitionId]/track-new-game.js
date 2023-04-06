@@ -72,15 +72,11 @@ export default function TrackNewGamePage() {
       opponentXgoals,
       userXgoals,
     };
-    if (userScore === opponentScore) {
-      alert("You can not enter draws!");
+    handleTrackNewGame(competitionId, newGame);
+    if (path.includes("archive")) {
+      router.push(`/competition/${competitionId}/?archive`);
     } else {
-      handleTrackNewGame(competitionId, newGame);
-      if (path.includes("archive")) {
-        router.push(`/competition/${competitionId}/?archive`);
-      } else {
-        router.push(`/competition/${competitionId}`);
-      }
+      router.push(`/competition/${competitionId}`);
     }
   }
 
@@ -121,7 +117,11 @@ export default function TrackNewGamePage() {
           {updateValue === 1 ? "0.1" : "1"}
         </button>
       </StyledDetailContainer>
-      <StyledButtonComponent type="add" callback={handleSubmit}>
+      <StyledButtonComponent
+        type="add"
+        callback={handleSubmit}
+        disabled={userScore === opponentScore ? true : false}
+      >
         Save
       </StyledButtonComponent>
     </>

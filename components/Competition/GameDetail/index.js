@@ -70,12 +70,8 @@ export default function GameDetail({
       opponentXgoals,
       userXgoals,
     };
-    if (userScore === opponentScore) {
-      alert("You can not enter draws!");
-    } else {
-      onUpdateGame(competitionId, game.gameId, newGame);
-      onRedirectBack();
-    }
+    onUpdateGame(competitionId, game.gameId, newGame);
+    onRedirectBack();
   }
 
   function handleDeleteGame() {
@@ -123,7 +119,11 @@ export default function GameDetail({
           {updateValue === 1 ? "0.1" : "1"}
         </button>
       </StyledDetailContainer>
-      <StyledButtonComponent type="update" callback={handleSubmit}>
+      <StyledButtonComponent
+        type="update"
+        callback={handleSubmit}
+        disabled={userScore === opponentScore ? true : false}
+      >
         Update
       </StyledButtonComponent>
     </>
