@@ -10,10 +10,10 @@ import { useState } from "react";
 import Spinner from "../CircleAnimation";
 import {
   SuccessCreateMessage,
-  ArchiveMessage,
   SuccessUpdateMessage,
+  ArchiveMessage,
   DeleteMessage,
-} from "../Notifications/index.js";
+} from "../Notifications";
 
 export function StyledButtonComponent({
   children,
