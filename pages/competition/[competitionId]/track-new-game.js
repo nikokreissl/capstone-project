@@ -119,7 +119,7 @@ export default function TrackNewGamePage() {
       </StyledDetailContainer>
       <StyledButtonComponent
         type="add"
-        callback={handleSubmit}
+        functionToBeExecuted={handleSubmit}
         disabled={userScore === opponentScore ? true : false}
       >
         Save

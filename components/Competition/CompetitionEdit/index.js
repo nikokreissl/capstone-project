@@ -47,7 +47,7 @@ export default function EditCompetition({
 
   return (
     <>
-      <StyledButtonComponent type="back" callback={onToggleEdit}>
+      <StyledButtonComponent type="back" functionToBeExecuted={onToggleEdit}>
         Discard changes
       </StyledButtonComponent>
       <PageHeadlineComponent>Edit competition</PageHeadlineComponent>
@@ -81,16 +81,22 @@ export default function EditCompetition({
             max={100}
           />
         </StyledFormLabelInputWrapper>
-        <StyledButtonComponent type="update" callback={handleUpdateSubmit}>
+        <StyledButtonComponent
+          type="update"
+          functionToBeExecuted={handleUpdateSubmit}
+        >
           Update
         </StyledButtonComponent>
       </StyledForm>
-      <StyledButtonComponent type="delete" callback={deleteCompetition}>
+      <StyledButtonComponent
+        type="delete"
+        functionToBeExecuted={deleteCompetition}
+      >
         Delete
       </StyledButtonComponent>
       <StyledButtonComponent
         type="archive"
-        callback={() => onArchiveCompetition(id)}
+        functionToBeExecuted={() => onArchiveCompetition(id)}
         item="Competition"
       >
         {isArchived ? "Restore" : "Archive"}

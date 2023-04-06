@@ -27,7 +27,7 @@ export default function CompetitionDetail({ onToggleEdit, competition, path }) {
       >
         Back
       </StyledLinkComponent>
-      <StyledButtonComponent callback={onToggleEdit} type="edit">
+      <StyledButtonComponent functionToBeExecuted={onToggleEdit} type="edit">
         Edit
       </StyledButtonComponent>
       <PageHeadlineComponent>Competition details</PageHeadlineComponent>

@@ -119,7 +119,7 @@ export default function EditChallengeComponent({
       </StyledTimesWrapper>
       <StyledButtonComponent
         type="update"
-        callback={handleSubmit}
+        functionToBeExecuted={handleSubmit}
         disabled={
           !challengeDescription || !checkValidInput(challengeDescription)
             ? true

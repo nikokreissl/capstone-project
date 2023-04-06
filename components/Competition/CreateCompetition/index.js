@@ -79,7 +79,7 @@ export default function CreateCompetitionForm() {
         </StyledFormLabelInputWrapper>
         <StyledButtonComponent
           type="add"
-          callback={handleSubmit}
+          functionToBeExecuted={handleSubmit}
           disabled={
             !competitionNameInput || !checkValidInput(competitionNameInput)
               ? true

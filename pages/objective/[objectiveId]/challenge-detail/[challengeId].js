@@ -39,10 +39,10 @@ export default function ChallengeDetailPage() {
 
   function handleDeleteChallenge() {
     onDeleteChallenge(currentChallenge.challengeId, objectiveId);
-    callbackBack();
+    functionToBeExecutedBack();
   }
 
-  function callbackBack() {
+  function functionToBeExecutedBack() {
     if (path.includes("archive")) {
       router.push(`/objective/${currentObjective.id}/?archive`);
     } else {
@@ -62,7 +62,10 @@ export default function ChallengeDetailPage() {
       >
         Back
       </StyledLinkComponent>
-      <StyledButtonComponent type="delete" callback={handleDeleteChallenge}>
+      <StyledButtonComponent
+        type="delete"
+        functionToBeExecuted={handleDeleteChallenge}
+      >
         Delete
       </StyledButtonComponent>
       <PageHeadlineComponent>Edit challenge</PageHeadlineComponent>
@@ -72,7 +75,7 @@ export default function ChallengeDetailPage() {
         <strong>was completed</strong>.
       </StyledPageDescription>
       <EditChallengeComponent
-        onRedirectBack={callbackBack}
+        onRedirectBack={functionToBeExecutedBack}
         challenge={currentChallenge}
         onUpdateChallenge={handleChallengeUpdate}
         objectiveId={currentObjective.id}

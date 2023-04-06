@@ -19,7 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 export function StyledButtonComponent({
   children,
   type,
-  callback,
+  functionToBeExecuted,
   item,
   disabled,
 }) {
@@ -47,7 +47,7 @@ export function StyledButtonComponent({
       if (toasts.hasOwnProperty(type)) {
         toasts[type](item);
       }
-      callback();
+      functionToBeExecuted();
       setWaiting(false);
     }, 1000);
   }

@@ -145,7 +145,7 @@ export default function AddChallengePage() {
         </StyledTimesWrapper>
         <StyledButtonComponent
           type="add"
-          callback={handleSubmit}
+          functionToBeExecuted={handleSubmit}
           disabled={
             !challengeDescription || !checkValidInput(challengeDescription)
               ? true

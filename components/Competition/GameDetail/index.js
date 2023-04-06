@@ -92,7 +92,10 @@ export default function GameDetail({
         >
           Back
         </StyledLinkComponent>
-        <StyledButtonComponent type="delete" callback={handleDeleteGame}>
+        <StyledButtonComponent
+          type="delete"
+          functionToBeExecuted={handleDeleteGame}
+        >
           Delete
         </StyledButtonComponent>
         <PageHeadlineComponent>Edit game {gameNumber}</PageHeadlineComponent>
@@ -121,7 +124,7 @@ export default function GameDetail({
       </StyledDetailContainer>
       <StyledButtonComponent
         type="update"
-        callback={handleSubmit}
+        functionToBeExecuted={handleSubmit}
         disabled={userScore === opponentScore ? true : false}
       >
         Update

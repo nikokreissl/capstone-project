@@ -19,7 +19,7 @@ export default function TacticsDetail({
   path,
 }) {
   const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
-  function callbackGeneralInstructions() {
+  function functionToBeExecutedGeneralInstructions() {
     if (showGeneralInstructions === false) {
       setShowGeneralInstructions(!showGeneralInstructions);
       setShowPlayerInstructions(!showPlayerInstructions);
@@ -27,7 +27,7 @@ export default function TacticsDetail({
   }
 
   const [showPlayerInstructions, setShowPlayerInstructions] = useState(false);
-  function callbackPlayerInstructions() {
+  function functionToBeExecutedPlayerInstructions() {
     if (showPlayerInstructions === false) {
       setShowPlayerInstructions(!showPlayerInstructions);
       setShowGeneralInstructions(!showGeneralInstructions);
@@ -63,7 +63,10 @@ export default function TacticsDetail({
           >
             Back
           </StyledLinkComponent>
-          <StyledButtonComponent type="edit" callback={toggleShowEdit}>
+          <StyledButtonComponent
+            type="edit"
+            functionToBeExecuted={toggleShowEdit}
+          >
             Edit
           </StyledButtonComponent>
           <PageHeadlineComponent>Tactic details</PageHeadlineComponent>
@@ -80,13 +83,13 @@ export default function TacticsDetail({
           <StyledTabsContainer>
             <StyledTab
               shown={showGeneralInstructions}
-              handleTabClick={callbackGeneralInstructions}
+              handleTabClick={functionToBeExecutedGeneralInstructions}
             >
               General Instructions
             </StyledTab>
             <StyledTab
               shown={showPlayerInstructions}
-              handleTabClick={callbackPlayerInstructions}
+              handleTabClick={functionToBeExecutedPlayerInstructions}
             >
               Player Instructions
             </StyledTab>

@@ -30,7 +30,7 @@ export default function ObjectiveDetail({
       >
         Back
       </StyledLinkComponent>
-      <StyledButtonComponent type="edit" callback={onToggleEdit}>
+      <StyledButtonComponent type="edit" functionToBeExecuted={onToggleEdit}>
         Edit
       </StyledButtonComponent>
       <PageHeadlineComponent>Objective details</PageHeadlineComponent>

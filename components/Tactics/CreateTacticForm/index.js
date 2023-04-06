@@ -68,7 +68,7 @@ export default function CreateTacticForm({ onBackToTactics }) {
         </select>
         <StyledButtonComponent
           type="add"
-          callback={handleFormationSubmit}
+          functionToBeExecuted={handleFormationSubmit}
           disabled={
             !formationNameValue ||
             !checkValidInput(formationNameValue) ||

@@ -35,7 +35,7 @@ export default function EditObjective({
 
   return (
     <>
-      <StyledButtonComponent type="back" callback={onToggleEdit}>
+      <StyledButtonComponent type="back" functionToBeExecuted={onToggleEdit}>
         Discard changes
       </StyledButtonComponent>
       <PageHeadlineComponent>Edit objective</PageHeadlineComponent>
@@ -57,16 +57,22 @@ export default function EditObjective({
           value={objectiveName}
           onChange={handleObjectiveNameChange}
         />
-        <StyledButtonComponent type="update" callback={handleSubmit}>
+        <StyledButtonComponent
+          type="update"
+          functionToBeExecuted={handleSubmit}
+        >
           Update
         </StyledButtonComponent>
       </StyledForm>
-      <StyledButtonComponent type="delete" callback={deleteObjective}>
+      <StyledButtonComponent
+        type="delete"
+        functionToBeExecuted={deleteObjective}
+      >
         Delete
       </StyledButtonComponent>
       <StyledButtonComponent
         type="archive"
-        callback={() => onArchiveCompetition(id)}
+        functionToBeExecuted={() => onArchiveCompetition(id)}
         item="Objective"
       >
         {isArchived ? "Restore" : "Archive"}

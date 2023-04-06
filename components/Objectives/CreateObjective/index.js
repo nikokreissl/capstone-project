@@ -59,7 +59,7 @@ export default function CreateObjectiveForm() {
         />
         <StyledButtonComponent
           type="add"
-          callback={handleSubmit}
+          functionToBeExecuted={handleSubmit}
           disabled={
             !objectiveNameInput || !checkValidInput(objectiveNameInput)
               ? true

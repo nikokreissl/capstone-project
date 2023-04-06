@@ -45,7 +45,7 @@ export default function TacticsEdit({
 
   return (
     <>
-      <StyledButtonComponent type="back" callback={onToggleEdit}>
+      <StyledButtonComponent type="back" functionToBeExecuted={onToggleEdit}>
         Discard changes
       </StyledButtonComponent>
       <StyledForm onSubmit={handleSubmit}>
@@ -74,13 +74,13 @@ export default function TacticsEdit({
       </StyledForm>
       <StyledButtonComponent
         type="delete"
-        callback={() => handleDelete(tactic.id)}
+        functionToBeExecuted={() => handleDelete(tactic.id)}
       >
         Delete
       </StyledButtonComponent>
       <StyledButtonComponent
         type="archive"
-        callback={() => handleArchiveClick(tactic.id)}
+        functionToBeExecuted={() => handleArchiveClick(tactic.id)}
         item="Tactic"
       >
         {tactic.isArchived ? "Restore" : "Archive"}
