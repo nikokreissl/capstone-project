@@ -23,44 +23,29 @@ export function StyledButtonComponent({
   item,
   disabled,
 }) {
-  function getIcon(type) {
-    if (type === "edit") {
-      return EditIcon;
-    } else if (type === "back") {
-      return BackIcon;
-    } else if (type === "delete") {
-      return TrashIcon;
-    } else if (type === "archive") {
-      return ArchiveIcon;
-    } else if (type === "add") {
-      return AddIcon;
-    } else if (type === "update") {
-      return SubmitIcon;
-    }
-  }
+  const buttonIcons = {
+    edit: EditIcon,
+    back: BackIcon,
+    delete: TrashIcon,
+    archive: ArchiveIcon,
+    add: AddIcon,
+    update: SubmitIcon,
+  };
 
-  function fireMessage(intemName) {
-    if (type === "archive") {
-      return ArchiveMessage(intemName);
-    } else if (type === "add") {
-      return SuccessCreateMessage();
-    } else if (type === "update") {
-      return SuccessUpdateMessage(intemName);
-    } else if (type === "delete") {
-      return DeleteMessage();
-    }
-  }
+  const toasts = {
+    archive: (itemName) => ArchiveMessage(itemName),
+    add: SuccessCreateMessage,
+    update: (itemName) => SuccessUpdateMessage(itemName),
+    delete: DeleteMessage,
+  };
 
   const [waiting, setWaiting] = useState(false);
 
   function handleClick() {
     setWaiting(true);
     setTimeout(() => {
-      {
-        (type === "delete" && fireMessage()) ||
-          (type === "archive" && fireMessage(item)) ||
-          (type === "add" && fireMessage()) ||
-          (type === "update" && fireMessage());
+      if (toasts.hasOwnProperty(type)) {
+        toasts[type](item);
       }
       callback();
       setWaiting(false);
@@ -73,7 +58,7 @@ export function StyledButtonComponent({
         <Spinner />
       ) : (
         <>
-          <Image src={getIcon(type)} alt={type} width={20} height={20} />
+          <Image src={buttonIcons[type]} alt={type} width={20} height={20} />
           {children}
         </>
       )}
