@@ -11,9 +11,9 @@ import Spinner from "../CircleAnimation";
 import {
   SuccessCreateMessage,
   SuccessUpdateMessage,
-  ArchiveMessage,
   DeleteMessage,
-} from "../Notifications";
+  ArchiveMessage,
+} from "../Toasts";
 
 export function StyledButtonComponent({
   children,
