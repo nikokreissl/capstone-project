@@ -12,6 +12,7 @@ import { getGeneralInstructions, createDefaultTactic } from "../utils/utils";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const DataContext = createContext();
 

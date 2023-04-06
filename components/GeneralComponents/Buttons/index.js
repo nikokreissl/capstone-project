@@ -14,6 +14,7 @@ import {
   DeleteMessage,
   ArchiveMessage,
 } from "../Toasts";
+import "react-toastify/dist/ReactToastify.css";
 
 export function StyledButtonComponent({
   children,
