@@ -18,7 +18,7 @@ export default function ArchiveObjectivePage() {
   );
 
   return (
-    <main>
+    <>
       <StyledLinkComponent
         href={path.includes("archive") ? "/archive" : "/"}
         type="back"
@@ -30,6 +30,6 @@ export default function ArchiveObjectivePage() {
         headline="Competitions"
         path={path}
       />
-    </main>
+    </>
   );
 }

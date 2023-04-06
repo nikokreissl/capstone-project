@@ -10,11 +10,7 @@ export default function ChallengeList({
   return (
     <>
       {objective.challenges.length < 1 ? (
-        <EmptyState
-          itemName="challenge"
-          href={`${objective.id}/add-challenge`}
-          path={path}
-        />
+        <EmptyState itemName="challenge" path={path} />
       ) : (
         <StyledChallengeList>
           {objective.challenges.map((challenge) => (

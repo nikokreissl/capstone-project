@@ -19,7 +19,7 @@ export default function ArchiveCompetitionsPage() {
   );
 
   return (
-    <main>
+    <>
       <StyledLinkComponent
         href={path.includes("archive") ? "/archive" : "/"}
         type="back"
@@ -31,6 +31,6 @@ export default function ArchiveCompetitionsPage() {
         headline="Competitions"
         path={path}
       />
-    </main>
+    </>
   );
 }

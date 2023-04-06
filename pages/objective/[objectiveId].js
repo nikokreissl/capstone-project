@@ -39,7 +39,7 @@ export default function ObjectiveDetailPage() {
   }
 
   return (
-    <main>
+    <>
       {isEdit ? (
         <EditObjective
           onToggleEdit={toggleEdit}
@@ -57,6 +57,6 @@ export default function ObjectiveDetailPage() {
           path={path}
         />
       )}
-    </main>
+    </>
   );
 }

@@ -34,15 +34,13 @@ export default function TacticDetailPage() {
   }
 
   return (
-    <main>
-      <TacticsDetail
-        tactic={currentTactic}
-        onUpdateTactic={handleUpdateTactic}
-        onDeleteTactic={handleDeleteTactic}
-        onArchiveTactic={handleArchiveTactic}
-        onDirectHome={handleDirectHome}
-        path={path}
-      />
-    </main>
+    <TacticsDetail
+      tactic={currentTactic}
+      onUpdateTactic={handleUpdateTactic}
+      onDeleteTactic={handleDeleteTactic}
+      onArchiveTactic={handleArchiveTactic}
+      onDirectHome={handleDirectHome}
+      path={path}
+    />
   );
 }

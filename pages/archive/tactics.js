@@ -19,7 +19,7 @@ export default function ArchiveTacticsPage() {
   );
 
   return (
-    <main>
+    <>
       <StyledLinkComponent
         href={path.includes("archive") ? "/archive" : "/"}
         type="back"
@@ -27,6 +27,6 @@ export default function ArchiveTacticsPage() {
         Back
       </StyledLinkComponent>
       <TacticsList tactics={archivedTactics} headline="Tactics" path={path} />
-    </main>
+    </>
   );
 }

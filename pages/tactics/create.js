@@ -7,9 +7,5 @@ export default function CreateNewTacticPage() {
   function handleBackToTactics() {
     router.push("/tactics");
   }
-  return (
-    <main>
-      <CreateTacticForm onBackToTactics={handleBackToTactics} />
-    </main>
-  );
+  return <CreateTacticForm onBackToTactics={handleBackToTactics} />;
 }

@@ -12,11 +12,7 @@ export default function GameList({
   return (
     <>
       {reversedCompetitionGames.length < 1 ? (
-        <EmptyState
-          itemName="game"
-          href={`${competition.id}/track-new-game`}
-          path={path}
-        />
+        <EmptyState itemName="game" path={path} />
       ) : (
         <StyledGameList>
           {reversedCompetitionGames.map((game) => (

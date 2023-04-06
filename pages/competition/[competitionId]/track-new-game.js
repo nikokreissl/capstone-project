@@ -85,7 +85,7 @@ export default function TrackNewGamePage() {
   }
 
   return (
-    <main>
+    <>
       <StyledDetailContainer>
         <StyledLinkComponent
           href={
@@ -124,6 +124,6 @@ export default function TrackNewGamePage() {
       <StyledButtonComponent type="add" callback={handleSubmit}>
         Save
       </StyledButtonComponent>
-    </main>
+    </>
   );
 }

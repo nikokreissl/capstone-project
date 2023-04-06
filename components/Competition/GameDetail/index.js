@@ -92,7 +92,7 @@ export default function GameDetail({
   }
 
   return (
-    <main>
+    <>
       <StyledDetailContainer>
         <StyledLinkComponent
           href={
@@ -134,6 +134,6 @@ export default function GameDetail({
       <StyledButtonComponent type="update" callback={handleSubmit}>
         Update
       </StyledButtonComponent>
-    </main>
+    </>
   );
 }

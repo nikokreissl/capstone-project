@@ -8,11 +8,7 @@ export default function CompetitionList({ competitions, headline, path }) {
     <StyledHomeContainer>
       <PageHeadlineComponent>{headline}</PageHeadlineComponent>
       {competitions.length < 1 ? (
-        <EmptyState
-          itemName="competition"
-          href="competition/create"
-          path={path}
-        />
+        <EmptyState itemName="competition" path={path} />
       ) : (
         <StyledHomeList>
           {competitions.map((competition) => (

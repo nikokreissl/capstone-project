@@ -38,7 +38,7 @@ export default function CompetitionDetailPage() {
   }
 
   return (
-    <main>
+    <>
       {isEdit ? (
         <EditCompetition
           onToggleEdit={toggleEdit}
@@ -56,6 +56,6 @@ export default function CompetitionDetailPage() {
           path={path}
         />
       )}
-    </main>
+    </>
   );
 }

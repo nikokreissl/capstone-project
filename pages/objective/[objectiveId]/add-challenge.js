@@ -73,94 +73,88 @@ export default function AddChallengePage() {
   }
 
   return (
-    <main>
-      <StyledDetailContainer>
-        <StyledLinkComponent
-          href={
-            path.includes("archive")
-              ? `/objective/${objectiveId}/?archive`
-              : `/objective/${objectiveId}`
-          }
-          type="back"
-        >
-          Cancel
-        </StyledLinkComponent>
-        <PageHeadlineComponent>Track new Challenge</PageHeadlineComponent>
-        <StyledPageDescription>
-          Set the <strong>challenge description</strong>, how often it{" "}
-          <strong>needs to be completed</strong> and{" "}
-          <strong>was completed</strong>.
-        </StyledPageDescription>
-        <StyledEditChallengeForm onSubmit={(event) => event.preventDefault()}>
-          <label htmlFor="challenge-description">Description</label>
-          <textarea
-            name="challenge-description"
-            id="challenge-description"
-            rows="5"
-            pattern="^(?!\s*$).+"
-            value={challengeDescription}
-            onChange={handleDescriptionInput}
-            required
-          ></textarea>
-          <StyledTimesWrapper>
-            <StyledTimesText>Times needed:</StyledTimesText>
-            <StyledTimesButton
-              type="button"
-              onClick={() => handleChallengeTimesUpdate("needed", "increment")}
-            >
-              +1
-            </StyledTimesButton>
-            <p>{challengeTimesNeeded}</p>
-            <StyledTimesButton
-              type="button"
-              onClick={() => handleChallengeTimesUpdate("needed", "decrement")}
-              disabled={
-                challengeTimesNeeded < 1 ||
-                challengeTimesNeeded === challengeTimesCompleted
-                  ? true
-                  : false
-              }
-            >
-              -1
-            </StyledTimesButton>
-          </StyledTimesWrapper>
-          <StyledTimesWrapper>
-            <StyledTimesText>Times completed:</StyledTimesText>
-            <StyledTimesButton
-              type="button"
-              onClick={() =>
-                handleChallengeTimesUpdate("completed", "increment")
-              }
-              disabled={
-                challengeTimesNeeded === challengeTimesCompleted ? true : false
-              }
-            >
-              +1
-            </StyledTimesButton>
-            <p>{challengeTimesCompleted}</p>
-            <StyledTimesButton
-              type="button"
-              onClick={() =>
-                handleChallengeTimesUpdate("completed", "decrement")
-              }
-              disabled={challengeTimesCompleted < 1 ? true : false}
-            >
-              -1
-            </StyledTimesButton>
-          </StyledTimesWrapper>
-          <StyledButtonComponent
-            type="add"
-            callback={handleSubmit}
+    <StyledDetailContainer>
+      <StyledLinkComponent
+        href={
+          path.includes("archive")
+            ? `/objective/${objectiveId}/?archive`
+            : `/objective/${objectiveId}`
+        }
+        type="back"
+      >
+        Cancel
+      </StyledLinkComponent>
+      <PageHeadlineComponent>Track new Challenge</PageHeadlineComponent>
+      <StyledPageDescription>
+        Set the <strong>challenge description</strong>, how often it{" "}
+        <strong>needs to be completed</strong> and{" "}
+        <strong>was completed</strong>.
+      </StyledPageDescription>
+      <StyledEditChallengeForm onSubmit={(event) => event.preventDefault()}>
+        <label htmlFor="challenge-description">Description</label>
+        <textarea
+          name="challenge-description"
+          id="challenge-description"
+          rows="5"
+          pattern="^(?!\s*$).+"
+          value={challengeDescription}
+          onChange={handleDescriptionInput}
+          required
+        ></textarea>
+        <StyledTimesWrapper>
+          <StyledTimesText>Times needed:</StyledTimesText>
+          <StyledTimesButton
+            type="button"
+            onClick={() => handleChallengeTimesUpdate("needed", "increment")}
+          >
+            +1
+          </StyledTimesButton>
+          <p>{challengeTimesNeeded}</p>
+          <StyledTimesButton
+            type="button"
+            onClick={() => handleChallengeTimesUpdate("needed", "decrement")}
             disabled={
-              !challengeDescription || !checkValidInput(challengeDescription)
+              challengeTimesNeeded < 1 ||
+              challengeTimesNeeded === challengeTimesCompleted
                 ? true
                 : false
             }
           >
-            Create
-          </StyledButtonComponent>
-        </StyledEditChallengeForm>
-      </StyledDetailContainer>
-    </main>
+            -1
+          </StyledTimesButton>
+        </StyledTimesWrapper>
+        <StyledTimesWrapper>
+          <StyledTimesText>Times completed:</StyledTimesText>
+          <StyledTimesButton
+            type="button"
+            onClick={() => handleChallengeTimesUpdate("completed", "increment")}
+            disabled={
+              challengeTimesNeeded === challengeTimesCompleted ? true : false
+            }
+          >
+            +1
+          </StyledTimesButton>
+          <p>{challengeTimesCompleted}</p>
+          <StyledTimesButton
+            type="button"
+            onClick={() => handleChallengeTimesUpdate("completed", "decrement")}
+            disabled={challengeTimesCompleted < 1 ? true : false}
+          >
+            -1
+          </StyledTimesButton>
+        </StyledTimesWrapper>
+        <StyledButtonComponent
+          type="add"
+          callback={handleSubmit}
+          disabled={
+            !challengeDescription || !checkValidInput(challengeDescription)
+              ? true
+              : false
+          }
+        >
+          Create
+        </StyledButtonComponent>
+      </StyledEditChallengeForm>
+    </StyledDetailContainer>
   );
 }
