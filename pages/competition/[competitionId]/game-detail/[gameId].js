@@ -27,6 +27,14 @@ export default function GameDetailPage() {
     return <div>Loading...</div>;
   }
 
+  function handleBackToCompetition() {
+    if (path.includes("archive")) {
+      router.push(`/competition/${competitionId}/?archive`);
+    } else {
+      router.push(`/competition/${competitionId}`);
+    }
+  }
+
   return (
     <GameDetail
       game={currentGame}
@@ -34,8 +42,8 @@ export default function GameDetailPage() {
       onUpdateGame={handleGameUpdate}
       onDeleteGame={handleGameDelete}
       competitionId={currentCompetition.id}
+      onRedirectBack={handleBackToCompetition}
       path={path}
-      router={router}
     />
   );
 }

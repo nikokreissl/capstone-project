@@ -14,8 +14,8 @@ export default function GameDetail({
   onUpdateGame,
   competitionId,
   onDeleteGame,
+  onRedirectBack,
   path,
-  router,
 }) {
   const [userScore, setUserScore] = useState(game.userScore);
   const [opponentScore, setOpponentScore] = useState(game.opponentScore);
@@ -74,21 +74,13 @@ export default function GameDetail({
       alert("You can not enter draws!");
     } else {
       onUpdateGame(competitionId, game.gameId, newGame);
-      handleBackToCompetition();
+      onRedirectBack();
     }
   }
 
   function handleDeleteGame() {
-    handleBackToCompetition();
     onDeleteGame(competitionId, game.gameId);
-  }
-
-  function handleBackToCompetition() {
-    if (path.includes("archive")) {
-      router.push(`/competition/${competitionId}/?archive`);
-    } else {
-      router.push(`/competition/${competitionId}`);
-    }
+    onRedirectBack();
   }
 
   return (
@@ -104,7 +96,7 @@ export default function GameDetail({
         >
           Back
         </StyledLinkComponent>
-        <StyledButtonComponent type="delete" onClick={handleDeleteGame}>
+        <StyledButtonComponent type="delete" callback={handleDeleteGame}>
           Delete
         </StyledButtonComponent>
         <PageHeadlineComponent>Edit game {gameNumber}</PageHeadlineComponent>

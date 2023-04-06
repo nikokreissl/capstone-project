@@ -57,10 +57,10 @@ export function StyledButtonComponent({
     setWaiting(true);
     setTimeout(() => {
       {
-        (type === "delete" && fireMessage(item)) ||
+        (type === "delete" && fireMessage()) ||
           (type === "archive" && fireMessage(item)) ||
-          (type === "add" && fireMessage(item)) ||
-          (type === "update" && fireMessage(item));
+          (type === "add" && fireMessage()) ||
+          (type === "update" && fireMessage());
       }
       callback();
       setWaiting(false);
