@@ -5,6 +5,10 @@ import { StyledTab, StyledTabsContainer } from "./StyledTacticsDetail";
 import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 import TacticsEdit from "../TacticsEdit";
 import InstructionDetail from "../Instruction";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation";
 
 export default function TacticsDetail({
   tactic,
@@ -62,6 +66,13 @@ export default function TacticsDetail({
           <StyledButtonComponent type="edit" callback={toggleShowEdit}>
             Edit
           </StyledButtonComponent>
+          <PageHeadlineComponent>Tactic details</PageHeadlineComponent>
+          <StyledPageDescription>
+            Check out the different instructions for this formation. You can
+            switch between <strong>General instructions</strong> and{" "}
+            <strong>Player instructions</strong> by clicking the correpsonding
+            button.
+          </StyledPageDescription>
           <StyledDetailsContainer>
             <h2>{tactic.name}</h2>
             <h3>{tactic.formation}</h3>

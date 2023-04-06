@@ -10,6 +10,10 @@ import {
   StyledTimesText,
   StyledTimesButton,
 } from "../../../components/Objectives/ChallengeDetail/StyledChallengeDetail";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../../components/GeneralComponents/PageInformation";
 
 export default function AddChallengePage() {
   const router = useRouter();
@@ -81,7 +85,12 @@ export default function AddChallengePage() {
         >
           Cancel
         </StyledLinkComponent>
-        <h2>Track new Challenge</h2>
+        <PageHeadlineComponent>Track new Challenge</PageHeadlineComponent>
+        <StyledPageDescription>
+          Set the <strong>challenge description</strong>, how often it{" "}
+          <strong>needs to be completed</strong> and{" "}
+          <strong>was completed</strong>.
+        </StyledPageDescription>
         <StyledEditChallengeForm onSubmit={(event) => event.preventDefault()}>
           <label htmlFor="challenge-description">Description</label>
           <textarea

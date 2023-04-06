@@ -1,6 +1,10 @@
 import { StyledDetailContainer } from "../../../../components/Competition/GameDetail/StyledGameDetail";
 import { StyledLinkComponent } from "../../../../components/GeneralComponents/Links";
 import { StyledButtonComponent } from "../../../../components/GeneralComponents/Buttons";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../../../components/GeneralComponents/PageInformation";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { DataContext } from "../../../_app";
@@ -61,7 +65,12 @@ export default function ChallengeDetailPage() {
       <StyledButtonComponent type="delete" callback={handleDeleteChallenge}>
         Delete
       </StyledButtonComponent>
-      <h2>Track new Challenge</h2>
+      <PageHeadlineComponent>Edit challenge</PageHeadlineComponent>
+      <StyledPageDescription>
+        Update the <strong>challenge description</strong>, how often it{" "}
+        <strong>needs to be completed</strong> and{" "}
+        <strong>was completed</strong>.
+      </StyledPageDescription>
       <EditChallengeComponent
         onRedirectBack={callbackBack}
         challenge={currentChallenge}

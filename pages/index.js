@@ -4,8 +4,8 @@ import CompetitionList from "../components/Competition/CompetitionList";
 import ObjectiveList from "../components/Objectives/ObjectiveList";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { StyledPageDescription } from "../components/GeneralComponents/PageInformation";
 import styled from "styled-components";
-import { successMessage } from "../components/GeneralComponents/notifications";
 
 export default function Home() {
   const router = useRouter();
@@ -42,6 +42,12 @@ export default function Home() {
 
   return (
     <main>
+      <StyledPageDescription>
+        Welcome to <strong>FIFA23 Tracker</strong>!
+        <br />
+        Here you can track the progress of competitions and objectives and save
+        your tactics and formations.
+      </StyledPageDescription>
       <StyledCreateItemForm onSubmit={handleCreateItem}>
         <StyledCreateItemSelect
           value={selectedCreateItem}

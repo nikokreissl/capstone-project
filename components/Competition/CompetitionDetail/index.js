@@ -2,6 +2,10 @@ import { StyledDetailsContainer } from "../../GeneralComponents/DetailView";
 import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import GameList from "../GameList";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation";
 
 export default function CompetitionDetail({ onToggleEdit, competition, path }) {
   const competitionWins = competition.gamesPlayed.filter(
@@ -26,6 +30,12 @@ export default function CompetitionDetail({ onToggleEdit, competition, path }) {
       <StyledButtonComponent callback={onToggleEdit} type="edit">
         Edit
       </StyledButtonComponent>
+      <PageHeadlineComponent>Competitions details</PageHeadlineComponent>
+      <StyledPageDescription>
+        Add new games to the competition once played by clicking{" "}
+        <strong>Add game</strong> or edit name and number by clicking{" "}
+        <strong>Edit</strong>.
+      </StyledPageDescription>
       <h2>{competition.name}</h2>
       <h3>Details</h3>
       <p>

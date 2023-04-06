@@ -144,7 +144,6 @@ export default function App({ Component, pageProps }) {
         <title>Capstone Project</title>
       </Head>
       <Heading>FIFA23 Tracker</Heading>
-      ;
       <Component {...pageProps} />
       <Navigation />
       <ToastContainer

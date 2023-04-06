@@ -1,5 +1,9 @@
 import { StyledLinkComponent } from "../../../components/GeneralComponents/Links/index.js";
 import { StyledButtonComponent } from "../../../components/GeneralComponents/Buttons/index.js";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../../components/GeneralComponents/PageInformation/index.js";
 import EditScoreComponent, {
   StyledDetailContainer,
 } from "../../../components/Competition/GameDetail/StyledGameDetail";
@@ -93,7 +97,11 @@ export default function TrackNewGamePage() {
         >
           Cancel
         </StyledLinkComponent>
-        <h2>Track new game</h2>
+        <PageHeadlineComponent>Track new game</PageHeadlineComponent>
+        <StyledPageDescription>
+          Set your and your opponents <strong>score</strong> and{" "}
+          <strong>xGoals</strong>.
+        </StyledPageDescription>
         <EditScoreComponent
           headline="Score"
           userCount={userScore}

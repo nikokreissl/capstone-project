@@ -1,6 +1,10 @@
 import { StyledForm } from "../../GeneralComponents/CreateForm/StyledCreateForm";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useContext } from "react";
@@ -36,6 +40,11 @@ export default function CreateObjectiveForm() {
       <StyledLinkComponent href={"/"} type="back">
         Cancel
       </StyledLinkComponent>
+      <PageHeadlineComponent>Create Objective</PageHeadlineComponent>
+      <StyledPageDescription>
+        Define the name of the objective. After submit it will appear on{" "}
+        <strong>Home</strong>.
+      </StyledPageDescription>
       <StyledForm onSubmit={(event) => event.preventDefault()}>
         <label htmlFor="objective-name">Name</label>
         <input

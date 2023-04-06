@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
-import CompetitionDetail from "../../components/Competition/CompetitionDetail";
-import EditCompetition from "../../components/Competition/CompetitionEdit";
 import { useState, useContext } from "react";
 import { DataContext } from "../_app";
+import CompetitionDetail from "../../components/Competition/CompetitionDetail";
+import EditCompetition from "../../components/Competition/CompetitionEdit";
 
 export default function CompetitionDetailPage() {
   const [isEdit, setIsEdit] = useState(false);

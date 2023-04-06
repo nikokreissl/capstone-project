@@ -7,6 +7,10 @@ import {
 } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation";
 
 export default function CreateCompetitionForm() {
   const router = useRouter();
@@ -43,6 +47,11 @@ export default function CreateCompetitionForm() {
       <StyledLinkComponent type="back" href={"/"}>
         Cancel
       </StyledLinkComponent>
+      <PageHeadlineComponent>Create Competition</PageHeadlineComponent>
+      <StyledPageDescription>
+        Give the new competition a name and define the number of games. After
+        submit it will appear on <strong>Home</strong>.
+      </StyledPageDescription>
       <StyledForm onSubmit={(event) => event.preventDefault()}>
         <label htmlFor="competition-name">Name</label>
         <input

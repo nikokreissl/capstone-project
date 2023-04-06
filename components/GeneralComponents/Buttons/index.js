@@ -13,7 +13,7 @@ import {
   archiveMessage,
   successUpdateMessage,
   deleteMessage,
-} from "../notifications";
+} from "../Notifications";
 
 export function StyledButtonComponent({
   children,

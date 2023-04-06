@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { StyledForm } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
 import { StyledButtonComponent } from "../../GeneralComponents/Buttons/index.js";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation/index.js";
 
 export default function EditObjective({
   onToggleEdit,
@@ -34,7 +38,15 @@ export default function EditObjective({
       <StyledButtonComponent type="back" callback={onToggleEdit}>
         Discard changes
       </StyledButtonComponent>
-      <StyledForm onSubmit={handleSubmit}>
+      <PageHeadlineComponent>Edit objective</PageHeadlineComponent>
+      <StyledPageDescription>
+        Change the <strong>objective name</strong> and in- or decrease the{" "}
+        <strong>number of games</strong>.
+        <br />
+        Your completed the objective or want to restore it? Use the button{" "}
+        <strong>Archive / Restore</strong> to do so.
+      </StyledPageDescription>
+      <StyledForm onSubmit={(event) => event.preventDefault()}>
         <label htmlFor="objective-name">Name</label>
         <input
           type="text"
@@ -45,7 +57,9 @@ export default function EditObjective({
           value={objectiveName}
           onChange={handleObjectiveNameChange}
         />
-        <button>Update</button>
+        <StyledButtonComponent type="update" callback={handleSubmit}>
+          Update
+        </StyledButtonComponent>
       </StyledForm>
       <StyledButtonComponent type="delete" callback={deleteObjective}>
         Delete

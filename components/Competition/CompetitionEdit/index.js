@@ -1,10 +1,13 @@
 import { useState } from "react";
 import {
   StyledForm,
-  StyledFormButton,
   StyledFormLabelInputWrapper,
 } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
 import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation/index.js";
 
 export default function EditCompetition({
   onToggleEdit,
@@ -26,8 +29,7 @@ export default function EditCompetition({
     setCompetitionGames(Number(event.target.value));
   }
 
-  function handleUpdateSubmit(event) {
-    event.preventDefault();
+  function handleUpdateSubmit() {
     if (competitionGames < competition.gamesPlayed.length) {
       alert(
         "Number of games must be greater than the current number of games added to the competition. Your changed won't be saved."
@@ -48,7 +50,15 @@ export default function EditCompetition({
       <StyledButtonComponent type="back" callback={onToggleEdit}>
         Discard changes
       </StyledButtonComponent>
-      <StyledForm onSubmit={handleUpdateSubmit}>
+      <PageHeadlineComponent>Edit competition</PageHeadlineComponent>
+      <StyledPageDescription>
+        Change the <strong>competition name</strong> and in- or decrease the{" "}
+        <strong>number of games</strong>.
+        <br />
+        The competition is over or you want to restore it? Use the button{" "}
+        <strong>Archive / Restore</strong> to do so.
+      </StyledPageDescription>
+      <StyledForm onSubmit={(event) => event.preventDefault()}>
         <label htmlFor="competition-name">Name</label>
         <input
           type="text"
@@ -71,7 +81,9 @@ export default function EditCompetition({
             max={100}
           />
         </StyledFormLabelInputWrapper>
-        <button>Update</button>
+        <StyledButtonComponent type="update" callback={handleUpdateSubmit}>
+          Update
+        </StyledButtonComponent>
       </StyledForm>
       <StyledButtonComponent type="delete" callback={deleteCompetition}>
         Delete

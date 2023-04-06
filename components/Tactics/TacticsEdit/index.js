@@ -5,6 +5,10 @@ import {
   StyledH3,
 } from "./PlayerInstructionsForm/StyledTacticsEdit";
 import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation";
 import EditTacticGeneralForm from "./GeneralInstructionsForm";
 import EditTacticPlayerForm from "./PlayerInstructionsForm";
 
@@ -45,7 +49,13 @@ export default function TacticsEdit({
         Discard changes
       </StyledButtonComponent>
       <StyledForm onSubmit={handleSubmit}>
-        <h2>{tactic.name}</h2>
+        <PageHeadlineComponent>Edit tactic</PageHeadlineComponent>
+        <StyledPageDescription>
+          Update the <strong>general and individual instructions</strong> of
+          your formation. Another patch was published and the formation is not
+          up-to-date anymore? Add it to - or restore it from - your archive by
+          clicking <strong>Archive / Restore</strong>.
+        </StyledPageDescription>
         <label htmlFor="tactic-name">Tactic name</label>
         <input
           type="text"

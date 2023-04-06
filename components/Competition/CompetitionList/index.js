@@ -1,16 +1,12 @@
-import {
-  StyledHomeList,
-  StyledHomeContainer,
-  StyledHomeItemHeadline,
-} from "./StylesCompetitionList";
+import { StyledHomeList, StyledHomeContainer } from "./StylesCompetitionList";
+import { PageHeadlineComponent } from "../../GeneralComponents/PageInformation";
 import CompetitionCard from "../CompetitionCard";
 import EmptyState from "../../GeneralComponents/Empty-State";
 
 export default function CompetitionList({ competitions, headline, path }) {
   return (
     <StyledHomeContainer>
-      <StyledHomeItemHeadline>{headline}</StyledHomeItemHeadline>
-      <hr />
+      <PageHeadlineComponent>{headline}</PageHeadlineComponent>
       {competitions.length < 1 ? (
         <EmptyState
           itemName="competition"

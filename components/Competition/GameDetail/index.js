@@ -3,9 +3,14 @@ import { StyledDetailContainer } from "./StyledGameDetail.js";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import { useState } from "react";
 import EditScoreComponent from "./StyledGameDetail.js";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation/index.js";
 
 export default function GameDetail({
   game,
+  gameNumber,
   onUpdateGame,
   competitionId,
   onDeleteGame,
@@ -102,7 +107,11 @@ export default function GameDetail({
         <StyledButtonComponent type="delete" onClick={handleDeleteGame}>
           Delete
         </StyledButtonComponent>
-        <h2>Game {game.gameId}</h2>
+        <PageHeadlineComponent>Edit game {gameNumber}</PageHeadlineComponent>
+        <StyledPageDescription>
+          Update your and your opponents <strong>score</strong> and{" "}
+          <strong>xGoals</strong> or delete the games.
+        </StyledPageDescription>
         <EditScoreComponent
           headline="Score"
           userCount={userScore}
