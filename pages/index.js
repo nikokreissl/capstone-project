@@ -4,6 +4,7 @@ import CompetitionList from "../components/Competition/CompetitionList";
 import ObjectiveList from "../components/Objectives/ObjectiveList";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { StyledPageDescription } from "../components/GeneralComponents/PageInformation";
 import styled from "styled-components";
 
 export default function Home() {
@@ -40,7 +41,24 @@ export default function Home() {
   }
 
   return (
-    <main>
+    <>
+      <StyledPageDescription>
+        Welcome to <strong>FIFA23 Tracker</strong>!
+        <br />
+        Here you can track the progress of competitions and objectives and save
+        your tactics and formations.
+      </StyledPageDescription>
+
+      <CompetitionList
+        competitions={notArchivedCompetitions}
+        headline="Competitions"
+        path={path}
+      />
+      <ObjectiveList
+        objectives={notArchivedObjectives}
+        headline="Objectives"
+        path={path}
+      />
       <StyledCreateItemForm onSubmit={handleCreateItem}>
         <StyledCreateItemSelect
           value={selectedCreateItem}
@@ -54,26 +72,21 @@ export default function Home() {
         </StyledCreateItemSelect>
         <button>Create</button>
       </StyledCreateItemForm>
-      <CompetitionList
-        competitions={notArchivedCompetitions}
-        headline="Competitions"
-        path={path}
-      />
-      <ObjectiveList
-        objectives={notArchivedObjectives}
-        headline="Objectives"
-        path={path}
-      />
-    </main>
+    </>
   );
 }
 
 export const StyledCreateItemForm = styled.form`
+  border-radius: 25px;
+  background-color: lightgray;
   width: 80vw;
+  padding: 20px;
   margin: 20px;
   display: flex;
   justify-content: center;
   gap: 0.5em;
+  position: sticky;
+  bottom: 60px;
 `;
 
 export const StyledCreateItemSelect = styled.select`

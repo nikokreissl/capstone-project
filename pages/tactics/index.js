@@ -1,5 +1,6 @@
+import styled from "styled-components";
 import TacticsList from "../../components/Tactics/TacticsList";
-import { StyledDetailsLink } from "../../components/Competition/CompetitionCard/StyledCompetitionCard";
+import { StyledLinkComponent } from "../../components/GeneralComponents/Links";
 import { useContext } from "react";
 import { DataContext } from "../_app";
 import { useRouter } from "next/router";
@@ -14,15 +15,30 @@ export default function TacticsOverviewPage() {
   );
 
   return (
-    <main>
-      <StyledDetailsLink href={"tactics/create"}>
-        Create new tactic
-      </StyledDetailsLink>
+    <>
       <TacticsList
         headline="Tactics"
         tactics={notArchivedTactics}
         path={path}
       />
-    </main>
+      <StyledCreateTacticWrapper>
+        <StyledLinkComponent type="add" href={"tactics/create"}>
+          Create
+        </StyledLinkComponent>
+      </StyledCreateTacticWrapper>
+    </>
   );
 }
+
+const StyledCreateTacticWrapper = styled.div`
+  border-radius: 25px;
+  background-color: lightgray;
+  width: 80vw;
+  padding: 10px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  position: sticky;
+  bottom: 60px;
+`;

@@ -10,8 +10,3 @@ export const StyledHomeContainer = styled.section`
   flex-direction: column;
   width: 90vw;
 `;
-
-export const StyledHomeItemHeadline = styled.h2`
-  padding: 10px;
-  margin-top: 10px;
-`;

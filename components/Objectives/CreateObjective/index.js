@@ -1,9 +1,10 @@
+import { StyledForm } from "../../GeneralComponents/CreateForm/StyledCreateForm";
+import { StyledLinkComponent } from "../../GeneralComponents/Links";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 import {
-  StyledForm,
-  StyledFormLabel,
-  StyledFormInput,
-  StyledFormButton,
-} from "../../GeneralComponents/CreateForm/StyledCreateForm";
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useContext } from "react";
@@ -16,12 +17,19 @@ export default function CreateObjectiveForm() {
 
   const { handleAddObjective } = useContext(DataContext);
 
+  function checkValidInput(input) {
+    if (input.startsWith(" ")) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   function handleNameInput(event) {
     setObjectiveNameInput(event.target.value);
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit() {
     handleAddObjective(objectiveNameInput);
 
     router.push("/");
@@ -29,19 +37,37 @@ export default function CreateObjectiveForm() {
 
   return (
     <>
-      <button onClick={() => router.back()}>Cancel</button>
-      <StyledForm onSubmit={handleSubmit}>
-        <StyledFormLabel htmlFor="objective-name">Name</StyledFormLabel>
-        <StyledFormInput
+      <StyledLinkComponent href={"/"} type="back">
+        Cancel
+      </StyledLinkComponent>
+      <PageHeadlineComponent>Create Objective</PageHeadlineComponent>
+      <StyledPageDescription>
+        Define the name of the objective. After submit it will appear on{" "}
+        <strong>Home</strong>.
+      </StyledPageDescription>
+      <StyledForm onSubmit={(event) => event.preventDefault()}>
+        <label htmlFor="objective-name">Name</label>
+        <input
           type="text"
           name="objective-name"
           id="objective-name"
           pattern="^(?!\s*$).+"
+          maxLength={50}
           value={objectiveNameInput}
           onChange={handleNameInput}
           required
         />
-        <StyledFormButton>Create objective</StyledFormButton>
+        <StyledButtonComponent
+          type="add"
+          functionToBeExecuted={handleSubmit}
+          disabled={
+            !objectiveNameInput || !checkValidInput(objectiveNameInput)
+              ? true
+              : false
+          }
+        >
+          Create objective
+        </StyledButtonComponent>
       </StyledForm>
     </>
   );

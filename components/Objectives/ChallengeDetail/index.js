@@ -1,47 +1,55 @@
 import {
-  StyledButton,
-  StyledButtonWrapper,
-} from "../../GeneralComponents/Buttons/StyledButton";
-import {
-  StyledDetailContainer,
-  StyledGameForm,
+  StyledEditChallengeForm,
   StyledTimesWrapper,
-  StyledNumberInput,
-  StyledGameButton,
-} from "../../Competition/GameDetail/StyledGameDetail";
+  StyledTimesText,
+  StyledTimesButton,
+} from "./StyledChallengeDetail";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 import { useState } from "react";
 
-export default function ChallengeDetail({
+export default function EditChallengeComponent({
+  onRedirectBack,
   challenge,
-  objectiveId,
-  onClickBack,
   onUpdateChallenge,
-  onDeleteChallenge,
+  objectiveId,
 }) {
-  const [challengeDescription, setChallengeDescription] = useState(
-    challenge.description
-  );
-  const [challengeTimesNeeded, setChallengeTimesNeeded] = useState(
-    challenge.timesNeeded
-  );
-  const [challengeTimesCompleted, setChallengeTimesCompleted] = useState(
-    challenge.timesCompleted
-  );
+  const { description, timesNeeded, timesCompleted, challengeId } = challenge;
+
+  const [challengeDescription, setChallengeDescription] = useState(description);
+  const [challengeTimesNeeded, setChallengechallengeTimesNeeded] =
+    useState(timesNeeded);
+  const [challengeTimesCompleted, setChallengeTimesCompleted] =
+    useState(timesCompleted);
 
   function handleDescriptionInput(event) {
     setChallengeDescription(event.target.value);
   }
 
-  function handleTimesNeededInput(event) {
-    setChallengeTimesNeeded(Number(event.target.value));
+  function checkValidInput(input) {
+    if (input.startsWith(" ")) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
-  function handleTimesCompletedInput(event) {
-    setChallengeTimesCompleted(Number(event.target.value));
+  function handleChallengeTimesUpdate(timesType, operation) {
+    if (timesType === "needed") {
+      if (operation === "increment") {
+        setChallengechallengeTimesNeeded(challengeTimesNeeded + 1);
+      } else if (operation === "decrement") {
+        setChallengechallengeTimesNeeded(challengeTimesNeeded - 1);
+      }
+    } else if (timesType === "completed") {
+      if (operation === "increment") {
+        setChallengeTimesCompleted(challengeTimesCompleted + 1);
+      } else if (operation === "decrement") {
+        setChallengeTimesCompleted(challengeTimesCompleted - 1);
+      }
+    }
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit() {
     const newDetails = {
       description: challengeDescription,
       timesNeeded: challengeTimesNeeded,
@@ -50,58 +58,76 @@ export default function ChallengeDetail({
     if (challengeTimesNeeded < challengeTimesCompleted) {
       alert("Times needed can not be smaller than times completed");
     } else {
-      onUpdateChallenge(newDetails, challenge.challengeId, objectiveId);
-      onClickBack();
+      onUpdateChallenge(newDetails, challengeId, objectiveId);
+      onRedirectBack();
     }
   }
 
-  function handleDeleteChallenge() {
-    onDeleteChallenge(challenge.challengeId, objectiveId);
-    onClickBack();
-  }
-
   return (
-    <main>
-      <StyledDetailContainer>
-        <StyledButtonWrapper>
-          <StyledButton onClick={onClickBack}>🔙 Back</StyledButton>
-          <StyledButton onClick={handleDeleteChallenge}>❌ Delete</StyledButton>
-        </StyledButtonWrapper>
-        <h2>Track new Challenge</h2>
-        <StyledGameForm onSubmit={handleSubmit}>
-          <label htmlFor="challenge-description">Description</label>
-          <textarea
-            name="challenge-description"
-            id="challenge-description"
-            rows="5"
-            pattern="^(?!\s*$).+"
-            value={challengeDescription}
-            onChange={handleDescriptionInput}
-            required
-          ></textarea>
-          <StyledTimesWrapper>
-            <label htmlFor="times-needed">Times needed</label>
-            <StyledNumberInput
-              type="number"
-              name="times-needed"
-              id="times-needed"
-              min={0}
-              value={challengeTimesNeeded}
-              onChange={handleTimesNeededInput}
-            />
-            <label htmlFor="times-completed">Times completed</label>
-            <StyledNumberInput
-              type="number"
-              name="times-completed"
-              id="times-completed"
-              min={0}
-              value={challengeTimesCompleted}
-              onChange={handleTimesCompletedInput}
-            />
-          </StyledTimesWrapper>
-          <StyledGameButton>Update</StyledGameButton>
-        </StyledGameForm>
-      </StyledDetailContainer>
-    </main>
+    <StyledEditChallengeForm onSubmit={(event) => event.preventDefault()}>
+      <label htmlFor="challenge-description">Description</label>
+      <textarea
+        name="challenge-description"
+        id="challenge-description"
+        rows="5"
+        pattern="^(?!\s*$).+"
+        value={challengeDescription}
+        onChange={handleDescriptionInput}
+        required
+      ></textarea>
+      <StyledTimesWrapper>
+        <StyledTimesText>Times needed:</StyledTimesText>
+        <StyledTimesButton
+          type="button"
+          onClick={() => handleChallengeTimesUpdate("needed", "increment")}
+        >
+          +1
+        </StyledTimesButton>
+        <p>{challengeTimesNeeded}</p>
+        <StyledTimesButton
+          type="button"
+          onClick={() => handleChallengeTimesUpdate("needed", "decrement")}
+          disabled={
+            challengeTimesNeeded < 1 ||
+            challengeTimesNeeded === challengeTimesCompleted
+              ? true
+              : false
+          }
+        >
+          -1
+        </StyledTimesButton>
+      </StyledTimesWrapper>
+      <StyledTimesWrapper>
+        <StyledTimesText>Times completed:</StyledTimesText>
+        <StyledTimesButton
+          type="button"
+          onClick={() => handleChallengeTimesUpdate("completed", "increment")}
+          disabled={
+            challengeTimesNeeded === challengeTimesCompleted ? true : false
+          }
+        >
+          +1
+        </StyledTimesButton>
+        <p>{challengeTimesCompleted}</p>
+        <StyledTimesButton
+          type="button"
+          onClick={() => handleChallengeTimesUpdate("completed", "decrement")}
+          disabled={challengeTimesCompleted < 1 ? true : false}
+        >
+          -1
+        </StyledTimesButton>
+      </StyledTimesWrapper>
+      <StyledButtonComponent
+        type="update"
+        functionToBeExecuted={handleSubmit}
+        disabled={
+          !challengeDescription || !checkValidInput(challengeDescription)
+            ? true
+            : false
+        }
+      >
+        Update
+      </StyledButtonComponent>
+    </StyledEditChallengeForm>
   );
 }

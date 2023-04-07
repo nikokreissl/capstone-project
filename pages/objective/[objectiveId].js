@@ -12,6 +12,7 @@ export default function ObjectiveDetailPage() {
     handleUpdateObjective,
     handleDeleteObjective,
     handleArchiveObjective,
+    handleChallengeQuickEditUpdate,
   } = useContext(DataContext);
   const router = useRouter();
   const path = router.asPath;
@@ -33,30 +34,12 @@ export default function ObjectiveDetailPage() {
     }
   }
 
-  function handleAddNewChallenge(challengeId) {
-    if (path.includes("archive")) {
-      router.push(`/objective/${challengeId}/add-challenge/?archive`);
-    } else {
-      router.push(`/objective/${challengeId}/add-challenge`);
-    }
-  }
-
-  function handleChallengeDetailRedirect(objectiveId, challengeId) {
-    if (path.includes("archive")) {
-      router.push(
-        `/objective/${objectiveId}/challenge-detail/${challengeId}/?archive`
-      );
-    } else {
-      router.push(`/objective/${objectiveId}/challenge-detail/${challengeId}`);
-    }
-  }
-
   if (!currentObjective) {
     return <p>Loading...</p>;
   }
 
   return (
-    <main>
+    <>
       {isEdit ? (
         <EditObjective
           onToggleEdit={toggleEdit}
@@ -69,13 +52,11 @@ export default function ObjectiveDetailPage() {
       ) : (
         <ObjectiveDetail
           objective={currentObjective}
-          onClickBack={handleDirectHome}
           onToggleEdit={toggleEdit}
-          onAddnewChallenge={handleAddNewChallenge}
-          onEditChallengeClick={handleChallengeDetailRedirect}
+          onChallengeQuickEditUpdate={handleChallengeQuickEditUpdate}
           path={path}
         />
       )}
-    </main>
+    </>
   );
 }

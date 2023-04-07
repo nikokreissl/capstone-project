@@ -1,19 +1,17 @@
-import {
-  StyledButton,
-  StyledButtonWrapper,
-} from "../../GeneralComponents/Buttons/StyledButton";
-import {
-  StyledDetailsContainer,
-  StyledDetailButton,
-} from "../../GeneralComponents/DetailView";
+import { StyledLinkComponent } from "../../GeneralComponents/Links";
+import { StyledDetailsContainer } from "../../GeneralComponents/DetailView";
 import ChallengeList from "../ChallengeList";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation";
 
 export default function ObjectiveDetail({
   objective,
-  onClickBack,
   onToggleEdit,
-  onAddnewChallenge,
   onEditChallengeClick,
+  onChallengeQuickEditUpdate,
   path,
 }) {
   if (!objective) {
@@ -26,22 +24,44 @@ export default function ObjectiveDetail({
 
   return (
     <StyledDetailsContainer>
-      <StyledButtonWrapper>
-        <StyledButton onClick={onClickBack}>🔙 Back</StyledButton>
-        <StyledButton onClick={onToggleEdit}>⚙️ Edit</StyledButton>
-      </StyledButtonWrapper>
-      <h2>{objective.name}</h2>
-      <h3>Details</h3>
+      <StyledLinkComponent
+        href={path.includes("archive") ? "/archive/objectives" : "/"}
+        type="back"
+      >
+        Back
+      </StyledLinkComponent>
+      <StyledButtonComponent type="edit" functionToBeExecuted={onToggleEdit}>
+        Edit
+      </StyledButtonComponent>
+      <PageHeadlineComponent>Objective details</PageHeadlineComponent>
+      <StyledPageDescription>
+        {" "}
+        Add new challenges to the objective by clicking{" "}
+        <strong>Add challenge</strong>. Update your progess by increasing the
+        amount the challenge has been completed.
+      </StyledPageDescription>
       <p>
+        Objective name:
+        <br />
+        {objective.name}
+        <br />
         Challenges completed: {challengeProgress.length} /{" "}
         {objective.challenges.length}
       </p>
-      <StyledDetailButton onClick={() => onAddnewChallenge(objective.id)}>
+      <StyledLinkComponent
+        href={
+          path.includes("archive")
+            ? `/objective/${objective.id}/add-challenge/?archive`
+            : `/objective/${objective.id}/add-challenge`
+        }
+        type="add"
+      >
         Add challenge
-      </StyledDetailButton>
+      </StyledLinkComponent>
       <ChallengeList
         objective={objective}
         onEditChallengeClick={onEditChallengeClick}
+        onChallengeQuickEditUpdate={onChallengeQuickEditUpdate}
         path={path}
       />
     </StyledDetailsContainer>

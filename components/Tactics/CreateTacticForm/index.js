@@ -1,29 +1,32 @@
 import { formations } from "../../../data/tactic/tactics-template";
-import {
-  StyledFormLabel,
-  StyledFormInput,
-  StyledForm,
-} from "../../GeneralComponents/CreateForm/StyledCreateForm";
+import { StyledForm } from "../../GeneralComponents/CreateForm/StyledCreateForm";
 import { useState, useContext } from "react";
 import { DataContext } from "../../../pages/_app";
+import { StyledLinkComponent } from "../../GeneralComponents/Links";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 
-import { StyledDetailsLink } from "../../Competition/CompetitionCard/StyledCompetitionCard";
 export default function CreateTacticForm({ onBackToTactics }) {
   const [formationValue, setFormationValue] = useState();
-
   function handleFormationChange(event) {
     setFormationValue(event.target.value);
   }
-  const [formationNameValue, setFormationNameValue] = useState("");
 
+  const [formationNameValue, setFormationNameValue] = useState("");
   function handleFormationNameInput(event) {
     setFormationNameValue(event.target.value);
   }
 
   const { handleAddTactic } = useContext(DataContext);
 
-  function handleFormationSubmit(event) {
-    event.preventDefault();
+  function checkValidInput(input) {
+    if (input.startsWith(" ")) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  function handleFormationSubmit() {
     const newFormation = {
       name: formationNameValue,
       formation: formationValue,
@@ -38,10 +41,12 @@ export default function CreateTacticForm({ onBackToTactics }) {
 
   return (
     <>
-      <StyledDetailsLink href={"/tactics"}>Cancel</StyledDetailsLink>
-      <StyledForm onSubmit={handleFormationSubmit}>
-        <StyledFormLabel htmlFor="tactic-name">Tactic name</StyledFormLabel>
-        <StyledFormInput
+      <StyledLinkComponent type="back" href="/tactics">
+        Cancel
+      </StyledLinkComponent>
+      <StyledForm onSubmit={(event) => event.preventDefault()}>
+        <label htmlFor="tactic-name">Tactic name</label>
+        <input
           value={formationNameValue}
           onChange={handleFormationNameInput}
           name="tactic-name"
@@ -49,7 +54,7 @@ export default function CreateTacticForm({ onBackToTactics }) {
           pattern="^(?!\s*$).+"
           required
         />
-        <StyledFormLabel htmlFor="formation">Choose Formation</StyledFormLabel>
+        <label htmlFor="formation">Choose Formation</label>
         <select
           value={formationValue}
           onChange={handleFormationChange}
@@ -61,7 +66,19 @@ export default function CreateTacticForm({ onBackToTactics }) {
             <option key={formation.name}>{formation.name}</option>
           ))}
         </select>
-        <button>Create</button>
+        <StyledButtonComponent
+          type="add"
+          functionToBeExecuted={handleFormationSubmit}
+          disabled={
+            !formationNameValue ||
+            !checkValidInput(formationNameValue) ||
+            !formationValue
+              ? true
+              : false
+          }
+        >
+          Create
+        </StyledButtonComponent>
       </StyledForm>
     </>
   );

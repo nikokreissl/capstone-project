@@ -1,124 +1,134 @@
-import {
-  StyledButtonWrapper,
-  StyledButton,
-} from "../../GeneralComponents/Buttons/StyledButton";
-import {
-  StyledDetailContainer,
-  StyledFieldset,
-  StyledNumberInput,
-  StyledGameForm,
-  StyledGameButton,
-} from "./StyledGameDetail.js";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons/index.js";
+import { StyledDetailContainer } from "./StyledGameDetail.js";
+import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import { useState } from "react";
+import EditScoreComponent from "./StyledGameDetail.js";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation/index.js";
 
 export default function GameDetail({
   game,
-  onClickBack,
+  gameNumber,
   onUpdateGame,
   competitionId,
   onDeleteGame,
+  onRedirectBack,
+  path,
 }) {
   const [userScore, setUserScore] = useState(game.userScore);
   const [opponentScore, setOpponentScore] = useState(game.opponentScore);
   const [userXgoals, setUserXgoals] = useState(game.userXgoals);
   const [opponentXgoals, setOpponentXgoals] = useState(game.opponentXgoals);
+  const [updateValue, setUpdateValue] = useState(1);
 
-  function handleUserScoreChange(event) {
-    setUserScore(Number(event.target.value));
+  function handleScoreChange(player, operation) {
+    if (player === "user") {
+      if (operation === "increment") {
+        setUserScore(userScore + 1);
+      } else if (operation === "decrement") {
+        setUserScore(userScore - 1);
+      }
+    } else if (player === "opponent") {
+      if (operation === "increment") {
+        setOpponentScore(opponentScore + 1);
+      } else if (operation === "decrement") {
+        setOpponentScore(opponentScore - 1);
+      }
+    }
   }
 
-  function handleOpponentScoreChange(event) {
-    setOpponentScore(Number(event.target.value));
+  function handleXgoalsChange(player, operation, value) {
+    if (player === "user") {
+      if (operation === "increment") {
+        setUserXgoals(parseFloat((userXgoals + value).toFixed(1)));
+      } else if (operation === "decrement") {
+        setUserXgoals(parseFloat((userXgoals - value).toFixed(1)));
+      }
+    } else if (player === "opponent") {
+      if (operation === "increment") {
+        setOpponentXgoals(parseFloat((opponentXgoals + value).toFixed(1)));
+      } else if (operation === "decrement") {
+        setOpponentXgoals(parseFloat((opponentXgoals - value).toFixed(1)));
+      }
+    }
   }
 
-  function handleUserXgoalsChange(event) {
-    setUserXgoals(Number(event.target.value));
+  function updateXgoalsValue() {
+    if (updateValue === 1) {
+      setUpdateValue(0.1);
+    } else {
+      setUpdateValue(1);
+    }
   }
 
-  function handleOpponentXgoalsChange(event) {
-    setOpponentXgoals(Number(event.target.value));
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit() {
     const newGame = {
       userScore,
       opponentScore,
       opponentXgoals,
       userXgoals,
     };
-    if (userScore === opponentScore) {
-      alert("You can not enter draws!");
-    } else {
-      onUpdateGame(competitionId, game.gameId, newGame);
-      onClickBack();
-    }
+    onUpdateGame(competitionId, game.gameId, newGame);
+    onRedirectBack();
   }
 
   function handleDeleteGame() {
-    onClickBack();
     onDeleteGame(competitionId, game.gameId);
+    onRedirectBack();
   }
 
   return (
-    <main>
+    <>
       <StyledDetailContainer>
-        <StyledButtonWrapper>
-          <StyledButton onClick={onClickBack}>🔙 Back</StyledButton>
-          <StyledButton onClick={handleDeleteGame}>❌ Delete</StyledButton>
-        </StyledButtonWrapper>
-        <h2>Game {game.gameId}</h2>
-        <StyledGameForm onSubmit={handleSubmit}>
-          <StyledFieldset>
-            <legend>Score</legend>
-            <label htmlFor="user-score">Yours</label>
-            <StyledNumberInput
-              type="number"
-              name="user-score"
-              id="user-score"
-              value={userScore}
-              min={0}
-              onChange={handleUserScoreChange}
-            />
-            :
-            <StyledNumberInput
-              type="number"
-              name="opponent-score"
-              id="opponent-score"
-              min={0}
-              value={opponentScore}
-              onChange={handleOpponentScoreChange}
-            />
-            <label htmlFor="opponent-score">Opponent</label>
-          </StyledFieldset>
-          <StyledFieldset>
-            <legend>xGoals</legend>
-            <label htmlFor="user-xgoals">Yours</label>
-            <StyledNumberInput
-              type="number"
-              name="user-xgoals"
-              id="user-xgoals"
-              pattern="[0-9]+([\.][0-9]+)?"
-              step={0.1}
-              min={0}
-              value={userXgoals}
-              onChange={handleUserXgoalsChange}
-            />
-            <StyledNumberInput
-              type="number"
-              name="opponent-xgoals"
-              id="opponent-xgoals"
-              pattern="[0-9]+([\.][0-9]+)?"
-              step={0.1}
-              min={0}
-              value={opponentXgoals}
-              onChange={handleOpponentXgoalsChange}
-            />
-            <label htmlFor="opponent-xgoals">Opponent</label>
-          </StyledFieldset>
-          <StyledGameButton>Update</StyledGameButton>
-        </StyledGameForm>
+        <StyledLinkComponent
+          href={
+            path.includes("archive")
+              ? `/competition/${competitionId}/?archive`
+              : `/competition/${competitionId}`
+          }
+          type="back"
+        >
+          Back
+        </StyledLinkComponent>
+        <StyledButtonComponent
+          type="delete"
+          functionToBeExecuted={handleDeleteGame}
+        >
+          Delete
+        </StyledButtonComponent>
+        <PageHeadlineComponent>Edit game {gameNumber}</PageHeadlineComponent>
+        <StyledPageDescription>
+          Update your and your opponents <strong>score</strong> and{" "}
+          <strong>xGoals</strong> or delete the games.
+        </StyledPageDescription>
+        <EditScoreComponent
+          headline="Score"
+          userCount={userScore}
+          opponentCount={opponentScore}
+          onValueUpdate={handleScoreChange}
+          value={1}
+        />
+        <EditScoreComponent
+          headline="xGoals"
+          userCount={userXgoals}
+          opponentCount={opponentXgoals}
+          onValueUpdate={handleXgoalsChange}
+          value={updateValue}
+        />
+        <p>Change xGoals update value to:</p>
+        <button type="submit" onClick={updateXgoalsValue}>
+          {updateValue === 1 ? "0.1" : "1"}
+        </button>
       </StyledDetailContainer>
-    </main>
+      <StyledButtonComponent
+        type="update"
+        functionToBeExecuted={handleSubmit}
+        disabled={userScore === opponentScore ? true : false}
+      >
+        Update
+      </StyledButtonComponent>
+    </>
   );
 }

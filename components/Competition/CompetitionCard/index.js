@@ -1,5 +1,5 @@
 import { StyledArticle, StyledDetailsLink } from "./StyledCompetitionCard.js";
-
+import { StyledLinkComponent } from "../../GeneralComponents/Links/index.js";
 export default function CompetitionCard({ competition, path }) {
   if (!competition) {
     return <p>Loading...</p>;
@@ -22,9 +22,12 @@ export default function CompetitionCard({ competition, path }) {
         Remaining Games:{" "}
         {competition?.totalGames - competition.gamesPlayed.length}
       </p>
-      <StyledDetailsLink href={`/competition/${competition.id}/?${path}`}>
-        View Details
-      </StyledDetailsLink>
+      <StyledLinkComponent
+        href={`/competition/${competition.id}/?${path}`}
+        type="view"
+      >
+        View More
+      </StyledLinkComponent>
     </StyledArticle>
   );
 }

@@ -1,15 +1,25 @@
+import { StyledDetailContainer } from "../../../../components/Competition/GameDetail/StyledGameDetail";
+import { StyledLinkComponent } from "../../../../components/GeneralComponents/Links";
+import { StyledButtonComponent } from "../../../../components/GeneralComponents/Buttons";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../../../components/GeneralComponents/PageInformation";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { DataContext } from "../../../_app";
-import ChallengeDetail from "../../../../components/Objectives/ChallengeDetail";
+import EditChallengeComponent from "../../../../components/Objectives/ChallengeDetail/";
 
 export default function ChallengeDetailPage() {
   const router = useRouter();
   const path = router.asPath;
   const { objectiveId, challengeId } = router.query;
 
-  const { objectives, handleChallengeUpdate, handleChallengeDelete } =
-    useContext(DataContext);
+  const {
+    objectives,
+    handleChallengeUpdate,
+    handleChallengeDelete: onDeleteChallenge,
+  } = useContext(DataContext);
 
   const currentObjective = objectives.find(
     (objective) => objectiveId === objective.id
@@ -26,7 +36,13 @@ export default function ChallengeDetailPage() {
   if (!currentChallenge) {
     return <p>Loading...</p>;
   }
-  function handleClickBack() {
+
+  function handleDeleteChallenge() {
+    onDeleteChallenge(currentChallenge.challengeId, objectiveId);
+    functionToBeExecutedBack();
+  }
+
+  function functionToBeExecutedBack() {
     if (path.includes("archive")) {
       router.push(`/objective/${currentObjective.id}/?archive`);
     } else {
@@ -35,12 +51,35 @@ export default function ChallengeDetailPage() {
   }
 
   return (
-    <ChallengeDetail
-      objectiveId={currentObjective.id}
-      challenge={currentChallenge}
-      onClickBack={handleClickBack}
-      onUpdateChallenge={handleChallengeUpdate}
-      onDeleteChallenge={handleChallengeDelete}
-    />
+    <StyledDetailContainer>
+      <StyledLinkComponent
+        type="back"
+        href={
+          path.includes("archive")
+            ? `/objective/${currentObjective.id}/?archive`
+            : `/objective/${currentObjective.id}`
+        }
+      >
+        Back
+      </StyledLinkComponent>
+      <StyledButtonComponent
+        type="delete"
+        functionToBeExecuted={handleDeleteChallenge}
+      >
+        Delete
+      </StyledButtonComponent>
+      <PageHeadlineComponent>Edit challenge</PageHeadlineComponent>
+      <StyledPageDescription>
+        Update the <strong>challenge description</strong>, how often it{" "}
+        <strong>needs to be completed</strong> and{" "}
+        <strong>was completed</strong>.
+      </StyledPageDescription>
+      <EditChallengeComponent
+        onRedirectBack={functionToBeExecutedBack}
+        challenge={currentChallenge}
+        onUpdateChallenge={handleChallengeUpdate}
+        objectiveId={currentObjective.id}
+      />
+    </StyledDetailContainer>
   );
 }

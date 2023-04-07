@@ -3,18 +3,28 @@ import { DataContext } from "../../../pages/_app";
 import { useRouter } from "next/router";
 import {
   StyledForm,
-  StyledFormLabel,
-  StyledFormInput,
-  StyledFormButton,
   StyledFormLabelInputWrapper,
 } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
-import { StyledDetailsLink } from "../CompetitionCard/StyledCompetitionCard";
+import { StyledLinkComponent } from "../../GeneralComponents/Links";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation";
 
 export default function CreateCompetitionForm() {
   const router = useRouter();
 
   const [competitionNameInput, setCompetitionNameInput] = useState("");
   const [competitionGameInput, setCompetitionGameInput] = useState(1);
+
+  function checkValidInput(input) {
+    if (input.startsWith(" ")) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   const { handleAddCompetition } = useContext(DataContext);
 
@@ -26,8 +36,7 @@ export default function CreateCompetitionForm() {
     setCompetitionGameInput(Number(event.target.value));
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit() {
     handleAddCompetition(competitionNameInput, competitionGameInput);
 
     router.push("/");
@@ -35,23 +44,29 @@ export default function CreateCompetitionForm() {
 
   return (
     <>
-      <StyledDetailsLink href={"/"}>Cancel</StyledDetailsLink>
-      <StyledForm onSubmit={handleSubmit}>
-        <StyledFormLabel htmlFor="competition-name">Name</StyledFormLabel>
-        <StyledFormInput
+      <StyledLinkComponent type="back" href={"/"}>
+        Cancel
+      </StyledLinkComponent>
+      <PageHeadlineComponent>Create Competition</PageHeadlineComponent>
+      <StyledPageDescription>
+        Give the new competition a name and define the number of games. After
+        submit it will appear on <strong>Home</strong>.
+      </StyledPageDescription>
+      <StyledForm onSubmit={(event) => event.preventDefault()}>
+        <label htmlFor="competition-name">Name</label>
+        <input
           type="text"
           name="competition-name"
           id="competition-name"
           pattern="^(?!\s*$).+"
+          maxLength={50}
           value={competitionNameInput}
           onChange={handleNameInput}
           required
         />
         <StyledFormLabelInputWrapper>
-          <StyledFormLabel htmlFor="competition-games">
-            Number of Games
-          </StyledFormLabel>
-          <StyledFormInput
+          <label htmlFor="competition-games">Number of Games</label>
+          <input
             type="number"
             name="competition-games"
             id="competition-games"
@@ -59,9 +74,20 @@ export default function CreateCompetitionForm() {
             onChange={handleGameInput}
             min={1}
             max={100}
+            required
           />
         </StyledFormLabelInputWrapper>
-        <StyledFormButton>Create competition</StyledFormButton>
+        <StyledButtonComponent
+          type="add"
+          functionToBeExecuted={handleSubmit}
+          disabled={
+            !competitionNameInput || !checkValidInput(competitionNameInput)
+              ? true
+              : false
+          }
+        >
+          Create
+        </StyledButtonComponent>
       </StyledForm>
     </>
   );

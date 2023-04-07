@@ -1,24 +1,25 @@
 import { useState } from "react";
 import { StyledDetailsContainer } from "../../GeneralComponents/DetailView";
-import { StyledDetailsLink } from "../../Competition/CompetitionCard/StyledCompetitionCard";
+import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import { StyledTab, StyledTabsContainer } from "./StyledTacticsDetail";
-import {
-  StyledButton,
-  StyledButtonWrapper,
-} from "../../GeneralComponents/Buttons/StyledButton";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 import TacticsEdit from "../TacticsEdit";
-
 import InstructionDetail from "../Instruction";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation";
 
 export default function TacticsDetail({
   tactic,
   onUpdateTactic,
   onDeleteTactic,
   onArchiveTactic,
-  onClickBack,
+  onDirectHome,
+  path,
 }) {
   const [showGeneralInstructions, setShowGeneralInstructions] = useState(true);
-  function handleClickGeneralInstructions() {
+  function functionToBeExecutedGeneralInstructions() {
     if (showGeneralInstructions === false) {
       setShowGeneralInstructions(!showGeneralInstructions);
       setShowPlayerInstructions(!showPlayerInstructions);
@@ -26,7 +27,7 @@ export default function TacticsDetail({
   }
 
   const [showPlayerInstructions, setShowPlayerInstructions] = useState(false);
-  function handleClickPlayerInstructions() {
+  function functionToBeExecutedPlayerInstructions() {
     if (showPlayerInstructions === false) {
       setShowPlayerInstructions(!showPlayerInstructions);
       setShowGeneralInstructions(!showGeneralInstructions);
@@ -52,14 +53,29 @@ export default function TacticsDetail({
           onDeleteTactic={onDeleteTactic}
           onArchiveTactic={onArchiveTactic}
           onToggleShowEdit={toggleShowEdit}
-          onClickBack={onClickBack}
+          onClickBack={onDirectHome}
         />
       ) : (
         <>
-          <StyledButtonWrapper>
-            <StyledButton onClick={onClickBack}>Back</StyledButton>
-            <StyledButton onClick={toggleShowEdit}>⚙️ Edit</StyledButton>
-          </StyledButtonWrapper>
+          <StyledLinkComponent
+            href={path.includes("archive") ? "/archive/tactics" : "/tactics"}
+            type="back"
+          >
+            Back
+          </StyledLinkComponent>
+          <StyledButtonComponent
+            type="edit"
+            functionToBeExecuted={toggleShowEdit}
+          >
+            Edit
+          </StyledButtonComponent>
+          <PageHeadlineComponent>Tactic details</PageHeadlineComponent>
+          <StyledPageDescription>
+            Check out the different instructions for this formation. You can
+            switch between <strong>General instructions</strong> and{" "}
+            <strong>Player instructions</strong> by clicking the correpsonding
+            button.
+          </StyledPageDescription>
           <StyledDetailsContainer>
             <h2>{tactic.name}</h2>
             <h3>{tactic.formation}</h3>
@@ -67,13 +83,13 @@ export default function TacticsDetail({
           <StyledTabsContainer>
             <StyledTab
               shown={showGeneralInstructions}
-              handleTabClick={handleClickGeneralInstructions}
+              handleTabClick={functionToBeExecutedGeneralInstructions}
             >
               General Instructions
             </StyledTab>
             <StyledTab
               shown={showPlayerInstructions}
-              handleTabClick={handleClickPlayerInstructions}
+              handleTabClick={functionToBeExecutedPlayerInstructions}
             >
               Player Instructions
             </StyledTab>

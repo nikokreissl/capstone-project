@@ -1,9 +1,14 @@
 import { useState } from "react";
 import {
-  StyledButton,
-  StyledButtonWrapper,
-} from "../../GeneralComponents/Buttons/StyledButton";
-import styled from "styled-components";
+  StyledForm,
+  StyledSubmitButton,
+  StyledH3,
+} from "./PlayerInstructionsForm/StyledTacticsEdit";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
+import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation";
 import EditTacticGeneralForm from "./GeneralInstructionsForm";
 import EditTacticPlayerForm from "./PlayerInstructionsForm";
 
@@ -22,7 +27,6 @@ export default function TacticsEdit({
 
   function handleSubmit(event) {
     event.preventDefault();
-
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
@@ -41,9 +45,17 @@ export default function TacticsEdit({
 
   return (
     <>
-      <StyledButton onClick={onToggleEdit}>🗑️ Discard changes</StyledButton>
+      <StyledButtonComponent type="back" functionToBeExecuted={onToggleEdit}>
+        Discard changes
+      </StyledButtonComponent>
       <StyledForm onSubmit={handleSubmit}>
-        <h2>{tactic.name}</h2>
+        <PageHeadlineComponent>Edit tactic</PageHeadlineComponent>
+        <StyledPageDescription>
+          Update the <strong>general and individual instructions</strong> of
+          your formation. Another patch was published and the formation is not
+          up-to-date anymore? Add it to - or restore it from - your archive by
+          clicking <strong>Archive / Restore</strong>.
+        </StyledPageDescription>
         <label htmlFor="tactic-name">Tactic name</label>
         <input
           type="text"
@@ -57,38 +69,22 @@ export default function TacticsEdit({
         <StyledH3>General Instructions</StyledH3>
         <EditTacticGeneralForm tactic={tactic} />
         <StyledH3>Player Instructions</StyledH3>
-
         <EditTacticPlayerForm tactic={tactic} />
         <StyledSubmitButton>Submit</StyledSubmitButton>
       </StyledForm>
-      <StyledButtonWrapper>
-        <StyledButton onClick={() => handleDelete(tactic.id)}>
-          ❌ Delete competition
-        </StyledButton>
-        <StyledButton onClick={() => handleArchiveClick(tactic.id)}>
-          {tactic.isArchived
-            ? "🔃 Restore from archive"
-            : "📖 Archive competition"}
-        </StyledButton>
-      </StyledButtonWrapper>
+      <StyledButtonComponent
+        type="delete"
+        functionToBeExecuted={() => handleDelete(tactic.id)}
+      >
+        Delete
+      </StyledButtonComponent>
+      <StyledButtonComponent
+        type="archive"
+        functionToBeExecuted={() => handleArchiveClick(tactic.id)}
+        item="Tactic"
+      >
+        {tactic.isArchived ? "Restore" : "Archive"}
+      </StyledButtonComponent>
     </>
   );
 }
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-const StyledSubmitButton = styled.button`
-  position: sticky;
-  bottom: 50px;
-`;
-
-const StyledH3 = styled.h3`
-  padding: 10px;
-  background-color: lightgray;
-  position: sticky;
-  top: 0;
-`;

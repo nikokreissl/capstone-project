@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { StyledButton } from "../Buttons/StyledButton";
 
 export const StyledForm = styled.form`
   display: flex;
@@ -12,11 +11,7 @@ export const StyledForm = styled.form`
   border-radius: 5px;
 `;
 
-export const StyledFormLabel = styled.label``;
-
-export const StyledFormInput = styled.input``;
-
-export const StyledFormButton = styled(StyledButton)`
+export const StyledFormButton = styled.button`
   margin-top: 10px;
   width: 50%;
   align-self: center;

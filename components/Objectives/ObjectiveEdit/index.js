@@ -1,14 +1,10 @@
 import { useState } from "react";
+import { StyledForm } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
+import { StyledButtonComponent } from "../../GeneralComponents/Buttons/index.js";
 import {
-  StyledForm,
-  StyledFormButton,
-  StyledFormLabel,
-  StyledFormInput,
-} from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
-import {
-  StyledButton,
-  StyledButtonWrapper,
-} from "../../GeneralComponents/Buttons/StyledButton";
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../GeneralComponents/PageInformation/index.js";
 
 export default function EditObjective({
   onToggleEdit,
@@ -27,7 +23,6 @@ export default function EditObjective({
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
     onUpdateObjective(objectiveName, id);
 
     onToggleEdit();
@@ -40,10 +35,20 @@ export default function EditObjective({
 
   return (
     <>
-      <StyledButton onClick={onToggleEdit}>🗑️ Discard changes</StyledButton>
-      <StyledForm onSubmit={handleSubmit}>
-        <StyledFormLabel htmlFor="objective-name">Name</StyledFormLabel>
-        <StyledFormInput
+      <StyledButtonComponent type="back" functionToBeExecuted={onToggleEdit}>
+        Discard changes
+      </StyledButtonComponent>
+      <PageHeadlineComponent>Edit objective</PageHeadlineComponent>
+      <StyledPageDescription>
+        Change the <strong>objective name</strong> and in- or decrease the{" "}
+        <strong>number of games</strong>.
+        <br />
+        Your completed the objective or want to restore it? Use the button{" "}
+        <strong>Archive / Restore</strong> to do so.
+      </StyledPageDescription>
+      <StyledForm onSubmit={(event) => event.preventDefault()}>
+        <label htmlFor="objective-name">Name</label>
+        <input
           type="text"
           name="objective-name"
           id="objective-name"
@@ -52,16 +57,26 @@ export default function EditObjective({
           value={objectiveName}
           onChange={handleObjectiveNameChange}
         />
-        <StyledFormButton>Update objective</StyledFormButton>
+        <StyledButtonComponent
+          type="update"
+          functionToBeExecuted={handleSubmit}
+        >
+          Update
+        </StyledButtonComponent>
       </StyledForm>
-      <StyledButtonWrapper>
-        <StyledButton onClick={deleteObjective}>
-          ❌ Delete competition
-        </StyledButton>
-        <StyledButton onClick={() => onArchiveCompetition(id)}>
-          {isArchived ? "🔃 Restore from archive" : "📖 Archive objective"}
-        </StyledButton>
-      </StyledButtonWrapper>
+      <StyledButtonComponent
+        type="delete"
+        functionToBeExecuted={deleteObjective}
+      >
+        Delete
+      </StyledButtonComponent>
+      <StyledButtonComponent
+        type="archive"
+        functionToBeExecuted={() => onArchiveCompetition(id)}
+        item="Objective"
+      >
+        {isArchived ? "Restore" : "Archive"}
+      </StyledButtonComponent>
     </>
   );
 }

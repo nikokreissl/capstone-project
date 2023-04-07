@@ -1,13 +1,11 @@
+import { StyledLinkComponent } from "../../../components/GeneralComponents/Links/index.js";
+import { StyledButtonComponent } from "../../../components/GeneralComponents/Buttons/index.js";
 import {
-  StyledButtonWrapper,
-  StyledButton,
-} from "../../../components/GeneralComponents/Buttons/StyledButton.js";
-import {
+  PageHeadlineComponent,
+  StyledPageDescription,
+} from "../../../components/GeneralComponents/PageInformation/index.js";
+import EditScoreComponent, {
   StyledDetailContainer,
-  StyledFieldset,
-  StyledNumberInput,
-  StyledGameForm,
-  StyledGameButton,
 } from "../../../components/Competition/GameDetail/StyledGameDetail";
 import { useState } from "react";
 import { DataContext } from "../../_app.js";
@@ -25,44 +23,56 @@ export default function TrackNewGamePage() {
   const [opponentScore, setOpponentScore] = useState(0);
   const [userXgoals, setUserXgoals] = useState(0.0);
   const [opponentXgoals, setOpponentXgoals] = useState(0.0);
+  const [updateValue, setUpdateValue] = useState(1);
 
-  function handleUserScoreChange(event) {
-    setUserScore(Number(event.target.value));
+  function handleScoreChange(player, operation) {
+    if (player === "user") {
+      if (operation === "increment") {
+        setUserScore(userScore + 1);
+      } else if (operation === "decrement") {
+        setUserScore(userScore - 1);
+      }
+    } else if (player === "opponent") {
+      if (operation === "increment") {
+        setOpponentScore(opponentScore + 1);
+      } else if (operation === "decrement") {
+        setOpponentScore(opponentScore - 1);
+      }
+    }
   }
 
-  function handleOpponentScoreChange(event) {
-    setOpponentScore(Number(event.target.value));
+  function handleXgoalsChange(player, operation, value) {
+    if (player === "user") {
+      if (operation === "increment") {
+        setUserXgoals(parseFloat((userXgoals + value).toFixed(1)));
+      } else if (operation === "decrement") {
+        setUserXgoals(parseFloat((userXgoals - value).toFixed(1)));
+      }
+    } else if (player === "opponent") {
+      if (operation === "increment") {
+        setOpponentXgoals(parseFloat((opponentXgoals + value).toFixed(1)));
+      } else if (operation === "decrement") {
+        setOpponentXgoals(parseFloat((opponentXgoals - value).toFixed(1)));
+      }
+    }
   }
 
-  function handleUserXgoalsChange(event) {
-    setUserXgoals(Number(event.target.value));
+  function updateXgoalsValue() {
+    if (updateValue === 1) {
+      setUpdateValue(0.1);
+    } else {
+      setUpdateValue(1);
+    }
   }
 
-  function handleOpponentXgoalsChange(event) {
-    setOpponentXgoals(Number(event.target.value));
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit() {
     const newGame = {
       userScore,
       opponentScore,
       opponentXgoals,
       userXgoals,
     };
-    if (userScore === opponentScore) {
-      alert("You can not enter draws!");
-    } else {
-      handleTrackNewGame(competitionId, newGame);
-      if (path.includes("archive")) {
-        router.push(`/competition/${competitionId}/?archive`);
-      } else {
-        router.push(`/competition/${competitionId}`);
-      }
-    }
-  }
-
-  function handleCancelCreate() {
+    handleTrackNewGame(competitionId, newGame);
     if (path.includes("archive")) {
       router.push(`/competition/${competitionId}/?archive`);
     } else {
@@ -71,63 +81,49 @@ export default function TrackNewGamePage() {
   }
 
   return (
-    <main>
+    <>
       <StyledDetailContainer>
-        <StyledButtonWrapper>
-          <StyledButton onClick={handleCancelCreate}>🔙 Cancel</StyledButton>
-        </StyledButtonWrapper>
-        <h2>Track new Game</h2>
-        <StyledGameForm onSubmit={handleSubmit}>
-          <StyledFieldset>
-            <legend>Score</legend>
-            <label htmlFor="user-score">Yours</label>
-            <StyledNumberInput
-              type="number"
-              name="user-score"
-              id="user-score"
-              value={userScore}
-              min={0}
-              onChange={handleUserScoreChange}
-            />
-            :
-            <StyledNumberInput
-              type="number"
-              name="opponent-score"
-              id="opponent-score"
-              min={0}
-              value={opponentScore}
-              onChange={handleOpponentScoreChange}
-            />
-            <label htmlFor="opponent-score">Opponent</label>
-          </StyledFieldset>
-          <StyledFieldset>
-            <legend>xGoals</legend>
-            <label htmlFor="user-xgoals">Yours</label>
-            <StyledNumberInput
-              type="number"
-              name="user-xgoals"
-              id="user-xgoals"
-              pattern="[0-9]+([\.][0-9]+)?"
-              step={0.1}
-              min={0}
-              value={userXgoals}
-              onChange={handleUserXgoalsChange}
-            />
-            <StyledNumberInput
-              type="number"
-              name="opponent-xgoals"
-              id="opponent-xgoals"
-              pattern="[0-9]+([\.][0-9]+)?"
-              step={0.1}
-              min={0}
-              value={opponentXgoals}
-              onChange={handleOpponentXgoalsChange}
-            />
-            <label htmlFor="opponent-xgoals">Opponent</label>
-          </StyledFieldset>
-          <StyledGameButton>Save</StyledGameButton>
-        </StyledGameForm>
+        <StyledLinkComponent
+          href={
+            path.includes("archive")
+              ? `/competition/${competitionId}/?archive`
+              : `/competition/${competitionId}`
+          }
+          type="back"
+        >
+          Cancel
+        </StyledLinkComponent>
+        <PageHeadlineComponent>Track new game</PageHeadlineComponent>
+        <StyledPageDescription>
+          Set your and your opponents <strong>score</strong> and{" "}
+          <strong>xGoals</strong>.
+        </StyledPageDescription>
+        <EditScoreComponent
+          headline="Score"
+          userCount={userScore}
+          opponentCount={opponentScore}
+          onValueUpdate={handleScoreChange}
+          value={1}
+        />
+        <EditScoreComponent
+          headline="xGoals"
+          userCount={userXgoals}
+          opponentCount={opponentXgoals}
+          onValueUpdate={handleXgoalsChange}
+          value={updateValue}
+        />
+        <p>Change xGoals update value to:</p>
+        <button onClick={updateXgoalsValue}>
+          {updateValue === 1 ? "0.1" : "1"}
+        </button>
       </StyledDetailContainer>
-    </main>
+      <StyledButtonComponent
+        type="add"
+        functionToBeExecuted={handleSubmit}
+        disabled={userScore === opponentScore ? true : false}
+      >
+        Save
+      </StyledButtonComponent>
+    </>
   );
 }

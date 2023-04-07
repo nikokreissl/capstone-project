@@ -1,18 +1,17 @@
 import {
   StyledHomeContainer,
-  StyledHomeItemHeadline,
   StyledHomeList,
 } from "../../Competition/CompetitionList/StylesCompetitionList";
+import { PageHeadlineComponent } from "../../GeneralComponents/PageInformation";
 import EmptyState from "../../GeneralComponents/Empty-State";
 import ObjectiveCard from "../ObjectiveCard";
 
 export default function ObjectiveList({ objectives, headline, path }) {
   return (
     <StyledHomeContainer>
-      <StyledHomeItemHeadline>{headline}</StyledHomeItemHeadline>
-      <hr />
+      <PageHeadlineComponent>{headline}</PageHeadlineComponent>
       {objectives.length < 1 ? (
-        <EmptyState itemName="objective" href="/objective/create" path={path} />
+        <EmptyState itemName="objective" path={path} />
       ) : (
         <StyledHomeList>
           {objectives.map((objective) => (

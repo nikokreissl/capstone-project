@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import { generalInstructionsTemplate } from "../../../../data/tactic/tactics-template";
+import InputRangeComponent from "./InputRangeComponent";
 
 export default function EditTacticGeneralForm({ tactic }) {
   function getGivenValueGeneralInstruction(tactic, inFor, inName) {
     const givenValue = tactic.generalInstructions
       .find((g) => g.instructionFor === inFor)
       .detailedInstructions.find((d) => d.instructionName === inName).value;
+
     return givenValue;
   }
+
   return (
     <>
       {generalInstructionsTemplate.map((instruction) => (
@@ -47,12 +50,9 @@ export default function EditTacticGeneralForm({ tactic }) {
                   ))}
                 </select>
               ) : (
-                <input
-                  name={`${instruction.instructionFor} ${detailedInstruction.instructionName}`}
-                  id={`${instruction.instructionFor}-${detailedInstruction.instructionName}`}
-                  type={"number"}
-                  min={`${detailedInstruction.minValue}`}
-                  max={`${detailedInstruction.maxValue}`}
+                <InputRangeComponent
+                  instructionFor={instruction.instructionFor}
+                  detailedInstruction={detailedInstruction}
                   defaultValue={getGivenValueGeneralInstruction(
                     tactic,
                     instruction.instructionFor,

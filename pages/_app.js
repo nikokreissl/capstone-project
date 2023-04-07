@@ -11,6 +11,8 @@ import { useObjectives } from "../hooks/objective-hook";
 import { getGeneralInstructions, createDefaultTactic } from "../utils/utils";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const DataContext = createContext();
 
@@ -35,6 +37,7 @@ export default function App({ Component, pageProps }) {
     handleAddChallenge,
     handleChallengeUpdate,
     handleChallengeDelete,
+    handleChallengeQuickEditUpdate,
   } = useObjectives(givenObjectives);
 
   const [userTactics, setUserTactics] = useLocalStorageState("userTactics", {
@@ -129,6 +132,7 @@ export default function App({ Component, pageProps }) {
         handleAddChallenge,
         handleChallengeUpdate,
         handleChallengeDelete,
+        handleChallengeQuickEditUpdate,
         userTactics,
         handleAddTactic,
         handleUpdateTactic,
@@ -137,13 +141,26 @@ export default function App({ Component, pageProps }) {
       }}
     >
       <GlobalStyle />
-
       <Head>
         <title>Capstone Project</title>
       </Head>
       <Heading>FIFA23 Tracker</Heading>
-      <Component {...pageProps} />
+      <main>
+        <Component {...pageProps} />
+      </main>
       <Navigation />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </DataContext.Provider>
   );
 }

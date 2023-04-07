@@ -1,4 +1,5 @@
 import CompetitionList from "../../components/Competition/CompetitionList";
+import { StyledLinkComponent } from "../../components/GeneralComponents/Links";
 import { useContext } from "react";
 import { DataContext } from "../_app";
 import { useRouter } from "next/router";
@@ -18,12 +19,18 @@ export default function ArchiveCompetitionsPage() {
   );
 
   return (
-    <main>
+    <>
+      <StyledLinkComponent
+        href={path.includes("archive") ? "/archive" : "/"}
+        type="back"
+      >
+        Back
+      </StyledLinkComponent>
       <CompetitionList
         competitions={archivedCompetitions}
         headline="Competitions"
         path={path}
       />
-    </main>
+    </>
   );
 }
