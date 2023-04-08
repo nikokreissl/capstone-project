@@ -95,9 +95,8 @@ const StyledLink = styled(Link)`
   color: ${({ linkName, active }) =>
     linkName === active ? "var(--orange)" : "var(--light)"};
   padding: 10px;
-  border: 1px solid
-    ${({ linkName, active }) =>
-      linkName === active ? "var(--orange)" : "var(--light)"};
+  border: ${({ linkName, active }) =>
+    linkName === active ? "1px solid var(--orange)" : "var(--light)"};
   border-radius: 25px;
 `;
 
