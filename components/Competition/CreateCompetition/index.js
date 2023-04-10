@@ -3,6 +3,9 @@ import { DataContext } from "../../../pages/_app";
 import { useRouter } from "next/router";
 import {
   StyledForm,
+  StyledFormLabel,
+  StyledInputField,
+  StyledRangeField,
   StyledFormLabelInputWrapper,
 } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
@@ -53,8 +56,8 @@ export default function CreateCompetitionForm() {
         submit it will appear on <strong>Home</strong>.
       </StyledPageDescription>
       <StyledForm onSubmit={(event) => event.preventDefault()}>
-        <label htmlFor="competition-name">Name</label>
-        <input
+        <StyledFormLabel htmlFor="competition-name">Name</StyledFormLabel>
+        <StyledInputField
           type="text"
           name="competition-name"
           id="competition-name"
@@ -65,15 +68,18 @@ export default function CreateCompetitionForm() {
           required
         />
         <StyledFormLabelInputWrapper>
-          <label htmlFor="competition-games">Number of Games</label>
-          <input
-            type="number"
+          <StyledFormLabel htmlFor="competition-games">
+            Number of Games
+          </StyledFormLabel>
+          <p>{competitionGameInput}</p>
+          <StyledRangeField
+            type="range"
             name="competition-games"
             id="competition-games"
             value={competitionGameInput}
             onChange={handleGameInput}
             min={1}
-            max={100}
+            max={25}
             required
           />
         </StyledFormLabelInputWrapper>
