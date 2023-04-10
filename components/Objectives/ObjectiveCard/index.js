@@ -1,4 +1,8 @@
-import { StyledArticle } from "./StyledObjectiveCard.js";
+import {
+  StyledContainer,
+  StyledHeadline,
+  StyledParagraph,
+} from "../../GeneralComponents/Cards/index.js";
 import { StyledLinkComponent } from "../../GeneralComponents/Links/index.js";
 
 export default function ObjectiveCard({ objective, path }) {
@@ -7,18 +11,18 @@ export default function ObjectiveCard({ objective, path }) {
   );
 
   return (
-    <StyledArticle>
-      <h3>{objective.name}</h3>
-      <p>
+    <StyledContainer>
+      <StyledHeadline>{objective.name}</StyledHeadline>
+      <StyledParagraph>
         Challenges finished: {challengeProgress.length} /{" "}
         {objective.challenges.length}
-      </p>
+      </StyledParagraph>
       <StyledLinkComponent
         type="view"
         href={`/objective/${objective.id}/?=${path}`}
       >
         View Details
       </StyledLinkComponent>
-    </StyledArticle>
+    </StyledContainer>
   );
 }

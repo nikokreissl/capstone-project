@@ -70,25 +70,41 @@ export default function Home() {
           <option value="competition">Competition</option>
           <option value="objective">Objective</option>
         </StyledCreateItemSelect>
-        <button>Create</button>
+        <StyledCreateItemButton>Create</StyledCreateItemButton>
       </StyledCreateItemForm>
     </>
   );
 }
 
-export const StyledCreateItemForm = styled.form`
+const StyledCreateItemForm = styled.form`
   border-radius: 25px;
-  background-color: lightgray;
-  width: 80vw;
-  padding: 20px;
-  margin: 20px;
+  border: 1px solid var(--light);
+  background-color: var(--medium);
+  width: 70vw;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 50px;
   display: flex;
   justify-content: center;
   gap: 0.5em;
   position: sticky;
-  bottom: 60px;
+  bottom: 85px;
 `;
 
-export const StyledCreateItemSelect = styled.select`
-  width: 30vw;
+const StyledCreateItemSelect = styled.select`
+  width: 40vw;
+  background-color: var(--medium-dark);
+  color: var(--light);
+  border-radius: 25px;
+  border: 1px solid var(--light-gray);
+  font-size: 1.1rem;
+`;
+
+const StyledCreateItemButton = styled.button`
+  border-radius: 25px;
+  width: 25vw;
+  background-color: var(--medium-dark);
+  color: var(--light);
+  border: 1px solid var(--light-gray);
+  font-size: 1.1rem;
 `;

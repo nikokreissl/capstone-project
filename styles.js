@@ -9,6 +9,7 @@ export default createGlobalStyle`
 :root {
   --light-dark: #33353C;
   --medium-dark: #15191D;
+  --medium: #253962;
   --light: #F8EEDE;
   --light-gray: #E0D9CC;
   --orange: #EF6404;
@@ -25,7 +26,9 @@ export default createGlobalStyle`
   }
 
   main {
-    margin-bottom: 60px;
+    height: 100vh;
+    margin-bottom: 80px;
+    padding: 5vw;
     background-color: var(--light-dark)
   }
 

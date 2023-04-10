@@ -1,83 +1,35 @@
 import styled from "styled-components";
 
-export const StyledDetailContainer = styled.section`
-  width: 90vw;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-export default function EditScoreComponent({
-  headline,
-  userCount,
-  opponentCount,
-  onValueUpdate,
-  value,
-}) {
-  return (
-    <>
-      <StyledEditScoreContainer>
-        <h3>{headline}</h3>
-        <p>
-          Yours {userCount} : {opponentCount} Opponent
-        </p>
-      </StyledEditScoreContainer>
-      <StyledEditScoreUpdateContainer>
-        <StyledEditScoreUpdateWrapper>
-          <StyledEditScoreUpdateText>
-            Update your {headline}
-          </StyledEditScoreUpdateText>
-          <StyledEditScoreUpdateButton
-            onClick={() => onValueUpdate("user", "increment", value)}
-          >
-            +{value}
-          </StyledEditScoreUpdateButton>
-          <StyledEditScoreUpdateButton
-            onClick={() => onValueUpdate("user", "decrement", value)}
-            disabled={
-              (userCount < 1 && value === 1) || userCount === 0 ? true : false
-            }
-          >
-            -{value}
-          </StyledEditScoreUpdateButton>
-        </StyledEditScoreUpdateWrapper>
-        <StyledEditScoreUpdateWrapper>
-          <StyledEditScoreUpdateText>
-            Update opponent {headline}
-          </StyledEditScoreUpdateText>
-          <StyledEditScoreUpdateButton
-            onClick={() => onValueUpdate("opponent", "increment", value)}
-          >
-            +{value}
-          </StyledEditScoreUpdateButton>
-          <StyledEditScoreUpdateButton
-            onClick={() => onValueUpdate("opponent", "decrement", value)}
-            disabled={
-              (opponentCount < 1 && value === 1) || opponentCount === 0
-                ? true
-                : false
-            }
-          >
-            -{value}
-          </StyledEditScoreUpdateButton>
-        </StyledEditScoreUpdateWrapper>
-      </StyledEditScoreUpdateContainer>
-    </>
-  );
-}
-
-const StyledEditScoreContainer = styled.div`
+export const StyledEditScoreContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const StyledEditScoreUpdateContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
+export const StyledEditScoreContainerHeadline = styled.h3`
+  align-self: flex-start;
+  padding: 10px;
+  background-color: var(--medium);
+  width: 100%;
 `;
 
-const StyledEditScoreUpdateWrapper = styled.div`
+export const StyledEditScoreContainerParagraph = styled.p`
+  margin: 10px;
+`;
+
+export const StyledEditScoreContainerScore = styled.span`
+  color: var(--orange);
+  font-weight: bold;
+  font-size: 1.3rem;
+`;
+
+export const StyledEditScoreUpdateContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+`;
+
+export const StyledEditScoreUpdateWrapper = styled.div`
   width: 35vw;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -85,18 +37,25 @@ const StyledEditScoreUpdateWrapper = styled.div`
   justify-items: center;
 `;
 
-const StyledEditScoreUpdateText = styled.p`
+export const StyledEditScoreUpdateText = styled.p`
   grid-column: 1 / -1;
+  font-size: 0.7rem;
 `;
 
-const StyledEditScoreUpdateButton = styled.button`
+export const StyledEditScoreUpdateButton = styled.button`
   width: 80%;
   padding: 10px;
+  background-color: var(--madium-dark);
+  border-radius: 5px;
+  color: var(--orange);
+  border: 1px solid var(--light-gray);
+  &:disabled {
+    background-color: gray;
+    color: var(--light-gray);
+  }
 `;
-// Challenge
 
-export const StyledTimesWrapper = styled.div`
+export const StyledUpdateXgoalsValueWrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  margin-bottom: 20px;
 `;

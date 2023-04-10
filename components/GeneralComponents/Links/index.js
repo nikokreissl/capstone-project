@@ -1,47 +1,39 @@
 import styled from "styled-components";
 import Link from "next/link";
-import Image from "next/image";
-import ViewMoreIcon from "../../../public/view-more.svg";
-import BackIcon from "../../../public/back-icon.svg";
-import AddIcon from "../../../public/add-item.svg";
+import { ViewMoreIcon, BackIcon, AddIcon } from "../../../public/icons";
 
-export function StyledLinkComponent({ href, type, children }) {
-  function getIcon(type) {
-    if (type === "view") {
-      return ViewMoreIcon;
-    } else if (type === "back") {
-      return BackIcon;
-    } else if (type === "add") {
-      return AddIcon;
-    }
-  }
+export function StyledLinkComponent({ href, type, children, disabledLink }) {
+  const linkIcons = {
+    view: ViewMoreIcon(disabledLink),
+    back: BackIcon(disabledLink),
+    add: AddIcon(disabledLink),
+  };
 
   return (
-    <StyledLink href={href}>
-      <Image src={getIcon(type)} alt={type} width={20} height={20} />
+    <StyledLink href={href} disabledLink={disabledLink}>
+      {linkIcons[type]}
       {children}
     </StyledLink>
   );
 }
 const StyledLink = styled(Link)`
-  color: black;
+  color: ${({ disabledLink }) =>
+    disabledLink ? "var(--light)" : "var(--orange)"};
+  background-color: ${({ disabledLink }) =>
+    disabledLink ? "gray" : "transparent"};
+  pointer-events: ${({ disabledLink }) => (disabledLink ? "none" : "auto")};
   display: flex;
   justify-content: center;
   align-items: center;
   width: 150px;
   gap: 10px;
   padding: 5px;
-  border: 1px solid black;
+  margin: 5px auto;
+  border: 1px solid var(--light);
   border-radius: 20px;
   text-decoration: none;
-  transition: all 0.2s;
   &:visited {
-    color: black;
-  }
-  &:hover {
-    text-decoration: underline;
-    border-color: orange;
-    color: orange;
-    cursor: pointer;
+    color: ${({ disabledLink }) =>
+      disabledLink ? "var(--light)" : "var(--orange)"};
   }
 `;

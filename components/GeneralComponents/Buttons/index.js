@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import Image from "next/image";
-import TrashIcon from "../../../public/trash-can.svg";
-import ArchiveIcon from "../../../public/box-open.svg";
-import EditIcon from "../../../public/pen-to-square.svg";
-import BackIcon from "../../../public/back-icon.svg";
-import AddIcon from "../../../public/add-item.svg";
-import SubmitIcon from "../../../public/paper-plane.svg";
+import {
+  TrashIcon,
+  ArchiveIcon,
+  EditIcon,
+  BackIcon,
+  AddIcon,
+  SubmitIcon,
+} from "../../../public/icons";
 import { useState } from "react";
 import Spinner from "../CircleAnimation";
 import {
@@ -24,12 +25,12 @@ export function StyledButtonComponent({
   disabled,
 }) {
   const buttonIcons = {
-    edit: EditIcon,
-    back: BackIcon,
-    delete: TrashIcon,
-    archive: ArchiveIcon,
-    add: AddIcon,
-    update: SubmitIcon,
+    edit: EditIcon(disabled),
+    back: BackIcon(disabled),
+    delete: TrashIcon(disabled),
+    archive: ArchiveIcon(disabled),
+    add: AddIcon(disabled),
+    update: SubmitIcon(disabled),
   };
 
   const toasts = {
@@ -58,8 +59,7 @@ export function StyledButtonComponent({
         <Spinner />
       ) : (
         <>
-          <Image src={buttonIcons[type]} alt={type} width={20} height={20} />
-          {children}
+          {buttonIcons[type]} {children}
         </>
       )}
     </StyledButton>
@@ -67,28 +67,30 @@ export function StyledButtonComponent({
 }
 
 const StyledButton = styled.button`
-  color: black;
-  background-color: orange;
+  font-size: 16px;
+  color: var(--orange);
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 150px;
-  height: 32px;
   gap: 10px;
   padding: 5px;
-  border: 1px solid black;
+  margin: 5px auto;
+  border: 1px solid var(--light);
   border-radius: 20px;
   text-decoration: none;
   transition: all 0.2s;
   &:visited {
-    color: black;
-  }
-  &:hover {
-    border-color: orange;
-    cursor: pointer;
+    color: var(--orange);
   }
   &:disabled {
     background-color: gray;
+    color: var(--light);
     pointer-events: none;
   }
+`;
+
+export const StyledButtonLinkWrapper = styled.div`
+  display: flex;
 `;

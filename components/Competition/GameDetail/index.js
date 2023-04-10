@@ -1,12 +1,18 @@
-import { StyledButtonComponent } from "../../GeneralComponents/Buttons/index.js";
-import { StyledDetailContainer } from "./StyledGameDetail.js";
+import {
+  StyledButtonComponent,
+  StyledButtonLinkWrapper,
+} from "../../GeneralComponents/Buttons/index.js";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import { useState } from "react";
-import EditScoreComponent from "./StyledGameDetail.js";
+import EditScoreComponent from "./EditScore.js";
 import {
   PageHeadlineComponent,
   StyledPageDescription,
 } from "../../GeneralComponents/PageInformation/index.js";
+import {
+  StyledUpdateXgoalsValueWrapper,
+  StyledEditScoreUpdateButton,
+} from "./StyledGameDetail.js";
 
 export default function GameDetail({
   game,
@@ -81,23 +87,25 @@ export default function GameDetail({
 
   return (
     <>
-      <StyledDetailContainer>
-        <StyledLinkComponent
-          href={
-            path.includes("archive")
-              ? `/competition/${competitionId}/?archive`
-              : `/competition/${competitionId}`
-          }
-          type="back"
-        >
-          Back
-        </StyledLinkComponent>
-        <StyledButtonComponent
-          type="delete"
-          functionToBeExecuted={handleDeleteGame}
-        >
-          Delete
-        </StyledButtonComponent>
+      <>
+        <StyledButtonLinkWrapper>
+          <StyledLinkComponent
+            href={
+              path.includes("archive")
+                ? `/competition/${competitionId}/?archive`
+                : `/competition/${competitionId}`
+            }
+            type="back"
+          >
+            Back
+          </StyledLinkComponent>
+          <StyledButtonComponent
+            type="delete"
+            functionToBeExecuted={handleDeleteGame}
+          >
+            Delete
+          </StyledButtonComponent>
+        </StyledButtonLinkWrapper>
         <PageHeadlineComponent>Edit game {gameNumber}</PageHeadlineComponent>
         <StyledPageDescription>
           Update your and your opponents <strong>score</strong> and{" "}
@@ -117,11 +125,17 @@ export default function GameDetail({
           onValueUpdate={handleXgoalsChange}
           value={updateValue}
         />
-        <p>Change xGoals update value to:</p>
-        <button type="submit" onClick={updateXgoalsValue}>
-          {updateValue === 1 ? "0.1" : "1"}
-        </button>
-      </StyledDetailContainer>
+        <StyledUpdateXgoalsValueWrapper>
+          {" "}
+          <p>Change xGoals update value to:</p>
+          <StyledEditScoreUpdateButton
+            type="submit"
+            onClick={updateXgoalsValue}
+          >
+            {updateValue === 1 ? "0.1" : "1"}
+          </StyledEditScoreUpdateButton>
+        </StyledUpdateXgoalsValueWrapper>
+      </>
       <StyledButtonComponent
         type="update"
         functionToBeExecuted={handleSubmit}

@@ -1,9 +1,15 @@
 import { useState } from "react";
 import {
   StyledForm,
+  StyledFormLabel,
+  StyledInputField,
+  StyledRangeField,
   StyledFormLabelInputWrapper,
 } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
-import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
+import {
+  StyledButtonComponent,
+  StyledButtonLinkWrapper,
+} from "../../GeneralComponents/Buttons";
 import {
   PageHeadlineComponent,
   StyledPageDescription,
@@ -45,10 +51,18 @@ export default function EditCompetition({
     onDeleteCompetition(id);
   }
 
+  function checkValidInput(input) {
+    if (input.startsWith(" ")) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   return (
     <>
       <StyledButtonComponent type="back" functionToBeExecuted={onToggleEdit}>
-        Discard changes
+        Back
       </StyledButtonComponent>
       <PageHeadlineComponent>Edit competition</PageHeadlineComponent>
       <StyledPageDescription>
@@ -59,8 +73,8 @@ export default function EditCompetition({
         <strong>Archive / Restore</strong> to do so.
       </StyledPageDescription>
       <StyledForm onSubmit={(event) => event.preventDefault()}>
-        <label htmlFor="competition-name">Name</label>
-        <input
+        <StyledFormLabel htmlFor="competition-name">Name</StyledFormLabel>
+        <StyledInputField
           type="text"
           name="competition-name"
           id="competition-name"
@@ -70,37 +84,49 @@ export default function EditCompetition({
           required
         />
         <StyledFormLabelInputWrapper>
-          <label htmlFor="competition-games">Number of Games</label>
-          <input
-            type="number"
+          <StyledFormLabel htmlFor="competition-games">
+            Number of Games
+          </StyledFormLabel>
+          <p>{competitionGames}</p>
+          <StyledRangeField
+            type="range"
             name="competition-games"
             id="competition-games"
             value={competitionGames}
             onChange={handleCompetitionGamesChange}
             min={1}
-            max={100}
+            max={25}
           />
         </StyledFormLabelInputWrapper>
         <StyledButtonComponent
           type="update"
           functionToBeExecuted={handleUpdateSubmit}
+          disabled={
+            !competitionName ||
+            !checkValidInput(competitionName) ||
+            competitionGames < competition.gamesPlayed.length
+              ? true
+              : false
+          }
         >
           Update
         </StyledButtonComponent>
       </StyledForm>
-      <StyledButtonComponent
-        type="delete"
-        functionToBeExecuted={deleteCompetition}
-      >
-        Delete
-      </StyledButtonComponent>
-      <StyledButtonComponent
-        type="archive"
-        functionToBeExecuted={() => onArchiveCompetition(id)}
-        item="Competition"
-      >
-        {isArchived ? "Restore" : "Archive"}
-      </StyledButtonComponent>
+      <StyledButtonLinkWrapper>
+        <StyledButtonComponent
+          type="delete"
+          functionToBeExecuted={deleteCompetition}
+        >
+          Delete
+        </StyledButtonComponent>
+        <StyledButtonComponent
+          type="archive"
+          functionToBeExecuted={() => onArchiveCompetition(id)}
+          item="Competition"
+        >
+          {isArchived ? "Restore" : "Archive"}
+        </StyledButtonComponent>
+      </StyledButtonLinkWrapper>
     </>
   );
 }
