@@ -27,11 +27,13 @@ test("Renders information on Card correcty", () => {
     name: "Competition Name",
   });
 
-  const record = screen.getByText("Record: Wins 2 / Loses 1");
+  const wins = screen.getByText("2");
+  const loses = screen.getByText("1");
 
-  const remainingGames = screen.getByText("Remaining Games: 9");
+  const remainingGames = screen.getByText("9");
 
-  expect(record).toBeInTheDocument();
+  expect(wins).toBeInTheDocument();
+  expect(loses).toBeInTheDocument();
   expect(competitionName).toBeInTheDocument();
   expect(remainingGames).toBeInTheDocument();
 });
