@@ -4,6 +4,7 @@ import {
   StyledParagraph,
 } from "../../GeneralComponents/Cards/index.js";
 import { StyledLinkComponent } from "../../GeneralComponents/Links/index.js";
+import ProgressBarComponent from "../ProgressBar/index.js";
 
 export default function ObjectiveCard({ objective, path }) {
   const challengeProgress = objective.challenges.filter(
@@ -13,10 +14,11 @@ export default function ObjectiveCard({ objective, path }) {
   return (
     <StyledContainer>
       <StyledHeadline>{objective.name}</StyledHeadline>
-      <StyledParagraph>
-        Challenges finished: {challengeProgress.length} /{" "}
-        {objective.challenges.length}
-      </StyledParagraph>
+      <ProgressBarComponent
+        timesNeeded={objective.challenges.length}
+        timesCompleted={challengeProgress.length}
+        type="objective"
+      />
       <StyledLinkComponent
         type="view"
         href={`/objective/${objective.id}/?=${path}`}
@@ -25,4 +27,11 @@ export default function ObjectiveCard({ objective, path }) {
       </StyledLinkComponent>
     </StyledContainer>
   );
+}
+
+{
+  /* <StyledParagraph>
+Challenges finished: {challengeProgress.length} /{" "}
+{objective.challenges.length}
+</StyledParagraph> */
 }
