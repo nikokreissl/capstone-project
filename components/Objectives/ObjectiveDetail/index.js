@@ -1,11 +1,17 @@
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
-import { StyledDetailsContainer } from "../../GeneralComponents/DetailView";
 import ChallengeList from "../ChallengeList";
-import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
+import {
+  StyledButtonComponent,
+  StyledButtonLinkWrapper,
+} from "../../GeneralComponents/Buttons";
 import {
   PageHeadlineComponent,
   StyledPageDescription,
 } from "../../GeneralComponents/PageInformation";
+import {
+  StyledHeadline,
+  StyledTransparentContainer,
+} from "../../GeneralComponents/Cards";
 
 export default function ObjectiveDetail({
   objective,
@@ -23,16 +29,18 @@ export default function ObjectiveDetail({
   );
 
   return (
-    <StyledDetailsContainer>
-      <StyledLinkComponent
-        href={path.includes("archive") ? "/archive/objectives" : "/"}
-        type="back"
-      >
-        Back
-      </StyledLinkComponent>
-      <StyledButtonComponent type="edit" functionToBeExecuted={onToggleEdit}>
-        Edit
-      </StyledButtonComponent>
+    <>
+      <StyledButtonLinkWrapper>
+        <StyledLinkComponent
+          href={path.includes("archive") ? "/archive/objectives" : "/"}
+          type="back"
+        >
+          Back
+        </StyledLinkComponent>
+        <StyledButtonComponent type="edit" functionToBeExecuted={onToggleEdit}>
+          Edit
+        </StyledButtonComponent>
+      </StyledButtonLinkWrapper>
       <PageHeadlineComponent>Objective details</PageHeadlineComponent>
       <StyledPageDescription>
         {" "}
@@ -40,14 +48,14 @@ export default function ObjectiveDetail({
         <strong>Add challenge</strong>. Update your progess by increasing the
         amount the challenge has been completed.
       </StyledPageDescription>
-      <p>
-        Objective name:
-        <br />
-        {objective.name}
-        <br />
-        Challenges completed: {challengeProgress.length} /{" "}
-        {objective.challenges.length}
-      </p>
+      <StyledHeadline>{objective.name}</StyledHeadline>
+      <StyledTransparentContainer>
+        <p>
+          Challenges completed: {challengeProgress.length} /{" "}
+          {objective.challenges.length}
+        </p>
+      </StyledTransparentContainer>
+
       <StyledLinkComponent
         href={
           path.includes("archive")
@@ -64,6 +72,6 @@ export default function ObjectiveDetail({
         onChallengeQuickEditUpdate={onChallengeQuickEditUpdate}
         path={path}
       />
-    </StyledDetailsContainer>
+    </>
   );
 }

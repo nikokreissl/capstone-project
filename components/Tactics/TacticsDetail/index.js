@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { StyledDetailsContainer } from "../../GeneralComponents/DetailView";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import { StyledTab, StyledTabsContainer } from "./StyledTacticsDetail";
-import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
+import {
+  StyledButtonComponent,
+  StyledButtonLinkWrapper,
+} from "../../GeneralComponents/Buttons";
 import TacticsEdit from "../TacticsEdit";
 import InstructionDetail from "../Instruction";
 import {
   PageHeadlineComponent,
   StyledPageDescription,
 } from "../../GeneralComponents/PageInformation";
+import { StyledHeadline, StyledParagraph } from "../../GeneralComponents/Cards";
 
 export default function TacticsDetail({
   tactic,
@@ -57,18 +60,20 @@ export default function TacticsDetail({
         />
       ) : (
         <>
-          <StyledLinkComponent
-            href={path.includes("archive") ? "/archive/tactics" : "/tactics"}
-            type="back"
-          >
-            Back
-          </StyledLinkComponent>
-          <StyledButtonComponent
-            type="edit"
-            functionToBeExecuted={toggleShowEdit}
-          >
-            Edit
-          </StyledButtonComponent>
+          <StyledButtonLinkWrapper>
+            <StyledLinkComponent
+              href={path.includes("archive") ? "/archive/tactics" : "/tactics"}
+              type="back"
+            >
+              Back
+            </StyledLinkComponent>
+            <StyledButtonComponent
+              type="edit"
+              functionToBeExecuted={toggleShowEdit}
+            >
+              Edit
+            </StyledButtonComponent>
+          </StyledButtonLinkWrapper>
           <PageHeadlineComponent>Tactic details</PageHeadlineComponent>
           <StyledPageDescription>
             Check out the different instructions for this formation. You can
@@ -76,10 +81,10 @@ export default function TacticsDetail({
             <strong>Player instructions</strong> by clicking the correpsonding
             button.
           </StyledPageDescription>
-          <StyledDetailsContainer>
-            <h2>{tactic.name}</h2>
-            <h3>{tactic.formation}</h3>
-          </StyledDetailsContainer>
+          <>
+            <StyledHeadline>{tactic.name}</StyledHeadline>
+            <StyledParagraph>Formation: {tactic.formation}</StyledParagraph>
+          </>
           <StyledTabsContainer>
             <StyledTab
               shown={showGeneralInstructions}

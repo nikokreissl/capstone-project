@@ -3,8 +3,9 @@ import {
   StyledChallengeDescription,
   StyledChallengeQuickEditWrapper,
   StyledChallengeProgress,
+  StyledQuickEditButton,
+  StyleChallengeEditLink,
 } from "./StyledChallengeList";
-import Link from "next/link";
 
 export default function ChallengeListItemComponent({
   challengeNumber,
@@ -28,32 +29,34 @@ export default function ChallengeListItemComponent({
 
   return (
     <StyledChallengeListItem challengeNumber={challengeNumber}>
-      <StyledChallengeDescription>{description}</StyledChallengeDescription>
+      <StyledChallengeDescription challengeNumber={challengeNumber}>
+        {description}
+      </StyledChallengeDescription>
       <StyledChallengeQuickEditWrapper>
-        <StyledChallengeProgress>
+        <StyledChallengeProgress challengeNumber={challengeNumber}>
           {timesCompleted} / {timesNeeded}
         </StyledChallengeProgress>
-        <button
+        <StyledQuickEditButton
           onClick={() => handleTimesCompletedUpdate("add")}
           disabled={timesCompleted === timesNeeded && true}
         >
           +1
-        </button>
-        <button
+        </StyledQuickEditButton>
+        <StyledQuickEditButton
           onClick={() => handleTimesCompletedUpdate("subtract")}
           disabled={timesCompleted < 1 && true}
         >
           -1
-        </button>
-        <Link
+        </StyledQuickEditButton>
+        <StyleChallengeEditLink
           href={
             path.includes("archive")
               ? `/objective/${objectiveId}/challenge-detail/${challengeId}/?archive`
               : `/objective/${objectiveId}/challenge-detail/${challengeId}`
           }
         >
-          Edit
-        </Link>
+          Edit ✏️
+        </StyleChallengeEditLink>
       </StyledChallengeQuickEditWrapper>
     </StyledChallengeListItem>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import styled from "styled-components";
 import { useState } from "react";
 
 export default function InputRangeComponent({
@@ -10,17 +10,33 @@ export default function InputRangeComponent({
   const { instructionName, minValue, maxValue } = detailedInstruction;
 
   return (
-    <div>
-      <p>{value}</p>
-      <input
+    <StyledTacticRangeInputWrapper>
+      <StyledRangeOutput>
+        <strong>{value}</strong>
+      </StyledRangeOutput>
+      <StyledTacticRangeInput
         onChange={(event) => setValue(event.target.value)}
         name={`${instructionFor} ${instructionName}`}
         id={`${instructionFor}-${instructionName}`}
-        type={"range"}
+        type="range"
         min={`${minValue}`}
         max={`${maxValue}`}
         value={value}
       />
-    </div>
+    </StyledTacticRangeInputWrapper>
   );
 }
+
+const StyledTacticRangeInputWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+const StyledRangeOutput = styled.p`
+  color: var(--orange);
+  width: 20px;
+`;
+
+const StyledTacticRangeInput = styled.input`
+  width: 70%;
+`;

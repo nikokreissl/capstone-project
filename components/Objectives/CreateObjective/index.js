@@ -1,4 +1,8 @@
-import { StyledForm } from "../../GeneralComponents/CreateForm/StyledCreateForm";
+import {
+  StyledForm,
+  StyledFormLabel,
+  StyledInputField,
+} from "../../GeneralComponents/CreateForm/StyledCreateForm";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
 import {
@@ -46,13 +50,13 @@ export default function CreateObjectiveForm() {
         <strong>Home</strong>.
       </StyledPageDescription>
       <StyledForm onSubmit={(event) => event.preventDefault()}>
-        <label htmlFor="objective-name">Name</label>
-        <input
+        <StyledFormLabel htmlFor="objective-name">Name</StyledFormLabel>
+        <StyledInputField
           type="text"
           name="objective-name"
           id="objective-name"
           pattern="^(?!\s*$).+"
-          maxLength={50}
+          maxLength={20}
           value={objectiveNameInput}
           onChange={handleNameInput}
           required
@@ -66,7 +70,7 @@ export default function CreateObjectiveForm() {
               : false
           }
         >
-          Create objective
+          Create
         </StyledButtonComponent>
       </StyledForm>
     </>

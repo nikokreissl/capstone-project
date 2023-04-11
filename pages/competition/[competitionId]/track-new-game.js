@@ -4,12 +4,13 @@ import {
   PageHeadlineComponent,
   StyledPageDescription,
 } from "../../../components/GeneralComponents/PageInformation/index.js";
-import EditScoreComponent, {
-  StyledDetailContainer,
-} from "../../../components/Competition/GameDetail/StyledGameDetail";
-import { useState } from "react";
+import EditScoreComponent from "../../../components/Competition/GameDetail/EditScore.js";
+import {
+  StyledUpdateXgoalsValueWrapper,
+  StyledEditScoreUpdateButton,
+} from "../../../components/Competition/GameDetail/StyledGameDetail.js";
+import { useState, useContext } from "react";
 import { DataContext } from "../../_app.js";
-import { useContext } from "react";
 import { useRouter } from "next/router.js";
 
 export default function TrackNewGamePage() {
@@ -82,7 +83,7 @@ export default function TrackNewGamePage() {
 
   return (
     <>
-      <StyledDetailContainer>
+      <>
         <StyledLinkComponent
           href={
             path.includes("archive")
@@ -112,11 +113,13 @@ export default function TrackNewGamePage() {
           onValueUpdate={handleXgoalsChange}
           value={updateValue}
         />
-        <p>Change xGoals update value to:</p>
-        <button onClick={updateXgoalsValue}>
-          {updateValue === 1 ? "0.1" : "1"}
-        </button>
-      </StyledDetailContainer>
+        <StyledUpdateXgoalsValueWrapper>
+          <p>Change xGoals update value to:</p>
+          <StyledEditScoreUpdateButton onClick={updateXgoalsValue}>
+            {updateValue === 1 ? "0.1" : "1"}
+          </StyledEditScoreUpdateButton>
+        </StyledUpdateXgoalsValueWrapper>
+      </>
       <StyledButtonComponent
         type="add"
         functionToBeExecuted={handleSubmit}

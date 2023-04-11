@@ -11,7 +11,7 @@ const SpinnerWrapper = styled.div`
   width: 20px;
   height: 20px;
   border: 4px solid rgba(0, 0, 0, 0.3);
-  border-left-color: black;
+  border-left-color: var(--orange);
   border-radius: 50%;
   animation: ${spin} 1s linear infinite;
 `;

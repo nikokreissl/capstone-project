@@ -1,16 +1,24 @@
 import { useState } from "react";
 import {
   StyledForm,
-  StyledSubmitButton,
   StyledH3,
 } from "./PlayerInstructionsForm/StyledTacticsEdit";
-import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
+import {
+  StyledFormLabel,
+  StyledInputField,
+} from "../../GeneralComponents/CreateForm/StyledCreateForm";
+import {
+  StyledButtonComponent,
+  StyledButtonLinkWrapper,
+} from "../../GeneralComponents/Buttons";
 import {
   PageHeadlineComponent,
   StyledPageDescription,
 } from "../../GeneralComponents/PageInformation";
 import EditTacticGeneralForm from "./GeneralInstructionsForm";
 import EditTacticPlayerForm from "./PlayerInstructionsForm";
+import { TacticsSubmitButton } from "./StyledTacticsEdit";
+import { SuccessUpdateMessage } from "../../GeneralComponents/Toasts";
 
 export default function TacticsEdit({
   tactic,
@@ -30,8 +38,11 @@ export default function TacticsEdit({
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    onUpdateTactic(data, tactic.id);
-    onToggleEdit();
+    setTimeout(() => {
+      onUpdateTactic(data, tactic.id);
+      onToggleEdit();
+      SuccessUpdateMessage();
+    }, 1000);
   }
 
   function handleDelete(tacticId) {
@@ -46,7 +57,7 @@ export default function TacticsEdit({
   return (
     <>
       <StyledButtonComponent type="back" functionToBeExecuted={onToggleEdit}>
-        Discard changes
+        Discard
       </StyledButtonComponent>
       <StyledForm onSubmit={handleSubmit}>
         <PageHeadlineComponent>Edit tactic</PageHeadlineComponent>
@@ -56,12 +67,13 @@ export default function TacticsEdit({
           up-to-date anymore? Add it to - or restore it from - your archive by
           clicking <strong>Archive / Restore</strong>.
         </StyledPageDescription>
-        <label htmlFor="tactic-name">Tactic name</label>
-        <input
+        <StyledFormLabel htmlFor="tactic-name">Tactic name</StyledFormLabel>
+        <StyledInputField
           type="text"
           name="tacticname"
           id="tactic-name "
           pattern="^(?!\s*$).+"
+          maxLength={20}
           value={tacticName}
           onChange={handleFormationNameInput}
           required
@@ -70,21 +82,23 @@ export default function TacticsEdit({
         <EditTacticGeneralForm tactic={tactic} />
         <StyledH3>Player Instructions</StyledH3>
         <EditTacticPlayerForm tactic={tactic} />
-        <StyledSubmitButton>Submit</StyledSubmitButton>
+        <TacticsSubmitButton>Submit</TacticsSubmitButton>
       </StyledForm>
-      <StyledButtonComponent
-        type="delete"
-        functionToBeExecuted={() => handleDelete(tactic.id)}
-      >
-        Delete
-      </StyledButtonComponent>
-      <StyledButtonComponent
-        type="archive"
-        functionToBeExecuted={() => handleArchiveClick(tactic.id)}
-        item="Tactic"
-      >
-        {tactic.isArchived ? "Restore" : "Archive"}
-      </StyledButtonComponent>
+      <StyledButtonLinkWrapper>
+        <StyledButtonComponent
+          type="delete"
+          functionToBeExecuted={() => handleDelete(tactic.id)}
+        >
+          Delete
+        </StyledButtonComponent>
+        <StyledButtonComponent
+          type="archive"
+          functionToBeExecuted={() => handleArchiveClick(tactic.id)}
+          item="Tactic"
+        >
+          {tactic.isArchived ? "Restore" : "Archive"}
+        </StyledButtonComponent>
+      </StyledButtonLinkWrapper>
     </>
   );
 }

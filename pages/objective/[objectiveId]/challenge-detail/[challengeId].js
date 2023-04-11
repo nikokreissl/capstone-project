@@ -1,6 +1,8 @@
-import { StyledDetailContainer } from "../../../../components/Competition/GameDetail/StyledGameDetail";
 import { StyledLinkComponent } from "../../../../components/GeneralComponents/Links";
-import { StyledButtonComponent } from "../../../../components/GeneralComponents/Buttons";
+import {
+  StyledButtonComponent,
+  StyledButtonLinkWrapper,
+} from "../../../../components/GeneralComponents/Buttons";
 import {
   PageHeadlineComponent,
   StyledPageDescription,
@@ -51,23 +53,25 @@ export default function ChallengeDetailPage() {
   }
 
   return (
-    <StyledDetailContainer>
-      <StyledLinkComponent
-        type="back"
-        href={
-          path.includes("archive")
-            ? `/objective/${currentObjective.id}/?archive`
-            : `/objective/${currentObjective.id}`
-        }
-      >
-        Back
-      </StyledLinkComponent>
-      <StyledButtonComponent
-        type="delete"
-        functionToBeExecuted={handleDeleteChallenge}
-      >
-        Delete
-      </StyledButtonComponent>
+    <>
+      <StyledButtonLinkWrapper>
+        <StyledLinkComponent
+          type="back"
+          href={
+            path.includes("archive")
+              ? `/objective/${currentObjective.id}/?archive`
+              : `/objective/${currentObjective.id}`
+          }
+        >
+          Back
+        </StyledLinkComponent>
+        <StyledButtonComponent
+          type="delete"
+          functionToBeExecuted={handleDeleteChallenge}
+        >
+          Delete
+        </StyledButtonComponent>
+      </StyledButtonLinkWrapper>
       <PageHeadlineComponent>Edit challenge</PageHeadlineComponent>
       <StyledPageDescription>
         Update the <strong>challenge description</strong>, how often it{" "}
@@ -80,6 +84,6 @@ export default function ChallengeDetailPage() {
         onUpdateChallenge={handleChallengeUpdate}
         objectiveId={currentObjective.id}
       />
-    </StyledDetailContainer>
+    </>
   );
 }

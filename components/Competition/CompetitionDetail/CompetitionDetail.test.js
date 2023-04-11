@@ -45,11 +45,13 @@ describe("CompetitionDetail Component", () => {
       name: "Competition details",
     });
 
-    const record = screen.getByText("Wins: 2 / Loses: 1");
+    const wins = screen.getByText("2");
+    const loses = screen.getByText("1");
 
-    const remainingGames = screen.getByText("Remaining games: 9");
+    const remainingGames = screen.getByText("9");
 
-    expect(record).toBeInTheDocument();
+    expect(wins).toBeInTheDocument();
+    expect(loses).toBeInTheDocument();
     expect(competitionName).toBeInTheDocument();
     expect(remainingGames).toBeInTheDocument();
   });

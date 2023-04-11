@@ -1,6 +1,6 @@
 import styled from "styled-components";
-
 import { useState } from "react";
+import { ArrowDown, ArrowUp } from "../../../public/icons";
 
 export default function InstructionDetail({ instruction }) {
   const [showMore, setShowMore] = useState(false);
@@ -10,9 +10,9 @@ export default function InstructionDetail({ instruction }) {
       <StyledInstructionHeaderContainer>
         <StyledInstructionWrapper>
           <h4>{instruction.instructionFor}</h4>
-          <button onClick={() => setShowMore(!showMore)}>
-            {showMore ? "Show less" : "Show more"}
-          </button>
+          <StyledShowMoreLessButton onClick={() => setShowMore(!showMore)}>
+            {showMore ? ArrowUp() : ArrowDown()}
+          </StyledShowMoreLessButton>
         </StyledInstructionWrapper>
         <StyledInstructionHeaderDivider />
       </StyledInstructionHeaderContainer>
@@ -21,12 +21,8 @@ export default function InstructionDetail({ instruction }) {
         <StyledInstructionDetailsContainer>
           {instruction.detailedInstructions.map((detailedInstruction) => (
             <StyledInstructionDetails key={detailedInstruction.instructionName}>
-              <StyledInstructionDetailsTitle>
-                {detailedInstruction.instructionName}
-              </StyledInstructionDetailsTitle>
-              <StyledInstructionsDetailsParagraph>
-                {detailedInstruction.value}
-              </StyledInstructionsDetailsParagraph>
+              <h5>{detailedInstruction.instructionName}</h5>
+              <p>{detailedInstruction.value}</p>
             </StyledInstructionDetails>
           ))}
         </StyledInstructionDetailsContainer>
@@ -42,7 +38,7 @@ const StyledInstructionContainer = styled.section`
 `;
 
 const StyledInstructionHeaderContainer = styled.article`
-  background-color: lightgray;
+  background-color: var(--medium-dark);
   padding-bottom: 5px;
 `;
 
@@ -50,39 +46,27 @@ const StyledInstructionWrapper = styled.div`
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+`;
+
+const StyledShowMoreLessButton = styled.button`
+  background-color: transparent;
+  border: none;
 `;
 
 const StyledInstructionHeaderDivider = styled.hr`
-  border: 1px solid gray;
+  border: 1px solid var(--light-gray);
   margin: 5px 20px;
 `;
 
 const StyledInstructionDetailsContainer = styled.div`
   width: 100%;
-  padding: 10px;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  gap: 10px;
+  padding: 10px 10px 0 10px;
 `;
 
 const StyledInstructionDetails = styled.div`
-  width: 40vw;
-  height: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid black;
+  padding: 8px;
+  border: 1px solid var(--light);
   border-radius: 3px;
-`;
-
-const StyledInstructionDetailsTitle = styled.h5`
-  heigth: 25px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-`;
-
-const StyledInstructionsDetailsParagraph = styled.p`
-  text-align: center;
-  font-size: 0.9rem;
+  margin-bottom: 10px;
 `;

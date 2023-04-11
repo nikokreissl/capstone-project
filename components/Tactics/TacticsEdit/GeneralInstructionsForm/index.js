@@ -1,5 +1,11 @@
-import styled from "styled-components";
+import { StyledFormLabel } from "../../../GeneralComponents/CreateForm/StyledCreateForm";
 import { generalInstructionsTemplate } from "../../../../data/tactic/tactics-template";
+import {
+  StyledDetailedInstructionEditWrapper,
+  StyledTacticFieldset,
+  StyledTacticLegend,
+  StyledTacticSelect,
+} from "../StyledTacticsEdit";
 import InputRangeComponent from "./InputRangeComponent";
 
 export default function EditTacticGeneralForm({ tactic }) {
@@ -14,22 +20,22 @@ export default function EditTacticGeneralForm({ tactic }) {
   return (
     <>
       {generalInstructionsTemplate.map((instruction) => (
-        <fieldset
+        <StyledTacticFieldset
           key={instruction.instructionFor}
           name={instruction.instructionFor}
         >
-          <legend>{instruction.instructionFor}</legend>
+          <StyledTacticLegend>{instruction.instructionFor}</StyledTacticLegend>
           {instruction.detailedInstructions.map((detailedInstruction) => (
             <StyledDetailedInstructionEditWrapper
               key={detailedInstruction.instructionName}
             >
-              <label
+              <StyledFormLabel
                 htmlFor={`${instruction.instructionFor} ${detailedInstruction.instructionName}`}
               >
                 {detailedInstruction.instructionName}
-              </label>
+              </StyledFormLabel>
               {Array.isArray(detailedInstruction.value) ? (
-                <select
+                <StyledTacticSelect
                   name={`${instruction.instructionFor} ${detailedInstruction.instructionName}`}
                   id={`${instruction.instructionFor}-${detailedInstruction.instructionName}`}
                 >
@@ -48,7 +54,7 @@ export default function EditTacticGeneralForm({ tactic }) {
                       {value}
                     </option>
                   ))}
-                </select>
+                </StyledTacticSelect>
               ) : (
                 <InputRangeComponent
                   instructionFor={instruction.instructionFor}
@@ -62,13 +68,8 @@ export default function EditTacticGeneralForm({ tactic }) {
               )}
             </StyledDetailedInstructionEditWrapper>
           ))}
-        </fieldset>
+        </StyledTacticFieldset>
       ))}
     </>
   );
 }
-
-export const StyledDetailedInstructionEditWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;

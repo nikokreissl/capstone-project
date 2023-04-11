@@ -1,13 +1,15 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export const StyledChallengeList = styled.ul`
   margin: 0;
+  margin-top: 15px;
   padding: 0;
 `;
 
 export const StyledChallengeListItem = styled.li`
   background-color: ${(props) =>
-    props.challengeNumber % 2 !== 0 ? "transparent" : "lightgray"};
+    props.challengeNumber % 2 !== 0 ? "var(--medium)" : "var(--light-gray)"};
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -16,6 +18,10 @@ export const StyledChallengeListItem = styled.li`
 
 export const StyledChallengeDescription = styled.p`
   flex-basis: 70%;
+  color: ${(props) =>
+    props.challengeNumber % 2 !== 0
+      ? "var(--light-gray)"
+      : "var(--medium-dark)"};
 `;
 
 export const StyledChallengeQuickEditWrapper = styled.div`
@@ -28,9 +34,28 @@ export const StyledChallengeQuickEditWrapper = styled.div`
 
 export const StyledChallengeProgress = styled.p`
   grid-column: 1 / -1;
+  color: ${(props) =>
+    props.challengeNumber % 2 !== 0
+      ? "var(--light-gray)"
+      : "var(--medium-dark)"};
 `;
 
-export const StyleChallengeEditButton = styled.button`
+export const StyledQuickEditButton = styled.button`
+  width: 30px;
+  height: 30px;
+  background-color: var(--medium-dark);
+  border-radius: 5px;
+  color: var(--orange);
+  border: 1px solid var(--orange);
+  &:disabled {
+    background-color: gray;
+    color: var(--light-gray);
+    border-color: gray;
+  }
+`;
+
+export const StyleChallengeEditLink = styled(Link)`
   grid-column: 1 / -1;
-  width: 100%;
+  color: var(--orange);
+  text-decoration: none;
 `;
