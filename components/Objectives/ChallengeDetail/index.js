@@ -77,6 +77,7 @@ export default function EditChallengeComponent({
         name="challenge-description"
         id="challenge-description"
         rows="5"
+        maxLength={80}
         pattern="^(?!\s*$).+"
         value={challengeDescription}
         onChange={handleDescriptionInput}

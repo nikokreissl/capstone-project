@@ -62,7 +62,7 @@ export default function CreateCompetitionForm() {
           name="competition-name"
           id="competition-name"
           pattern="^(?!\s*$).+"
-          maxLength={50}
+          maxLength={20}
           value={competitionNameInput}
           onChange={handleNameInput}
           required

@@ -73,6 +73,7 @@ export default function TacticsEdit({
           name="tacticname"
           id="tactic-name "
           pattern="^(?!\s*$).+"
+          maxLength={20}
           value={tacticName}
           onChange={handleFormationNameInput}
           required

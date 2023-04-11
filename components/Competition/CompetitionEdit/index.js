@@ -81,6 +81,7 @@ export default function EditCompetition({
           value={competitionName}
           onChange={handleCompetitionNameChange}
           pattern="^(?!\s*$).+"
+          maxLength={20}
           required
         />
         <StyledFormLabelInputWrapper>

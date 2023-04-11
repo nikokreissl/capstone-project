@@ -99,6 +99,7 @@ export default function AddChallengePage() {
           id="challenge-description"
           rows="5"
           pattern="^(?!\s*$).+"
+          maxLength={80}
           value={challengeDescription}
           onChange={handleDescriptionInput}
           required

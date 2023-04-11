@@ -57,6 +57,7 @@ export default function CreateTacticForm({ onBackToTactics }) {
           name="tactic-name"
           id="tactic-name"
           pattern="^(?!\s*$).+"
+          maxLength={20}
           required
         />
         <StyledFormLabel htmlFor="formation">Choose Formation</StyledFormLabel>

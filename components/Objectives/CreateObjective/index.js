@@ -56,7 +56,7 @@ export default function CreateObjectiveForm() {
           name="objective-name"
           id="objective-name"
           pattern="^(?!\s*$).+"
-          maxLength={50}
+          maxLength={20}
           value={objectiveNameInput}
           onChange={handleNameInput}
           required

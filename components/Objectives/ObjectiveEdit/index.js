@@ -67,6 +67,7 @@ export default function EditObjective({
           name="objective-name"
           id="objective-name"
           pattern="^(?!\s*$).+"
+          maxLength={20}
           required
           value={objectiveName}
           onChange={handleObjectiveNameChange}
