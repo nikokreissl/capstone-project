@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { StyledLinkComponent } from "../Links";
 
 export default function EmptyState({ itemName, path }) {
   return (
@@ -14,7 +13,7 @@ below.`}
 }
 
 const StyledEmptyStateText = styled.p`
-  font-size: 1.4rem;
-  margin: 3rem;
+  font-style: italic;
+  margin: 1rem;
   text-align: center;
 `;

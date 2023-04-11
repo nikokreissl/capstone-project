@@ -43,8 +43,8 @@ export const StyledEditScoreUpdateText = styled.p`
 `;
 
 export const StyledEditScoreUpdateButton = styled.button`
-  width: 80%;
-  padding: 10px;
+  width: 35px;
+  height: 35px;
   background-color: var(--madium-dark);
   border-radius: 5px;
   color: var(--orange);
@@ -57,5 +57,7 @@ export const StyledEditScoreUpdateButton = styled.button`
 
 export const StyledUpdateXgoalsValueWrapper = styled.div`
   display: flex;
+  justify-content: space-around;
+  align-items: center;
   margin-bottom: 20px;
 `;

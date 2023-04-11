@@ -1,4 +1,8 @@
-import { StyledArticle } from "../../Competition/CompetitionCard/StyledCompetitionCard";
+import {
+  StyledContainer,
+  StyledHeadline,
+  StyledParagraph,
+} from "../../GeneralComponents/Cards";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
 
 export default function TacticCard({ tactic, path }) {
@@ -7,12 +11,12 @@ export default function TacticCard({ tactic, path }) {
   }
 
   return (
-    <StyledArticle>
-      <h3>{tactic.name}</h3>
-      <h4>Formation: {tactic.formation}</h4>
+    <StyledContainer>
+      <StyledHeadline>{tactic.name}</StyledHeadline>
+      <StyledParagraph>Formation: {tactic.formation}</StyledParagraph>
       <StyledLinkComponent type="view" href={`/tactics/${tactic.id}/?${path}`}>
         View Details
       </StyledLinkComponent>
-    </StyledArticle>
+    </StyledContainer>
   );
 }

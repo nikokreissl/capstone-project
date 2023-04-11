@@ -1,5 +1,10 @@
+import styled from "styled-components";
 import { formations } from "../../../data/tactic/tactics-template";
-import { StyledForm } from "../../GeneralComponents/CreateForm/StyledCreateForm";
+import {
+  StyledForm,
+  StyledFormLabel,
+  StyledInputField,
+} from "../../GeneralComponents/CreateForm/StyledCreateForm";
 import { useState, useContext } from "react";
 import { DataContext } from "../../../pages/_app";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
@@ -45,8 +50,8 @@ export default function CreateTacticForm({ onBackToTactics }) {
         Cancel
       </StyledLinkComponent>
       <StyledForm onSubmit={(event) => event.preventDefault()}>
-        <label htmlFor="tactic-name">Tactic name</label>
-        <input
+        <StyledFormLabel htmlFor="tactic-name">Tactic name</StyledFormLabel>
+        <StyledInputField
           value={formationNameValue}
           onChange={handleFormationNameInput}
           name="tactic-name"
@@ -54,8 +59,8 @@ export default function CreateTacticForm({ onBackToTactics }) {
           pattern="^(?!\s*$).+"
           required
         />
-        <label htmlFor="formation">Choose Formation</label>
-        <select
+        <StyledFormLabel htmlFor="formation">Choose Formation</StyledFormLabel>
+        <StyledFormationSelect
           value={formationValue}
           onChange={handleFormationChange}
           name="formation"
@@ -65,7 +70,7 @@ export default function CreateTacticForm({ onBackToTactics }) {
           {formations.map((formation) => (
             <option key={formation.name}>{formation.name}</option>
           ))}
-        </select>
+        </StyledFormationSelect>
         <StyledButtonComponent
           type="add"
           functionToBeExecuted={handleFormationSubmit}
@@ -83,3 +88,13 @@ export default function CreateTacticForm({ onBackToTactics }) {
     </>
   );
 }
+
+const StyledFormationSelect = styled.select`
+  padding: 5px;
+  border-radius: 5px;
+  background-color: var(--medium-dark);
+  color: var(--light);
+  &:focus-visible {
+    outline: none;
+  }
+`;

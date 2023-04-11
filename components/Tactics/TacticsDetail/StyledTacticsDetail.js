@@ -15,7 +15,7 @@ export function StyledTab({ children, shown, handleTabClick }) {
 }
 
 const StyledTabs = styled.div`
-  width: 50vw;
+  width: 49vw;
   height: 50px;
 `;
 
@@ -23,5 +23,9 @@ const StyledTabButton = styled.button`
   display: block;
   width: 100%;
   height: 100%;
-  background-color: ${({ shown }) => (shown === true ? "orange" : "")};
+  background-color: ${({ shown }) =>
+    shown === true ? "var(--medium-dark)" : "var(--medium)"};
+  color: ${({ shown }) => (shown === true ? "var(--orange)" : "var(--light)")};
+  border: 1px solid
+    ${({ shown }) => (shown === true ? "var(--orange)" : "var(--light)")};
 `;

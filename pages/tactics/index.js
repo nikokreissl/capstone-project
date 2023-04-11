@@ -32,13 +32,11 @@ export default function TacticsOverviewPage() {
 
 const StyledCreateTacticWrapper = styled.div`
   border-radius: 25px;
-  background-color: lightgray;
-  width: 80vw;
-  padding: 10px;
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 0.5em;
+  background-color: var(--medium-dark);
+  // border: 1px solid var(--light);
+  // padding: 10px;
+  margin: auto;
+  width: 150px;
   position: sticky;
-  bottom: 60px;
+  bottom: 85px;
 `;

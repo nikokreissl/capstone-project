@@ -1,10 +1,15 @@
 import {
-  StyledEditChallengeForm,
   StyledTimesWrapper,
-  StyledTimesText,
-  StyledTimesButton,
+  StyledTimesParagraph,
+  SyledTimesNumber,
+  StyledTextarea,
 } from "./StyledChallengeDetail";
+import { StyledEditScoreUpdateButton } from "../../Competition/GameDetail/StyledGameDetail";
 import { StyledButtonComponent } from "../../GeneralComponents/Buttons";
+import {
+  StyledForm,
+  StyledFormLabel,
+} from "../../GeneralComponents/CreateForm/StyledCreateForm";
 import { useState } from "react";
 
 export default function EditChallengeComponent({
@@ -64,9 +69,11 @@ export default function EditChallengeComponent({
   }
 
   return (
-    <StyledEditChallengeForm onSubmit={(event) => event.preventDefault()}>
-      <label htmlFor="challenge-description">Description</label>
-      <textarea
+    <StyledForm onSubmit={(event) => event.preventDefault()}>
+      <StyledFormLabel htmlFor="challenge-description">
+        Description
+      </StyledFormLabel>
+      <StyledTextarea
         name="challenge-description"
         id="challenge-description"
         rows="5"
@@ -74,17 +81,17 @@ export default function EditChallengeComponent({
         value={challengeDescription}
         onChange={handleDescriptionInput}
         required
-      ></textarea>
+      ></StyledTextarea>
       <StyledTimesWrapper>
-        <StyledTimesText>Times needed:</StyledTimesText>
-        <StyledTimesButton
+        <StyledTimesParagraph>Needed:</StyledTimesParagraph>
+        <StyledEditScoreUpdateButton
           type="button"
           onClick={() => handleChallengeTimesUpdate("needed", "increment")}
         >
           +1
-        </StyledTimesButton>
-        <p>{challengeTimesNeeded}</p>
-        <StyledTimesButton
+        </StyledEditScoreUpdateButton>
+        <SyledTimesNumber>{challengeTimesNeeded}</SyledTimesNumber>
+        <StyledEditScoreUpdateButton
           type="button"
           onClick={() => handleChallengeTimesUpdate("needed", "decrement")}
           disabled={
@@ -95,11 +102,11 @@ export default function EditChallengeComponent({
           }
         >
           -1
-        </StyledTimesButton>
+        </StyledEditScoreUpdateButton>
       </StyledTimesWrapper>
       <StyledTimesWrapper>
-        <StyledTimesText>Times completed:</StyledTimesText>
-        <StyledTimesButton
+        <StyledTimesParagraph>Completed:</StyledTimesParagraph>
+        <StyledEditScoreUpdateButton
           type="button"
           onClick={() => handleChallengeTimesUpdate("completed", "increment")}
           disabled={
@@ -107,15 +114,15 @@ export default function EditChallengeComponent({
           }
         >
           +1
-        </StyledTimesButton>
-        <p>{challengeTimesCompleted}</p>
-        <StyledTimesButton
+        </StyledEditScoreUpdateButton>
+        <SyledTimesNumber>{challengeTimesCompleted}</SyledTimesNumber>
+        <StyledEditScoreUpdateButton
           type="button"
           onClick={() => handleChallengeTimesUpdate("completed", "decrement")}
           disabled={challengeTimesCompleted < 1 ? true : false}
         >
           -1
-        </StyledTimesButton>
+        </StyledEditScoreUpdateButton>
       </StyledTimesWrapper>
       <StyledButtonComponent
         type="update"
@@ -128,6 +135,6 @@ export default function EditChallengeComponent({
       >
         Update
       </StyledButtonComponent>
-    </StyledEditChallengeForm>
+    </StyledForm>
   );
 }

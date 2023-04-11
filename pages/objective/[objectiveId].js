@@ -1,8 +1,7 @@
 import EditObjective from "../../components/Objectives/ObjectiveEdit";
 import ObjectiveDetail from "../../components/Objectives/ObjectiveDetail";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DataContext } from "../_app";
-import { useState } from "react";
 import { useRouter } from "next/router";
 
 export default function ObjectiveDetailPage() {

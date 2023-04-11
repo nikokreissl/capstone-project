@@ -66,14 +66,15 @@ export function StyledButtonComponent({
   );
 }
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   font-size: 16px;
   color: var(--orange);
-  background-color: transparent;
+  background-color: var(--medium-dark);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 150px;
+  height: 30px;
   gap: 10px;
   padding: 5px;
   margin: 5px auto;

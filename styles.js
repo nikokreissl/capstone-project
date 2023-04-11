@@ -23,13 +23,12 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family: system-ui;
+    background-color: var(--light-dark)
   }
 
   main {
-    height: 100vh;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     padding: 5vw;
-    background-color: var(--light-dark)
   }
 
   h1,h2,h3,h4,h5,h6 {

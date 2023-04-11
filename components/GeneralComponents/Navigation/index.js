@@ -37,13 +37,11 @@ export default function Navigation() {
     }
   }
 
-  console.log(getActiveItem());
-
   return (
     <StyledNavigation>
       <StyledNavigationList>
         {navigationLinks.map((navigationLink) => (
-          <StyledNavigationListItem key={navigationLink.href}>
+          <li key={navigationLink.href}>
             <StyledNavigationLink
               link={navigationLink}
               active={getActiveItem()}
@@ -51,7 +49,7 @@ export default function Navigation() {
               {navigationLink.icon}
               {navigationLink.name}
             </StyledNavigationLink>
-          </StyledNavigationListItem>
+          </li>
         ))}
       </StyledNavigationList>
     </StyledNavigation>
@@ -76,8 +74,6 @@ const StyledNavigationList = styled.ul`
   font-size: 1rem;
 `;
 
-const StyledNavigationListItem = styled.li``;
-
 function StyledNavigationLink({ link, active }) {
   return (
     <StyledLink href={link.href} linkName={link.name} active={active}>
@@ -96,7 +92,7 @@ const StyledLink = styled(Link)`
     linkName === active ? "var(--orange)" : "var(--light)"};
   padding: 10px;
   border: ${({ linkName, active }) =>
-    linkName === active ? "1px solid var(--orange)" : "var(--light)"};
+    linkName === active ? "1px solid var(--orange)" : "1px solid transparent"};
   border-radius: 25px;
 `;
 

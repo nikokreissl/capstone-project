@@ -1,19 +1,23 @@
 import { useRouter } from "next/router";
-import { StyledDetailContainer } from "../../../components/Competition/GameDetail/StyledGameDetail";
 import { StyledLinkComponent } from "../../../components/GeneralComponents/Links";
 import { StyledButtonComponent } from "../../../components/GeneralComponents/Buttons";
 import { useState, useContext } from "react";
 import { DataContext } from "../../_app";
 import {
-  StyledEditChallengeForm,
-  StyledTimesWrapper,
-  StyledTimesText,
-  StyledTimesButton,
-} from "../../../components/Objectives/ChallengeDetail/StyledChallengeDetail";
+  StyledForm,
+  StyledFormLabel,
+} from "../../../components/GeneralComponents/CreateForm/StyledCreateForm";
 import {
   PageHeadlineComponent,
   StyledPageDescription,
 } from "../../../components/GeneralComponents/PageInformation";
+import { StyledEditScoreUpdateButton } from "../../../components/Competition/GameDetail/StyledGameDetail";
+import {
+  StyledTimesWrapper,
+  StyledTimesParagraph,
+  SyledTimesNumber,
+  StyledTextarea,
+} from "../../../components/Objectives/ChallengeDetail/StyledChallengeDetail";
 
 export default function AddChallengePage() {
   const router = useRouter();
@@ -60,20 +64,16 @@ export default function AddChallengePage() {
       timesNeeded: challengeTimesNeeded,
       timesCompleted: challengeTimesCompleted,
     };
-    if (challengeTimesNeeded < challengeTimesCompleted) {
-      alert("Times needed can not be smaller than times completed");
+    handleAddChallenge(challengeDetails, objectiveId);
+    if (path.includes("archive")) {
+      router.push(`/objective/${objectiveId}/?archive`);
     } else {
-      handleAddChallenge(challengeDetails, objectiveId);
-      if (path.includes("archive")) {
-        router.push(`/objective/${objectiveId}/?archive`);
-      } else {
-        router.push(`/objective/${objectiveId}`);
-      }
+      router.push(`/objective/${objectiveId}`);
     }
   }
 
   return (
-    <StyledDetailContainer>
+    <>
       <StyledLinkComponent
         href={
           path.includes("archive")
@@ -90,9 +90,11 @@ export default function AddChallengePage() {
         <strong>needs to be completed</strong> and{" "}
         <strong>was completed</strong>.
       </StyledPageDescription>
-      <StyledEditChallengeForm onSubmit={(event) => event.preventDefault()}>
-        <label htmlFor="challenge-description">Description</label>
-        <textarea
+      <StyledForm onSubmit={(event) => event.preventDefault()}>
+        <StyledFormLabel htmlFor="challenge-description">
+          Description
+        </StyledFormLabel>
+        <StyledTextarea
           name="challenge-description"
           id="challenge-description"
           rows="5"
@@ -100,17 +102,17 @@ export default function AddChallengePage() {
           value={challengeDescription}
           onChange={handleDescriptionInput}
           required
-        ></textarea>
+        ></StyledTextarea>
         <StyledTimesWrapper>
-          <StyledTimesText>Times needed:</StyledTimesText>
-          <StyledTimesButton
+          <StyledTimesParagraph>Needed:</StyledTimesParagraph>
+          <StyledEditScoreUpdateButton
             type="button"
             onClick={() => handleChallengeTimesUpdate("needed", "increment")}
           >
             +1
-          </StyledTimesButton>
-          <p>{challengeTimesNeeded}</p>
-          <StyledTimesButton
+          </StyledEditScoreUpdateButton>
+          <SyledTimesNumber>{challengeTimesNeeded}</SyledTimesNumber>
+          <StyledEditScoreUpdateButton
             type="button"
             onClick={() => handleChallengeTimesUpdate("needed", "decrement")}
             disabled={
@@ -121,11 +123,11 @@ export default function AddChallengePage() {
             }
           >
             -1
-          </StyledTimesButton>
+          </StyledEditScoreUpdateButton>
         </StyledTimesWrapper>
         <StyledTimesWrapper>
-          <StyledTimesText>Times completed:</StyledTimesText>
-          <StyledTimesButton
+          <StyledTimesParagraph>Completed:</StyledTimesParagraph>
+          <StyledEditScoreUpdateButton
             type="button"
             onClick={() => handleChallengeTimesUpdate("completed", "increment")}
             disabled={
@@ -133,15 +135,15 @@ export default function AddChallengePage() {
             }
           >
             +1
-          </StyledTimesButton>
-          <p>{challengeTimesCompleted}</p>
-          <StyledTimesButton
+          </StyledEditScoreUpdateButton>
+          <SyledTimesNumber>{challengeTimesCompleted}</SyledTimesNumber>
+          <StyledEditScoreUpdateButton
             type="button"
             onClick={() => handleChallengeTimesUpdate("completed", "decrement")}
             disabled={challengeTimesCompleted < 1 ? true : false}
           >
             -1
-          </StyledTimesButton>
+          </StyledEditScoreUpdateButton>
         </StyledTimesWrapper>
         <StyledButtonComponent
           type="add"
@@ -154,7 +156,7 @@ export default function AddChallengePage() {
         >
           Create
         </StyledButtonComponent>
-      </StyledEditChallengeForm>
-    </StyledDetailContainer>
+      </StyledForm>
+    </>
   );
 }

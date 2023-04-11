@@ -1,6 +1,13 @@
 import { useState } from "react";
-import { StyledForm } from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
-import { StyledButtonComponent } from "../../GeneralComponents/Buttons/index.js";
+import {
+  StyledForm,
+  StyledFormLabel,
+  StyledInputField,
+} from "../../GeneralComponents/CreateForm/StyledCreateForm.js";
+import {
+  StyledButtonComponent,
+  StyledButtonLinkWrapper,
+} from "../../GeneralComponents/Buttons/index.js";
 import {
   PageHeadlineComponent,
   StyledPageDescription,
@@ -22,9 +29,8 @@ export default function EditObjective({
     setObjectiveName(event.target.value);
   }
 
-  function handleSubmit(event) {
+  function handleSubmit() {
     onUpdateObjective(objectiveName, id);
-
     onToggleEdit();
   }
 
@@ -33,10 +39,18 @@ export default function EditObjective({
     onDeleteObjective(id);
   }
 
+  function checkValidInput(input) {
+    if (input.startsWith(" ")) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   return (
     <>
       <StyledButtonComponent type="back" functionToBeExecuted={onToggleEdit}>
-        Discard changes
+        Discard
       </StyledButtonComponent>
       <PageHeadlineComponent>Edit objective</PageHeadlineComponent>
       <StyledPageDescription>
@@ -47,8 +61,8 @@ export default function EditObjective({
         <strong>Archive / Restore</strong> to do so.
       </StyledPageDescription>
       <StyledForm onSubmit={(event) => event.preventDefault()}>
-        <label htmlFor="objective-name">Name</label>
-        <input
+        <StyledFormLabel htmlFor="objective-name">Name</StyledFormLabel>
+        <StyledInputField
           type="text"
           name="objective-name"
           id="objective-name"
@@ -57,26 +71,30 @@ export default function EditObjective({
           value={objectiveName}
           onChange={handleObjectiveNameChange}
         />
+
         <StyledButtonComponent
           type="update"
           functionToBeExecuted={handleSubmit}
+          disabled={!objectiveName || !checkValidInput(objectiveName)}
         >
           Update
         </StyledButtonComponent>
       </StyledForm>
-      <StyledButtonComponent
-        type="delete"
-        functionToBeExecuted={deleteObjective}
-      >
-        Delete
-      </StyledButtonComponent>
-      <StyledButtonComponent
-        type="archive"
-        functionToBeExecuted={() => onArchiveCompetition(id)}
-        item="Objective"
-      >
-        {isArchived ? "Restore" : "Archive"}
-      </StyledButtonComponent>
+      <StyledButtonLinkWrapper>
+        <StyledButtonComponent
+          type="delete"
+          functionToBeExecuted={deleteObjective}
+        >
+          Delete
+        </StyledButtonComponent>
+        <StyledButtonComponent
+          type="archive"
+          functionToBeExecuted={() => onArchiveCompetition(id)}
+          item="Objective"
+        >
+          {isArchived ? "Restore" : "Archive"}
+        </StyledButtonComponent>
+      </StyledButtonLinkWrapper>
     </>
   );
 }

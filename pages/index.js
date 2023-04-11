@@ -1,9 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DataContext } from "./_app";
 import CompetitionList from "../components/Competition/CompetitionList";
 import ObjectiveList from "../components/Objectives/ObjectiveList";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { StyledPageDescription } from "../components/GeneralComponents/PageInformation";
 import styled from "styled-components";
 

@@ -57,18 +57,3 @@ const StyledListItemLink = styled(Link)`
   text-decoration: none;
   padding: 5px;
 `;
-
-// >
-// Game{" "}
-// {reversedCompetitionGames.length -
-//   reversedCompetitionGames.indexOf(game)}{" "}
-// - {game.userScore}:{game.opponentScore}
-// <Link
-//   href={
-//     path.includes("archive")
-//       ? `/competition/${competition.id}/game-detail/${game.gameId}/?archive`
-//       : `/competition/${competition.id}/game-detail/${game.gameId}`
-//   }
-// >
-//   ✏️ Edit Game
-// </Link>

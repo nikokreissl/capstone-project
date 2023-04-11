@@ -1,9 +1,15 @@
-import { StyledDetailedInstructionEditWrapper } from "../GeneralInstructionsForm";
+import {
+  StyledDetailedInstructionEditWrapper,
+  StyledTacticFieldset,
+  StyledTacticLegend,
+  StyledTacticSelect,
+} from "../StyledTacticsEdit";
 import {
   formations,
   playersDetailInstructions,
   playerInstructionValues,
 } from "../../../../data/tactic/tactics-template";
+import { StyledFormLabel } from "../../../GeneralComponents/CreateForm/StyledCreateForm";
 
 export default function EditTacticPlayerForm({ tactic }) {
   function getGivenValueInstruction(tactic, inFor, inName) {
@@ -50,19 +56,19 @@ export default function EditTacticPlayerForm({ tactic }) {
   return (
     <>
       {finalFormation.map((position) => (
-        <fieldset key={position.position} name={position.position}>
-          <legend>{position.position}</legend>
+        <StyledTacticFieldset key={position.position} name={position.position}>
+          <StyledTacticLegend>{position.position}</StyledTacticLegend>
 
           {position.instructions.map((instruction) => (
             <StyledDetailedInstructionEditWrapper
               key={instruction.instructionName}
             >
-              <label
+              <StyledFormLabel
                 htmlFor={`${position.position}-${instruction.instructionName}`}
               >
                 {instruction.instructionName}
-              </label>
-              <select
+              </StyledFormLabel>
+              <StyledTacticSelect
                 name={`${position.position} ${instruction.instructionName}`}
                 id={`${position.position}-${instruction.instructionName}`}
               >
@@ -81,10 +87,10 @@ export default function EditTacticPlayerForm({ tactic }) {
                     {value}
                   </option>
                 ))}
-              </select>
+              </StyledTacticSelect>
             </StyledDetailedInstructionEditWrapper>
           ))}
-        </fieldset>
+        </StyledTacticFieldset>
       ))}
     </>
   );

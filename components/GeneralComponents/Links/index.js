@@ -20,7 +20,7 @@ const StyledLink = styled(Link)`
   color: ${({ disabledLink }) =>
     disabledLink ? "var(--light)" : "var(--orange)"};
   background-color: ${({ disabledLink }) =>
-    disabledLink ? "gray" : "transparent"};
+    disabledLink ? "gray" : "var(--medium-dark)"};
   pointer-events: ${({ disabledLink }) => (disabledLink ? "none" : "auto")};
   display: flex;
   justify-content: center;
