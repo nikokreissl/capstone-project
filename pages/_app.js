@@ -73,7 +73,6 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <Head>
         <title>FIFA23 Tracker</title>
-        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <Heading>FIFA23 Tracker</Heading>
       <main>

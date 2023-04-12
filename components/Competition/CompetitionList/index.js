@@ -1,12 +1,14 @@
 import { StyledList } from "../../GeneralComponents/List";
-import { PageHeadlineComponent } from "../../GeneralComponents/PageInformation";
+import { PageHeadlineComponentWithCreate } from "../../GeneralComponents/PageInformation";
 import CompetitionCard from "../CompetitionCard";
 import EmptyState from "../../GeneralComponents/Empty-State";
 
 export default function CompetitionList({ competitions, headline, path }) {
   return (
     <>
-      <PageHeadlineComponent>{headline}</PageHeadlineComponent>
+      <PageHeadlineComponentWithCreate href="competition/create">
+        {headline}
+      </PageHeadlineComponentWithCreate>
       {competitions.length < 1 ? (
         <EmptyState itemName="competition" path={path} />
       ) : (
