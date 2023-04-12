@@ -67,7 +67,7 @@ export default function CompetitionDetail({ onToggleEdit, competition, path }) {
             : `/competition/${competition.id}/track-new-game`
         }
         type="add"
-        disabledlink={
+        disabled={
           competition.totalGames === competitionGames.length ? true : false
         }
       >
