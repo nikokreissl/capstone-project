@@ -13,6 +13,7 @@ import {
   PageHeadlineComponent,
   StyledPageDescription,
 } from "../../GeneralComponents/PageInformation";
+import GameOverviewComponent from "../GameOverview";
 
 export default function CompetitionDetail({ onToggleEdit, competition, path }) {
   const competitionWins = competition.gamesPlayed.filter(
@@ -59,6 +60,7 @@ export default function CompetitionDetail({ onToggleEdit, competition, path }) {
           Remaining games:{" "}
           <strong>{competition.totalGames - competitionGames.length}</strong>
         </StyledParagraph>
+        <GameOverviewComponent games={competition.gamesPlayed} />
       </StyledTransparentContainer>
       <StyledLinkComponent
         href={
