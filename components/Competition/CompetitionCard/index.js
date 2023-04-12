@@ -4,6 +4,7 @@ import {
   StyledHeadline,
   StyledParagraph,
 } from "../../GeneralComponents/Cards";
+import GameOverviewComponent from "../GameOverview";
 
 export default function CompetitionCard({ competition, path }) {
   if (!competition) {
@@ -31,6 +32,7 @@ export default function CompetitionCard({ competition, path }) {
           {competition.totalGames - competition.gamesPlayed.length}
         </strong>
       </StyledParagraph>
+      <GameOverviewComponent games={competition.gamesPlayed} />
       <StyledLinkComponent
         href={`/competition/${competition.id}/?${path}`}
         type="view"
