@@ -12,6 +12,7 @@ import {
   StyledHeadline,
   StyledTransparentContainer,
 } from "../../GeneralComponents/Cards";
+import ProgressBarComponent from "../ProgressBar";
 
 export default function ObjectiveDetail({
   objective,
@@ -50,10 +51,11 @@ export default function ObjectiveDetail({
       </StyledPageDescription>
       <StyledHeadline>{objective.name}</StyledHeadline>
       <StyledTransparentContainer>
-        <p>
-          Challenges completed: {challengeProgress.length} /{" "}
-          {objective.challenges.length}
-        </p>
+        <ProgressBarComponent
+          type="objective"
+          challengesNeeded={challengeProgress.length}
+          challengesCompleted={objective.challenges.length}
+        />
       </StyledTransparentContainer>
 
       <StyledLinkComponent

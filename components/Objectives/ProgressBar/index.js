@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export default function ProgressBarComponent({
   challengesNeeded,
@@ -17,7 +17,7 @@ export default function ProgressBarComponent({
     }
   };
 
-  const progress = (challengesCompleted / challengesNeeded) * 100;
+  const progress = (challengesNeeded / challengesCompleted) * 100;
 
   return (
     <StyledProgressBarBorder progress={progress}>
@@ -38,6 +38,7 @@ const StyledProgressBarBorder = styled.div`
   );
   display: flex;
   align-items: center;
+  transition: background 0.5s ease-in-out;
 `;
 
 const StyledProgressBarText = styled.p`
