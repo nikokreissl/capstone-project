@@ -17,7 +17,7 @@ export default function GameList({
               key={game.gameId}
               path={path}
               competition={competition}
-              gamenumber={
+              gameNumber={
                 reversedCompetitionGames.length -
                 reversedCompetitionGames.indexOf(game)
               }
