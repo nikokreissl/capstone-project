@@ -36,10 +36,12 @@ export function PageHeadlineComponentWithCreate({ href, children }) {
 }
 
 export const StyledHeadlineWithCreate = styled.h2`
-  padding: 10px;
-  margin-top: 10px;
+  padding: 7px;
+  width: 55%;
 `;
 
 const StyledHeadlineContainer = styled.div`
   display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 `;

@@ -25,6 +25,7 @@ const StyledLink = styled(Link)`
   justify-content: center;
   align-items: center;
   width: 150px;
+  height: 30px;
   gap: 10px;
   padding: 5px;
   margin: 5px auto;

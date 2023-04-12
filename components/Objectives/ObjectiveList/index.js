@@ -1,12 +1,14 @@
 import { StyledList } from "../../GeneralComponents/List";
-import { PageHeadlineComponent } from "../../GeneralComponents/PageInformation";
+import { PageHeadlineComponentWithCreate } from "../../GeneralComponents/PageInformation";
 import EmptyState from "../../GeneralComponents/Empty-State";
 import ObjectiveCard from "../ObjectiveCard";
 
 export default function ObjectiveList({ objectives, headline, path }) {
   return (
     <>
-      <PageHeadlineComponent>{headline}</PageHeadlineComponent>
+      <PageHeadlineComponentWithCreate href="objective/create">
+        {headline}
+      </PageHeadlineComponentWithCreate>
       {objectives.length < 1 ? (
         <EmptyState itemName="objective" path={path} />
       ) : (
