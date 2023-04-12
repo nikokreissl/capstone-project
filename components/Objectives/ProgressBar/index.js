@@ -1,4 +1,5 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { useState, useEffect } from "react";
 
 export default function ProgressBarComponent({
   challengesNeeded,
@@ -17,7 +18,27 @@ export default function ProgressBarComponent({
     }
   };
 
-  const progress = (challengesNeeded / challengesCompleted) * 100;
+  const [progress, setProgress] = useState(
+    (challengesCompleted / challengesNeeded) * 100
+  );
+
+  useEffect(() => {
+    const newProgress = (challengesCompleted / challengesNeeded) * 100;
+    const updateProgress = (currentProgress) => {
+      if (currentProgress < newProgress) {
+        setTimeout(() => {
+          setProgress(currentProgress + 1);
+          updateProgress(currentProgress + 1);
+        }, 5);
+      } else if (currentProgress > newProgress) {
+        setTimeout(() => {
+          setProgress(currentProgress - 1);
+          updateProgress(currentProgress - 1);
+        }, 5);
+      }
+    };
+    updateProgress(progress);
+  }, [challengesCompleted, challengesNeeded]);
 
   return (
     <StyledProgressBarBorder progress={progress}>
@@ -38,7 +59,6 @@ const StyledProgressBarBorder = styled.div`
   );
   display: flex;
   align-items: center;
-  transition: background 0.5s ease-in-out;
 `;
 
 const StyledProgressBarText = styled.p`

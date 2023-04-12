@@ -53,8 +53,8 @@ export default function ObjectiveDetail({
       <StyledTransparentContainer>
         <ProgressBarComponent
           type="objective"
-          challengesNeeded={challengeProgress.length}
-          challengesCompleted={objective.challenges.length}
+          challengesNeeded={objective.challenges.length}
+          challengesCompleted={challengeProgress.length}
         />
       </StyledTransparentContainer>
 
