@@ -62,6 +62,6 @@ describe("CompetitionDetail Component", () => {
     );
 
     const games = screen.getAllByRole("listitem");
-    expect(games.length).toBe(3);
+    expect(games.length).toBe(6);
   });
 });
