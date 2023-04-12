@@ -19,7 +19,7 @@ const navigationLinks = [
 
 const navigationIcons = {
   Home: HomeIcon,
-  Tactics: TacticIon,
+  Tactics: TacticIcon,
   Archive: ArchiveIcon,
 };
 
@@ -76,7 +76,7 @@ const StyledNavigationList = styled.ul`
 
 function StyledNavigationLink({ link, active }) {
   return (
-    <StyledLink href={link.href} linkName={link.name} active={active}>
+    <StyledLink href={link.href} linkname={link.name} active={active}>
       {navigationIcons[link.name](link.name, active)}
       {link.name}
     </StyledLink>
@@ -88,18 +88,18 @@ const StyledLink = styled(Link)`
   gap: 5px;
   align-items: center;
   text-decoration: none;
-  color: ${({ linkName, active }) =>
-    linkName === active ? "var(--orange)" : "var(--light)"};
+  color: ${({ linkname, active }) =>
+    linkname === active ? "var(--orange)" : "var(--light)"};
   padding: 10px;
-  border: ${({ linkName, active }) =>
-    linkName === active ? "1px solid var(--orange)" : "1px solid transparent"};
+  border: ${({ linkname, active }) =>
+    linkname === active ? "1px solid var(--orange)" : "1px solid transparent"};
   border-radius: 25px;
 `;
 
-function TacticIon(linkName, active) {
+function TacticIcon(linkname, active) {
   return (
     <svg
-      fill={linkName === active ? "var(--orange)" : "var(--light"}
+      fill={linkname === active ? "var(--orange)" : "var(--light"}
       width="20"
       height="20"
       xmlns="http://www.w3.org/2000/svg"
@@ -110,10 +110,10 @@ function TacticIon(linkName, active) {
   );
 }
 
-function HomeIcon(linkName, active) {
+function HomeIcon(linkname, active) {
   return (
     <svg
-      fill={linkName === active ? "var(--orange)" : "var(--light"}
+      fill={linkname === active ? "var(--orange)" : "var(--light"}
       width="20"
       height="20"
       xmlns="http://www.w3.org/2000/svg"
@@ -124,10 +124,10 @@ function HomeIcon(linkName, active) {
   );
 }
 
-function ArchiveIcon(linkName, active) {
+function ArchiveIcon(linkname, active) {
   return (
     <svg
-      fill={linkName === active ? "var(--orange)" : "var(--light"}
+      fill={linkname === active ? "var(--orange)" : "var(--light"}
       width="20"
       height="20"
       xmlns="http://www.w3.org/2000/svg"

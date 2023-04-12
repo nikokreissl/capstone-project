@@ -16,8 +16,12 @@ export const StyledChallengeListItem = styled.li`
   padding: 5px;
 `;
 
-export const StyledChallengeDescription = styled.p`
+export const StyledChallengeProgressWrapper = styled.div`
   flex-basis: 70%;
+`;
+
+export const StyledChallengeDescription = styled.p`
+  margin-left: 10px;
   color: ${(props) =>
     props.challengeNumber % 2 !== 0
       ? "var(--light-gray)"
@@ -25,9 +29,10 @@ export const StyledChallengeDescription = styled.p`
 `;
 
 export const StyledChallengeQuickEditWrapper = styled.div`
+  margin-top: 12px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 30px);
+  grid-template-rows: repeat(2, 40px);
   justify-items: center;
   gap: 5px;
 `;

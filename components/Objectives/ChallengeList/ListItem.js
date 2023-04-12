@@ -2,10 +2,11 @@ import {
   StyledChallengeListItem,
   StyledChallengeDescription,
   StyledChallengeQuickEditWrapper,
-  StyledChallengeProgress,
+  StyledChallengeProgressWrapper,
   StyledQuickEditButton,
   StyleChallengeEditLink,
 } from "./StyledChallengeList";
+import ProgressBarComponent from "../ProgressBar";
 
 export default function ChallengeListItemComponent({
   challengeNumber,
@@ -29,13 +30,18 @@ export default function ChallengeListItemComponent({
 
   return (
     <StyledChallengeListItem challengeNumber={challengeNumber}>
-      <StyledChallengeDescription challengeNumber={challengeNumber}>
-        {description}
-      </StyledChallengeDescription>
+      <StyledChallengeProgressWrapper>
+        <ProgressBarComponent
+          type="challenge"
+          challengesNeeded={timesNeeded}
+          challengesCompleted={timesCompleted}
+          challengeNumber={challengeNumber}
+        />
+        <StyledChallengeDescription challengeNumber={challengeNumber}>
+          {description}
+        </StyledChallengeDescription>
+      </StyledChallengeProgressWrapper>
       <StyledChallengeQuickEditWrapper>
-        <StyledChallengeProgress challengeNumber={challengeNumber}>
-          {timesCompleted} / {timesNeeded}
-        </StyledChallengeProgress>
         <StyledQuickEditButton
           onClick={() => handleTimesCompletedUpdate("add")}
           disabled={timesCompleted === timesNeeded && true}
