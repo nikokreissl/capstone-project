@@ -8,21 +8,21 @@ export const StyledGameList = styled.ul`
 `;
 
 export default function StyledGameListItemComponent({
-  gamenumber,
+  gameNumber,
   game,
   path,
   competition,
 }) {
   return (
-    <StyledListItem gamenumber={gamenumber}>
-      <StyledListItemParagraph gamenumber={gamenumber}>
-        Game {gamenumber}
+    <StyledListItem gameNumber={gameNumber}>
+      <StyledListItemParagraph gameNumber={gameNumber}>
+        Game {gameNumber}
       </StyledListItemParagraph>
-      <StyledListItemParagraph gamenumber={gamenumber}>
+      <StyledListItemParagraph gameNumber={gameNumber}>
         {game.userScore}:{game.opponentScore}
       </StyledListItemParagraph>
       <StyledListItemLink
-        gamenumber={gamenumber}
+        gameNumber={gameNumber}
         href={
           path.includes("archive")
             ? `/competition/${competition.id}/game-detail/${game.gameId}/?archive`
@@ -37,9 +37,9 @@ export default function StyledGameListItemComponent({
 
 const StyledListItem = styled.li`
   color: ${(props) =>
-    props.gamenumber % 2 === 0 ? "var(--light-gray)" : "var(--medium-dark)"};
+    props.gameNumber % 2 === 0 ? "var(--light-gray)" : "var(--medium-dark)"};
   background-color: ${(props) =>
-    props.gamenumber % 2 === 0 ? "var(--medium)" : "var(--light-gray)"};
+    props.gameNumber % 2 === 0 ? "var(--medium)" : "var(--light-gray)"};
   list-style: none;
   display: flex;
   justify-content: space-evenly;
@@ -49,7 +49,7 @@ const StyledListItem = styled.li`
 
 const StyledListItemParagraph = styled.p`
   color: ${(props) =>
-    props.gamenumber % 2 === 0 ? "var(--light-gray)" : "var(--medium-dark)"};
+    props.gameNumber % 2 === 0 ? "var(--light-gray)" : "var(--medium-dark)"};
 `;
 
 const StyledListItemLink = styled(Link)`

@@ -19,7 +19,7 @@ const navigationLinks = [
 
 const navigationIcons = {
   Home: HomeIcon,
-  Tactics: TacticIon,
+  Tactics: TacticIcon,
   Archive: ArchiveIcon,
 };
 
@@ -96,7 +96,7 @@ const StyledLink = styled(Link)`
   border-radius: 25px;
 `;
 
-function TacticIon(linkname, active) {
+function TacticIcon(linkname, active) {
   return (
     <svg
       fill={linkname === active ? "var(--orange)" : "var(--light"}

@@ -2,26 +2,25 @@ import styled from "styled-components";
 import Link from "next/link";
 import { ViewMoreIcon, BackIcon, AddIcon } from "../../../public/icons";
 
-export function StyledLinkComponent({ href, type, children, disabledlink }) {
+export function StyledLinkComponent({ href, type, children, disabled }) {
   const linkIcons = {
-    view: ViewMoreIcon(disabledlink),
-    back: BackIcon(disabledlink),
-    add: AddIcon(disabledlink),
+    view: ViewMoreIcon(disabled),
+    back: BackIcon(disabled),
+    add: AddIcon(disabled),
   };
 
   return (
-    <StyledLink href={href} disabledlink={disabledlink}>
+    <StyledLink href={href} disabled={disabled}>
       {linkIcons[type]}
       {children}
     </StyledLink>
   );
 }
 const StyledLink = styled(Link)`
-  color: ${({ disabledlink }) =>
-    disabledlink ? "var(--light)" : "var(--orange)"};
-  background-color: ${({ disabledlink }) =>
-    disabledlink ? "gray" : "var(--medium-dark)"};
-  pointer-events: ${({ disabledlink }) => (disabledlink ? "none" : "auto")};
+  color: ${({ disabled }) => (disabled ? "var(--light)" : "var(--orange)")};
+  background-color: ${({ disabled }) =>
+    disabled ? "gray" : "var(--medium-dark)"};
+  pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +32,6 @@ const StyledLink = styled(Link)`
   border-radius: 20px;
   text-decoration: none;
   &:visited {
-    color: ${({ disabledlink }) =>
-      disabledlink ? "var(--light)" : "var(--orange)"};
+    color: ${({ disabled }) => (disabled ? "var(--light)" : "var(--orange)")};
   }
 `;

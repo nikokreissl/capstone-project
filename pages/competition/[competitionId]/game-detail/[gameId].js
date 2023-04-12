@@ -38,7 +38,7 @@ export default function GameDetailPage() {
   return (
     <GameDetail
       game={currentGame}
-      gamenumber={currentCompetition.gamesPlayed.indexOf(currentGame) + 1}
+      gameNumber={currentCompetition.gamesPlayed.indexOf(currentGame) + 1}
       onUpdateGame={handleGameUpdate}
       onDeleteGame={handleGameDelete}
       competitionId={currentCompetition.id}
