@@ -30,5 +30,5 @@ test("Objective Card renders the details correctly", () => {
   render(<ObjectiveCard objective={objective} />);
 
   const objectiveName = screen.getByRole("heading", { name: "Objective Name" });
-  const numbeOfChallenges = screen.getByText("Challenges finished: 0 / 3");
+  const numbeOfChallenges = screen.getByText("Challenges completed: 0 / 3");
 });

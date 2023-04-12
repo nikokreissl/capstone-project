@@ -16,7 +16,7 @@ import {
 
 export default function GameDetail({
   game,
-  gameNumber,
+  gamenumber,
   onUpdateGame,
   competitionId,
   onDeleteGame,
@@ -106,7 +106,7 @@ export default function GameDetail({
             Delete
           </StyledButtonComponent>
         </StyledButtonLinkWrapper>
-        <PageHeadlineComponent>Edit game {gameNumber}</PageHeadlineComponent>
+        <PageHeadlineComponent>Edit game {gamenumber}</PageHeadlineComponent>
         <StyledPageDescription>
           Update your and your opponents <strong>score</strong> and{" "}
           <strong>xGoals</strong> or delete the games.

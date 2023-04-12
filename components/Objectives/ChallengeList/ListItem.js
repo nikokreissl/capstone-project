@@ -32,6 +32,7 @@ export default function ChallengeListItemComponent({
     <StyledChallengeListItem challengeNumber={challengeNumber}>
       <StyledChallengeProgressWrapper>
         <ProgressBarComponent
+          type="challenge"
           challengesNeeded={timesNeeded}
           challengesCompleted={timesCompleted}
           challengeNumber={challengeNumber}
