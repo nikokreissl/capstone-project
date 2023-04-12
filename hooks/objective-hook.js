@@ -1,9 +1,9 @@
 import useLocalStorageState from "use-local-storage-state";
 import { uid } from "uid";
 
-export function useObjectives(givenObjectives) {
+export function useObjectives() {
   const [objectives, setObjectives] = useLocalStorageState("objectives", {
-    defaultValue: givenObjectives,
+    defaultValue: [],
   });
 
   function handleAddObjective(newObjectiveName) {

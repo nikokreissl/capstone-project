@@ -2,15 +2,10 @@ import GlobalStyle from "../styles";
 import Head from "next/head";
 import Heading from "../components/GeneralComponents/Heading";
 import Navigation from "../components/GeneralComponents/Navigation";
-import { givenCompetitions } from "../data/competition";
-import { givenObjectives } from "../data/objectives";
-import { givenUserTactics } from "../data/tactic/user-tactics";
 import { createContext } from "react";
 import { useCompetitions } from "../hooks/competition-hook";
 import { useObjectives } from "../hooks/objective-hook";
-import { getGeneralInstructions, createDefaultTactic } from "../utils/utils";
-import { uid } from "uid";
-import useLocalStorageState from "use-local-storage-state";
+import { useTactics } from "../hooks/tactic-hook";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -26,7 +21,7 @@ export default function App({ Component, pageProps }) {
     handleTrackNewGame,
     handleGameUpdate,
     handleGameDelete,
-  } = useCompetitions(givenCompetitions);
+  } = useCompetitions();
 
   const {
     objectives,
@@ -38,80 +33,15 @@ export default function App({ Component, pageProps }) {
     handleChallengeUpdate,
     handleChallengeDelete,
     handleChallengeQuickEditUpdate,
-  } = useObjectives(givenObjectives);
+  } = useObjectives();
 
-  const [userTactics, setUserTactics] = useLocalStorageState("userTactics", {
-    defaultValue: givenUserTactics,
-  });
-
-  function handleAddTactic(newFormation) {
-    const tactic = {
-      id: uid(),
-      isArchived: false,
-      name: newFormation.name,
-      formation: newFormation.formation,
-      generalInstructions: getGeneralInstructions(),
-      playerInstructions: createDefaultTactic(newFormation.formation),
-    };
-    setUserTactics([tactic, ...userTactics]);
-  }
-
-  function handleUpdateTactic(updatedFormationData, tacticId) {
-    const currentTactic = userTactics.find((tactic) => tactic.id === tacticId);
-
-    function updateInstructions(data, instructions) {
-      for (const [key, value] of Object.entries(data)) {
-        for (const instruction of instructions) {
-          if (key.startsWith(instruction.instructionFor)) {
-            for (const detailedInstruction of instruction.detailedInstructions) {
-              if (key.endsWith(detailedInstruction.instructionName)) {
-                detailedInstruction.value = value;
-              }
-            }
-          }
-        }
-      }
-      return instructions;
-    }
-
-    const updatedGeneralInstructions = updateInstructions(
-      updatedFormationData,
-      currentTactic.generalInstructions
-    );
-    const updatedPlayerInstructions = updateInstructions(
-      updatedFormationData,
-      currentTactic.playerInstructions
-    );
-    setUserTactics(
-      userTactics.map((tactic) =>
-        tacticId === tactic.id
-          ? {
-              ...tactic,
-              name: updatedFormationData.tacticname,
-              generalInstructions: updatedGeneralInstructions,
-              playerInstructions: updatedPlayerInstructions,
-            }
-          : tactic
-      )
-    );
-  }
-
-  function handleDeleteTactic(TacticId) {
-    setUserTactics(userTactics.filter((tactic) => tactic.id !== TacticId));
-  }
-
-  function handleArchiveTactic(tacticId) {
-    setUserTactics(
-      userTactics.map((tactic) =>
-        tacticId === tactic.id
-          ? {
-              ...tactic,
-              isArchived: !tactic.isArchived,
-            }
-          : tactic
-      )
-    );
-  }
+  const {
+    userTactics,
+    handleAddTactic,
+    handleUpdateTactic,
+    handleDeleteTactic,
+    handleArchiveTactic,
+  } = useTactics();
 
   return (
     <DataContext.Provider
