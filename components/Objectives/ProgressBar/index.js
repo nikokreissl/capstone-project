@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
 
 export default function ProgressBarComponent({
   challengesNeeded,
   challengesCompleted,
   type,
+  challengeNumber,
 }) {
   const progressBarText = () => {
     if (type === "objective") {
@@ -14,42 +14,32 @@ export default function ProgressBarComponent({
         return `Challenges completed: ${challengesCompleted} / ${challengesNeeded}`;
       }
     } else {
-      return `Challenge completed: ${challengesCompleted} / ${challengesNeeded}`;
+      return `Completed: ${challengesCompleted} / ${challengesNeeded}`;
     }
   };
 
-  const [progress, setProgress] = useState(
-    (challengesCompleted / challengesNeeded) * 100
-  );
-
-  useEffect(() => {
-    const newProgress = (challengesCompleted / challengesNeeded) * 100;
-    const updateProgress = (currentProgress) => {
-      if (currentProgress < newProgress) {
-        setTimeout(() => {
-          setProgress(currentProgress + 1);
-          updateProgress(currentProgress + 1);
-        }, 5);
-      } else if (currentProgress > newProgress) {
-        setTimeout(() => {
-          setProgress(currentProgress - 1);
-          updateProgress(currentProgress - 1);
-        }, 5);
-      }
-    };
-    updateProgress(progress);
-  }, [challengesCompleted, challengesNeeded]);
+  const progress = (challengesCompleted / challengesNeeded) * 100;
 
   return (
-    <StyledProgressBarBorder progress={progress}>
-      <StyledProgressBarText>{progressBarText()}</StyledProgressBarText>
+    <StyledProgressBarBorder
+      progress={progress}
+      challengeNumber={challengeNumber}
+      type={type}
+    >
+      <StyledProgressBarText challengeNumber={challengeNumber} type={type}>
+        {progressBarText()}
+      </StyledProgressBarText>
     </StyledProgressBarBorder>
   );
 }
 
 const StyledProgressBarBorder = styled.div`
-  border: 1px solid var(--light-gray);
-  height: 35px;
+  border: 1px solid
+    ${(props) =>
+      !props.type !== "objective" && props.challengeNumber % 2 !== 0
+        ? "var(--light-gray)"
+        : "var(--medium-dark)"};
+  height: 25px;
   margin: 10px;
   border-radius: 25px;
   background: linear-gradient(
@@ -62,5 +52,9 @@ const StyledProgressBarBorder = styled.div`
 `;
 
 const StyledProgressBarText = styled.p`
+  color: ${(props) =>
+    !props.type !== "objective" && props.challengeNumber % 2 !== 0
+      ? "var(--light-gray)"
+      : "var(--medium-dark)"};
   margin-left: 10px;
 `;
