@@ -1,7 +1,6 @@
 import {
   StyledContainer,
   StyledHeadline,
-  StyledParagraph,
 } from "../../GeneralComponents/Cards/index.js";
 import { StyledLinkComponent } from "../../GeneralComponents/Links/index.js";
 import ProgressBarComponent from "../ProgressBar/index.js";
@@ -15,8 +14,8 @@ export default function ObjectiveCard({ objective, path }) {
     <StyledContainer>
       <StyledHeadline>{objective.name}</StyledHeadline>
       <ProgressBarComponent
-        timesNeeded={objective.challenges.length}
-        timesCompleted={challengeProgress.length}
+        challengesNeeded={objective.challenges.length}
+        challengesCompleted={challengeProgress.length}
         type="objective"
       />
       <StyledLinkComponent
@@ -27,11 +26,4 @@ export default function ObjectiveCard({ objective, path }) {
       </StyledLinkComponent>
     </StyledContainer>
   );
-}
-
-{
-  /* <StyledParagraph>
-Challenges finished: {challengeProgress.length} /{" "}
-{objective.challenges.length}
-</StyledParagraph> */
 }
