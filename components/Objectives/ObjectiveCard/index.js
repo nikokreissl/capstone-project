@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import {
   StyledContainer,
   StyledHeadline,
@@ -13,11 +14,13 @@ export default function ObjectiveCard({ objective, path }) {
   return (
     <StyledContainer>
       <StyledHeadline>{objective.name}</StyledHeadline>
-      <ProgressBarComponent
-        challengesNeeded={objective.challenges.length}
-        challengesCompleted={challengeProgress.length}
-        type="objective"
-      />
+      <StyledObjectiveWrapper>
+        <ProgressBarComponent
+          challengesNeeded={objective.challenges.length}
+          challengesCompleted={challengeProgress.length}
+          type="objective"
+        />
+      </StyledObjectiveWrapper>
       <StyledLinkComponent
         type="view"
         href={`/objective/${objective.id}/?=${path}`}
@@ -27,3 +30,7 @@ export default function ObjectiveCard({ objective, path }) {
     </StyledContainer>
   );
 }
+
+export const StyledObjectiveWrapper = styled.div`
+  margin: 20px 10px;
+`;
