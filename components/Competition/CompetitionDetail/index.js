@@ -5,7 +5,6 @@ import {
 import {
   StyledHeadline,
   StyledTransparentContainer,
-  StyledParagraph,
 } from "../../GeneralComponents/Cards";
 import { StyledLinkComponent } from "../../GeneralComponents/Links";
 import GameList from "../GameList";
@@ -14,6 +13,11 @@ import {
   StyledPageDescription,
 } from "../../GeneralComponents/PageInformation";
 import GameOverviewComponent from "../GameOverview";
+import {
+  StyledWinsDefeatsContainer,
+  StyledWinsDefeatsFrame,
+  StyledWinsDefeatsNumber,
+} from "../CompetitionCard";
 
 export default function CompetitionDetail({ onToggleEdit, competition, path }) {
   const competitionWins = competition.gamesPlayed.filter(
@@ -49,17 +53,26 @@ export default function CompetitionDetail({ onToggleEdit, competition, path }) {
       </StyledPageDescription>
       <StyledHeadline>{competition.name}</StyledHeadline>
       <StyledTransparentContainer>
-        <h4>Details</h4>
-        <StyledParagraph>
-          {competitionWins.length > 1 ? "Wins" : "Win"}{" "}
-          <strong>{competitionWins.length}</strong> -{" "}
-          {competitionLoses.length > 1 ? "Defeat" : "Defeats"}{" "}
-          <strong>{competitionLoses.length}</strong>
-        </StyledParagraph>
-        <StyledParagraph>
-          Remaining games:{" "}
-          <strong>{competition.totalGames - competitionGames.length}</strong>
-        </StyledParagraph>
+        <StyledWinsDefeatsContainer>
+          <StyledWinsDefeatsFrame>
+            <h4>Wins</h4>
+            <StyledWinsDefeatsNumber>
+              {competitionWins.length}
+            </StyledWinsDefeatsNumber>
+          </StyledWinsDefeatsFrame>
+          <StyledWinsDefeatsFrame>
+            <h4>Defeats</h4>
+            <StyledWinsDefeatsNumber>
+              {competitionLoses.length}
+            </StyledWinsDefeatsNumber>
+          </StyledWinsDefeatsFrame>
+          <StyledWinsDefeatsFrame>
+            <h4>Remaining games</h4>
+            <StyledWinsDefeatsNumber>
+              {competition.totalGames - competition.gamesPlayed.length}
+            </StyledWinsDefeatsNumber>
+          </StyledWinsDefeatsFrame>
+        </StyledWinsDefeatsContainer>
         <GameOverviewComponent games={competition.gamesPlayed} />
       </StyledTransparentContainer>
       <StyledLinkComponent

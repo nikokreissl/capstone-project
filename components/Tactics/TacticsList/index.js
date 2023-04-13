@@ -7,7 +7,6 @@ import TacticCard from "../TacticsCard";
 import EmptyState from "../../GeneralComponents/Empty-State";
 
 export default function TacticsList({ headline, tactics, path }) {
-  console.log(path);
   return (
     <>
       {!path.includes("archive") ? (
