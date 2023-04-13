@@ -1,14 +1,23 @@
 import { StyledList } from "../../GeneralComponents/List";
-import { PageHeadlineComponentWithCreate } from "../../GeneralComponents/PageInformation";
+import {
+  PageHeadlineComponent,
+  PageHeadlineComponentWithCreate,
+} from "../../GeneralComponents/PageInformation";
 import TacticCard from "../TacticsCard";
 import EmptyState from "../../GeneralComponents/Empty-State";
 
 export default function TacticsList({ headline, tactics, path }) {
+  console.log(path);
   return (
     <>
-      <PageHeadlineComponentWithCreate href="tactics/create">
-        {headline}
-      </PageHeadlineComponentWithCreate>
+      {!path.includes("archive") ? (
+        <PageHeadlineComponentWithCreate href="tactics/create">
+          {headline}
+        </PageHeadlineComponentWithCreate>
+      ) : (
+        <PageHeadlineComponent>{headline}</PageHeadlineComponent>
+      )}
+
       {tactics.length < 1 ? (
         <EmptyState itemName="tactic" path={path} />
       ) : (

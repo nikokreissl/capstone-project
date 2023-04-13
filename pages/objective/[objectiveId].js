@@ -39,7 +39,14 @@ export default function ObjectiveDetailPage() {
 
   return (
     <>
-      {isEdit ? (
+      {!isEdit ? (
+        <ObjectiveDetail
+          objective={currentObjective}
+          onToggleEdit={toggleEdit}
+          onChallengeQuickEditUpdate={handleChallengeQuickEditUpdate}
+          path={path}
+        />
+      ) : (
         <EditObjective
           onToggleEdit={toggleEdit}
           objective={currentObjective}
@@ -47,13 +54,6 @@ export default function ObjectiveDetailPage() {
           onDeleteObjective={handleDeleteObjective}
           onArchiveCompetition={handleArchiveObjective}
           onClickBack={handleDirectHome}
-        />
-      ) : (
-        <ObjectiveDetail
-          objective={currentObjective}
-          onToggleEdit={toggleEdit}
-          onChallengeQuickEditUpdate={handleChallengeQuickEditUpdate}
-          path={path}
         />
       )}
     </>
