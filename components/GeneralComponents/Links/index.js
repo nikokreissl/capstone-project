@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { ViewMoreIcon, BackIcon, AddIcon } from "../../../public/icons";
+import { ViewMoreIcon, BackIcon, AddIcon } from "../../../public/icons/icons";
 
 export function StyledLinkComponent({ href, type, children, disabled }) {
   const linkIcons = {

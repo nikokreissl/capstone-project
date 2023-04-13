@@ -6,7 +6,7 @@ import {
   BackIcon,
   AddIcon,
   SubmitIcon,
-} from "../../../public/icons";
+} from "../../../public/icons/icons";
 import { useState } from "react";
 import Spinner from "../CircleAnimation";
 import {
