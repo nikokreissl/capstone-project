@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { EditIcon } from "../../../public/icons";
+import { EditIcon } from "../../../public/icons/icons";
 
 export const StyledGameList = styled.ul`
   margin: 12px;

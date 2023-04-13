@@ -44,7 +44,7 @@ const StyledProgressBarBorder = styled.div`
   border-radius: 25px;
   background: linear-gradient(
     90deg,
-    rgba(33, 156, 0, 1) ${({ progress }) => progress}%,
+    green ${({ progress }) => progress}%,
     transparent ${({ progress }) => progress}%
   );
   display: flex;

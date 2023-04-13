@@ -12,6 +12,10 @@ import {
   StyledPageDescription,
 } from "../../GeneralComponents/PageInformation";
 import { StyledHeadline, StyledParagraph } from "../../GeneralComponents/Cards";
+import {
+  StyledTacticsContainer,
+  StyledTacticsFormationText,
+} from "../TacticsCard";
 
 export default function TacticsDetail({
   tactic,
@@ -81,10 +85,12 @@ export default function TacticsDetail({
             <strong>Player instructions</strong> by clicking the correpsonding
             button.
           </StyledPageDescription>
-          <>
-            <StyledHeadline>{tactic.name}</StyledHeadline>
-            <StyledParagraph>Formation: {tactic.formation}</StyledParagraph>
-          </>
+          <StyledTacticsContainer>
+            <h4>Formation</h4>
+            <StyledTacticsFormationText>
+              {tactic.formation}
+            </StyledTacticsFormationText>
+          </StyledTacticsContainer>
           <StyledTabsContainer>
             <StyledTab
               shown={showGeneralInstructions}

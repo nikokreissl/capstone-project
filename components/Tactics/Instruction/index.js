@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { ArrowDown, ArrowUp } from "../../../public/icons";
+import { ArrowDown, ArrowUp } from "../../../public/icons/icons";
 
 export default function InstructionDetail({ instruction }) {
   const [showMore, setShowMore] = useState(false);

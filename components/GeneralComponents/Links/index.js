@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { ViewMoreIcon, BackIcon, AddIcon } from "../../../public/icons";
+import { ViewMoreIcon, BackIcon, AddIcon } from "../../../public/icons/icons";
 
 export function StyledLinkComponent({ href, type, children, disabled }) {
   const linkIcons = {
@@ -25,6 +25,7 @@ const StyledLink = styled(Link)`
   justify-content: center;
   align-items: center;
   width: 150px;
+  height: 30px;
   gap: 10px;
   padding: 5px;
   margin: 5px auto;

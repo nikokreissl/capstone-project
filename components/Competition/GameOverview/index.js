@@ -15,8 +15,8 @@ export default function GameOverviewComponent({ games }) {
     });
 
   return (
-    <>
-      <StyledParagraph>Last game(s)</StyledParagraph>
+    <StyledGameOverviewContainer>
+      <h4>Last game(s)</h4>
       {lastFiveGames.length < 1 ? (
         <StyledGameOverviewEmptyState>
           No games playes yet
@@ -34,9 +34,13 @@ export default function GameOverviewComponent({ games }) {
           ))}
         </StyledGameOverviewFramesWrapper>
       )}
-    </>
+    </StyledGameOverviewContainer>
   );
 }
+
+const StyledGameOverviewContainer = styled.div`
+  margin: 10px 20px 0 20px;
+`;
 
 const StyledGameOverviewFramesWrapper = styled.ul`
   padding: 10px;

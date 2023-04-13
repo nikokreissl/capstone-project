@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Spinner from "../../GeneralComponents/CircleAnimation";
 import { StyledButton } from "../../GeneralComponents/Buttons";
-import { SubmitIcon } from "../../../public/icons";
+import { SubmitIcon } from "../../../public/icons/icons";
 import { useState } from "react";
 
 export const StyledDetailedInstructionEditWrapper = styled.div`
