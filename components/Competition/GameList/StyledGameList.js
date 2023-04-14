@@ -29,7 +29,7 @@ export default function StyledGameListItemComponent({
             : `/competition/${competition.id}/game-detail/${game.gameId}`
         }
       >
-        Edit game <EditIcon disabled={false} />
+        Edit game <EditIcon />
       </StyledListItemLink>
     </StyledListItem>
   );

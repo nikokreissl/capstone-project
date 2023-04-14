@@ -4,7 +4,7 @@ import {
   StyledChallengeQuickEditWrapper,
   StyledChallengeProgressWrapper,
   StyledQuickEditButton,
-  StyleChallengeEditLink,
+  StylesChallengeEditLink,
 } from "./StyledChallengeList";
 import ProgressBarComponent from "../ProgressBar";
 import { EditIcon } from "../../../public/icons/icons";
@@ -55,15 +55,15 @@ export default function ChallengeListItemComponent({
         >
           -1
         </StyledQuickEditButton>
-        <StyleChallengeEditLink
+        <StylesChallengeEditLink
           href={
             path.includes("archive")
               ? `/objective/${objectiveId}/challenge-detail/${challengeId}/?archive`
               : `/objective/${objectiveId}/challenge-detail/${challengeId}`
           }
         >
-          Edit <EditIcon disabled={false} />
-        </StyleChallengeEditLink>
+          Edit <EditIcon />
+        </StylesChallengeEditLink>
       </StyledChallengeQuickEditWrapper>
     </StyledChallengeListItem>
   );

@@ -27,8 +27,10 @@ export default createGlobalStyle`
   }
 
   main {
-    margin-bottom: 60px;
     padding: 5vw;
+    max-width: 900px;
+    margin: auto;
+    margin-bottom: 60px;
   }
 
   h1,h2,h3,h4,h5,h6 {

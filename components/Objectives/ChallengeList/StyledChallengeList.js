@@ -61,7 +61,7 @@ export const StyledQuickEditButton = styled.button`
   }
 `;
 
-export const StyleChallengeEditLink = styled(Link)`
+export const StylesChallengeEditLink = styled(Link)`
   grid-column: 1 / -1;
   color: var(--orange);
   text-decoration: none;
