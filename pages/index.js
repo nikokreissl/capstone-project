@@ -25,20 +25,6 @@ export default function Home() {
     (objective) => objective.isArchived === false
   );
 
-  function handleSelectItemChange(event) {
-    setSelectedCreateItem(event.target.value);
-  }
-
-  function handleCreateItem(event) {
-    event.preventDefault();
-    console.log(selectedCreateItem);
-    if (selectedCreateItem) {
-      router.push(`${selectedCreateItem}/create`);
-    } else if (!selectedCreateItem) {
-      alert("Please select what you want to create");
-    }
-  }
-
   return (
     <>
       <StyledPageDescription>
