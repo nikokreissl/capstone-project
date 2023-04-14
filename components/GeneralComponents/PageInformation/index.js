@@ -18,7 +18,7 @@ export const StyledHeadline = styled.h2`
 export const StyledPageDescription = styled.p`
   font-style: italic;
   padding: 10px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 `;
 
 export function PageHeadlineComponentWithCreate({ href, children }) {
