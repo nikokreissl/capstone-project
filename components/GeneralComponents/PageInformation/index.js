@@ -45,3 +45,7 @@ const StyledHeadlineContainer = styled.div`
   align-items: baseline;
   justify-content: space-between;
 `;
+
+export const StyledSpacer = styled.div`
+  height: 30px;
+`;
