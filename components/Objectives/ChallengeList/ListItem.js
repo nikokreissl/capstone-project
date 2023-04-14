@@ -7,6 +7,7 @@ import {
   StyleChallengeEditLink,
 } from "./StyledChallengeList";
 import ProgressBarComponent from "../ProgressBar";
+import { EditIcon } from "../../../public/icons/icons";
 
 export default function ChallengeListItemComponent({
   challengeNumber,
@@ -61,7 +62,7 @@ export default function ChallengeListItemComponent({
               : `/objective/${objectiveId}/challenge-detail/${challengeId}`
           }
         >
-          Edit ✏️
+          Edit <EditIcon disabled={false} />
         </StyleChallengeEditLink>
       </StyledChallengeQuickEditWrapper>
     </StyledChallengeListItem>

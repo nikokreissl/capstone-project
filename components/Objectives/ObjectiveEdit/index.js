@@ -50,14 +50,13 @@ export default function EditObjective({
   return (
     <>
       <StyledButtonComponent type="back" functionToBeExecuted={onToggleEdit}>
-        Discard
+        Back
       </StyledButtonComponent>
       <PageHeadlineComponent>Edit objective</PageHeadlineComponent>
       <StyledPageDescription>
-        Change the <strong>objective name</strong> and in- or decrease the{" "}
-        <strong>number of games</strong>.
+        Change the <strong>objective name</strong> if needed.
         <br />
-        Your completed the objective or want to restore it? Use the button{" "}
+        You completed the objective or want to restore it? Use the button{" "}
         <strong>Archive / Restore</strong> to do so.
       </StyledPageDescription>
       <StyledForm onSubmit={(event) => event.preventDefault()}>

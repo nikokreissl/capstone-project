@@ -57,7 +57,7 @@ export default function TacticsEdit({
   return (
     <>
       <StyledButtonComponent type="back" functionToBeExecuted={onToggleEdit}>
-        Discard
+        Back
       </StyledButtonComponent>
       <StyledForm onSubmit={handleSubmit}>
         <PageHeadlineComponent>Edit tactic</PageHeadlineComponent>
