@@ -109,7 +109,8 @@ export default function GameDetail({
         <PageHeadlineComponent>Edit game {gameNumber}</PageHeadlineComponent>
         <StyledPageDescription>
           Update your and your opponents <strong>score</strong> and{" "}
-          <strong>xGoals</strong> or delete the games.
+          <strong>xGoals</strong> or delete the games. Note that draws can not
+          be saved.
         </StyledPageDescription>
         <EditScoreComponent
           headline="Score"

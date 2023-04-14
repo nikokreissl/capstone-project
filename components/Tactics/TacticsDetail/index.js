@@ -11,7 +11,6 @@ import {
   PageHeadlineComponent,
   StyledPageDescription,
 } from "../../GeneralComponents/PageInformation";
-import { StyledHeadline, StyledParagraph } from "../../GeneralComponents/Cards";
 import {
   StyledTacticsContainer,
   StyledTacticsFormationText,

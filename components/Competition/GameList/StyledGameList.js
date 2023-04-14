@@ -29,7 +29,7 @@ export default function StyledGameListItemComponent({
             : `/competition/${competition.id}/game-detail/${game.gameId}`
         }
       >
-        Edit game ✏️
+        Edit game <EditIcon disabled={false} />
       </StyledListItemLink>
     </StyledListItem>
   );
@@ -53,6 +53,10 @@ const StyledListItemParagraph = styled.p`
 `;
 
 const StyledListItemLink = styled(Link)`
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
   color: var(--orange);
   text-decoration: none;
   padding: 5px;

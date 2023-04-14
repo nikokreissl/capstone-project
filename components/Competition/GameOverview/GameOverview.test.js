@@ -2,10 +2,10 @@ import { render, screen } from "@testing-library/react";
 import GameOverviewComponent from ".";
 
 describe("GameOverviewComponent", () => {
-  test(`Renders empty state if "gamesPlayes" array is empty`, () => {
+  test(`Renders empty state if "gamesPlayed" array is empty`, () => {
     render(<GameOverviewComponent games={[]} />);
 
-    const emptyState = screen.getByText("No games playes yet");
+    const emptyState = screen.getByText("No games played yet");
 
     expect(emptyState).toBeInTheDocument();
   });

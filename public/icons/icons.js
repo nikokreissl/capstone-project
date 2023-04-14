@@ -1,4 +1,4 @@
-export function SubmitIcon(disabled) {
+export function SubmitIcon({ disabled }) {
   return (
     <svg
       fill={disabled ? "var(--light)" : "var(--orange)"}
@@ -12,7 +12,7 @@ export function SubmitIcon(disabled) {
   );
 }
 
-export function EditIcon(disabled) {
+export function EditIcon({ disabled }) {
   return (
     <svg
       fill={disabled ? "var(--light)" : "var(--orange)"}
