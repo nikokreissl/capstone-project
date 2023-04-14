@@ -15,6 +15,7 @@ import {
   StyledTacticsContainer,
   StyledTacticsFormationText,
 } from "../TacticsCard";
+import { StyledSpacer } from "../../GeneralComponents/PageInformation";
 
 export default function TacticsDetail({
   tactic,
@@ -126,6 +127,7 @@ export default function TacticsDetail({
           )}
         </>
       )}
+      <StyledSpacer />
     </>
   );
 }
