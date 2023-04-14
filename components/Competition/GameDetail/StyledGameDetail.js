@@ -49,9 +49,11 @@ export const StyledEditScoreUpdateButton = styled.button`
   border-radius: 5px;
   color: var(--orange);
   border: 1px solid var(--light-gray);
+  cursor: pointer;
   &:disabled {
     background-color: gray;
     color: var(--light-gray);
+    cursor: default;
   }
 `;
 

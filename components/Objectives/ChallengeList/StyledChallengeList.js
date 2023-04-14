@@ -52,10 +52,12 @@ export const StyledQuickEditButton = styled.button`
   border-radius: 5px;
   color: var(--orange);
   border: 1px solid var(--orange);
+  cursor: pointer;
   &:disabled {
     background-color: gray;
     color: var(--light-gray);
     border-color: gray;
+    cursor: default;
   }
 `;
 

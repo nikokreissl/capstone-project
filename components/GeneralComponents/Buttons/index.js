@@ -34,7 +34,7 @@ export function StyledButtonComponent({
   };
 
   const toasts = {
-    archive: (itemName) => ArchiveMessage(itemName),
+    archive: ArchiveMessage,
     add: SuccessCreateMessage,
     update: (itemName) => SuccessUpdateMessage(itemName),
     delete: DeleteMessage,
@@ -82,6 +82,9 @@ export const StyledButton = styled.button`
   border-radius: 20px;
   text-decoration: none;
   transition: all 0.2s;
+  &: hover {
+    cursor: pointer;
+  }
   &:visited {
     color: var(--orange);
   }
