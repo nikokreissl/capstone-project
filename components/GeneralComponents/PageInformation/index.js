@@ -18,7 +18,7 @@ export const StyledHeadline = styled.h2`
 export const StyledPageDescription = styled.p`
   font-style: italic;
   padding: 10px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 `;
 
 export function PageHeadlineComponentWithCreate({ href, children }) {
@@ -44,4 +44,8 @@ const StyledHeadlineContainer = styled.div`
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+`;
+
+export const StyledSpacer = styled.div`
+  height: 30px;
 `;

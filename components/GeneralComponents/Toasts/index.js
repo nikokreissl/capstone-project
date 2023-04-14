@@ -25,8 +25,8 @@ export const SuccessUpdateMessage = () =>
     theme: "colored",
   });
 
-export const ArchiveMessage = (item) =>
-  toast.info(`${item} successfully archived`, {
+export const ArchiveMessage = () =>
+  toast.info(`Successfully updated`, {
     position: "top-right",
     autoClose: 1300,
     hideProgressBar: false,

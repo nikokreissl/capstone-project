@@ -25,16 +25,16 @@ export function StyledButtonComponent({
   disabled,
 }) {
   const buttonIcons = {
-    edit: EditIcon(disabled),
+    edit: EditIcon({ disabled }),
     back: BackIcon(disabled),
     delete: TrashIcon(disabled),
     archive: ArchiveIcon(disabled),
     add: AddIcon(disabled),
-    update: SubmitIcon(disabled),
+    update: SubmitIcon({ disabled }),
   };
 
   const toasts = {
-    archive: (itemName) => ArchiveMessage(itemName),
+    archive: ArchiveMessage,
     add: SuccessCreateMessage,
     update: (itemName) => SuccessUpdateMessage(itemName),
     delete: DeleteMessage,
@@ -82,6 +82,9 @@ export const StyledButton = styled.button`
   border-radius: 20px;
   text-decoration: none;
   transition: all 0.2s;
+  &: hover {
+    cursor: pointer;
+  }
   &:visited {
     color: var(--orange);
   }

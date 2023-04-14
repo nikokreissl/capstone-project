@@ -28,15 +28,16 @@ export default function Navigation() {
   const path = router.asPath;
 
   function getActiveItem() {
-    if (path.startsWith("/tactics")) {
+    if (path.startsWith("/tactics") && path.includes("/archive")) {
+      return "Archive";
+    } else if (path.startsWith("/tactics")) {
       return "Tactics";
-    } else if (path.startsWith("/archive")) {
+    } else if (path.includes("/archive")) {
       return "Archive";
     } else {
       return "Home";
     }
   }
-
   return (
     <StyledNavigation>
       <StyledNavigationList>
@@ -64,9 +65,10 @@ const StyledNavigation = styled.nav`
 `;
 
 const StyledNavigationList = styled.ul`
+  padding: 20px;
+  padding-bottom: 30px;
   height: 80px;
   border-top: 1px solid var(--light);
-  padding: 0;
   list-style: none;
   display: flex;
   justify-content: space-around;

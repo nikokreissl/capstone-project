@@ -11,11 +11,11 @@ import {
   PageHeadlineComponent,
   StyledPageDescription,
 } from "../../GeneralComponents/PageInformation";
-import { StyledHeadline, StyledParagraph } from "../../GeneralComponents/Cards";
 import {
   StyledTacticsContainer,
   StyledTacticsFormationText,
 } from "../TacticsCard";
+import { StyledSpacer } from "../../GeneralComponents/PageInformation";
 
 export default function TacticsDetail({
   tactic,
@@ -127,6 +127,7 @@ export default function TacticsDetail({
           )}
         </>
       )}
+      <StyledSpacer />
     </>
   );
 }

@@ -97,7 +97,7 @@ export default function TrackNewGamePage() {
         <PageHeadlineComponent>Track new game</PageHeadlineComponent>
         <StyledPageDescription>
           Set your and your opponents <strong>score</strong> and{" "}
-          <strong>xGoals</strong>.
+          <strong>xGoals</strong>. Note that draws can not be saved.
         </StyledPageDescription>
         <EditScoreComponent
           headline="Score"

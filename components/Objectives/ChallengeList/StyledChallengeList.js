@@ -52,15 +52,21 @@ export const StyledQuickEditButton = styled.button`
   border-radius: 5px;
   color: var(--orange);
   border: 1px solid var(--orange);
+  cursor: pointer;
   &:disabled {
     background-color: gray;
     color: var(--light-gray);
     border-color: gray;
+    cursor: default;
   }
 `;
 
-export const StyleChallengeEditLink = styled(Link)`
+export const StylesChallengeEditLink = styled(Link)`
   grid-column: 1 / -1;
   color: var(--orange);
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 `;

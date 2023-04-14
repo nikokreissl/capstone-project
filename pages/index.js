@@ -4,7 +4,7 @@ import CompetitionList from "../components/Competition/CompetitionList";
 import ObjectiveList from "../components/Objectives/ObjectiveList";
 import { useRouter } from "next/router";
 import { StyledPageDescription } from "../components/GeneralComponents/PageInformation";
-import styled from "styled-components";
+import { StyledSpacer } from "../components/GeneralComponents/PageInformation";
 
 export default function Home() {
   const router = useRouter();
@@ -47,11 +47,13 @@ export default function Home() {
         Here you can track the progress of competitions and objectives and save
         your tactics and formations.
       </StyledPageDescription>
+
       <CompetitionList
         competitions={notArchivedCompetitions}
         headline="Competitions"
         path={path}
       />
+      <StyledSpacer />
       <ObjectiveList
         objectives={notArchivedObjectives}
         headline="Objectives"

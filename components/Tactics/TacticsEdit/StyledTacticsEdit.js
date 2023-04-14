@@ -47,7 +47,7 @@ export function TacticsSubmitButton({ children }) {
         <Spinner />
       ) : (
         <>
-          <SubmitIcon disabled="false" /> {children}
+          <SubmitIcon disabled={false} /> {children}
         </>
       )}
     </StyledSubmitButton>

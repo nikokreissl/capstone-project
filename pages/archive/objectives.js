@@ -27,7 +27,7 @@ export default function ArchiveObjectivePage() {
       </StyledLinkComponent>
       <ObjectiveList
         objectives={archivedObjectives}
-        headline="Competitions"
+        headline="Objectives"
         path={path}
       />
     </>

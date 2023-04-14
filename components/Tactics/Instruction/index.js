@@ -50,8 +50,10 @@ const StyledInstructionWrapper = styled.div`
 `;
 
 const StyledShowMoreLessButton = styled.button`
+  cursor: pointer;
   background-color: transparent;
   border: none;
+  padding: 5px;
 `;
 
 const StyledInstructionHeaderDivider = styled.hr`

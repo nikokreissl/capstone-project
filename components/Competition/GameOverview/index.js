@@ -19,7 +19,7 @@ export default function GameOverviewComponent({ games }) {
       <h4>Last game(s)</h4>
       {lastFiveGames.length < 1 ? (
         <StyledGameOverviewEmptyState>
-          No games playes yet
+          No games played yet
         </StyledGameOverviewEmptyState>
       ) : (
         <StyledGameOverviewFramesWrapper>

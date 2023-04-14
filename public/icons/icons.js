@@ -1,7 +1,7 @@
-export function SubmitIcon(disabled) {
+export function SubmitIcon({ disabled }) {
   return (
     <svg
-      fill={disabled ? "var(--light)" : "var(--orange)"}
+      fill={!disabled ? "var(--orange)" : "var(--light)"}
       width={15}
       height={15}
       xmlns="http://www.w3.org/2000/svg"
@@ -12,10 +12,10 @@ export function SubmitIcon(disabled) {
   );
 }
 
-export function EditIcon(disabled) {
+export function EditIcon({ disabled }) {
   return (
     <svg
-      fill={disabled ? "var(--light)" : "var(--orange)"}
+      fill={!disabled ? "var(--orange)" : "var(--light)"}
       width={15}
       height={15}
       xmlns="http://www.w3.org/2000/svg"
