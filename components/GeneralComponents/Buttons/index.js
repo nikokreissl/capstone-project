@@ -25,12 +25,12 @@ export function StyledButtonComponent({
   disabled,
 }) {
   const buttonIcons = {
-    edit: EditIcon(disabled),
+    edit: EditIcon({ disabled }),
     back: BackIcon(disabled),
     delete: TrashIcon(disabled),
     archive: ArchiveIcon(disabled),
     add: AddIcon(disabled),
-    update: SubmitIcon(disabled),
+    update: SubmitIcon({ disabled }),
   };
 
   const toasts = {
