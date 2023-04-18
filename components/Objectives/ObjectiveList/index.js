@@ -10,7 +10,7 @@ export default function ObjectiveList({ objectives, headline, path }) {
   return (
     <>
       {!path.includes("archive") ? (
-        <PageHeadlineComponentWithCreate href="objective/create">
+        <PageHeadlineComponentWithCreate href="objectives/create">
           {headline}
         </PageHeadlineComponentWithCreate>
       ) : (
