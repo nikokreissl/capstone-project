@@ -36,12 +36,12 @@ export default function CreateObjectiveForm() {
   function handleSubmit() {
     handleAddObjective(objectiveNameInput);
 
-    router.push("/");
+    router.push("/objectives");
   }
 
   return (
     <>
-      <StyledLinkComponent href={"/"} type="back">
+      <StyledLinkComponent href={"/objectives"} type="back">
         Cancel
       </StyledLinkComponent>
       <PageHeadlineComponent>Create Objective</PageHeadlineComponent>

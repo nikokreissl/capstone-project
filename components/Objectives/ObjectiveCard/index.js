@@ -23,7 +23,7 @@ export default function ObjectiveCard({ objective, path }) {
       </StyledObjectiveWrapper>
       <StyledLinkComponent
         type="view"
-        href={`/objective/${objective.id}/?=${path}`}
+        href={`/objectives/${objective.id}/?=${path}`}
       >
         View Details
       </StyledLinkComponent>

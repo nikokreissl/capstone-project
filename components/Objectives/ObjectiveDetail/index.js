@@ -34,7 +34,9 @@ export default function ObjectiveDetail({
     <>
       <StyledButtonLinkWrapper>
         <StyledLinkComponent
-          href={path.includes("archive") ? "/archive/objectives" : "/"}
+          href={
+            path.includes("archive") ? "/archive/objectives" : "/objectives"
+          }
           type="back"
         >
           Back
@@ -64,8 +66,8 @@ export default function ObjectiveDetail({
       <StyledLinkComponent
         href={
           path.includes("archive")
-            ? `/objective/${objective.id}/add-challenge/?archive`
-            : `/objective/${objective.id}/add-challenge`
+            ? `/objectives/${objective.id}/add-challenge/?archive`
+            : `/objectives/${objective.id}/add-challenge`
         }
         type="add"
       >

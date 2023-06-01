@@ -29,7 +29,7 @@ export default function ObjectiveDetailPage() {
     if (path.includes("archive")) {
       router.push("/archive/objectives");
     } else {
-      router.push("/");
+      router.push("/objectives");
     }
   }
 

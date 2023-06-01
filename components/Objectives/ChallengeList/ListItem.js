@@ -58,8 +58,8 @@ export default function ChallengeListItemComponent({
         <StylesChallengeEditLink
           href={
             path.includes("archive")
-              ? `/objective/${objectiveId}/challenge-detail/${challengeId}/?archive`
-              : `/objective/${objectiveId}/challenge-detail/${challengeId}`
+              ? `/objectives/${objectiveId}/challenge-detail/${challengeId}/?archive`
+              : `/objectives/${objectiveId}/challenge-detail/${challengeId}`
           }
         >
           Edit <EditIcon />

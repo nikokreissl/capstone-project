@@ -46,9 +46,9 @@ export default function ChallengeDetailPage() {
 
   function functionToBeExecutedBack() {
     if (path.includes("archive")) {
-      router.push(`/objective/${currentObjective.id}/?archive`);
+      router.push(`/objectives/${currentObjective.id}/?archive`);
     } else {
-      router.push(`/objective/${currentObjective.id}`);
+      router.push(`/objectives/${currentObjective.id}`);
     }
   }
 
@@ -59,8 +59,8 @@ export default function ChallengeDetailPage() {
           type="back"
           href={
             path.includes("archive")
-              ? `/objective/${currentObjective.id}/?archive`
-              : `/objective/${currentObjective.id}`
+              ? `/objectives/${currentObjective.id}/?archive`
+              : `/objectives/${currentObjective.id}`
           }
         >
           Back

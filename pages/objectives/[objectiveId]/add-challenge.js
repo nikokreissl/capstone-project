@@ -66,9 +66,9 @@ export default function AddChallengePage() {
     };
     handleAddChallenge(challengeDetails, objectiveId);
     if (path.includes("archive")) {
-      router.push(`/objective/${objectiveId}/?archive`);
+      router.push(`/objectives/${objectiveId}/?archive`);
     } else {
-      router.push(`/objective/${objectiveId}`);
+      router.push(`/objectives/${objectiveId}`);
     }
   }
 
@@ -77,8 +77,8 @@ export default function AddChallengePage() {
       <StyledLinkComponent
         href={
           path.includes("archive")
-            ? `/objective/${objectiveId}/?archive`
-            : `/objective/${objectiveId}`
+            ? `/objectives/${objectiveId}/?archive`
+            : `/objectives/${objectiveId}`
         }
         type="back"
       >
